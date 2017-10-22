@@ -10,7 +10,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    @IBOutlet weak var navBar: UINavigationBar!
+    //@IBOutlet weak var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,11 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.\
         //eric cheng
     }
+    
+    @IBOutlet weak var ScrollView: UIScrollView!
+    
+    
+    
     
     private func setupNavigationBarItems()
     {
