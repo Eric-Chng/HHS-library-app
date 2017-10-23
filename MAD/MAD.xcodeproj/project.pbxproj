@@ -11,6 +11,7 @@
 		4426E3EE1F9B0A9F007CD8E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EC1F9B0A9F007CD8E7 /* Main.storyboard */; };
 		4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */; };
 		4426E3F31F9B0A9F007CD8E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3F11F9B0A9F007CD8E7 /* LaunchScreen.storyboard */; };
+		7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F33851F9DBCA200EE3671 /* Scanner.swift */; };
 		7B725E0F1F9B1C2D00FE56A1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E0D1F9B1C2D00FE56A1 /* SecondViewController.swift */; };
 		7B725E121F9B21DC00FE56A1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */; };
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
@@ -23,6 +24,7 @@
 		4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4426E3F21F9B0A9F007CD8E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4426E3F41F9B0A9F007CD8E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B3F33851F9DBCA200EE3671 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		7B725E0D1F9B1C2D00FE56A1 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAD.entitlements; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */,
 				7B725E0D1F9B1C2D00FE56A1 /* SecondViewController.swift */,
+				7B3F33851F9DBCA200EE3671 /* Scanner.swift */,
 				7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */,
 				4426E3E61F9B0A9F007CD8E7 /* AppDelegate.swift */,
 				4426E3EC1F9B0A9F007CD8E7 /* Main.storyboard */,
@@ -169,6 +172,7 @@
 			files = (
 				7B725E121F9B21DC00FE56A1 /* FirstViewController.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* SecondViewController.swift in Sources */,
+				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
