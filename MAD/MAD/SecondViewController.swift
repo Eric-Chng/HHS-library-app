@@ -25,7 +25,8 @@ class SecondViewController: UIViewController, MyProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.tabBarController?.tabBar.isHidden = false
+
         //creating session
         //let session = AVCaptureSession()
         
