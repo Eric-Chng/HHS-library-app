@@ -82,34 +82,6 @@
             </objects>
             <point key="canvasLocation" x="1645.5999999999999" y="-989.5052473763119"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="Z3S-1k-oPF">
-            <objects>
-                <tableViewController id="eS4-K2-GEJ" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="k7u-u8-V5f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nCW-BP-3kq">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nCW-BP-3kq" id="ivn-Wb-ZiE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eS4-K2-GEJ" id="7nQ-nU-z9N"/>
-                            <outlet property="delegate" destination="eS4-K2-GEJ" id="rW1-CB-qWk"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WF6-nV-dy3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1962" y="711"/>
-        </scene>
         <!--Checkout-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -205,25 +177,20 @@
         <!--Discover-->
         <scene sceneID="boM-37-EVk">
             <objects>
-                <viewController title="Discover" id="Phk-vN-ZeY" sceneMemberID="viewController">
+                <viewController title="Discover" id="Phk-vN-ZeY" customClass="DiscoverViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pbx-Gv-asJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PF-6Z-HIM">
-                                <rect key="frame" x="143" y="297" width="105" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTG-oZ-Dhh">
+                                <rect key="frame" x="16" y="20" width="343" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="6PF-6Z-HIM" firstAttribute="top" secondItem="1Wn-tT-5sI" secondAttribute="top" constant="277" id="Igh-aO-2Pd"/>
-                            <constraint firstItem="6PF-6Z-HIM" firstAttribute="leading" secondItem="1Wn-tT-5sI" secondAttribute="leading" constant="143" id="bl2-rm-GJq"/>
-                            <constraint firstItem="1Wn-tT-5sI" firstAttribute="trailing" secondItem="6PF-6Z-HIM" secondAttribute="trailing" constant="127" id="twL-e2-ygq"/>
-                            <constraint firstItem="1Wn-tT-5sI" firstAttribute="bottom" secondItem="6PF-6Z-HIM" secondAttribute="bottom" constant="300" id="wA5-2o-AiB"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1Wn-tT-5sI"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" image="search" selectedImage="search" id="m1W-ji-349"/>
@@ -236,29 +203,43 @@
         <!--My Books-->
         <scene sceneID="eP9-SN-Lhw">
             <objects>
-                <viewController id="AlD-kV-aT4" sceneMemberID="viewController">
+                <viewController id="AlD-kV-aT4" customClass="MyBooksViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WgT-lc-tFd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Books" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9c-pz-TkQ">
-                                <rect key="frame" x="166" y="293" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Books" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-z1-MPf">
+                                <rect key="frame" x="16" y="20" width="343" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cT5-iz-DuZ">
+                                <rect key="frame" x="0.0" y="99" width="375" height="519"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" id="MP0-M4-aVV">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MP0-M4-aVV" id="wEP-Ls-f4l">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="s9c-pz-TkQ" firstAttribute="top" secondItem="DRL-tZ-hUX" secondAttribute="top" constant="273" id="2h8-cp-a4h"/>
-                            <constraint firstItem="s9c-pz-TkQ" firstAttribute="leading" secondItem="DRL-tZ-hUX" secondAttribute="leading" constant="166" id="PHR-WV-EWs"/>
-                            <constraint firstItem="DRL-tZ-hUX" firstAttribute="trailing" secondItem="s9c-pz-TkQ" secondAttribute="trailing" constant="124" id="Zc9-4P-sd6"/>
-                            <constraint firstItem="DRL-tZ-hUX" firstAttribute="bottom" secondItem="s9c-pz-TkQ" secondAttribute="bottom" constant="304" id="gw3-AB-pCc"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DRL-tZ-hUX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Books" image="books" selectedImage="books" id="a13-fX-Rdt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="listTableView" destination="cT5-iz-DuZ" id="Gpo-qI-Lxp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wA0-gm-6Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
