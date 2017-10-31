@@ -200,7 +200,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="1163.568215892054"/>
         </scene>
-        <!--My Books View Controller-->
+        <!--My Books-->
         <scene sceneID="eP9-SN-Lhw">
             <objects>
                 <viewController id="AlD-kV-aT4" customClass="MyBooksViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
@@ -208,15 +208,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Books" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-z1-MPf">
-                                <rect key="frame" x="16" y="20" width="343" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cT5-iz-DuZ">
-                                <rect key="frame" x="0.0" y="99" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -235,15 +228,31 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="DRL-tZ-hUX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1F0-FP-KVl"/>
+                    <navigationItem key="navigationItem" title="My Books" id="1F0-FP-KVl"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listTableView" destination="cT5-iz-DuZ" id="Gpo-qI-Lxp"/>
+                        <segue destination="iCw-qU-fS7" kind="show" identifier="bookInfoSegue" id="zha-73-1zr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wA0-gm-6Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.8" y="1929.9850074962519"/>
+            <point key="canvasLocation" x="1645.5999999999999" y="1928.1859070464768"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="o16-R1-6OE">
+            <objects>
+                <viewController id="iCw-qU-fS7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h4z-1X-aPa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="AEc-xn-3ad"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mok-3h-kwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2447" y="1931"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

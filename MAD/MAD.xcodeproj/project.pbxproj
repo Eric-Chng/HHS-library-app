@@ -11,6 +11,7 @@
 		4426E3EE1F9B0A9F007CD8E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EC1F9B0A9F007CD8E7 /* Main.storyboard */; };
 		4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */; };
 		4426E3F31F9B0A9F007CD8E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3F11F9B0A9F007CD8E7 /* LaunchScreen.storyboard */; };
+		449941131FA810E600272446 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941121FA810E600272446 /* BookModel.swift */; };
 		44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61741FA7037600A9399E /* DiscoverViewController.swift */; };
 		44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61781FA7053300A9399E /* MyBooksViewController.swift */; };
 		7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F33851F9DBCA200EE3671 /* Scanner.swift */; };
@@ -26,6 +27,7 @@
 		4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4426E3F21F9B0A9F007CD8E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4426E3F41F9B0A9F007CD8E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		449941121FA810E600272446 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		44FE61741FA7037600A9399E /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		44FE61781FA7053300A9399E /* MyBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksViewController.swift; sourceTree = "<group>"; };
 		7B3F33851F9DBCA200EE3671 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				4426E3F41F9B0A9F007CD8E7 /* Info.plist */,
 				44FE61741FA7037600A9399E /* DiscoverViewController.swift */,
 				44FE61781FA7053300A9399E /* MyBooksViewController.swift */,
+				449941121FA810E600272446 /* BookModel.swift */,
 			);
 			path = MAD;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
 				44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */,
+				449941131FA810E600272446 /* BookModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
