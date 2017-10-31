@@ -38,4 +38,22 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return myCell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Set selected location to var
+        //selectedLocation = feedItems[indexPath.row] as! LocationModel
+        // Manually call segue to detail view controller
+        self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Get reference to the destination view controller
+        //let detailVC  = segue.destination as! DetailViewController
+        // Set the property to the selected location so when the view for
+        // detail view controller loads, it can access that property to get the feeditem obj
+        //detailVC.selectedLocation = selectedLocation
+    }
 }
