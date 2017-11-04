@@ -45,7 +45,12 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         //selectedLocation = feedItems[indexPath.row] as! LocationModel
         // Manually call segue to detail view controller
         self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
+        //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "bookInfoSegue") as! BookDetailViewController
         
+        //scanners.delegate = self
+        
+        //self.navigationController?.push
+        //self.navigationController?.pushViewController(scanners, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
