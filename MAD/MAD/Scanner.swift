@@ -127,8 +127,8 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let session = AVCaptureSession()
         
         //Define capture device
-        let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)!
-        
+        if let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
+        {
         do
         {
             
@@ -153,8 +153,11 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         videoPreviewLayer.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer)
         session.startRunning()
-        
-        
+        }
+        else
+        {
+           print("Camera not found")
+        }
 
         // Do any additional setup after loading the view.
 
