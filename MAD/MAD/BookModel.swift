@@ -11,9 +11,9 @@ import Foundation
 class BookModel: NSObject {
     
     //properties
-    
+    var ID: CLong?
     var name: String?
-    var author: String?
+    var authorID: CLong?
     var desc: String?
     
     
@@ -24,12 +24,12 @@ class BookModel: NSObject {
         
     }
     
-    //construct with @name, @address, @latitude, and @longitude parameters
+    //constructor
     
-    init(name: String, author: String, desc: String) {
-        
+    init(ID: CLong, name: String, author: CLong, desc: String) {
+        self.ID = ID
         self.name = name
-        self.author = author
+        self.authorID = author
         self.desc = desc
         
     }
@@ -38,7 +38,7 @@ class BookModel: NSObject {
     //prints object's current state
     
     override var description: String {
-        return "Name: \(name), Author: \(author), Description: \(desc)"
+        return "Name: \(name), Description: \(desc)" //, Author: \(author)  - will have to extract and store for easier access?
         
     }
     
