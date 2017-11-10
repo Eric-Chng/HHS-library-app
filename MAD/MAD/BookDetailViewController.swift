@@ -31,7 +31,19 @@ class BookDetailViewController : UIViewController {
         authorLabel?.text = "Colson Whitehead"
         descLabel?.text = "Description: " + "the best description"
         self.BookCoverImage.image = #imageLiteral(resourceName: "sampleCover")
+        //BookCoverImage.clipsToBounds
+        
+        
+        /*
+         Root Stack View.Leading = Superview.LeadingMargin
+         Root Stack View.Trailing = Superview.TrailingMargin
+         Root Stack View.Top = Top Layout Guide.Bottom + 20.0
+         Bottom Layout Guide.Top = Root Stack View.Bottom + 20.0
+         Image View.Height = Image View.Width
+         First Name Text Field.Width = Middle Name Text Field.Width
+         First Name Text Field.Width = Last Name Text Field.Width
 
+         */
         
     }
     
