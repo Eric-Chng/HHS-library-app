@@ -26,11 +26,13 @@ class BookDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel?.text = "The Underground Railroad"
+        titleLabel?.text = "Alexander and the Terrible, Horrible, No Good, Very Bad Day"
+
         titleLabel?.sizeToFit()
+
         authorLabel?.text = "Colson Whitehead"
         descLabel?.text = "Description: " + "the best description"
-        self.BookCoverImage.image = #imageLiteral(resourceName: "sampleCover")
+        //self.BookCoverImage.image = #imageLiteral(resourceName: "sampleCover")
         //BookCoverImage.clipsToBounds
         
         
