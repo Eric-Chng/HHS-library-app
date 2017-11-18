@@ -13,8 +13,8 @@ class BookDetailViewController : UIViewController {
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
     @IBOutlet weak var descLabel:UILabel?
-    @IBOutlet weak var BookCoverImage: UIImageView!
     
+    @IBOutlet weak var BookCoverImage: UIImageView!
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
         dismiss(animated: true, completion: nil)

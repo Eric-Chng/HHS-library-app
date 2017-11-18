@@ -177,7 +177,10 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     let alert = UIAlertController(title: "Book Barcode Found", message: object.stringValue, preferredStyle: .alert)
                     //alert.addAction(UIAlertAction(title: "KYS Varun", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
                     
-                    alert.addAction(UIAlertAction(title: "Checkout", style: .default, handler: nil))
+                    //alert.addAction(UIAlertAction(title: "Checkout", style: .default, handler: nil))
+                    
+                    
+
                     
                     
                     

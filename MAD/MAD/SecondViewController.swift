@@ -15,6 +15,10 @@ class SecondViewController: UIViewController, MyProtocol{
     func sendScannedValue(valueSent: String) {
         self.scannerValue = valueSent
         scannerLabel.text = valueSent
+        self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)
+        //super.window?.makeKeyAndVisible()
+        //self.tabBarController?.prefersStatusBarHidden = false;
+        
     }
     
     @IBOutlet weak var scannerLabel: UILabel!
