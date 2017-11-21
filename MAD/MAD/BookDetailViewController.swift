@@ -8,12 +8,18 @@
 
 import Foundation
 import UIKit
+import MapKit
+
 
 class BookDetailViewController : UIViewController {
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
     @IBOutlet weak var descLabel:UILabel?
     
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    @IBOutlet weak var TitleView: UIView!
     @IBOutlet weak var BookCoverImage: UIImageView!
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
@@ -26,12 +32,18 @@ class BookDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel?.text = "Alexander and the Terrible, Horrible, No Good, Very Bad Day"
+        titleLabel?.text = "Papercraft"
 
         titleLabel?.sizeToFit()
 
-        authorLabel?.text = "Colson Whitehead"
+        authorLabel?.text = "Mandy Cooper"
         descLabel?.text = "Description: " + "the best description"
+        mapView.layer.cornerRadius = 25
+        mapView.layer.masksToBounds = true
+        
+        mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0004, 0.0004)), animated: true)
+        
+        
         //self.BookCoverImage.image = #imageLiteral(resourceName: "sampleCover")
         //BookCoverImage.clipsToBounds
         
