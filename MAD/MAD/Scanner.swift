@@ -152,7 +152,8 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         videoPreviewLayer.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer)
-        session.startRunning()
+            //view.sendSubview(toBack: videoPreviewLayer)
+            session.startRunning()
         }
         else
         {
@@ -172,10 +173,10 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 if object.type == AVMetadataObject.ObjectType.ean13
                 {
                     delegate?.sendScannedValue(valueSent: object.stringValue!)
-                    _ = navigationController?.popViewController(animated: true)
+                   /* _ = navigationController?.popViewController(animated: true)*/
                     
                     let alert = UIAlertController(title: "Book Barcode Found", message: object.stringValue, preferredStyle: .alert)
-                    //alert.addAction(UIAlertAction(title: "KYS Varun", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
+                //alert.addAction(UIAlertAction(title: "KYS Varun", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
                     
                     //alert.addAction(UIAlertAction(title: "Checkout", style: .default, handler: nil))
                     
