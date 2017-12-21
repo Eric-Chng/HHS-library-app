@@ -87,8 +87,8 @@ class BookDetailViewController : UIViewController {
                 }
                 // now we have the todo
                 // let's just print it to prove we can access it
-               // print(googleBooksJSON)
-            
+               print(googleBooksJSON)
+                
                 
                 
                 if (googleBooksJSON["items"] as? [String: Any]) != nil {
