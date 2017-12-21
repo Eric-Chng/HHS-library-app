@@ -11,15 +11,29 @@ import UIKit
 
 class SecondViewController: UIViewController, MyProtocol{
     
+    var lastSendTime:Int = Int(ProcessInfo.processInfo.systemUptime)
     
     func sendScannedValue(valueSent: String) {
+        if(lastSendTime != Int(ProcessInfo.processInfo.systemUptime))
+        {
+            lastSendTime = Int(ProcessInfo.processInfo.systemUptime);
         self.scannerValue = valueSent
         scannerLabel.text = valueSent
+        BookDetailViewController.updateISBN(newISBN: valueSent)
         self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)
         //super.window?.makeKeyAndVisible()
         //self.tabBarController?.prefersStatusBarHidden = false;
-        
+        }
     }
+ 
+    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "scannerDetailViewSegue"
+        {
+            if let destinationVC = segue.destination as? BookDetailViewController {
+                destinationVC.ISBN = scannerValue!
+            }
+        }
+    }*/
     
     @IBOutlet weak var scannerLabel: UILabel!
     

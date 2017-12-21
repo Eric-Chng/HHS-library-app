@@ -44,6 +44,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         // Set selected location to var
         //selectedLocation = feedItems[indexPath.row] as! LocationModel
         // Manually call segue to detail view controller
+        BookDetailViewController.updateISBN(newISBN: "9780545010221");
         self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
         //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "bookInfoSegue") as! BookDetailViewController
         
@@ -54,6 +55,15 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "scannerDetailViewSegue"
+        {
+            if let destinationVC = segue.destination as? BookDetailViewController {
+                //ISBN13 Value (string) ||
+                //                      \/
+                //destinationVC.updateISBN(newISBN: "9780545010221");
+            }
+        }
         
         // Get reference to the destination view controller
         //let detailVC  = segue.destination as! DetailViewController

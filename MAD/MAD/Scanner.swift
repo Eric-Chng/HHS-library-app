@@ -14,7 +14,7 @@ protocol MyProtocol {
 }
 
 class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-
+    var lastScan = Int(ProcessInfo.processInfo.systemUptime)
     var videoPreviewLayer:AVCaptureVideoPreviewLayer!
     var captureSession:AVCaptureSession!
     //var qrCodeFrameView:UIView?
@@ -121,7 +121,8 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 }
  
  */
- 
+        
+        //print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
         
         //creating session
         let session = AVCaptureSession()
@@ -154,6 +155,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         view.layer.addSublayer(videoPreviewLayer)
             //view.sendSubview(toBack: videoPreviewLayer)
             session.startRunning()
+            //print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
         }
         else
         {
@@ -166,16 +168,19 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 }
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if metadataObjects != nil && metadataObjects.count != 0
+        if self.lastScan != Int(ProcessInfo.processInfo.systemUptime) && metadataObjects != nil && metadataObjects.count != 0
         {
+            self.lastScan = Int(ProcessInfo.processInfo.systemUptime)
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject
             {
                 if object.type == AVMetadataObject.ObjectType.ean13
                 {
+                    if self.viewIfLoaded?.window != nil {
+
                     delegate?.sendScannedValue(valueSent: object.stringValue!)
-                   /* _ = navigationController?.popViewController(animated: true)*/
-                    
-                    let alert = UIAlertController(title: "Book Barcode Found", message: object.stringValue, preferredStyle: .alert)
+                    _ = navigationController?.popViewController(animated: true)
+                    }
+                    //let alert = UIAlertController(title: "Book Barcode Found", message: object.stringValue, preferredStyle: .alert)
                 //alert.addAction(UIAlertAction(title: "KYS Varun", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
                     
                     //alert.addAction(UIAlertAction(title: "Checkout", style: .default, handler: nil))
@@ -186,7 +191,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     
                     
                     //alert.addAction(UIAlertAction(title: "Copy", style: .default, handler: {(nil) in UIPasteboard.general.string = object.stringValue}))
-                    present(alert, animated: true, completion: nil)
+                    //present(alert, animated: true, completion: nil)
  
  
                 }
