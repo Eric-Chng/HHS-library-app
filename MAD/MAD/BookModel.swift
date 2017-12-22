@@ -7,8 +7,13 @@
 //
 
 import Foundation
+//import Alamofire
+//import ObjectMapper
 
 class BookModel: NSObject {
+   
+   
+    
     
     //properties
     var ID: CLong?

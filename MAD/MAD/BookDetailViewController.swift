@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import MapKit
+//import Alamofire //error disappears at build time
+//import ObjectMapper
 
 
 class BookDetailViewController : UIViewController {
@@ -62,13 +64,17 @@ class BookDetailViewController : UIViewController {
             print("Error: cannot create URL")
             return
         }
+        
+       
+        
+        
         let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) in
             // check for any errors
             guard error == nil else {
-                print("error calling GET on /todos/1")
+                print("error calling with Google Books GET call with ISBN: " + BookDetailViewController.ISBN)
                 print(error!)
                 return
             }
@@ -85,38 +91,61 @@ class BookDetailViewController : UIViewController {
                         print("error trying to convert data to JSON")
                         return
                 }
-                // now we have the todo
-                // let's just print it to prove we can access it
-               print(googleBooksJSON)
                 
                 
                 
-                if (googleBooksJSON["items"] as? [String: Any]) != nil {
-                    print("found")
-                        // access individual value in dictionary
-                    
-                }
+                //subtitleAndOn now finds beginning of title, some titles do not have quotation marks
+                let itemsDictionary = googleBooksJSON["items"] as? NSArray?
+                let JSONAsString = String(describing: itemsDictionary!![0])
+                let rangeToSubtitle: Range<String.Index> = JSONAsString.range(of: " title")!
+                
+                let distanceToSubtitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToSubtitle.lowerBound))
+               
+                let subtitleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToSubtitle+6)
+                let subTitleAndOn = JSONAsString.substring(from: subtitleIndex)
+                print(subTitleAndOn)
+                let rangeToTitle: Range<String.Index> = subTitleAndOn.range(of: "title = \"")!
+                let distanceToTitle = Int(subTitleAndOn.distance(from: subTitleAndOn.startIndex, to: rangeToTitle.lowerBound))
+                let titleIndex = subTitleAndOn.index(subTitleAndOn.startIndex, offsetBy: distanceToTitle+9)
+                let titleAndOn = subTitleAndOn.substring(from: titleIndex)
+                let rangeToEndQuote: Range<String.Index> = titleAndOn.range(of: "\"")!
+                let distanceToEndQuote = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToEndQuote.lowerBound))
+                let finalIndex = titleAndOn.index(titleAndOn.startIndex, offsetBy: distanceToEndQuote)
+                let finalTitle = titleAndOn.substring(to: finalIndex)
+                
+                
+                DispatchQueue.main.async(execute: {() -> Void in
+                    //Sets Title Label To Correct Value
+                    self.titleLabel?.text = finalTitle;
+
+                })
+                
+
+                //let distanceToTitle = Int(distanceToSubtitle.distance(from: distanceToSubtitle.startIndex, to: rangeToSubtitle.lowerBound))
+                
+                
                 
                 // the todo object is a dictionary
                 // so we just access the title using the "title" key
                 // so check for a title and print it if we have one
-                guard let todoTitle = googleBooksJSON["item"] as? NSDictionary? else {
+                guard let x:Int? = 2 else {
                     print("Could not get todo title from JSON")
                     return
                 }
-                print(String(describing: todoTitle))
             } catch  {
                 print("error trying to convert data to JSON")
                 return
             }
         }
        task.resume()
+ 
         
-        if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
+            if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
             //imageView.contentMode = .scaleAspectFit
-            downloadCoverImage(url: url)
+                self.downloadCoverImage(url: url)
         }
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -165,8 +194,9 @@ class BookDetailViewController : UIViewController {
     static func updateISBN(newISBN: String)
     {
         print("update happened")
-        ISBN = newISBN;
+        BookDetailViewController.ISBN = newISBN;
     }
     
     
 }
+
