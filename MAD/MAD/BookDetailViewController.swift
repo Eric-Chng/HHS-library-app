@@ -19,6 +19,7 @@ class BookDetailViewController : UIViewController {
     
     @IBOutlet weak var descBox: UITextView!
     
+    @IBOutlet weak var descriptionButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var checkoutButton: UIButton!
     static var ISBN:String = "";
@@ -26,6 +27,7 @@ class BookDetailViewController : UIViewController {
     @IBOutlet weak var TitleView: UIView!
     @IBOutlet weak var reserveButtonImage: UIImageView!
     @IBOutlet weak var BookCoverImage: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -42,11 +44,11 @@ class BookDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel?.text = "Papercraft"
+        titleLabel?.text = "Loading..."
 
         titleLabel?.sizeToFit()
-        authorLabel?.text = "Mandy Cooper"
-        descBox?.attributedText = NSAttributedString(string: "The next planet was inhabited by a tippler. This was a very short visit, but it plunged the little prince into deep dejection. The fourth planet belonged to a businessman. This man was so much occupied that he did not even raise his head at the little prince's arrival.  The next planet was inhabited by a tippler. This was a very short visit, but it plunged the little prince into deep dejection. The fourth planet belonged to a businessman. This man was so much occupied that he did not even raise his head at the little prince's arrival.",  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
+        authorLabel?.text = "Loading..."
+        descBox?.attributedText = NSAttributedString(string: "Loading from database for ISBN-13 Value: " + BookDetailViewController.ISBN + "...",  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
         rawDescription = (descBox?.attributedText.string)!;
         
         formatDescription()
@@ -56,6 +58,12 @@ class BookDetailViewController : UIViewController {
         
         checkoutButton.layer.cornerRadius=15
         checkoutButton.layer.masksToBounds=true
+        
+        descriptionButton.layer.cornerRadius=15
+    descriptionButton.layer.masksToBounds=true
+        
+        descriptionLabel.layer.cornerRadius=10
+        descriptionLabel.layer.masksToBounds=true
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0004, 0.0004)), animated: true)
         
@@ -96,6 +104,8 @@ class BookDetailViewController : UIViewController {
                 
                 
                 
+                
+                
                 //Converts JSON into a String
                 
                 var JSONAsString = "describing =                       \"could not be found\" authors = \"not found\" title = not found"
@@ -104,7 +114,7 @@ class BookDetailViewController : UIViewController {
                 {
                     JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/
                 //print(JSONAsString)
-                print("End of JSON")
+                //print("End of JSON")
                 
 
                 
@@ -145,18 +155,74 @@ class BookDetailViewController : UIViewController {
                 let descriptionIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToDescription+15)
                 let descriptionAndOn = JSONAsString.substring(from: descriptionIndex)
                 //print("Description is: " + descriptionAndOn)
-                let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: "\"")!
-                let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))
+                    let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: ";")!
+                let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))-1
                 let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
-                let finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
+                    var finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
                 //print("Description is: " + finalDescription)
-
+                    finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
+                    var ignored:String = "";
+                    while let rangeToBackslash: Range<String.Index> = finalDescription.range(of: "\\")
+                    {
+                        var isQuote:Bool = false;
+                    let distanceToBackslash = Int(finalDescription.distance(from: finalDescription.startIndex, to: rangeToBackslash.lowerBound))
+                    let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash)
+                        //print("finalDesc1: " + finalDescription)
+                    var finalDescription2: String = finalDescription.substring(from: backslashIndex)
+                    
+                     
+                    //print("finalDesc: " + finalDescription2)
+                    //finalDescription2 = "0301";
+                   let temp1 = finalDescription.substring(to: backslashIndex)
+                        //print("Test: " + finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)))
+                        if(finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2))=="\\\"")
+                        {
+                            //print("found to be a quote")
+                            let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash+1)
+                            isQuote = true;
+                            finalDescription = finalDescription.substring(from: backslashIndex)
+                            ignored = ignored + temp1;
+                        }
+                    
+                        if(isQuote == false)
+                        {
+                            //print("final" + temp1)
+                            //print("made it to indexing")
+                    let backslashIndex2 = finalDescription2.index(finalDescription2.startIndex, offsetBy: 6)
+                            //print("made it past indexing")
+                    let temp2 = finalDescription2.substring(from: backslashIndex2)
+                            //print("made it past substringing")
+                    finalDescription = temp1 + temp2
+                            //print("got finalDescription: " + finalDescription)
+                        }
+                    }
+                    finalDescription = ignored + finalDescription;
+                    print(finalDescription)
+                    
+                    //print(rangeToBackslash2)
+                   
+                    //print(code)
+                    //var y:Character = Character(code)
+                    
+                  
+                    //❄️
+                    //UTF8Decoder.decode(test)
+                    
+                    
+                    //var code:String = "Pok\u{00E9}mon"
+                    //print("Code: " + String(y))
+                    
                 
                 DispatchQueue.main.async(execute: {() -> Void in
                     //Sets Title Label To Correct Value
                     self.titleLabel?.text = finalTitle;
                     self.authorLabel?.text = finalAuthor;
                     self.descBox?.text = finalDescription;
+                    
+                    //self.formatJSONDescription()
+
+                    
+
 
                 })
             }
@@ -167,10 +233,11 @@ class BookDetailViewController : UIViewController {
                     self.titleLabel?.text = BookDetailViewController.ISBN;
                     self.authorLabel?.text = "not found";
                     self.descBox?.text = "not found";
+                    self.descBox.sizeToFit()
+
                     
                 })
             }
-                
 
                 //let distanceToTitle = Int(distanceTotitle.distance(from: distanceTotitle.startIndex, to: rangeTotitle.lowerBound))
                 
@@ -179,10 +246,7 @@ class BookDetailViewController : UIViewController {
                 // the todo object is a dictionary
                 // so we just access the title using the "title" key
                 // so check for a title and print it if we have one
-                guard let x:Int? = 2 else {
-                    print("Could not get todo title from JSON")
-                    return
-                }
+                
             } catch  {
                 print("error trying to convert data to JSON")
                 return
@@ -222,6 +286,33 @@ class BookDetailViewController : UIViewController {
             descBox?.attributedText=NSAttributedString(string: finalString!+"... (more)",attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ]);
         }
         descBox.sizeToFit();
+    }
+    
+    func formatJSONDescription()
+    {
+        
+        var addDots:Bool = false;
+        /*DispatchQueue.main.async(execute: {() -> Void in
+
+            while (self.descBox?.contentSize.height)!>CGFloat(170)
+            /*self.descBox!.attributedText.length>365 */{
+
+            addDots = true;
+            
+                    let subRange = NSMakeRange(0,(self.descBox?.attributedText.length)!-5)
+                    self.descBox?.attributedText = self.descBox?.attributedText.attributedSubstring(from: subRange)
+                }
+                
+        })*/
+        //{//
+            DispatchQueue.main.async(execute: {() -> Void in
+
+                let stringVersion = self.descBox?.attributedText.string
+                let stringIndex = self.descBox?.attributedText.string.range(of: " ", options: .backwards)?.lowerBound
+            //let finalString = stringVersion?.substring(to: stringIndex!); <- readd if removing scrolling description
+                let finalString = stringVersion; self.descBox?.attributedText=NSAttributedString(string: finalString!+"\n(tap for more details)",attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ]);
+            })
+        //}//
     }
     
     func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
