@@ -59,7 +59,7 @@ class BookDetailViewController : UIViewController {
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0004, 0.0004)), animated: true)
         
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + BookDetailViewController.ISBN
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + BookDetailViewController.ISBN
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -91,37 +91,88 @@ class BookDetailViewController : UIViewController {
                         print("error trying to convert data to JSON")
                         return
                 }
+                //print("Google Books JSON: " + String(describing: googleBooksJSON))
                 
                 
                 
-                //subtitleAndOn now finds beginning of title, some titles do not have quotation marks
-                let itemsDictionary = googleBooksJSON["items"] as? NSArray?
-                let JSONAsString = String(describing: itemsDictionary!![0])
-                let rangeToSubtitle: Range<String.Index> = JSONAsString.range(of: " title")!
                 
-                let distanceToSubtitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToSubtitle.lowerBound))
-               
-                let subtitleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToSubtitle+6)
-                let subTitleAndOn = JSONAsString.substring(from: subtitleIndex)
-                print(subTitleAndOn)
-                let rangeToTitle: Range<String.Index> = subTitleAndOn.range(of: "title = \"")!
-                let distanceToTitle = Int(subTitleAndOn.distance(from: subTitleAndOn.startIndex, to: rangeToTitle.lowerBound))
-                let titleIndex = subTitleAndOn.index(subTitleAndOn.startIndex, offsetBy: distanceToTitle+9)
-                let titleAndOn = subTitleAndOn.substring(from: titleIndex)
-                let rangeToEndQuote: Range<String.Index> = titleAndOn.range(of: "\"")!
-                let distanceToEndQuote = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToEndQuote.lowerBound))
-                let finalIndex = titleAndOn.index(titleAndOn.startIndex, offsetBy: distanceToEndQuote)
-                let finalTitle = titleAndOn.substring(to: finalIndex)
+                //Converts JSON into a String
                 
+                var JSONAsString = "describing =                       \"could not be found\" authors = \"not found\" title = not found"
+                let itemsDictionary = /*googleBooksJSON["items"] as? NSArray?*/ String(describing: googleBooksJSON)
+                if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
+                {
+                    JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/
+                //print(JSONAsString)
+                print("End of JSON")
+                
+
+                
+                
+                //Parses out the title
+                let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")!
+                let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
+                let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
+                let titleAndOn = JSONAsString.substring(from: titleIndex)
+                let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
+                let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
+                let finalIndex = titleAndOn.index(titleAndOn.startIndex, offsetBy: distanceToSemiColon)
+                var finalTitle = titleAndOn.substring(to: finalIndex)
+                if finalTitle.range(of: "\"") != nil
+                {
+                    let firstQuoteIndex = finalTitle.index(finalTitle.startIndex, offsetBy: 1)
+                    finalTitle = finalTitle.substring(from: firstQuoteIndex)
+                    let lastQuoteIndex = finalTitle.index(finalTitle.endIndex, offsetBy: -1)
+                    finalTitle = finalTitle.substring(to: lastQuoteIndex)
+                }
+                //print(finalTitle)
+                
+                //Parses out the author
+                let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")!
+                let distanceToAuthors = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToAuthors.lowerBound))
+                let authorsIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToAuthors+33)
+                let authorsAndOn = JSONAsString.substring(from: authorsIndex)
+                //print("oh boy" + authorsAndOn)
+                let rangeToQuote: Range<String.Index> = authorsAndOn.range(of: "\"")!
+                let distanceToQuote = Int(authorsAndOn.distance(from: authorsAndOn.startIndex, to: rangeToQuote.lowerBound))
+                let quoteIndex = authorsAndOn.index(authorsAndOn.startIndex, offsetBy: distanceToQuote)
+                let finalAuthor = authorsAndOn.substring(to: quoteIndex)
+                //print("The Author is \"" + finalAuthor + "\"")
+                
+                //Parses out the description
+                let rangeToDescription: Range<String.Index> = JSONAsString.range(of: "description = ")!
+                let distanceToDescription = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToDescription.lowerBound))
+                let descriptionIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToDescription+15)
+                let descriptionAndOn = JSONAsString.substring(from: descriptionIndex)
+                //print("Description is: " + descriptionAndOn)
+                let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: "\"")!
+                let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))
+                let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
+                let finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
+                //print("Description is: " + finalDescription)
+
                 
                 DispatchQueue.main.async(execute: {() -> Void in
                     //Sets Title Label To Correct Value
                     self.titleLabel?.text = finalTitle;
+                    self.authorLabel?.text = finalAuthor;
+                    self.descBox?.text = finalDescription;
 
                 })
+            }
+            else
+            {
+                DispatchQueue.main.async(execute: {() -> Void in
+                    //Sets Title Label To Correct Value
+                    self.titleLabel?.text = BookDetailViewController.ISBN;
+                    self.authorLabel?.text = "not found";
+                    self.descBox?.text = "not found";
+                    
+                })
+            }
                 
 
-                //let distanceToTitle = Int(distanceToSubtitle.distance(from: distanceToSubtitle.startIndex, to: rangeToSubtitle.lowerBound))
+                //let distanceToTitle = Int(distanceTotitle.distance(from: distanceTotitle.startIndex, to: rangeTotitle.lowerBound))
                 
                 
                 
