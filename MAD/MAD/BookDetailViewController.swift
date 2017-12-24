@@ -117,17 +117,17 @@ class BookDetailViewController : UIViewController {
                 //print("End of JSON")
                 
 
-                
-                
+                    var finalTitle = "Not found: " + BookDetailViewController.ISBN
                 //Parses out the title
-                let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")!
+                if let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")
+                {
                 let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
                 let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
                 let titleAndOn = JSONAsString.substring(from: titleIndex)
                 let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
                 let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
                 let finalIndex = titleAndOn.index(titleAndOn.startIndex, offsetBy: distanceToSemiColon)
-                var finalTitle = titleAndOn.substring(to: finalIndex)
+                finalTitle = titleAndOn.substring(to: finalIndex)
                 if finalTitle.range(of: "\"") != nil
                 {
                     let firstQuoteIndex = finalTitle.index(finalTitle.startIndex, offsetBy: 1)
@@ -135,10 +135,12 @@ class BookDetailViewController : UIViewController {
                     let lastQuoteIndex = finalTitle.index(finalTitle.endIndex, offsetBy: -1)
                     finalTitle = finalTitle.substring(to: lastQuoteIndex)
                 }
+                    }
                 //print(finalTitle)
-                
+                    var finalAuthor = "Not available"
                 //Parses out the author
-                let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")!
+                if let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")
+                {
                 let distanceToAuthors = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToAuthors.lowerBound))
                 let authorsIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToAuthors+33)
                 let authorsAndOn = JSONAsString.substring(from: authorsIndex)
@@ -146,11 +148,16 @@ class BookDetailViewController : UIViewController {
                 let rangeToQuote: Range<String.Index> = authorsAndOn.range(of: "\"")!
                 let distanceToQuote = Int(authorsAndOn.distance(from: authorsAndOn.startIndex, to: rangeToQuote.lowerBound))
                 let quoteIndex = authorsAndOn.index(authorsAndOn.startIndex, offsetBy: distanceToQuote)
-                let finalAuthor = authorsAndOn.substring(to: quoteIndex)
+                finalAuthor = authorsAndOn.substring(to: quoteIndex)
                 //print("The Author is \"" + finalAuthor + "\"")
-                
+                    }
+                    var finalDescription = "Not available";
+                    
+                    
+                    
                 //Parses out the description
-                let rangeToDescription: Range<String.Index> = JSONAsString.range(of: "description = ")!
+                if let rangeToDescription: Range<String.Index> = JSONAsString.range(of: "description = ")
+                {
                 let distanceToDescription = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToDescription.lowerBound))
                 let descriptionIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToDescription+15)
                 let descriptionAndOn = JSONAsString.substring(from: descriptionIndex)
@@ -158,7 +165,7 @@ class BookDetailViewController : UIViewController {
                     let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: ";")!
                 let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))-1
                 let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
-                    var finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
+                    finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
                 //print("Description is: " + finalDescription)
                     finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
                     var ignored:String = "";
@@ -197,10 +204,9 @@ class BookDetailViewController : UIViewController {
                         }
                     }
                     finalDescription = ignored + finalDescription;
-                    print(finalDescription)
-                    
+                    //print(finalDescription)
                     //print(rangeToBackslash2)
-                   
+                    }
                     //print(code)
                     //var y:Character = Character(code)
                     
@@ -328,7 +334,20 @@ class BookDetailViewController : UIViewController {
             print(response?.suggestedFilename ?? url.lastPathComponent)
             print("Download Finished")
             DispatchQueue.main.async() {
-                self.BookCoverImage.image = UIImage(data: data)
+                let temp: UIImage? = UIImage(data: data)
+                if(temp != nil && Double((temp?.size.height)!)>20.0)
+                {
+                    
+                self.BookCoverImage.image = temp
+                    
+                }
+                else
+                {
+                    print("Image not found")
+                    self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
+                }
+                print(String(describing: temp?.size.height))
+                
             }
         }
     }

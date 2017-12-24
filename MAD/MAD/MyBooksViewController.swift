@@ -11,7 +11,7 @@ import UIKit
 
 class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var listTableView: UITableView!
-    
+    var temp:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +34,10 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         let cellIdentifier: String = "BasicCell"
         let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
         // Get references to labels of cell
-        myCell.textLabel!.text = "Book 1"
         
+        myCell.textLabel!.text = "The Theory of Nothing"
+        //self.listTableView.reloadData()
+
         return myCell
     }
     

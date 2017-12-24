@@ -11,4 +11,25 @@ import UIKit
 
 class DiscoverViewController: UIViewController{
    
+    
+    
+    @IBAction func searchButton(_ sender: Any) {
+        let scanners = self.storyboard?.instantiateViewController(withIdentifier: "searchController") as! SearchTableViewController
+        
+        
+        //self.navigationController?.push
+        self.navigationController?.pushViewController(scanners, animated: true)
+    }
+    
+    override func viewDidLoad() {
+       
+        //self.definesPresentationContext = NO;
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 }
