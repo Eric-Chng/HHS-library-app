@@ -125,7 +125,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         //print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
         
         //creating session
-        let session = AVCaptureSession()
+        let captureSession = AVCaptureSession()
         
         //Define capture device
         if let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
@@ -134,7 +134,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         {
             
             let input = try AVCaptureDeviceInput(device: captureDevice) as AVCaptureDeviceInput
-            session.addInput(input)
+            captureSession.addInput(input)
             
         }
         catch let error as NSError
@@ -143,18 +143,19 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
         
         let output = AVCaptureMetadataOutput()
-        session.addOutput(output)
+        captureSession.addOutput(output)
         
         output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         
         output.metadataObjectTypes = [AVMetadataObject.ObjectType.ean13]
         
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         
         videoPreviewLayer.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer)
             //view.sendSubview(toBack: videoPreviewLayer)
-            session.startRunning()
+            captureSession.startRunning()
+            
             //print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
         }
         else
@@ -168,7 +169,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 }
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if self.lastScan != Int(ProcessInfo.processInfo.systemUptime) && metadataObjects != nil && metadataObjects.count != 0
+        if self.lastScan  < (Int(ProcessInfo.processInfo.systemUptime) - 1) && metadataObjects != nil && metadataObjects.count != 0
         {
             self.lastScan = Int(ProcessInfo.processInfo.systemUptime)
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject
@@ -176,9 +177,15 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 if object.type == AVMetadataObject.ObjectType.ean13
                 {
                     if self.viewIfLoaded?.window != nil {
-
-                    delegate?.sendScannedValue(valueSent: object.stringValue!)
-                    _ = navigationController?.popViewController(animated: true)
+                        print("Bigs: " + String(describing: self.viewIfLoaded?.window))
+                    //delegate?.sendScannedValue(valueSent: object.stringValue!)
+                        BookDetailViewController.updateISBN(newISBN: object.stringValue!)
+                        //captureSession.stopRunning()
+                        let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+                        
+                        //self.navigationController?.push
+                        self.navigationController?.pushViewController(scanners, animated: true)
+                    //_ = navigationController?.popViewController(animated: true)
                     }
                     //let alert = UIAlertController(title: "Book Barcode Found", message: object.stringValue, preferredStyle: .alert)
                 //alert.addAction(UIAlertAction(title: "KYS Varun", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))

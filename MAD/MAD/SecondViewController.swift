@@ -20,7 +20,13 @@ class SecondViewController: UIViewController, MyProtocol{
         self.scannerValue = valueSent
         scannerLabel.text = valueSent
         BookDetailViewController.updateISBN(newISBN: valueSent)
-        self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)
+            
+        //self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)
+            let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+            
+            
+            //self.navigationController?.push
+            self.navigationController?.pushViewController(scanners, animated: true)
         //super.window?.makeKeyAndVisible()
         //self.tabBarController?.prefersStatusBarHidden = false;
         }

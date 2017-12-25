@@ -18,10 +18,11 @@ class BookDetailViewController : UIViewController {
     @IBOutlet weak var authorLabel:UILabel?
     
     @IBOutlet weak var descBox: UITextView!
-    
+    var imageURL: String = ""
     @IBOutlet weak var descriptionButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var checkoutButton: UIButton!
+    var foundGoogleImage: Bool = false;
     static var ISBN:String = "";
     var rawDescription: String = "[loading description]";
     @IBOutlet weak var TitleView: UIView!
@@ -43,7 +44,7 @@ class BookDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.largeTitleDisplayMode = .never
         titleLabel?.text = "Loading..."
 
         titleLabel?.sizeToFit()
@@ -328,7 +329,15 @@ class BookDetailViewController : UIViewController {
     }
     
     func downloadCoverImage(url: URL) {
+        
         print("Download Started")
+        
+        
+        
+        
+        
+        
+        var found: Bool = false;
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)
@@ -339,17 +348,52 @@ class BookDetailViewController : UIViewController {
                 {
                     
                 self.BookCoverImage.image = temp
-                    
+                    found = true;
                 }
                 else
                 {
+                    if(self.foundGoogleImage == false)
+                    {
                     print("Image not found")
                     self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
+                    }
                 }
                 print(String(describing: temp?.size.height))
                 
             }
         }
+        if(found == false)
+        {
+        if let googleURL = URL(string: self.imageURL) {
+            print("Using GBooks Image")
+            self.getDataFromUrl(url: googleURL) { data, response, error in
+                guard let data = data, error == nil else { return }
+                print(response?.suggestedFilename ?? url.lastPathComponent)
+                print("Download Finished")
+                DispatchQueue.main.async() {
+                    let temp: UIImage? = UIImage(data: data)
+                    if(temp != nil && Double((temp?.size.height)!)>20.0)
+                    {
+                        print("Doing it")
+                        self.BookCoverImage.image = temp
+                        self.foundGoogleImage = true
+                    }
+                    else
+                    {
+                        print("Image not found 2")
+                        //self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
+                    }
+                    print(String(describing: temp?.size.height))
+                    
+                }
+            }
+        }
+    }
+    }
+    
+    func googleBooksImageURL(newURL: String)
+    {
+        self.imageURL = newURL
     }
     
     static func updateISBN(newISBN: String)

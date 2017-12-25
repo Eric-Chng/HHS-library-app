@@ -17,6 +17,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     var currentISBNs: [String] = [""]
     var timer = Timer()
     var downloaded: Bool = false;
+    var currentThumbnails: [String] = [""]
     
     var currentCoversDownloaded:[Bool] = [false, false, false, false, false, false, false, false, false, false]
     
@@ -139,6 +140,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                             self.currentAuthors = []
                             self.currentTitles = []
                             self.currentISBNs = []
+                            self.currentThumbnails = []
                         }
                         var finalAuthor = "Not available"
                     //Parses out the author
@@ -170,13 +172,39 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                             let distanceToColon = Int(ISBNAndOn.distance(from: ISBNAndOn.startIndex, to: rangeToColon.lowerBound))
                             let colonIndex = ISBNAndOn.index(ISBNAndOn.startIndex, offsetBy: distanceToColon)
                             finalISBN = ISBNAndOn.substring(to: colonIndex)
-                            print(finalISBN)
+                            print("ISBN_13: " + finalISBN)
+
+                            let tenStartIndex = finalISBN.index(finalISBN.startIndex, offsetBy: 3)
+                            var temp: String = finalISBN.substring(from: tenStartIndex)
+                            let tenEndIndex = temp.index(temp.endIndex, offsetBy: -1)
+                            temp = temp.substring(to: tenEndIndex)
+                            print("ISBN_10: " + temp)
+                        }
+                        
+                        var finalThumbnail: String = ""
+                        if let rangeToThumbnail: Range<String.Index> = tempString.range(of: " thumbnail = ")
+                        {
+                            let distanceToThumbnail = Int(tempString.distance(from: tempString.startIndex, to: rangeToThumbnail.lowerBound))
+                            //print(distanceToISBN)
+                            let thumbnailIndex = tempString.index(tempString.startIndex, offsetBy: distanceToThumbnail+14)
+                            let thumbnailAndOn = tempString.substring(from: thumbnailIndex)
+                            
+                            let rangeToEndQuote: Range<String.Index> = thumbnailAndOn.range(of: ";")!
+                            let distanceToEndQuote = Int(thumbnailAndOn.distance(from: thumbnailAndOn.startIndex, to: rangeToEndQuote.lowerBound))
+                            let endQuoteIndex = thumbnailAndOn.index(thumbnailAndOn.startIndex, offsetBy: distanceToEndQuote-1)
+                            finalThumbnail = thumbnailAndOn.substring(to: endQuoteIndex)
+                            //finalISBN = ISBNAndOn.substring(to: colonIndex)
+                            //print("ISBN_13: " + finalISBN)
+                            print("Thumbnail URL: " + finalThumbnail)
+                            
+                            
                         }
                         
                         
                         self.currentTitles.append(finalTitle)
                         self.currentAuthors.append(finalAuthor)
                         self.currentISBNs.append(finalISBN)
+                        self.currentThumbnails.append(finalThumbnail)
                         
                         JSONAsString = JSONAsString.substring(from: tempIndex)
                         //979x
@@ -196,6 +224,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     self.currentTitles = []
                     self.currentAuthors = []
                     self.currentISBNs = []
+                    self.currentThumbnails = ["No thumbnail"]
                     self.currentTitles.append("No results found")
                     self.currentAuthors.append("NA")
                     self.currentISBNs.append("bad")
@@ -261,7 +290,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         //d
         print("ISBN: " + self.currentISBNs[indexPath.row])
         BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
-        self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
+        //self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
+        let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+        scanners.googleBooksImageURL(newURL: self.currentThumbnails[indexPath.row])
+        
+        
+        //self.navigationController?.push
+        self.navigationController?.pushViewController(scanners, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
