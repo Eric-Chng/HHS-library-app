@@ -35,7 +35,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     @objc func action()
     {
         //print("hi")
+        //self.tableView.scroll
+        if(self.tableView.contentOffset.y < -63)
+        {
         self.tableView.reloadData()
+            print("Offset: " + String(describing: self.tableView.contentOffset.y))
+
+        }
         if(currentISBNs.count>3 && downloaded == false)
         {
             print("stored")
