@@ -14,6 +14,7 @@ import MapKit
 
 
 class BookDetailViewController : UIViewController {
+    
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
     

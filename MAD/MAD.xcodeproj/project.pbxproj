@@ -25,6 +25,11 @@
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
 		7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92079B1FC0D0B1006F406B /* RatingControl.swift */; };
 		829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */; };
+		82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */; };
+		82AE230C1FF36C130014C7CF /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230B1FF36C130014C7CF /* Checkout.storyboard */; };
+		82AE230E1FF36C210014C7CF /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230D1FF36C210014C7CF /* Discover.storyboard */; };
+		82AE23101FF36C2E0014C7CF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230F1FF36C2E0014C7CF /* Home.storyboard */; };
+		82AE23121FF36EE70014C7CF /* BookDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE23111FF36EE70014C7CF /* BookDetails.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +54,11 @@
 		7B72B8601F9B0DB5002E9668 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7B92079B1FC0D0B1006F406B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverCollectionViewCell.swift; sourceTree = "<group>"; };
+		82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBooks.storyboard; sourceTree = "<group>"; };
+		82AE230B1FF36C130014C7CF /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
+		82AE230D1FF36C210014C7CF /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		82AE230F1FF36C2E0014C7CF /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		82AE23111FF36EE70014C7CF /* BookDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetails.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,25 +93,16 @@
 		4426E3E51F9B0A9F007CD8E7 /* MAD */ = {
 			isa = PBXGroup;
 			children = (
-				7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */,
-				7B725E0D1F9B1C2D00FE56A1 /* SecondViewController.swift */,
-				7B3F33851F9DBCA200EE3671 /* Scanner.swift */,
-				7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */,
-				4426E3E61F9B0A9F007CD8E7 /* AppDelegate.swift */,
-				4426E3EC1F9B0A9F007CD8E7 /* Main.storyboard */,
-				4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */,
-				4426E3F11F9B0A9F007CD8E7 /* LaunchScreen.storyboard */,
 				4426E3F41F9B0A9F007CD8E7 /* Info.plist */,
-				44FE61741FA7037600A9399E /* DiscoverViewController.swift */,
-				829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */,
-				7B5BDDF61FEF1E810089BC00 /* ResultsViewController.swift */,
-				7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */,
-				7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */,
-				44FE61781FA7053300A9399E /* MyBooksViewController.swift */,
-				449941121FA810E600272446 /* BookModel.swift */,
-				449941141FA8155300272446 /* BookDetailViewController.swift */,
-				7B92079B1FC0D0B1006F406B /* RatingControl.swift */,
-				44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */,
+				82AE23001FF36B080014C7CF /* Resources */,
+				82AE22FF1FF36AA90014C7CF /* Views */,
+				82AE22FE1FF36AA00014C7CF /* Supporting Files */,
+				82AE22FD1FF36A970014C7CF /* Storyboards */,
+				82AE22FC1FF36A8E0014C7CF /* Services */,
+				82AE22FB1FF36A850014C7CF /* Models */,
+				82AE22FA1FF36A7D0014C7CF /* Helpers */,
+				82AE22F91FF36A750014C7CF /* Extensions */,
+				82AE22F81FF36A690014C7CF /* Controllers */,
 			);
 			path = MAD;
 			sourceTree = "<group>";
@@ -112,6 +113,92 @@
 				7B72B8601F9B0DB5002E9668 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82AE22F81FF36A690014C7CF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				449941141FA8155300272446 /* BookDetailViewController.swift */,
+				44FE61781FA7053300A9399E /* MyBooksViewController.swift */,
+				7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */,
+				44FE61741FA7037600A9399E /* DiscoverViewController.swift */,
+				7B5BDDF61FEF1E810089BC00 /* ResultsViewController.swift */,
+				7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */,
+				7B725E0D1F9B1C2D00FE56A1 /* SecondViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		82AE22F91FF36A750014C7CF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		82AE22FA1FF36A7D0014C7CF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		82AE22FB1FF36A850014C7CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */,
+				7B92079B1FC0D0B1006F406B /* RatingControl.swift */,
+				449941121FA810E600272446 /* BookModel.swift */,
+				7B3F33851F9DBCA200EE3671 /* Scanner.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		82AE22FC1FF36A8E0014C7CF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		82AE22FD1FF36A970014C7CF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4426E3EC1F9B0A9F007CD8E7 /* Main.storyboard */,
+				82AE230B1FF36C130014C7CF /* Checkout.storyboard */,
+				82AE230D1FF36C210014C7CF /* Discover.storyboard */,
+				82AE230F1FF36C2E0014C7CF /* Home.storyboard */,
+				4426E3F11F9B0A9F007CD8E7 /* LaunchScreen.storyboard */,
+				82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */,
+				82AE23111FF36EE70014C7CF /* BookDetails.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		82AE22FE1FF36AA00014C7CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		82AE22FF1FF36AA90014C7CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */,
+				7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		82AE23001FF36B080014C7CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4426E3E61F9B0A9F007CD8E7 /* AppDelegate.swift */,
+				4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,9 +274,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AE23101FF36C2E0014C7CF /* Home.storyboard in Resources */,
+				82AE230C1FF36C130014C7CF /* Checkout.storyboard in Resources */,
 				4426E3F31F9B0A9F007CD8E7 /* LaunchScreen.storyboard in Resources */,
+				82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */,
 				4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */,
 				4426E3EE1F9B0A9F007CD8E7 /* Main.storyboard in Resources */,
+				82AE23121FF36EE70014C7CF /* BookDetails.storyboard in Resources */,
+				82AE230E1FF36C210014C7CF /* Discover.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

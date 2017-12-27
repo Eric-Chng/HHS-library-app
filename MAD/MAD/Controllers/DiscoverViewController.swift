@@ -14,6 +14,7 @@ class DiscoverViewController: UIViewController{
     var url: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+"
     var popularBookArr: [String] = []
     
+    @IBOutlet weak var barItem: UITabBarItem!
     @IBAction func searchButton(_ sender: Any) {
         let scanners = self.storyboard?.instantiateViewController(withIdentifier: "searchController") as! SearchTableViewController
         self.navigationController?.pushViewController(scanners, animated: true)

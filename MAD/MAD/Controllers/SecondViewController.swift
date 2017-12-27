@@ -31,7 +31,7 @@ class SecondViewController: UIViewController, MyProtocol{
         //self.tabBarController?.prefersStatusBarHidden = false;
         }
     }
- 
+
     /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "scannerDetailViewSegue"
         {
