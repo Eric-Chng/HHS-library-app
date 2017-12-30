@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Lottie
 
 class DiscoverViewController: UIViewController{
     
@@ -20,8 +21,19 @@ class DiscoverViewController: UIViewController{
         self.navigationController?.pushViewController(scanners, animated: true)
     }
     
+    @IBAction func animationButton(_ sender: Any) {
+        let animationView: LOTAnimationView = LOTAnimationView(name: "LottieLogo1_masked");
+        animationView.contentMode = .scaleAspectFill
+        animationView.frame = CGRect(x: 20, y: 400, width: 300, height: 200)
+        
+        self.view.addSubview(animationView)
+        
+        animationView.play()
+        
+    }
     override func viewDidLoad() {
         popularBookArr = [url + "9780375893773", url+"9780062077011", url+"9781416955078", url+"9781781109601", url+"9781781100486", url+"9781480483576"]
+        
     }
     
     override func didReceiveMemoryWarning() {
