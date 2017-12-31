@@ -18,6 +18,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     var timer = Timer()
     var downloaded: Bool = false;
     var currentThumbnails: [String] = [""]
+    @IBOutlet weak var tableViewSearch: UISearchBar!
     
     var currentCoversDownloaded:[Bool] = [false, false, false, false, false, false, false, false, false, false]
     
@@ -25,7 +26,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-
+        tableViewSearch.becomeFirstResponder()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
@@ -64,13 +65,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //self.unwind(for: UIStoryboardSegue(identifier: "discoverToSearch", source: DiscoverViewController, destination: SearchTableViewController), towardsViewController: DiscoverViewController)
+        //print("Cancel clicked")
+        //self.navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+    }
     
     //func searchBar(searchBar: UISearchBar, textDidChange: String) {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.tableView.reloadData()
-
         var keywords = searchBar.text!;
         searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = true
         //print("finding results for keyword: " + keywords)
         keywords = keywords.replacingOccurrences(of: " ", with: "+")
         let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords

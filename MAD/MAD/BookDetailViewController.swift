@@ -29,6 +29,8 @@ class BookDetailViewController : UIViewController {
     @IBOutlet weak var TitleView: UIView!
     @IBOutlet weak var reserveButtonImage: UIImageView!
     @IBOutlet weak var BookCoverImage: UIImageView!
+        @IBOutlet weak var genreImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "drama"))
+    @IBOutlet weak var statusImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "greencheck.png"))
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
@@ -43,11 +45,25 @@ class BookDetailViewController : UIViewController {
     
     var selectedBook : BookModel?
     
+    @IBAction func reserveButton(_ sender: Any) {
+        print("touched")
+        self.performSegue(withIdentifier: "reserveSegue", sender: self)
+        
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.largeTitleDisplayMode = .never
         titleLabel?.text = "Loading..."
-
+        BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
+        checkoutButton.imageView?.image = #imageLiteral(resourceName: "reserveicon7.png")
+        //genreImage.image = #imageLiteral(resourceName: "drama")
+        //statusImage.image = #imageLiteral(resourceName: "greencheck.png")
+        
         titleLabel?.sizeToFit()
         authorLabel?.text = "Loading..."
         descBox?.attributedText = NSAttributedString(string: "Loading from database for ISBN-13 Value: " + BookDetailViewController.ISBN + "...",  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
@@ -206,6 +222,8 @@ class BookDetailViewController : UIViewController {
                         }
                     }
                     finalDescription = ignored + finalDescription;
+                    //self.performSegue(withIdentifier: "reserveSegue", sender: self)
+
                     //print(finalDescription)
                     //print(rangeToBackslash2)
                     }

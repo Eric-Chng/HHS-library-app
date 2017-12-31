@@ -15,24 +15,25 @@ class DiscoverViewController: UIViewController{
     var url: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+"
     var popularBookArr: [String] = []
     
+    @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var barItem: UITabBarItem!
     @IBAction func searchButton(_ sender: Any) {
         let scanners = self.storyboard?.instantiateViewController(withIdentifier: "searchController") as! SearchTableViewController
         self.navigationController?.pushViewController(scanners, animated: true)
     }
     
-    @IBAction func animationButton(_ sender: Any) {
-        let animationView: LOTAnimationView = LOTAnimationView(name: "LottieLogo1_masked");
-        animationView.contentMode = .scaleAspectFill
-        animationView.frame = CGRect(x: 20, y: 400, width: 300, height: 200)
-        
-        self.view.addSubview(animationView)
-        
-        animationView.play()
-        
-    }
+   
     override func viewDidLoad() {
         popularBookArr = [url + "9780375893773", url+"9780062077011", url+"9781416955078", url+"9781781109601", url+"9781781100486", url+"9781480483576"]
+        
+        let animationView: LOTAnimationView = LOTAnimationView(name: "phonological");
+        animationView.contentMode = .scaleAspectFill
+        animationView.frame = CGRect(x: 0, y: 200, width: 300, height: 200)
+        
+        self.insideScrollView.addSubview(animationView)
+        animationView.loopAnimation = true
+        //animationView.play()
+        animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
         
     }
     
@@ -40,6 +41,17 @@ class DiscoverViewController: UIViewController{
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue)
+    {
+        
+        
+        
+    }
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        print("hello")
+        self.performSegue(withIdentifier: "discoverToSearch", sender: self)
+    }
 }
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     
@@ -53,6 +65,7 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
 
         return itemSize
     }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

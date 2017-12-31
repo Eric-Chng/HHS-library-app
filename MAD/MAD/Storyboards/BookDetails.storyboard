@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wrM-me-emw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wrM-me-emw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -94,7 +94,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-qM-HGJ">
                                                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="66"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="764" verticalCompressionResistancePriority="764" ambiguous="YES" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" image="drama" translatesAutoresizingMaskIntoConstraints="NO" id="uTj-OK-Nc4">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="764" verticalCompressionResistancePriority="764" ambiguous="YES" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="uTj-OK-Nc4">
                                                                                 <rect key="frame" x="2" y="0.0" width="50" height="50"/>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Drama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZd-cw-f01">
@@ -108,7 +108,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2bm-by-5q6">
                                                                         <rect key="frame" x="61.5" y="0.0" width="53.5" height="66"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="764" verticalCompressionResistancePriority="764" ambiguous="YES" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" image="greencheck" translatesAutoresizingMaskIntoConstraints="NO" id="9MM-KX-CTs">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="764" verticalCompressionResistancePriority="764" ambiguous="YES" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="9MM-KX-CTs">
                                                                                 <rect key="frame" x="2" y="0.0" width="50" height="50"/>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mz-7d-cjG">
@@ -166,6 +166,9 @@
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="reserveButton:" destination="wrM-me-emw" eventType="touchUpInside" id="8gE-sP-A05"/>
+                                                </connections>
                                             </button>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-ka-eea">
                                                 <rect key="frame" x="8" y="566" width="359" height="251"/>
@@ -254,18 +257,44 @@
                         <outlet property="descBox" destination="lZi-hZ-1I2" id="XjN-AQ-9oB"/>
                         <outlet property="descriptionButton" destination="MU5-Y4-miJ" id="ZcA-vW-7gQ"/>
                         <outlet property="descriptionLabel" destination="WOm-UO-Z58" id="2Ee-Oa-JAP"/>
+                        <outlet property="genreImage" destination="uTj-OK-Nc4" id="YEB-xM-vqK"/>
                         <outlet property="mapView" destination="b6z-ka-eea" id="P1V-zc-0fb"/>
+                        <outlet property="statusImage" destination="9MM-KX-CTs" id="gWN-cP-Sof"/>
                         <outlet property="titleLabel" destination="L5Q-jg-UDe" id="6hJ-MM-087"/>
+                        <segue destination="lPK-fh-F4m" kind="presentation" identifier="reserveSegue" modalTransitionStyle="crossDissolve" id="lq1-JA-27F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LK9-ys-Tps" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300.7246376811595" y="912.22826086956525"/>
+            <point key="canvasLocation" x="2409" y="939"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0Tc-xe-B0D">
+            <objects>
+                <viewController id="lPK-fh-F4m" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="zgC-Ke-6rT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="e3H-Ke-TzG">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thc-sE-4cb">
+                                    <rect key="frame" x="67" y="255" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EdE-Pz-J9Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3304" y="630"/>
         </scene>
     </scenes>
     <resources>
-        <image name="drama" width="67" height="67"/>
-        <image name="greencheck" width="67" height="67"/>
         <image name="loadingImage" width="171" height="220"/>
         <image name="reserveicon7" width="68" height="57"/>
     </resources>
