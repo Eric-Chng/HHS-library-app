@@ -28,7 +28,7 @@ class DiscoverViewController: UIViewController{
         
         let animationView: LOTAnimationView = LOTAnimationView(name: "phonological");
         animationView.contentMode = .scaleAspectFill
-        animationView.frame = CGRect(x: 0, y: 200, width: 300, height: 200)
+        animationView.frame = CGRect(x: 0, y: 700, width: 300, height: 200)
         
         self.insideScrollView.addSubview(animationView)
         animationView.loopAnimation = true
@@ -57,11 +57,11 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let columns: CGFloat = 3
-        let spacing: CGFloat = 1.5
+        let spacing: CGFloat = 10
         let totalHorizontalSpacing = (columns - 1) * spacing
-
+        
         let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / columns
-        let itemSize = CGSize(width: itemWidth, height: itemWidth)
+        let itemSize = CGSize(width: 170, height: 250)
 
         return itemSize
     }
@@ -69,11 +69,11 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.5
+        return 10
     }
 }
 

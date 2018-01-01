@@ -126,10 +126,10 @@
 			children = (
 				7BF586371FF839D00047611E /* Animations */,
 				4426E3F41F9B0A9F007CD8E7 /* Info.plist */,
-				4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */,
 				82AE23001FF36B080014C7CF /* Resources */,
 				82AE22FF1FF36AA90014C7CF /* Views */,
 				82AE22FE1FF36AA00014C7CF /* Supporting Files */,
+				4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */,
 				82AE22FD1FF36A970014C7CF /* Storyboards */,
 				82AE22FC1FF36A8E0014C7CF /* Services */,
 				82AE22FB1FF36A850014C7CF /* Models */,
