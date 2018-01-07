@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LZs-8Q-yT7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LZs-8Q-yT7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,7 +79,6 @@
         <!--Book Detail View Controller-->
         <scene sceneID="4Hs-4g-asV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zQK-Fn-A4U" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="BookDetailViewController" id="7Aj-32-i6P" userLabel="Book Detail View Controller" customClass="BookDetailViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X14-w8-z00" customClass="ViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
@@ -325,8 +324,9 @@
                         <outlet property="titleLabel" destination="KP2-FB-E7j" id="RTv-tl-e5J"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zQK-Fn-A4U" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300.7246376811595" y="912.22826086956525"/>
+            <point key="canvasLocation" x="2585" y="933"/>
         </scene>
     </scenes>
     <resources>

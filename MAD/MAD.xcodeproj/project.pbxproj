@@ -17,6 +17,8 @@
 		44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61741FA7037600A9399E /* DiscoverViewController.swift */; };
 		44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61781FA7053300A9399E /* MyBooksViewController.swift */; };
 		7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F33851F9DBCA200EE3671 /* Scanner.swift */; };
+		7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */; };
+		7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */; };
 		7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */; };
 		7B5BDDF71FEF1E810089BC00 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDDF61FEF1E810089BC00 /* ResultsViewController.swift */; };
 		7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */; };
@@ -55,6 +57,8 @@
 		44FE61781FA7053300A9399E /* MyBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksViewController.swift; sourceTree = "<group>"; };
 		76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3F33851F9DBCA200EE3671 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryOverlay.swift; sourceTree = "<group>"; };
+		7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryOverlayView.swift; sourceTree = "<group>"; };
 		7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		7B5BDDF61FEF1E810089BC00 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */,
 				82AE22FD1FF36A970014C7CF /* Storyboards */,
 				82AE22FC1FF36A8E0014C7CF /* Services */,
+				7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */,
+				7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */,
 				82AE22FB1FF36A850014C7CF /* Models */,
 				82AE22FA1FF36A7D0014C7CF /* Helpers */,
 				82AE22F91FF36A750014C7CF /* Extensions */,
@@ -168,6 +174,7 @@
 		82AE22F81FF36A690014C7CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7B3F33851F9DBCA200EE3671 /* Scanner.swift */,
 				44FE61781FA7053300A9399E /* MyBooksViewController.swift */,
 				7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */,
 				44FE61741FA7037600A9399E /* DiscoverViewController.swift */,
@@ -198,7 +205,6 @@
 				44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */,
 				7B92079B1FC0D0B1006F406B /* RatingControl.swift */,
 				449941121FA810E600272446 /* BookModel.swift */,
-				7B3F33851F9DBCA200EE3671 /* Scanner.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -410,9 +416,11 @@
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* SecondViewController.swift in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,
+				7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */,
 				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
 				7B5BDDF71FEF1E810089BC00 /* ResultsViewController.swift in Sources */,
+				7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */,
 				44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */,
 				7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */,
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,

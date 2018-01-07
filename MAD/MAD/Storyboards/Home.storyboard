@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EoL-cc-Gvg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EoL-cc-Gvg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,8 +38,14 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="withFade" translatesAutoresizingMaskIntoConstraints="NO" id="yBv-Ne-d3o">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quote of The Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig8-ch-0vH">
-                                                <rect key="frame" x="8" y="184" width="236" height="32.5"/>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MCI-yl-h8I">
+                                                <rect key="frame" x="8" y="240" width="359" height="360"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="zcJ-OU-37K" id="nPm-tx-U7w"/>
+                                                </connections>
+                                            </mapView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig8-ch-0vH">
+                                                <rect key="frame" x="8" y="199" width="236" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
                                                 <color key="textColor" red="0.42918694019999998" green="0.826531291" blue="0.80726766589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,9 +55,13 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="yBv-Ne-d3o" firstAttribute="leading" secondItem="OFx-Fa-XDM" secondAttribute="leading" id="0Pj-KI-EYk"/>
+                                            <constraint firstItem="MCI-yl-h8I" firstAttribute="top" secondItem="OFx-Fa-XDM" secondAttribute="top" constant="240" id="41c-oi-cZH"/>
+                                            <constraint firstAttribute="bottom" secondItem="MCI-yl-h8I" secondAttribute="bottom" constant="400" id="6Lf-a1-Ybb"/>
                                             <constraint firstAttribute="trailing" secondItem="yBv-Ne-d3o" secondAttribute="trailing" id="Aoe-9X-tpx"/>
                                             <constraint firstAttribute="bottom" secondItem="yBv-Ne-d3o" secondAttribute="bottom" constant="824" id="ecO-Vk-GuB"/>
+                                            <constraint firstItem="MCI-yl-h8I" firstAttribute="leading" secondItem="OFx-Fa-XDM" secondAttribute="leading" constant="8" id="j61-Z4-RZt"/>
                                             <constraint firstAttribute="height" constant="1000" id="qcT-J7-7hn"/>
+                                            <constraint firstAttribute="trailing" secondItem="MCI-yl-h8I" secondAttribute="trailing" constant="8" id="rZP-Ub-T9g"/>
                                             <constraint firstItem="yBv-Ne-d3o" firstAttribute="top" secondItem="OFx-Fa-XDM" secondAttribute="top" id="u0e-Ky-OdU"/>
                                         </constraints>
                                     </view>
@@ -80,10 +90,13 @@
                     <navigationItem key="navigationItem" title="Home" id="ocr-sH-Aub"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="mapView" destination="MCI-yl-h8I" id="mYX-mV-uXl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfo-Rg-lUM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644.2028985507247" y="-989.67391304347836"/>
+            <point key="canvasLocation" x="1644" y="-990.40479760119945"/>
         </scene>
         <!--Home-->
         <scene sceneID="Y2S-na-mI6">
