@@ -26,6 +26,7 @@
 		7B725E121F9B21DC00FE56A1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */; };
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
 		7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92079B1FC0D0B1006F406B /* RatingControl.swift */; };
+		7B95DD932001A86D002409EB /* book.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B95DD922001A86D002409EB /* book.json */; };
 		7B9EA32A1FF8417300309DF1 /* scruncho.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EA3291FF8417300309DF1 /* scruncho.json */; };
 		7B9EA32C1FF8422300309DF1 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EA32B1FF8422300309DF1 /* test.json */; };
 		7B9EA3321FF8458600309DF1 /* scruncher.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EA3311FF8458600309DF1 /* scruncher.json */; };
@@ -67,6 +68,7 @@
 		7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAD.entitlements; sourceTree = "<group>"; };
 		7B72B8601F9B0DB5002E9668 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7B92079B1FC0D0B1006F406B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		7B95DD922001A86D002409EB /* book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = book.json; sourceTree = "<group>"; };
 		7B9EA3291FF8417300309DF1 /* scruncho.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scruncho.json; sourceTree = "<group>"; };
 		7B9EA32B1FF8422300309DF1 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		7B9EA3311FF8458600309DF1 /* scruncher.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scruncher.json; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				7B9EA3311FF8458600309DF1 /* scruncher.json */,
 				7B9EA3331FF848C100309DF1 /* mild_wave.json */,
 				7BB650511FF84CC200BA456B /* phonological.json */,
+				7B95DD922001A86D002409EB /* book.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				82AE230C1FF36C130014C7CF /* Checkout.storyboard in Resources */,
 				7BF5863D1FF83B620047611E /* LottieLogo1_masked.json in Resources */,
 				7BF5863B1FF83B400047611E /* LottieLogo1.json in Resources */,
+				7B95DD932001A86D002409EB /* book.json in Resources */,
 				7B9EA3321FF8458600309DF1 /* scruncher.json in Resources */,
 				4426E3F31F9B0A9F007CD8E7 /* LaunchScreen.storyboard in Resources */,
 				7B9EA32A1FF8417300309DF1 /* scruncho.json in Resources */,

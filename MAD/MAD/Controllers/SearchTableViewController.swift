@@ -126,14 +126,15 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                 if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
                 {
                     JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/
-                    print(JSONAsString)
-                    print("End of JSON")
+                    //print(JSONAsString)
+                    //print("End of JSON")
                     
                     var counter:Int = 0;
                     var finalTitle = "Not found"
                     //Parses out the title
                     while let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")
                     {
+                    let x = BookModel.init(JSON: JSONAsString)
                     let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
                     let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
                     let titleAndOn = JSONAsString.substring(from: titleIndex)
