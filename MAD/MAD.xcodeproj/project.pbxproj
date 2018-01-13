@@ -11,6 +11,7 @@
 		4426E3EE1F9B0A9F007CD8E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EC1F9B0A9F007CD8E7 /* Main.storyboard */; };
 		4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */; };
 		4426E3F31F9B0A9F007CD8E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3F11F9B0A9F007CD8E7 /* LaunchScreen.storyboard */; };
+		443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */; };
 		449941131FA810E600272446 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941121FA810E600272446 /* BookModel.swift */; };
 		449941151FA8155300272446 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941141FA8155300272446 /* BookDetailViewController.swift */; };
 		44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */; };
@@ -51,6 +52,7 @@
 		4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4426E3F21F9B0A9F007CD8E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4426E3F41F9B0A9F007CD8E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdSearchBook.swift; sourceTree = "<group>"; };
 		449941121FA810E600272446 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		449941141FA8155300272446 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		4426E3E51F9B0A9F007CD8E7 /* MAD */ = {
 			isa = PBXGroup;
 			children = (
+				443C20EE200AA2E100AACC25 /* Searches */,
 				7BF586371FF839D00047611E /* Animations */,
 				4426E3F41F9B0A9F007CD8E7 /* Info.plist */,
 				82AE23001FF36B080014C7CF /* Resources */,
@@ -147,6 +150,14 @@
 				82AE22F81FF36A690014C7CF /* Controllers */,
 			);
 			path = MAD;
+			sourceTree = "<group>";
+		};
+		443C20EE200AA2E100AACC25 /* Searches */ = {
+			isa = PBXGroup;
+			children = (
+				443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */,
+			);
+			path = Searches;
 			sourceTree = "<group>";
 		};
 		7B72B85F1F9B0DB5002E9668 /* Frameworks */ = {
@@ -427,6 +438,7 @@
 				7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */,
 				44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */,
 				7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */,
+				443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */,
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,
 				7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */,
 				7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */,
@@ -570,10 +582,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD;
+				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -588,10 +600,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD;
+				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
