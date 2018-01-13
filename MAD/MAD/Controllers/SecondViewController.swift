@@ -20,13 +20,14 @@ class SecondViewController: UIViewController, MyProtocol{
         self.scannerValue = valueSent
         scannerLabel.text = valueSent
         BookDetailViewController.updateISBN(newISBN: valueSent)
-            
+        print("sending value")
         //self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)
-            let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+
+            //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
             
             
             //self.navigationController?.push
-            self.navigationController?.pushViewController(scanners, animated: true)
+            //self.navigationController?.pushViewController(scanners, animated: true)
         //super.window?.makeKeyAndVisible()
         //self.tabBarController?.prefersStatusBarHidden = false;
         }
@@ -72,10 +73,11 @@ class SecondViewController: UIViewController, MyProtocol{
         let scanners = self.storyboard?.instantiateViewController(withIdentifier: "Scanner") as! Scanner
         
         scanners.delegate = self
-        
+        print("going next")
         //self.navigationController?.push
         self.navigationController?.pushViewController(scanners, animated: true)
-        
+        //self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)
+
         
     }
     

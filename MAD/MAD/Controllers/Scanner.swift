@@ -181,10 +181,13 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     //delegate?.sendScannedValue(valueSent: object.stringValue!)
                         BookDetailViewController.updateISBN(newISBN: object.stringValue!)
                         //captureSession.stopRunning()
-                        let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+                        //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
                         
                         //self.navigationController?.push
-                        self.navigationController?.pushViewController(scanners, animated: true)
+                        //self.navigationController?.pushViewController(scanners, animated: true)
+                        print("test point")
+                        self.performSegue(withIdentifier: "scannerPushToDetail", sender: self)
+
                     //_ = navigationController?.popViewController(animated: true)
                     }
                     //let alert = UIAlertController(title: "Book Barcode Found", message: object.stringValue, preferredStyle: .alert)

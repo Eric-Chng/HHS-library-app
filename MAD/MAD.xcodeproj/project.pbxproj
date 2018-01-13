@@ -25,6 +25,7 @@
 		7B725E0F1F9B1C2D00FE56A1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E0D1F9B1C2D00FE56A1 /* SecondViewController.swift */; };
 		7B725E121F9B21DC00FE56A1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */; };
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
+		7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B78DBCB2009EA5A00592F09 /* bookUpdated.json */; };
 		7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92079B1FC0D0B1006F406B /* RatingControl.swift */; };
 		7B95DD932001A86D002409EB /* book.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B95DD922001A86D002409EB /* book.json */; };
 		7B9EA32A1FF8417300309DF1 /* scruncho.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EA3291FF8417300309DF1 /* scruncho.json */; };
@@ -67,6 +68,7 @@
 		7B725E111F9B21DC00FE56A1 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAD.entitlements; sourceTree = "<group>"; };
 		7B72B8601F9B0DB5002E9668 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7B78DBCB2009EA5A00592F09 /* bookUpdated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookUpdated.json; sourceTree = "<group>"; };
 		7B92079B1FC0D0B1006F406B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		7B95DD922001A86D002409EB /* book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = book.json; sourceTree = "<group>"; };
 		7B9EA3291FF8417300309DF1 /* scruncho.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scruncho.json; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				7B9EA3291FF8417300309DF1 /* scruncho.json */,
 				7B9EA3311FF8458600309DF1 /* scruncher.json */,
 				7B9EA3331FF848C100309DF1 /* mild_wave.json */,
+				7B78DBCB2009EA5A00592F09 /* bookUpdated.json */,
 				7BB650511FF84CC200BA456B /* phonological.json */,
 				7B95DD922001A86D002409EB /* book.json */,
 			);
@@ -344,6 +347,7 @@
 				4426E3F31F9B0A9F007CD8E7 /* LaunchScreen.storyboard in Resources */,
 				7B9EA32A1FF8417300309DF1 /* scruncho.json in Resources */,
 				7BB650521FF84CC200BA456B /* phonological.json in Resources */,
+				7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */,
 				82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */,
 				4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */,
 				4426E3EE1F9B0A9F007CD8E7 /* Main.storyboard in Resources */,

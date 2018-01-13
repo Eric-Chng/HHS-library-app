@@ -306,11 +306,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
         //self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
         let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
-        scanners.googleBooksImageURL(newURL: self.currentThumbnails[indexPath.row])
-        
+        //scanners.googleBooksImageURL(newURL: self.currentThumbnails[indexPath.row])
+        self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
         
         //self.navigationController?.push
-        self.navigationController?.pushViewController(scanners, animated: true)
+        //self.navigationController?.pushViewController(scanners, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

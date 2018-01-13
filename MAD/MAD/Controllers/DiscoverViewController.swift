@@ -26,10 +26,11 @@ class DiscoverViewController: UIViewController{
     override func viewDidLoad() {
         popularBookArr = [url + "9780375893773", url+"9780062077011", url+"9781416955078", url+"9781781109601", url+"9781781100486", url+"9781480483576"]
         
-        let animationView: LOTAnimationView = LOTAnimationView(name: "book");
+        let animationView: LOTAnimationView = LOTAnimationView(name: "bookUpdated");
         animationView.contentMode = .scaleAspectFill
-        animationView.frame = CGRect(x: 0, y: 100, width: 300, height: 200)
+        animationView.frame = CGRect(x: 50, y: 700, width: 300, height: 200)
         
+
         self.insideScrollView.addSubview(animationView)
         animationView.loopAnimation = true
         //animationView.play()

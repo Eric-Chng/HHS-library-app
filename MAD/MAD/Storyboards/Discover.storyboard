@@ -237,6 +237,14 @@
                                                     <outlet property="delegate" destination="HRS-tc-BrZ" id="J7y-he-4XV"/>
                                                 </connections>
                                             </collectionView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYI-A5-7Wn">
+                                                <rect key="frame" x="0.0" y="702" width="375" height="189"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.28983840346336365" green="0.81910496950149536" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -380,16 +388,22 @@
                         <outlet property="searchBar" destination="dp5-fI-C2u" id="XHu-Rq-rCL"/>
                         <outlet property="tableView" destination="xUX-Ye-SIU" id="Zpr-kA-Yxq"/>
                         <outlet property="tableViewSearch" destination="dp5-fI-C2u" id="fAw-15-mlr"/>
-                        <segue destination="gqD-80-EsI" kind="popoverPresentation" identifier="SearchToBookDetail" popoverAnchorView="xUX-Ye-SIU" id="AtY-qK-t1W">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                         <segue destination="55R-lw-cbe" kind="unwind" identifier="unwindSegueToVC1" animates="NO" unwindAction="unwindToVC1WithSegue:" id="mk0-nm-YcQ"/>
+                        <segue destination="WJ9-rY-Swp" kind="show" identifier="SearchToBookDetail" id="uF4-ZG-LlG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYg-JZ-yAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="55R-lw-cbe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="58" y="1428"/>
+        </scene>
+        <!--BookDetails-->
+        <scene sceneID="CYQ-mq-OrQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BookDetails" id="WJ9-rY-Swp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QNG-Q4-tq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="795" y="1632"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rLR-c0-mhy">
@@ -657,7 +671,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Pc-QZ-F9B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300.7246376811595" y="912.22826086956525"/>
+            <point key="canvasLocation" x="839" y="752"/>
         </scene>
         <!--Discover-->
         <scene sceneID="Lsq-v5-WQb">

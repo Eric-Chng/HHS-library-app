@@ -47,14 +47,22 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listTableView" destination="OSj-io-mJQ" id="Gev-3L-k0b"/>
-                        <segue destination="7Aj-32-i6P" kind="popoverPresentation" identifier="bookInfoSegue" popoverAnchorView="vrw-BT-m5x" id="RS3-cZ-4Ch">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
+                        <segue destination="6SQ-fA-jKJ" kind="show" identifier="bookInfoSegue" id="dA8-DS-xQo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhc-9U-Wmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1645.5999999999999" y="1928.1859070464768"/>
+            <point key="canvasLocation" x="1646" y="1831"/>
+        </scene>
+        <!--BookDetails-->
+        <scene sceneID="xFy-G5-GgB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BookDetails" id="6SQ-fA-jKJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vSt-Ve-poC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2X1-oG-ssv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940" y="990"/>
         </scene>
         <!--My Books-->
         <scene sceneID="OQC-40-VUV">

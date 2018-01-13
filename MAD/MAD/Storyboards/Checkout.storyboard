@@ -68,7 +68,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scannerLabel" destination="SJp-hc-UQQ" id="JuZ-g6-pX1"/>
-                        <segue destination="7pj-MX-fIS" kind="presentation" identifier="scannerDetailViewSegue" id="zg9-PB-c7w"/>
+                        <segue destination="Ac4-Xt-wZf" kind="show" identifier="scannerDetailViewSegue" id="2mD-LB-cm2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O75-R6-H8G" sceneMemberID="firstResponder"/>
@@ -111,15 +111,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="NNj-Dm-8S8"/>
                     </view>
+                    <connections>
+                        <segue destination="Ac4-Xt-wZf" kind="show" identifier="scannerPushToDetail" id="GYa-Cw-95d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jt-1H-MHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1516" y="1019"/>
         </scene>
+        <!--BookDetails-->
+        <scene sceneID="hpa-VJ-szo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BookDetails" id="Ac4-Xt-wZf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SyZ-fN-8NW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G7T-cj-po4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="737"/>
+        </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="Oie-K2-0qS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dXm-xk-uq4" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="BookDetailViewController" id="7pj-MX-fIS" userLabel="Book Detail View Controller" customClass="BookDetailViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtL-yk-TY5" customClass="ViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
@@ -365,6 +377,7 @@
                         <outlet property="titleLabel" destination="qPT-eH-BrL" id="ff5-UP-dra"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXm-xk-uq4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2628" y="737"/>
         </scene>
@@ -3945,4 +3958,7 @@ AAAAAAACVjA
         <image name="plus" width="32" height="32"/>
         <image name="scanbutton" width="223" height="114"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="GYa-Cw-95d"/>
+    </inferredMetricsTieBreakers>
 </document>

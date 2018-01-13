@@ -47,12 +47,12 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         //selectedLocation = feedItems[indexPath.row] as! LocationModel
         // Manually call segue to detail view controller
         BookDetailViewController.updateISBN(newISBN: "9781921019630");
-        let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+        //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
         
         
         //self.navigationController?.push
-        self.navigationController?.pushViewController(scanners, animated: true)
-        //self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
+        //self.navigationController?.pushViewController(scanners, animated: true)
+        self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
         //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "bookInfoSegue") as! BookDetailViewController
         
         //scanners.delegate = self
