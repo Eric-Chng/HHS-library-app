@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BookIdProtocol{
+    var feedItems: NSArray = NSArray()
     @IBOutlet weak var listTableView: UITableView!
     var temp:String = ""
     override func viewDidLoad() {
@@ -20,6 +21,16 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         self.listTableView.delegate = self
         self.listTableView.dataSource = self
         
+        let Idsearch = IdSearchBook()
+            Idsearch.delegate = self
+        Idsearch.downloadItems()
+        
+    }
+    
+    func itemsDownloaded(items: NSArray) {
+        
+        feedItems = items
+        self.listTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
