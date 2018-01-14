@@ -163,9 +163,9 @@ extension FirstViewController: MKMapViewDelegate
             return circleRenderer
         }
         else {
-            print("hellos")
+            //print("hellos")
             if overlay is LibraryOverlay {
-                print("bigs")
+                //print("bigs")
                 return LibraryOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "mapOverlay"))
             }
             return MKOverlayRenderer(overlay: overlay)

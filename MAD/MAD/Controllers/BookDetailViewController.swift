@@ -32,6 +32,7 @@ class BookDetailViewController : UIViewController {
         @IBOutlet weak var genreImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "drama"))
     @IBOutlet weak var statusImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "greencheck.png"))
     @IBOutlet weak var descriptionLabel: UILabel!
+    var timer: Timer = Timer.init()
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -54,10 +55,31 @@ class BookDetailViewController : UIViewController {
     }
     
     
+    @objc func action()
+    {
+        
+        if(selectedBook?.BookCoverImage != nil)
+        {
+            if(Double((selectedBook?.BookCoverImage.image?.size.height)!)>20.0 && selectedBook?.title != "")
+            {
+                self.BookCoverImage.image = selectedBook!.BookCoverImage.image
+                self.titleLabel?.text = selectedBook!.title
+                self.authorLabel?.text = selectedBook!.author
+                self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
+                //timer.invalidate()
+                //timer = nil
+            }
+            
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.title = "Book Info"
         titleLabel?.text = "Loading..."
         BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
         checkoutButton.imageView?.image = #imageLiteral(resourceName: "reserveicon7.png")
@@ -74,6 +96,9 @@ class BookDetailViewController : UIViewController {
         mapView.layer.cornerRadius = 25
         mapView.layer.masksToBounds = true
         
+        BookCoverImage.layer.cornerRadius=10
+        BookCoverImage.layer.masksToBounds = true
+        
         checkoutButton.layer.cornerRadius=15
         checkoutButton.layer.masksToBounds=true
         
@@ -84,6 +109,32 @@ class BookDetailViewController : UIViewController {
         descriptionLabel.layer.masksToBounds=true
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0004, 0.0004)), animated: true)
+        
+        if(self.selectedBook != nil)
+        {
+            //print("Book was passed")
+            //print("Book info...")
+            //selectedBook!.printInfo()
+            //print(String(describing: selectedBook))
+            self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
+            self.titleLabel?.text = selectedBook!.title
+            self.authorLabel?.text = selectedBook!.author
+            print(String(describing: selectedBook?.BookCoverImage))
+            //self.BookCoverImage = selectedBook!.BookCoverImage
+
+            if(selectedBook?.BookCoverImage != nil)
+            {
+            self.BookCoverImage.image = selectedBook!.BookCoverImage.image
+            }
+            else{
+                timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+                
+            
+            }
+        }
+        else
+        {
+        
         
         let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + BookDetailViewController.ISBN
         guard let url = URL(string: todoEndpoint) else {
@@ -279,12 +330,13 @@ class BookDetailViewController : UIViewController {
             }
         }
        task.resume()
+    }
  
         
-            if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
+            //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
             //imageView.contentMode = .scaleAspectFit
-                self.downloadCoverImage(url: url)
-        }
+                //self.downloadCoverImage(url: url)
+        //}
     }
 
     
@@ -348,13 +400,7 @@ class BookDetailViewController : UIViewController {
     }
     
     func downloadCoverImage(url: URL) {
-        
         print("Download Started")
-        
-        
-        
-        
-        
         
         var found: Bool = false;
         getDataFromUrl(url: url) { data, response, error in

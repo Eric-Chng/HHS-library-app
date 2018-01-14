@@ -16,8 +16,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     var currentCovers: [UIImage] = [UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage()]
     var currentISBNs: [String] = [""]
     var timer = Timer()
+    var currentBooks: [BookModel] = []
     var downloaded: Bool = false;
     var currentThumbnails: [String] = [""]
+    var pressedItem: Int = 0
+    var JSONsParsed: [String] = []
     @IBOutlet weak var tableViewSearch: UISearchBar!
     
     var currentCoversDownloaded:[Bool] = [false, false, false, false, false, false, false, false, false, false]
@@ -45,22 +48,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         }
         if(currentISBNs.count>3 && downloaded == false)
         {
-            print("stored")
-            for x in self.currentISBNs
-            {
-                //print("x: " + x)
-            }
+            //print("stored")
+            
             //print("now")
             downloaded = true
-            var counter2:Int = 0;
-            for ISBN in currentISBNs
-            {
-                if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + ISBN + "-L.jpg") {
-                    //imageView.contentMode = .scaleAspectFit
-                    //self.downloadCoverImage(url: url, index: counter2)
-                }
-                counter2 = counter2 + 1
-            }
+            
         }
     }
     
@@ -80,7 +72,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.showsCancelButton = true
         //print("finding results for keyword: " + keywords)
         keywords = keywords.replacingOccurrences(of: " ", with: "+")
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
+        
+        /*"https://www.googleapis.com/books/v1/volumes?q=intitle:Hello&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
+
+        /*"https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
+        //print("keywords:" + keywords + "]")
+        //print("https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw")
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL for: " + todoEndpoint)
             return
@@ -133,10 +131,20 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     //Parses out the title
                     while let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")
                     {
+                        let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
+                        let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
+                        let temp = JSONAsString[titleIndex...]
+                        let titleAndOn = String(temp)
+                        //print("Title and on: " + titleAndOn)
+
+                    //print("swung through")
+                    //print(JSONAsString)
+                        self.JSONsParsed.append(JSONAsString)
                     let x = BookModel.init(JSON: JSONAsString)
-                    let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
-                    let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
-                    let titleAndOn = JSONAsString.substring(from: titleIndex)
+                        print("shaylan")
+
+                   
+                    //print("shaylan")
                     let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
                     let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
                    
@@ -146,6 +154,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                             self.currentTitles = []
                             self.currentISBNs = []
                             self.currentThumbnails = []
+                            self.currentBooks = []
                         }
                     if JSONAsString.range(of: "authors = ") != nil
                     {
@@ -153,25 +162,49 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     //print("The Author is \"" + finalAuthor + "\"")
                         
                         let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
-
+                        
+                        
                         self.currentTitles.append(x.title!)
                         self.currentAuthors.append(x.author!)
                         self.currentISBNs.append(x.ISBN!)
+                        self.currentBooks.append(x)
                         if(x.googleImageURL != nil)
                         {
                         self.currentThumbnails.append(x.googleImageURL!)
                         }
+                        else
+                        {
+                            print("Image URL not found")
+                        }
                         
+                        //print("qualified if")
+                        //let substring1 = template[indexStartOfText...]
+                        let temp = JSONAsString[tempIndex...]
+                        //print(String(temp))
                         JSONAsString = JSONAsString.substring(from: tempIndex)
+                        //JSONAsString = String(temp)
                         //979x
                         //31
                         
                         counter = counter + 1;
                         }
                     else{
+                        print("dog")
+                        print(JSONAsString)
                         JSONAsString = "break"
                         }
                     }
+                    /*
+                    for m in self.JSONsParsed
+                    {
+                        print("Initialization started")
+                        //print(m)
+
+                        let x = BookModel.init(JSON: m)
+                        print("Initialization ended")
+
+                    }
+                     */
                    
                 }
                 else
@@ -246,8 +279,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         //d
         print("ISBN: " + self.currentISBNs[indexPath.row])
         BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
+        self.pressedItem = indexPath.row
         //self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
-        let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+        //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
         //scanners.googleBooksImageURL(newURL: self.currentThumbnails[indexPath.row])
         self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
         
@@ -275,7 +309,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
             myCell.titleLabel.text = currentTitles[indexPath.row];
             myCell.authorLabel.text = currentAuthors[indexPath.row]
-            var temp:Bool = true;
+            //var temp:Bool = true;
             /*
             if(self.currentCoversDownloaded[indexPath.row] == true)
             {
@@ -295,84 +329,15 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
         return myCell
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("updating")
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        cell.textLabel?.text       = currentTitles[indexPath.row]
-        cell.detailTextLabel?.text = currentAuthors[indexPath.row]
-        /*
-        let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell") else {
-                // Never fails:
-                return UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "UITableViewCell")
-            }
-            print("returning here")
-            return cell
-        }()
-        
-        // (cell is non-optional; no need to use ?. or !)
-        
-        // Configure your cell:
-        cell.textLabel?.text       = currentTitles[indexPath.row]
-        cell.detailTextLabel?.text = currentAuthors[indexPath.row]
-        print("returning there")
-         */
-        return cell
-        /*
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        
-        // Configure the cell...
 
-        return cell
- */
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        print("preparing segue")
+        let bookToPass = currentBooks[self.pressedItem]
+        //selectedBook
+        if let destinationViewController = segue.destination as? BookDetailViewController {
+            destinationViewController.selectedBook = bookToPass
+        }
     }
-    */
-
+    
 }
+

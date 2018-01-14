@@ -25,7 +25,7 @@ class BookCoverCollectionViewCell: UICollectionViewCell {
     }
     
     func downloadCoverImage(url: URL){
-       print("downloading")
+       //print("downloading")
         if(downloaded == false)
         {
             //print("downloading")

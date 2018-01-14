@@ -17,6 +17,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var lastScan = Int(ProcessInfo.processInfo.systemUptime)
     var videoPreviewLayer:AVCaptureVideoPreviewLayer!
     var captureSession:AVCaptureSession!
+    var currentBook: BookModel?
     //var qrCodeFrameView:UIView?
     
     public var delegate:MyProtocol?
@@ -168,6 +169,14 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
 }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("preparing segue")
+        
+        if let destinationViewController = segue.destination as? BookDetailViewController {
+            destinationViewController.selectedBook = self.currentBook!
+        }
+    }
+    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if self.lastScan  < (Int(ProcessInfo.processInfo.systemUptime) - 1) && metadataObjects != nil && metadataObjects.count != 0
         {
@@ -179,13 +188,14 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     if self.viewIfLoaded?.window != nil {
                         print("Bigs: " + String(describing: self.viewIfLoaded?.window))
                     //delegate?.sendScannedValue(valueSent: object.stringValue!)
-                        BookDetailViewController.updateISBN(newISBN: object.stringValue!)
+                        //BookDetailViewController.updateISBN(newISBN: object.stringValue!)
+                        self.currentBook = BookModel.init(ISBN: object.stringValue!)
                         //captureSession.stopRunning()
                         //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
                         
                         //self.navigationController?.push
                         //self.navigationController?.pushViewController(scanners, animated: true)
-                        print("test point")
+                        //print("test point")
                         self.performSegue(withIdentifier: "scannerPushToDetail", sender: self)
 
                     //_ = navigationController?.popViewController(animated: true)
