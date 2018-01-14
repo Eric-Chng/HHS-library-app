@@ -57,7 +57,6 @@ class BookDetailViewController : UIViewController {
     
     @objc func action()
     {
-        
         if(selectedBook?.BookCoverImage != nil)
         {
             if(Double((selectedBook?.BookCoverImage.image?.size.height)!)>20.0 && selectedBook?.title != "")
@@ -68,6 +67,10 @@ class BookDetailViewController : UIViewController {
                 self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
                 //timer.invalidate()
                 //timer = nil
+            }
+            else
+            {
+                BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
             }
             
         }
@@ -125,12 +128,18 @@ class BookDetailViewController : UIViewController {
             if(selectedBook?.BookCoverImage != nil)
             {
             self.BookCoverImage.image = selectedBook!.BookCoverImage.image
+                
+                
             }
-            else{
+            else
+            {
+                self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
+
                 timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
                 
-            
             }
+            
+            
         }
         else
         {

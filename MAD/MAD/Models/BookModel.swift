@@ -140,7 +140,9 @@ class BookModel: NSObject {
     {
         super.init()
         DispatchQueue.main.async {
-            self.BookCoverImage = UIImageView.init()
+            self.BookCoverImage = UIImageView.init(image: #imageLiteral(resourceName: "loadingImage"))
+            
+            
         }
         
 
@@ -357,12 +359,20 @@ class BookModel: NSObject {
 
                     if(isQuote == false)
                     {
+                        //print(finalDescription2)
                         let backslashIndex2 = finalDescription2.index(finalDescription2.startIndex, offsetBy: 8)
                         let temp2 = String(finalDescription2[backslashIndex2...]) //finalDescription2.substring(from: backslashIndex2)
+                        if(temp1.count > 1)
+                        {
                         let m = temp1.index(temp1.endIndex, offsetBy: -2)
                         temp1 = String(temp1[...m])
-                        //print("Temp1: " + temp1)
-                        //print("Temp2: " + temp2)
+                        }
+                        else
+                        {
+                            temp1 = ""
+                        }
+                        print("Temp1: " + temp1)
+                        print("Temp2: " + temp2)
                         
                         finalDescription = temp1 + temp2
                     }
