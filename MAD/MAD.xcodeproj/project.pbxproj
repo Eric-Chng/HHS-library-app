@@ -148,7 +148,6 @@
 				82AE22FB1FF36A850014C7CF /* Models */,
 				82AE22FA1FF36A7D0014C7CF /* Helpers */,
 				82AE22F91FF36A750014C7CF /* Extensions */,
-				449941141FA8155300272446 /* BookDetailViewController.swift */,
 				82AE22F81FF36A690014C7CF /* Controllers */,
 			);
 			path = MAD;
@@ -191,6 +190,7 @@
 		82AE22F81FF36A690014C7CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				449941141FA8155300272446 /* BookDetailViewController.swift */,
 				7B3F33851F9DBCA200EE3671 /* Scanner.swift */,
 				44FE61781FA7053300A9399E /* MyBooksViewController.swift */,
 				7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */,

@@ -127,7 +127,7 @@ class BookDetailViewController : UIViewController {
                 //Converts JSON into a String
                 
                 var JSONAsString = "describing =                       \"could not be found\" authors = \"not found\" title = not found"
-                let itemsDictionary = /*googleBooksJSON["items"] as? NSArray?*/ String(describing: googleBooksJSON)
+                let itemsDictionary =  String(describing: googleBooksJSON)
                 if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
                 {
                     JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/

@@ -40,7 +40,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         if(self.tableView.contentOffset.y < -63)
         {
         self.tableView.reloadData()
-            print("Offset: " + String(describing: self.tableView.contentOffset.y))
+            //print("Offset: " + String(describing: self.tableView.contentOffset.y))
 
         }
         if(currentISBNs.count>3 && downloaded == false)
@@ -48,7 +48,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             print("stored")
             for x in self.currentISBNs
             {
-                print("x: " + x)
+                //print("x: " + x)
             }
             //print("now")
             downloaded = true
@@ -130,7 +130,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     //print("End of JSON")
                     
                     var counter:Int = 0;
-                    var finalTitle = "Not found"
                     //Parses out the title
                     while let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")
                     {
@@ -140,85 +139,28 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     let titleAndOn = JSONAsString.substring(from: titleIndex)
                     let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
                     let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
-                    let finalIndex = titleAndOn.index(titleAndOn.startIndex, offsetBy: distanceToSemiColon)
-                    finalTitle = titleAndOn.substring(to: finalIndex)
-                    if finalTitle.range(of: "\"") != nil
-                    {
-                        let firstQuoteIndex = finalTitle.index(finalTitle.startIndex, offsetBy: 1)
-                        finalTitle = finalTitle.substring(from: firstQuoteIndex)
-                        let lastQuoteIndex = finalTitle.index(finalTitle.endIndex, offsetBy: -1)
-                        finalTitle = finalTitle.substring(to: lastQuoteIndex)
-                    }
-                        if(counter == 0 && finalTitle.count>3)
+                   
+                        if(counter == 0 && x.title!.count>3)
                         {
                             self.currentAuthors = []
                             self.currentTitles = []
                             self.currentISBNs = []
                             self.currentThumbnails = []
                         }
-                        var finalAuthor = "Not available"
-                    //Parses out the author
-                    if let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")
+                    if JSONAsString.range(of: "authors = ") != nil
                     {
-                    let distanceToAuthors = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToAuthors.lowerBound))
-                    let authorsIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToAuthors+33)
-                    let authorsAndOn = JSONAsString.substring(from: authorsIndex)
-                    //print("oh boy" + authorsAndOn)
-                    let rangeToQuote: Range<String.Index> = authorsAndOn.range(of: "\"")!
-                    let distanceToQuote = Int(authorsAndOn.distance(from: authorsAndOn.startIndex, to: rangeToQuote.lowerBound))
-                    let quoteIndex = authorsAndOn.index(authorsAndOn.startIndex, offsetBy: distanceToQuote)
-                    finalAuthor = authorsAndOn.substring(to: quoteIndex)
+                    
                     //print("The Author is \"" + finalAuthor + "\"")
-                    print("Title: \"" + finalTitle + "\" by " + finalAuthor)
                         
                         let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
 
-                        var tempString = JSONAsString.substring(to: tempIndex)
-                        var finalISBN = "Incomplete Google Books Listing"
-                        //Parses out ISBN
-                        if let rangeToISBN: Range<String.Index> = tempString.range(of: "type = \"ISBN_13\"")
+                        self.currentTitles.append(x.title!)
+                        self.currentAuthors.append(x.author!)
+                        self.currentISBNs.append(x.ISBN!)
+                        if(x.googleImageURL != nil)
                         {
-                            let distanceToISBN = Int(tempString.distance(from: tempString.startIndex, to: rangeToISBN.lowerBound))
-                            //print(distanceToISBN)
-                            let ISBNIndex = tempString.index(tempString.startIndex, offsetBy: distanceToISBN-31)
-                            let ISBNAndOn = tempString.substring(from: ISBNIndex)
-                            let rangeToColon: Range<String.Index> = ISBNAndOn.range(of: ";")!
-                            let distanceToColon = Int(ISBNAndOn.distance(from: ISBNAndOn.startIndex, to: rangeToColon.lowerBound))
-                            let colonIndex = ISBNAndOn.index(ISBNAndOn.startIndex, offsetBy: distanceToColon)
-                            finalISBN = ISBNAndOn.substring(to: colonIndex)
-                            print("ISBN_13: " + finalISBN)
-
-                            let tenStartIndex = finalISBN.index(finalISBN.startIndex, offsetBy: 3)
-                            var temp: String = finalISBN.substring(from: tenStartIndex)
-                            let tenEndIndex = temp.index(temp.endIndex, offsetBy: -1)
-                            temp = temp.substring(to: tenEndIndex)
-                            print("ISBN_10: " + temp)
+                        self.currentThumbnails.append(x.googleImageURL!)
                         }
-                        
-                        var finalThumbnail: String = ""
-                        if let rangeToThumbnail: Range<String.Index> = tempString.range(of: " thumbnail = ")
-                        {
-                            let distanceToThumbnail = Int(tempString.distance(from: tempString.startIndex, to: rangeToThumbnail.lowerBound))
-                            //print(distanceToISBN)
-                            let thumbnailIndex = tempString.index(tempString.startIndex, offsetBy: distanceToThumbnail+14)
-                            let thumbnailAndOn = tempString.substring(from: thumbnailIndex)
-                            
-                            let rangeToEndQuote: Range<String.Index> = thumbnailAndOn.range(of: ";")!
-                            let distanceToEndQuote = Int(thumbnailAndOn.distance(from: thumbnailAndOn.startIndex, to: rangeToEndQuote.lowerBound))
-                            let endQuoteIndex = thumbnailAndOn.index(thumbnailAndOn.startIndex, offsetBy: distanceToEndQuote-1)
-                            finalThumbnail = thumbnailAndOn.substring(to: endQuoteIndex)
-                            //finalISBN = ISBNAndOn.substring(to: colonIndex)
-                            //print("ISBN_13: " + finalISBN)
-                            print("Thumbnail URL: " + finalThumbnail)
-                            
-                            
-                        }
-                        
-                        
-                        self.currentTitles.append(finalTitle)
-                        self.currentAuthors.append(finalAuthor)
-                        self.currentISBNs.append(finalISBN)
-                        self.currentThumbnails.append(finalThumbnail)
                         
                         JSONAsString = JSONAsString.substring(from: tempIndex)
                         //979x

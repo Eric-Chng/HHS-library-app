@@ -395,7 +395,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYg-JZ-yAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="55R-lw-cbe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="58" y="1428"/>
+            <point key="canvasLocation" x="129" y="1421"/>
         </scene>
         <!--BookDetails-->
         <scene sceneID="CYQ-mq-OrQ">

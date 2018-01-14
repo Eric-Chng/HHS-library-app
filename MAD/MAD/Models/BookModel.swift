@@ -23,6 +23,7 @@ class BookModel: NSObject {
     var title: String?
     var JSONParsed: Bool = false
     var author: String?
+    var googleImageURL: String?
     //var timer: Timer = Timer()
 
     
@@ -47,6 +48,78 @@ class BookModel: NSObject {
     init(ISBN: String)
     {
         self.ISBN = ISBN
+        super.init()
+
+        var JSONAsString: String = ""
+        
+        
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN
+        guard let url = URL(string: todoEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        
+        
+        
+        let urlRequest = URLRequest(url: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling with Google Books GET call with ISBN: " + ISBN)
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let googleBooksJSON = try JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.mutableContainers)
+                    as? [String: Any]
+                    else {
+                        print("error trying to convert data to JSON")
+                        return
+                
+                
+                
+                
+                
+                
+                
+                //Converts JSON into a String
+                
+                
+                    
+                    
+                    
+                    
+                    DispatchQueue.main.async(execute: {() -> Void in
+                        
+                        
+                        
+                        
+                        
+                    })
+                }
+                JSONAsString =  String(describing: googleBooksJSON)
+                self.parseJSON(JSONAsString: JSONAsString)
+
+                
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        }
+        task.resume()
+
+
+        
+        
     }
     
     init(JSON: String)
@@ -73,7 +146,6 @@ class BookModel: NSObject {
     }
     
     
-    //prints object's current state
     
     override var description: String
     {
@@ -101,7 +173,6 @@ class BookModel: NSObject {
             
         }
         self.title = finalTitle
-            //print("The Title is found to be: " + finalTitle)
         var finalAuthor = "Not available"
         //Parses out the author
         if let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")
@@ -115,18 +186,15 @@ class BookModel: NSObject {
             let quoteIndex = authorsAndOn.index(authorsAndOn.startIndex, offsetBy: distanceToQuote)
             finalAuthor = authorsAndOn.substring(to: quoteIndex)
             self.author = finalAuthor
-            //print("The Author is \"" + finalAuthor + "\"")
-            //print("Title: \"" + finalTitle + "\" by " + finalAuthor)
+            print("Title: \"" + finalTitle + "\" by " + finalAuthor)
             
             let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
             
             var tempString = JSONAsString.substring(to: tempIndex)
             var finalISBN = "Incomplete Google Books Listing"
-            //Parses out ISBN
             if let rangeToISBN: Range<String.Index> = tempString.range(of: "type = \"ISBN_13\"")
             {
                 let distanceToISBN = Int(tempString.distance(from: tempString.startIndex, to: rangeToISBN.lowerBound))
-                //print(distanceToISBN)
                 let ISBNIndex = tempString.index(tempString.startIndex, offsetBy: distanceToISBN-31)
                 let ISBNAndOn = tempString.substring(from: ISBNIndex)
                 let rangeToColon: Range<String.Index> = ISBNAndOn.range(of: ";")!
@@ -137,12 +205,12 @@ class BookModel: NSObject {
                 
             }
             self.ISBN = finalISBN
+            print("ISBN is " + finalISBN)
             
             var finalThumbnail: String = ""
             if let rangeToThumbnail: Range<String.Index> = tempString.range(of: " thumbnail = ")
             {
                 let distanceToThumbnail = Int(tempString.distance(from: tempString.startIndex, to: rangeToThumbnail.lowerBound))
-                //print(distanceToISBN)
                 let thumbnailIndex = tempString.index(tempString.startIndex, offsetBy: distanceToThumbnail+14)
                 let thumbnailAndOn = tempString.substring(from: thumbnailIndex)
                 
@@ -150,10 +218,54 @@ class BookModel: NSObject {
                 let distanceToEndQuote = Int(thumbnailAndOn.distance(from: thumbnailAndOn.startIndex, to: rangeToEndQuote.lowerBound))
                 let endQuoteIndex = thumbnailAndOn.index(thumbnailAndOn.startIndex, offsetBy: distanceToEndQuote-1)
                 finalThumbnail = thumbnailAndOn.substring(to: endQuoteIndex)
-                //finalISBN = ISBNAndOn.substring(to: colonIndex)
-                //print("ISBN_13: " + finalISBN)
                 print("Thumbnail URL: " + finalThumbnail)
+                self.googleImageURL = finalThumbnail
                 
+            }
+            var finalDescription = "Not available";
+
+            if let rangeToDescription: Range<String.Index> = JSONAsString.range(of: "description = ")
+            {
+                let distanceToDescription = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToDescription.lowerBound))
+                let descriptionIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToDescription+15)
+                let descriptionAndOn = JSONAsString.substring(from: descriptionIndex)
+                let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: ";")!
+                let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))-1
+                let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
+                finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
+                finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
+                var ignored:String = "";
+                while let rangeToBackslash: Range<String.Index> = finalDescription.range(of: "\\")
+                {
+                    var isQuote:Bool = false;
+                    let distanceToBackslash = Int(finalDescription.distance(from: finalDescription.startIndex, to: rangeToBackslash.lowerBound))
+                    let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash)
+                    //print("finalDesc1: " + finalDescription)
+                    var finalDescription2: String = finalDescription.substring(from: backslashIndex)
+                    
+                    
+                    
+                    let temp1 = finalDescription.substring(to: backslashIndex)
+                    if(finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2))=="\\\"")
+                    {
+                        let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash+1)
+                        isQuote = true;
+                        finalDescription = finalDescription.substring(from: backslashIndex)
+                        ignored = ignored + temp1;
+                    }
+                    
+                    if(isQuote == false)
+                    {
+                        let backslashIndex2 = finalDescription2.index(finalDescription2.startIndex, offsetBy: 6)
+                        let temp2 = finalDescription2.substring(from: backslashIndex2)
+                        finalDescription = temp1 + temp2
+                    }
+                }
+                finalDescription = ignored + finalDescription;
+                print("Description...")
+                print(finalDescription)
+                print("[description end]")
+                self.desc = finalDescription
                 
             }
             }
