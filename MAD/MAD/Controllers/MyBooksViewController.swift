@@ -24,7 +24,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let Idsearch = IdSearchBook()
             Idsearch.delegate = self
-        Idsearch.downloadItems()
+        Idsearch.downloadItems(inputID:9780375831003000)
         
     }
     
@@ -59,8 +59,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         //selectedLocation = feedItems[indexPath.row] as! LocationModel
         // Manually call segue to detail view controller
         BookDetailViewController.updateISBN(newISBN: "9781921019630");
-        print("start here")
-        print("end here")
+        
         //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
         
         
