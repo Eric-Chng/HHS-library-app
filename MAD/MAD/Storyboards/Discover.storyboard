@@ -340,7 +340,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="351" height="205"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
-                                                    <blurEffect style="prominent"/>
+                                                    <blurEffect style="extraLight"/>
                                                 </visualEffectView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLn-XC-Yip">
                                                     <rect key="frame" x="20" y="4" width="117" height="192"/>
@@ -354,7 +354,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79k-0U-Ghj">
                                                             <rect key="frame" x="8" y="35" width="182" height="31.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="26"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>

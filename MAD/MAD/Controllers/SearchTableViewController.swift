@@ -21,7 +21,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     var currentThumbnails: [String] = [""]
     var pressedItem: Int = 0
     var JSONsParsed: [String] = []
+    var requestCounter: Int = 0
     @IBOutlet weak var tableViewSearch: UISearchBar!
+    var sendNewRequest: Bool = false;
     
     var currentCoversDownloaded:[Bool] = [false, false, false, false, false, false, false, false, false, false]
     
@@ -145,6 +147,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                         self.JSONsParsed.append(JSONAsString)
                     let x = BookModel.init(JSON: JSONAsString)
                         print("shaylan")
+                        self.sendNewRequest = true
+                        self.requestCounter = self.requestCounter + 1
 
                    
                     //print("shaylan")
@@ -171,6 +175,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                         self.currentAuthors.append(x.author!)
                         self.currentISBNs.append(x.ISBN!)
                         self.currentBooks.append(x)
+                        self.sendNewRequest = true
                         if(x.googleImageURL != nil)
                         {
                         self.currentThumbnails.append(x.googleImageURL!)
@@ -192,7 +197,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                         counter = counter + 1;
                         }
                     else{
-                        print("dog")
                         print(JSONAsString)
                         JSONAsString = "break"
                         }
@@ -293,7 +297,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         // Retrieve cell
         let cellIdentifier: String = "cell"
         let myCell: SearchTableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? SearchTableViewCell)!
-
+        //print(sendNewRequest)
         // Get references to labels of cell
         if(currentTitles.count<=indexPath.row)
         {
@@ -301,11 +305,24 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             self.currentAuthors = []
             self.currentTitles.append("No results found")
             self.currentAuthors.append("NA")
+            if(sendNewRequest)
+            {
+                print("Good here")
+                sendNewRequest = false;
+                myCell.newRequest();
+            }
         }
         else
         {
             if(currentTitles.count > indexPath.row)
             {
+                if(self.requestCounter > 0)
+                {
+                    self.requestCounter = self.requestCounter - 1
+                    //print("Good here")
+                    sendNewRequest = false;
+                myCell.newRequest();
+                }
             myCell.titleLabel.text = currentTitles[indexPath.row];
             myCell.authorLabel.text = currentAuthors[indexPath.row]
             if(currentBooks.count > indexPath.row)

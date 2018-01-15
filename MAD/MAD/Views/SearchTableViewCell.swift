@@ -26,20 +26,88 @@ class SearchTableViewCell: UITableViewCell {
     var colorFound: Bool = false;
     var printColor: Bool = false;
     var displayDefault: Bool = true;
+    var titleHolder: String = ""
+    var imageHolder: UIImage = #imageLiteral(resourceName: "loadingIcon")
+    static var count: Int = 0
+    var numberInList: Int = 0
+    var newSearch: Bool = true;
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //print("bigs")
+        SearchTableViewCell.count = SearchTableViewCell.count + 1
+        numberInList = SearchTableViewCell.count
 
 
 
 
     }
+    
+    func newRequest()
+    {
+        newSearch = true
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        //print(SearchTableViewCell.count)
+        
+        if(newSearch)
+        {
+            newSearch = false
+            print(String(describing: numberInList) + "Test: " + self.titleLabel.text!)
+            print(String(describing: numberInList) + "Test2: " + self.titleHolder)
+            print("Worked" + String(describing: numberInList))
+            printColor = false
+            colorFound = false
+            bookCover.image = nil
+            //bookCover.image = #imageLiteral(resourceName: "loadingImage")
+            self.counter = -40
+            if(self.numberInList == 1)
+            {
+                print("Dog " + String(describing: self.counter))
+
+            }
+            titleHolder = self.titleLabel.text!;
+            //ranOnce = false
+        }
+        /*
+        if(self.bookCover.image != nil)
+        {
+            let data1: NSData = UIImagePNGRepresentation(imageHolder)! as NSData
+            let data2: NSData = UIImagePNGRepresentation(self.bookCover.image!)! as NSData
+        if(data1.isEqual(data2))
+        {
+            print("equal")
+         }
+            else
+        {
+            print("unequal" + String(describing: self.numberInList))
+            }
+        }
+         
+            imageHolder = self.bookCover.image!
+            print(String(describing: numberInList) + "Test: " + self.titleLabel.text!)
+            print(String(describing: numberInList) + "Test2: " + self.titleHolder)
+            print("Worked" + String(describing: numberInList))
+            printColor = false
+            colorFound = false
+            //bookCover.image = nil
+            //bookCover.image = #imageLiteral(resourceName: "loadingImage")
+            self.counter = 0
+            if(self.numberInList == 1)
+            {
+                print("Dog " + String(describing: self.counter))
+                
+            }
+            titleHolder = self.titleLabel.text!;
+            //ranOnce = false
+        }
+        }
+        */
+
         if(counter<20)
         {
         self.titleLabel.sizeToFit()
@@ -66,7 +134,7 @@ class SearchTableViewCell: UITableViewCell {
              */
         
             cellView.layer.shadowColor = UIColor.black.cgColor
-            cellView.layer.shadowRadius = 20
+            cellView.layer.shadowRadius = 15
             cellView.layer.shadowOpacity = 0.25
             cellView.layer.shadowOffset = CGSize(width: 0, height: 0)
             
@@ -89,6 +157,11 @@ class SearchTableViewCell: UITableViewCell {
         {
             if(Double((bookCover.image?.size.height)!)>20.0 && bookCover.image?.isEqual(#imageLiteral(resourceName: "loadingImage")) == false)
             {
+                if(self.numberInList == 1)
+                {
+                    //print("Made2")
+                    
+                }
                 //if(counter < 10)
                 //{
                 if(printColor)
@@ -120,15 +193,28 @@ class SearchTableViewCell: UITableViewCell {
             counter = counter + 1
             let gradientLayer = CAGradientLayer()
             gradientLayer.frame = innerView.bounds
-            
+            if(self.numberInList == 1)
+            {
+               // print("Made3")
+
+                }
             //let topColor = UIColor(red: 0.7, green: 0.9, blue: 1, alpha: 0.25)
             //let bottomColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.5)
                     if(counter == 1)
                     {
+                        print("Got here well" + String(describing: self.numberInList))
                     //let topColor = self.areaAverage();
                     //self.areaAverage()
                         self.getPrimaryColor()
                     }
+                else
+                    {
+                        if(self.numberInList == 1)
+                        {
+                            //print(counter)
+                            
+                        }
+                }
                 
                 
                     //let topColor = UIColor(red: self.coverRed, green: self.coverGreen, blue: self.coverBlue, alpha: 1.0)
@@ -158,6 +244,11 @@ class SearchTableViewCell: UITableViewCell {
 
 
                     }
+                    else
+                    {
+                        self.titleLabel.textColor = UIColor.white
+                        self.authorLabel.textColor = UIColor.white
+                    }
                     if(innerView.layer.sublayers != nil)
                     {
                         for subLayer in innerView.layer.sublayers! {
@@ -169,8 +260,24 @@ class SearchTableViewCell: UITableViewCell {
                     printColor = false
                     gradientLayer2.colors = [UIColor.white, UIColor.white]
                     innerView.layer.insertSublayer(gradientLayer2, at: 0)
-            gradientLayer.colors = [self.coverColor.withAlphaComponent(0.3).cgColor, self.coverColor.withAlphaComponent(0.5).cgColor]
+                    //print("Sublayers: " + String(describing: innerView.layer.sublayers!.count))
+                    //func adjustBrightness(by percentage: CGFloat = 30.0) -> UIColor {
+                        let percentage = CGFloat(30.0)
+                        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+                        if self.coverColor.getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
+                            if b < 1.0 {
+                                let newB: CGFloat = max(min(b + (percentage/100.0)*b, 1.0), 0,0)
+                                self.coverColor = UIColor(hue: h, saturation: s, brightness: newB, alpha: a)
+                            } else {
+                                let newS: CGFloat = min(max(s - (percentage/100.0)*s, 0.0), 1.0)
+                                self.coverColor = UIColor(hue: h, saturation: newS, brightness: b, alpha: a)
+                            }
+                        }
+                        //return self
+                    //}
+            gradientLayer.colors = [self.coverColor.withAlphaComponent(0.5).cgColor, self.coverColor.withAlphaComponent(0.5).cgColor]
             innerView.layer.insertSublayer(gradientLayer, at: 0)
+                    print("put into sublayer")
                 //self.colorFound = false
                 }
                 //}
@@ -185,7 +292,11 @@ class SearchTableViewCell: UITableViewCell {
     func getPrimaryColor()
     {
         let image = self.bookCover?.image
-        
+        //if(self.numberInList == 1)
+        //{
+            print("Doing some calcs")
+            
+        //}
         image?.getColors { colors in
             
             self.coverColor = colors.background
@@ -199,7 +310,8 @@ class SearchTableViewCell: UITableViewCell {
                 self.coverColor = colors.detail
             }
             
-           //self.colorFound = true
+           self.colorFound = false
+            self.printColor = true
             
         }
     }
