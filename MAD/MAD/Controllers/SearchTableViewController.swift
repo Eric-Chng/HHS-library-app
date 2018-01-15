@@ -30,9 +30,12 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
       
         tableViewSearch.becomeFirstResponder()
+        let clearColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.0)
+
+        self.tableView.separatorColor = clearColor;
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
         
     }
     
@@ -278,23 +281,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //d
         print("ISBN: " + self.currentISBNs[indexPath.row])
-        BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
+        //BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
         self.pressedItem = indexPath.row
-        //self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
-        //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
-        //scanners.googleBooksImageURL(newURL: self.currentThumbnails[indexPath.row])
+        
         self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
         
-        //self.navigationController?.push
-        //self.navigationController?.pushViewController(scanners, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //print("bonjour")
+       
         // Retrieve cell
         let cellIdentifier: String = "cell"
         let myCell: SearchTableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? SearchTableViewCell)!
-        //myCell.style
+
         // Get references to labels of cell
         if(currentTitles.count<=indexPath.row)
         {
@@ -303,39 +302,35 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             self.currentTitles.append("No results found")
             self.currentAuthors.append("NA")
         }
-        else{
-            //print("Titles: " + String(currentTitles.count))
-            //print("Authors: " + String(currentAuthors.count))
-
+        else
+        {
+            if(currentTitles.count > indexPath.row)
+            {
             myCell.titleLabel.text = currentTitles[indexPath.row];
             myCell.authorLabel.text = currentAuthors[indexPath.row]
-            //var temp:Bool = true;
-            /*
-            if(self.currentCoversDownloaded[indexPath.row] == true)
+            if(currentBooks.count > indexPath.row)
             {
-                print("Cover #" + String(indexPath.row) + " has been set")
-            //myCell.bookCover.image = currentCovers[indexPath.row];
-                self.currentCoversDownloaded[indexPath.row] = false
-                myCell.imageView?.image = currentCovers[indexPath.row]
+            myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image
             }
-            */
-            //self.BookCoverImage.image = UIImage(data: data)
-
-        //myCell.textLabel!.text = currentTitles[indexPath.row]
+            }
+            
         }
         
-        myCell.imageView?.image = #imageLiteral(resourceName: "search")
-        //myCell.textLabel! = currentTitles[indexPath.row]
+        //myCell.imageView?.image = #imageLiteral(resourceName: "search")
 
         return myCell
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("preparing segue")
+        //print("preparing segue")
+        if(segue.identifier == "SearchToBookDetail")
+        {
+
         let bookToPass = currentBooks[self.pressedItem]
         //selectedBook
         if let destinationViewController = segue.destination as? BookDetailViewController {
             destinationViewController.selectedBook = bookToPass
+        }
         }
     }
     
