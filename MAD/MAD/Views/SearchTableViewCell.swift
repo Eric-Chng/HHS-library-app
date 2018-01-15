@@ -64,7 +64,7 @@ class SearchTableViewCell: UITableViewCell {
             colorFound = false
             bookCover.image = nil
             //bookCover.image = #imageLiteral(resourceName: "loadingImage")
-            self.counter = -40
+            self.counter = 0
             if(self.numberInList == 1)
             {
                 print("Dog " + String(describing: self.counter))
@@ -170,7 +170,7 @@ class SearchTableViewCell: UITableViewCell {
                     {
                     for subLayer in innerView.layer.sublayers! {
                         subLayer.removeFromSuperlayer()
-                        print("Clearing sublayers")
+                        //print("Clearing sublayers")
                     }
                     }
                 }
@@ -236,19 +236,7 @@ class SearchTableViewCell: UITableViewCell {
                 }
                 if(printColor)
                 {
-                    let temp = self.coverColor.cgColor.components
-                    if(temp![0] > 0.8 && temp![1] > 0.8 && temp![2] > 0.8)
-                    {
-                        self.titleLabel.textColor = UIColor.darkGray
-                        self.authorLabel.textColor = UIColor.darkGray
-
-
-                    }
-                    else
-                    {
-                        self.titleLabel.textColor = UIColor.white
-                        self.authorLabel.textColor = UIColor.white
-                    }
+                    
                     if(innerView.layer.sublayers != nil)
                     {
                         for subLayer in innerView.layer.sublayers! {
@@ -262,7 +250,7 @@ class SearchTableViewCell: UITableViewCell {
                     innerView.layer.insertSublayer(gradientLayer2, at: 0)
                     //print("Sublayers: " + String(describing: innerView.layer.sublayers!.count))
                     //func adjustBrightness(by percentage: CGFloat = 30.0) -> UIColor {
-                        let percentage = CGFloat(30.0)
+                        let percentage = CGFloat(90.0)
                         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
                         if self.coverColor.getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
                             if b < 1.0 {
@@ -275,9 +263,23 @@ class SearchTableViewCell: UITableViewCell {
                         }
                         //return self
                     //}
+                    let temp = self.coverColor.cgColor.components
+                    let avg = (temp![0] + temp![1] + temp![2])/CGFloat(3.0)
+                    if(avg > 0.75)
+                    {
+                        self.titleLabel.textColor = UIColor.darkGray
+                        self.authorLabel.textColor = UIColor.darkGray
+                        
+                        
+                    }
+                    else
+                    {
+                        self.titleLabel.textColor = UIColor.white
+                        self.authorLabel.textColor = UIColor.white
+                    }
             gradientLayer.colors = [self.coverColor.withAlphaComponent(0.5).cgColor, self.coverColor.withAlphaComponent(0.5).cgColor]
             innerView.layer.insertSublayer(gradientLayer, at: 0)
-                    print("put into sublayer")
+                    //print("put into sublayer")
                 //self.colorFound = false
                 }
                 //}

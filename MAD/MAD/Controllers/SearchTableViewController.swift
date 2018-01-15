@@ -37,7 +37,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         self.tableView.separatorColor = clearColor;
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
         
     }
     
