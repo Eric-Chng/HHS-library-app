@@ -64,7 +64,7 @@ class BookModel: NSObject {
         var JSONAsString: String = ""
         
         
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -318,6 +318,8 @@ class BookModel: NSObject {
                             var temp1 = String(finalDescription[...backslashIndex])//finalDescription.substring(to: backslashIndex)
                             //if(String(finalDescription2[...finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)]) == "\\\"")
                             //print("Quote check: [" + finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)) + "]")
+                            if(finalDescription2.count>2)
+                            {
                             if(finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)) == "\\\"")
                             {
                                 let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash)
@@ -325,14 +327,18 @@ class BookModel: NSObject {
                                 finalDescription = String(finalDescription[backslashIndex...]) //finalDescription.substring(from: backslashIndex)
                                 ignored = ignored + temp1;
                             }
+                        }
                             //print("finalDesc: " + finalDescription)
                             //print("finalDesc2: " + finalDescription2)
                             
                             if(isQuote == false)
                             {
+                                var temp2 = finalDescription2
+                                if(finalDescription2.count>7)
+                                {
                                 //print(finalDescription2)
                                 let backslashIndex2 = finalDescription2.index(finalDescription2.startIndex, offsetBy: 8)
-                                let temp2 = String(finalDescription2[backslashIndex2...]) //finalDescription2.substring(from: backslashIndex2)
+                                temp2 = String(finalDescription2[backslashIndex2...]) //finalDescription2.substring(from: backslashIndex2)
                                 if(temp1.count > 1)
                                 {
                                     let m = temp1.index(temp1.endIndex, offsetBy: -2)
@@ -342,9 +348,9 @@ class BookModel: NSObject {
                                 {
                                     temp1 = ""
                                 }
-                                print("Temp1: " + temp1)
-                                print("Temp2: " + temp2)
-                                
+                                //print("Temp1: " + temp1)
+                                //print("Temp2: " + temp2)
+                                }
                                 finalDescription = temp1 + temp2
                             }
                             else

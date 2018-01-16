@@ -24,6 +24,10 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     var requestCounter: Int = 0
     @IBOutlet weak var tableViewSearch: UISearchBar!
     var sendNewRequest: Bool = false;
+    var discoverViewController: [DiscoverViewController] = []
+        
+    
+    
     
     var currentCoversDownloaded:[Bool] = [false, false, false, false, false, false, false, false, false, false]
     
@@ -63,10 +67,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //self.unwind(for: UIStoryboardSegue(identifier: "discoverToSearch", source: DiscoverViewController, destination: SearchTableViewController), towardsViewController: DiscoverViewController)
-        //print("Cancel clicked")
-        //self.navigationController?.popViewController(animated: true)
         performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+        self.discoverViewController[0].view.setNeedsDisplay()
     }
     
     //func searchBar(searchBar: UISearchBar, textDidChange: String) {

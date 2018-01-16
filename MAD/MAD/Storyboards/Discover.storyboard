@@ -57,7 +57,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="hTg-m8-rYG"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8I6-2r-4gk">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="popularTitles" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8I6-2r-4gk">
                                                 <rect key="frame" x="0.0" y="50" width="375" height="296"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9ew-SI-GMM">
@@ -87,14 +87,15 @@
                                                                         </visualEffectView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fqa-T2-AML">
                                                                             <rect key="frame" x="25" y="10" width="135" height="226"/>
+                                                                            <color key="backgroundColor" red="1" green="0.058937556475361808" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBb-Ir-AJu">
                                                                             <rect key="frame" x="20" y="244" width="145" height="21"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="21" id="cRI-Yq-a8b"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                                            <color key="textColor" red="0.45668344019810275" green="0.70822097081218272" blue="0.24654934858064353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                            <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                                         </label>
@@ -158,7 +159,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="Z6k-Om-EBj"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8aG-i4-Ui3">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="librarianRecommended" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8aG-i4-Ui3">
                                                 <rect key="frame" x="0.0" y="395" width="375" height="299"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Py-SA-fXu">
@@ -188,14 +189,15 @@
                                                                         </visualEffectView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CDe-KU-uJ5">
                                                                             <rect key="frame" x="25" y="10" width="135" height="226"/>
+                                                                            <color key="backgroundColor" red="1" green="0.10211555009156803" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-lS-UVI">
                                                                             <rect key="frame" x="20" y="244" width="145" height="21"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="21" id="G8T-4G-8im"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                                         </label>
@@ -300,7 +302,10 @@
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="insideScrollView" destination="qfC-1c-0Kx" id="ZNq-hJ-inR"/>
+                        <outlet property="librarianRecommendedCollectionView" destination="8aG-i4-Ui3" id="d8e-sN-ha6"/>
+                        <outlet property="popularTitleCollectionView" destination="8I6-2r-4gk" id="fal-tF-trN"/>
                         <segue destination="1bU-PI-XiU" kind="presentation" identifier="discoverToSearch" animates="NO" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="c69-3D-jyp"/>
+                        <segue destination="WJ9-rY-Swp" kind="show" identifier="collectionViewDetail" id="488-Hg-Ztb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X22-Vb-nNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,7 +439,7 @@
                 <viewControllerPlaceholder storyboardName="BookDetails" id="WJ9-rY-Swp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QNG-Q4-tq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="1632"/>
+            <point key="canvasLocation" x="-753" y="1521"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rLR-c0-mhy">
@@ -482,4 +487,7 @@
     <resources>
         <image name="search" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="488-Hg-Ztb"/>
+    </inferredMetricsTieBreakers>
 </document>
