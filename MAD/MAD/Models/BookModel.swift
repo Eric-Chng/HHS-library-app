@@ -34,7 +34,6 @@ class BookModel: NSObject {
     
     override init()
     {
-        
     }
     
     //constructor
@@ -60,8 +59,6 @@ class BookModel: NSObject {
         //print("ISBN initializer")
         DispatchQueue.main.async {
             self.BookCoverImage = UIImageView.init(image: #imageLiteral(resourceName: "loadingImage"))
-            
-            
         }
         
         var JSONAsString: String = ""
@@ -72,10 +69,6 @@ class BookModel: NSObject {
             print("Error: cannot create URL")
             return
         }
-        
-        
-        
-        
         let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest) {
@@ -98,26 +91,8 @@ class BookModel: NSObject {
                     else {
                         print("error trying to convert data to JSON")
                         return
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            //Converts JSON into a String
-                            
-                            
-                            
-                            
-                            
-                            
+                                //Converts JSON into a String
                             DispatchQueue.main.async(execute: {() -> Void in
-                                
-                                
-                                
-                                
-                                
                             })
                 }
                 JSONAsString =  String(describing: googleBooksJSON)
@@ -130,10 +105,6 @@ class BookModel: NSObject {
             }
         }
         task.resume()
-        
-        
-        
-        
     }
     
     init(JSON: String)

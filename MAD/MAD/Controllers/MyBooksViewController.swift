@@ -78,11 +78,15 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if segue.identifier == "scannerDetailViewSegue"
         {
-            if let destinationVC = segue.destination as? BookDetailViewController {
+            let destinationVC = segue.destination as! BookDetailViewController
+            destinationVC.fromSB = .fromMyBooksViewController
                 //ISBN13 Value (string) ||
                 //                      \/
                 //destinationVC.updateISBN(newISBN: "9780545010221");
-            }
+        }
+        else if segue.identifier == "bookInfoSegue"{
+            let bookViewController = segue.destination as! BookDetailViewController
+            bookViewController.fromSB = .fromMyBooksViewController
         }
         
         // Get reference to the destination view controller

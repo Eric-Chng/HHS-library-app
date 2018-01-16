@@ -88,6 +88,13 @@ class SecondViewController: UIViewController, MyProtocol{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ScannerDetailViewSegue" {
+            let destinationVC = segue.destination as! BookDetailViewController
+            destinationVC.fromSB = .fromSecondViewController
+        }
+    }
 
 
 }

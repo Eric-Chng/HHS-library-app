@@ -13,7 +13,7 @@ import Lottie
 class DiscoverViewController: UIViewController{
     
     var url: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+"
-    var popularBookArr: [String] = []
+    var popularBookArr: [BookModel] = []
     
     @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var barItem: UITabBarItem!
@@ -24,7 +24,7 @@ class DiscoverViewController: UIViewController{
     
    
     override func viewDidLoad() {
-        popularBookArr = [url + "9780375893773", url+"9780062077011", url+"9781416955078", url+"9781781109601", url+"9781781100486", url+"9781480483576"]
+        popularBookArr = [BookModel(ISBN: "9780375893773"), BookModel(ISBN:"9780062077011"), BookModel(ISBN: "9781416955078"), BookModel(ISBN:"9781781109601"), BookModel(ISBN:"9781781100486"), BookModel(ISBN:"9781480483576")]
         
         let animationView: LOTAnimationView = LOTAnimationView(name: "bookUpdated");
         animationView.contentMode = .scaleAspectFill
@@ -52,6 +52,13 @@ class DiscoverViewController: UIViewController{
     @IBAction func searchButtonPressed(_ sender: Any) {
         print("hello")
         self.performSegue(withIdentifier: "discoverToSearch", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchToBookDetail" {
+            let destinationVC = segue.destination as! BookDetailViewController
+            destinationVC.fromSB = .fromDiscoverViewController
+        }
     }
 }
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
@@ -85,8 +92,9 @@ extension DiscoverViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookThumbNailCell", for: indexPath) as! BookCoverCollectionViewCell
-        cell.downloadCoverImage(url: NSURL(string: popularBookArr[0])! as URL)
-        
+        let row = indexPath.row
+        cell.coverImageView = popularBookArr[row].BookCoverImage
+        cell.titleLabel.text = popularBookArr[row].title
         return cell
     }
 }

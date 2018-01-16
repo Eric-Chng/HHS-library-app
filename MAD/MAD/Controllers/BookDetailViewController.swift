@@ -46,14 +46,19 @@ class BookDetailViewController : UIViewController {
     
     var selectedBook : BookModel?
     
+    var fromSB: segues?
+    
+    enum segues {
+        case fromMyBooksViewController
+        case fromDiscoverViewController
+        case fromSecondViewController
+    }
+    
     @IBAction func reserveButton(_ sender: Any) {
         print("touched")
         self.performSegue(withIdentifier: "reserveSegue", sender: self)
         
-        
-        
     }
-    
     
     @objc func action()
     {
