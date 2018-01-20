@@ -54,7 +54,7 @@ class BookDetailViewController : UIViewController {
     enum segues {
         case fromMyBooksViewController
         case fromDiscoverViewController
-        case fromSecondViewController
+        case fromCheckoutViewController
     }
     
     @IBAction func reserveButton(_ sender: Any) {

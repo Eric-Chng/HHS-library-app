@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  CheckoutViewController.swift
 //  MAD
 //
 //  Created by NonAdmin Eric on 10/20/17.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SecondViewController: UIViewController, MyProtocol{
+class CheckoutViewController: UIViewController, MyProtocol{
     
     var lastSendTime:Int = Int(ProcessInfo.processInfo.systemUptime)
     
@@ -92,7 +92,7 @@ class SecondViewController: UIViewController, MyProtocol{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ScannerDetailViewSegue" {
             let destinationVC = segue.destination as! BookDetailViewController
-            destinationVC.fromSB = .fromSecondViewController
+            destinationVC.fromSB = .fromCheckoutViewController
         }
     }
 

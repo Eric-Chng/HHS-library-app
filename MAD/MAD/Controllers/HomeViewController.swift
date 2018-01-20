@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class FirstViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     //@IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!

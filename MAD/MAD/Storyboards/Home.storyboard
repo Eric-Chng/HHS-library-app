@@ -17,7 +17,7 @@
         <!--Home-->
         <scene sceneID="dN3-AE-v7q">
             <objects>
-                <viewController id="zcJ-OU-37K" customClass="FirstViewController" customModule="MAD" sceneMemberID="viewController">
+                <viewController id="zcJ-OU-37K" customClass="HomeViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TFP-Zg-yYE" customClass="ViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
