@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         mapView.layer.cornerRadius = 25
         mapView.layer.masksToBounds = true
         //mapView.setRegion(MKCoordinateRegion(), animated: false)
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(FirstViewController.action), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(HomeViewController.action), userInfo: nil,  repeats: true)
         
     
         
@@ -135,7 +135,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension FirstViewController: MKMapViewDelegate
+extension HomeViewController: MKMapViewDelegate
 {
     
     
