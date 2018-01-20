@@ -18,6 +18,8 @@ class BookDetailViewController : UIViewController {
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var descBox: UITextView!
     var imageURL: String = ""
     @IBOutlet weak var descriptionButton: UIButton!
@@ -33,6 +35,7 @@ class BookDetailViewController : UIViewController {
     @IBOutlet weak var statusImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "greencheck.png"))
     @IBOutlet weak var descriptionLabel: UILabel!
     var timer: Timer = Timer.init()
+    var smallCoverImageCounter: Int = 0;
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -62,23 +65,41 @@ class BookDetailViewController : UIViewController {
     
     @objc func action()
     {
-        if(selectedBook?.BookCoverImage != nil)
+        print("counter: " + String(describing: smallCoverImageCounter))
+        if(scrollView.contentOffset.y > 100 && (self.navigationItem.titleView?.alpha)! == CGFloat(0.0) && smallCoverImageCounter == 0)
         {
-            if(Double((selectedBook?.BookCoverImage.image?.size.height)!)>20.0 && selectedBook?.title != "")
-            {
-                self.BookCoverImage.image = selectedBook!.BookCoverImage.image
-                self.titleLabel?.text = selectedBook!.title
-                self.authorLabel?.text = selectedBook!.author
-                self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
-                //timer.invalidate()
-                //timer = nil
-            }
-            else
-            {
-                BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
-            }
-            
+            self.smallCoverImageCounter = 10
+            //print("setting")
         }
+        else if(scrollView.contentOffset.y < 100)
+        {
+            self.smallCoverImageCounter = 0
+
+
+        }
+        
+        if(self.smallCoverImageCounter>0)
+        {
+            smallCoverImageCounter = smallCoverImageCounter - 1
+
+            let m = 1-CGFloat(smallCoverImageCounter)/10
+            //print(m)
+            //print(smallCoverImageCounter)
+            self.navigationItem.titleView?.alpha = CGFloat(1-CGFloat(smallCoverImageCounter)/20)
+        }
+        else if(scrollView.contentOffset.y < 100)
+        {
+            var tempAlpha = (self.navigationItem.titleView?.alpha)! - 0.4
+            if(tempAlpha<0)
+            {
+                tempAlpha = 0
+            }
+            self.navigationItem.titleView?.alpha = tempAlpha
+        }
+        
+        
+        //print("action going")
+        //print(scrollView.contentOffset)
         
     }
     
@@ -87,7 +108,16 @@ class BookDetailViewController : UIViewController {
         
         
         self.navigationItem.largeTitleDisplayMode = .never
-        self.navigationItem.title = "Book Info"
+        self.navigationItem.title = ""
+        //self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.isOpaque = false;
+        
+        //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 0.5);
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        //let
         titleLabel?.text = "Loading..."
         BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
         checkoutButton.imageView?.image = #imageLiteral(resourceName: "reserveicon7.png")
@@ -100,6 +130,14 @@ class BookDetailViewController : UIViewController {
         rawDescription = (descBox?.attributedText.string)!;
         
         formatDescription()
+        
+        let x = ratingView.frame
+        let temp = UIView()
+        let frame = CGRect(x: 0, y: 0, width: x.width/5, height: x.height)
+        temp.backgroundColor = UIColor.red
+        temp.frame = frame
+        ratingView.addSubview(temp)
+        
         
         mapView.layer.cornerRadius = 25
         mapView.layer.masksToBounds = true
@@ -117,7 +155,9 @@ class BookDetailViewController : UIViewController {
         descriptionLabel.layer.masksToBounds=true
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0004, 0.0004)), animated: true)
-        
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
+            #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         if(self.selectedBook != nil)
         {
             //print("Book was passed")
@@ -133,6 +173,25 @@ class BookDetailViewController : UIViewController {
             if(selectedBook?.BookCoverImage != nil)
             {
             self.BookCoverImage.image = selectedBook!.BookCoverImage.image
+                let tempImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 38))
+                tempImageView.image = selectedBook!.BookCoverImage.image
+                self.navigationItem.titleView = tempImageView
+                self.navigationItem.titleView?.frame = CGRect(x: 0, y: 0, width: 10, height: 38)
+                self.navigationItem.titleView?.alpha = 0.0
+
+                //self.navigationItem.titleView.image
+                //let tempFrame = self.navigationItem.titleView?.frame
+                //    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+
+                //self.navigationItem.titleView?.frame = CGRect(x: (tempFrame?.minX)!, y: (tempFrame?.minY)!, width: 10, height: (tempFrame?.height)!)
+                self.navigationItem.titleView?.contentMode = .scaleToFill
+                let widthConstraint = NSLayoutConstraint(item: self.navigationItem.titleView as Any, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 25)
+                let heightConstraint = NSLayoutConstraint(item: self.navigationItem.titleView as Any, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 35)
+
+                self.navigationItem.titleView?.addConstraints([widthConstraint, heightConstraint])
+                self.navigationItem.titleView?.layer.cornerRadius = 2
+                self.navigationItem.titleView?.layer.masksToBounds = true
+
                 
                 
             }
@@ -140,7 +199,7 @@ class BookDetailViewController : UIViewController {
             {
                 self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
 
-                timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+                
                 
             }
             

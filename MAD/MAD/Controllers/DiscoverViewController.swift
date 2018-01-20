@@ -16,7 +16,7 @@ class DiscoverViewController: UIViewController{
     var popularBookArr: [BookModel] = []
     var pressedItem: Int = 0
     var timer = Timer()
-
+    
     @IBOutlet weak var popularTitleCollectionView: UICollectionView!
     @IBOutlet weak var librarianRecommendedCollectionView: UICollectionView!
     @IBOutlet weak var insideScrollView: UIView!
@@ -26,7 +26,7 @@ class DiscoverViewController: UIViewController{
         self.navigationController?.pushViewController(scanners, animated: true)
     }
     
-   
+    
     override func viewDidLoad() {
         popularBookArr = [BookModel(ISBN: "9781594634239"), BookModel(ISBN:"9780393061703"), BookModel(ISBN: "9781594489785"), /*d*/ BookModel(ISBN:"9781101971062"), BookModel(ISBN:"9780307887443"), BookModel(ISBN:"9781439181713")]
         
@@ -34,7 +34,7 @@ class DiscoverViewController: UIViewController{
         animationView.contentMode = .scaleAspectFill
         animationView.frame = CGRect(x: 50, y: 700, width: 300, height: 200)
         
-
+        
         self.insideScrollView.addSubview(animationView)
         animationView.loopAnimation = true
         //animationView.play()
@@ -112,7 +112,7 @@ class DiscoverViewController: UIViewController{
     }
     
     
-   
+    
     
     
     
@@ -126,7 +126,7 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
         
         let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / columns
         let itemSize = CGSize(width: 170, height: 250)
-
+        
         return itemSize
     }
     
@@ -146,29 +146,21 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
 extension DiscoverViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //code for click
+        //code for collection view pressed
         print(indexPath.item)
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
-        self.pressedItem = indexPath.item
+            self.pressedItem = indexPath.item
         }
         else if(collectionView.restorationIdentifier! == "popularTitles")
         {
             self.pressedItem = 5 - indexPath.item
-
+            
         }
         self.performSegue(withIdentifier: "collectionViewDetail", sender: self)
-
-        //print("clicked")
+        
     }
     
-    /*
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        
-        //largePhotoIndexPath = largePhotoIndexPath == indexPath ? nil : indexPath
-        return false
-    }
- */
     
     
 }
@@ -176,11 +168,10 @@ extension DiscoverViewController: UICollectionViewDelegate {
 extension DiscoverViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return popularBookArr.count
-        //collectionView(collectionView(<#T##collectionView: UICollectionView##UICollectionView#>, didSelectItemAtIndexPath: <#T##NSIndexPath#>))
-        //collectionView.collection
+        
     }
     
-   
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -191,16 +182,16 @@ extension DiscoverViewController: UICollectionViewDataSource {
             //insert data for librarian recommended section
             if(popularBookArr[row].BookCoverImage != nil)
             {
-        cell.coverImageView.image = popularBookArr[row].BookCoverImage.image
+                cell.coverImageView.image = popularBookArr[row].BookCoverImage.image
             }
-        cell.titleLabel.text = popularBookArr[row].title
+            cell.titleLabel.text = popularBookArr[row].title
         }
         else if(collectionView.restorationIdentifier! == "popularTitles")
         {
             //insert data for popular titles section
             if(popularBookArr[5-row].BookCoverImage != nil)
             {
-            cell.coverImageView.image = popularBookArr[5-row].BookCoverImage.image
+                cell.coverImageView.image = popularBookArr[5-row].BookCoverImage.image
             }
             cell.titleLabel.text = popularBookArr[5-row].title
         }

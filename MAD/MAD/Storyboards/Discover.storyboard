@@ -87,7 +87,6 @@
                                                                         </visualEffectView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fqa-T2-AML">
                                                                             <rect key="frame" x="25" y="10" width="135" height="226"/>
-                                                                            <color key="backgroundColor" red="1" green="0.058937556475361808" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBb-Ir-AJu">
                                                                             <rect key="frame" x="20" y="244" width="145" height="21"/>
@@ -189,7 +188,6 @@
                                                                         </visualEffectView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CDe-KU-uJ5">
                                                                             <rect key="frame" x="25" y="10" width="135" height="226"/>
-                                                                            <color key="backgroundColor" red="1" green="0.10211555009156803" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-lS-UVI">
                                                                             <rect key="frame" x="20" y="244" width="145" height="21"/>

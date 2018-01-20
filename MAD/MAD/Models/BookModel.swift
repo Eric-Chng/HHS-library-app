@@ -146,13 +146,13 @@ class BookModel: NSObject {
     }
     
     func downloadCoverImage(url: URL) {
-        print("Download Started")
+        //print("Download Started")
         
         var found: Bool = false;
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
+            //print(response?.suggestedFilename ?? url.lastPathComponent)
+            //print("Download Finished")
             DispatchQueue.main.async() {
                 let temp: UIImage? = UIImage(data: data)
                 if(temp != nil && Double((temp?.size.height)!)>20.0)
@@ -169,32 +169,32 @@ class BookModel: NSObject {
                         self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
                     }
                 }
-                print(String(describing: temp?.size.height))
+                //print(String(describing: temp?.size.height))
                 
             }
         }
         if(found == false)
         {
             if let googleURL = URL(string: self.googleImageURL!) {
-                print("Using GBooks Image")
+                //print("Using GBooks Image")
                 self.getDataFromUrl(url: googleURL) { data, response, error in
                     guard let data = data, error == nil else { return }
-                    print(response?.suggestedFilename ?? url.lastPathComponent)
-                    print("Download Finished")
+                    //print(response?.suggestedFilename ?? url.lastPathComponent)
+                    //print("Download Finished")
                     DispatchQueue.main.async() {
                         let temp: UIImage? = UIImage(data: data)
                         if(temp != nil && Double((temp?.size.height)!)>20.0)
                         {
-                            print("Doing it")
+                            //print("Doing it")
                             self.BookCoverImage.image = temp
                             self.foundGoogleImage = true
                         }
                         else
                         {
-                            print("Image not found 2")
+                            //print("Image not found 2")
                             //self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
                         }
-                        print(String(describing: temp?.size.height))
+                        //print(String(describing: temp?.size.height))
                         
                     }
                 }
@@ -299,10 +299,7 @@ class BookModel: NSObject {
                         let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
                         finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
                         finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
-                        if(self.title == "Hello Hello")
-                        {
-                            print("Start point: " + finalDescription)
-                        }
+                        
                         var ignored:String = "";
                         while let rangeToBackslash: Range<String.Index> = finalDescription.range(of: "\\")
                         {
@@ -357,13 +354,13 @@ class BookModel: NSObject {
                             {
                                 if(ignored.count >  1)
                                 {
-                                    print("Pre sub ignored: " + ignored)
+                                    //print("Pre sub ignored: " + ignored)
                                     
                                     let temporaryIndex = ignored.index(ignored.endIndex, offsetBy: -2)
                                     ignored = String(ignored[...temporaryIndex])
                                     if(self.title == "Hello Hello")
                                     {
-                                        print("Ignored: " + ignored)
+                                        //print("Ignored: " + ignored)
                                     }
                                     ignored = ignored + "\""
                                 }
