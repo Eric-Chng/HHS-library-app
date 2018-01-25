@@ -28,7 +28,7 @@ class DiscoverViewController: UIViewController{
     
     
     override func viewDidLoad() {
-        popularBookArr = [BookModel(ISBN: "9781594634239"), BookModel(ISBN:"9780393061703"), BookModel(ISBN: "9781594489785"), /*d*/ BookModel(ISBN:"9781101971062"), BookModel(ISBN:"9780307887443"), BookModel(ISBN:"9781439181713")]
+        popularBookArr = [BookModel(ISBN: "9781594634239"), BookModel(ISBN:"9780590353427"), BookModel(ISBN: "9781594489785"), /*d*/ BookModel(ISBN:"9781101971062"), BookModel(ISBN:"9780307887443"), BookModel(ISBN:"9781439181713")]
         
         let animationView: LOTAnimationView = LOTAnimationView(name: "bookUpdated");
         animationView.contentMode = .scaleAspectFill

@@ -34,7 +34,8 @@ class BookCoverCollectionViewCell: UICollectionViewCell {
         
         
         self.boundingView.addSubview(animationView)
-        self.boundingView.sendSubview(toBack: animationView)
+        //self.boundingView.sendSubview(toBack: animationView)
+        self.boundingView.bringSubview(toFront: coverImageView)
         //self.coverImageView.sendSubview(toBack: animationView)
         
         animationView.loopAnimation = true

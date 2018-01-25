@@ -280,7 +280,7 @@ class BookModel: NSObject {
                     let rangeToEndQuote: Range<String.Index> = thumbnailAndOn.range(of: ";")!
                     let distanceToEndQuote = Int(thumbnailAndOn.distance(from: thumbnailAndOn.startIndex, to: rangeToEndQuote.lowerBound))
                     let endQuoteIndex = thumbnailAndOn.index(thumbnailAndOn.startIndex, offsetBy: distanceToEndQuote-1)
-                    finalThumbnail = thumbnailAndOn.substring(to: endQuoteIndex)
+                    finalThumbnail = /*String(thumbnailAndOn[...endQuoteIndex])*/thumbnailAndOn.substring(to: endQuoteIndex)
                     //print("Thumbnail URL: " + finalThumbnail)
                     self.googleImageURL = finalThumbnail
                     if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + self.ISBN! + "-L.jpg") {

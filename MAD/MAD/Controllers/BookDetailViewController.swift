@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import Lottie
 //import Alamofire //error disappears at build time
 //import ObjectMapper
 
@@ -34,7 +35,10 @@ class BookDetailViewController : UIViewController {
         @IBOutlet weak var genreImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "drama"))
     @IBOutlet weak var statusImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "greencheck.png"))
     @IBOutlet weak var descriptionLabel: UILabel!
+    var userInteractionCommitted: Bool = false
     var timer: Timer = Timer.init()
+    var loadTimer: Timer? = Timer.init()
+    var fromScanner: Bool = false
     var smallCoverImageCounter: Int = 0;
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
@@ -63,43 +67,103 @@ class BookDetailViewController : UIViewController {
         
     }
     
+    @objc func load()
+    {
+        if(selectedBook!.title != "")
+        {
+        self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
+        self.titleLabel?.text = selectedBook!.title
+        self.authorLabel?.text = selectedBook!.author
+        }
+        if(selectedBook!.BookCoverImage != nil)
+        {
+            self.BookCoverImage.image = selectedBook!.BookCoverImage.image
+            if self.navigationItem.titleView is UIImageView {
+                (self.navigationItem.titleView as! UIImageView).image = self.BookCoverImage.image
+                //print("here")
+                self.navigationItem.titleView?.alpha = 0.05
+                
+                //print(self.titleLabel?.text)
+                if(self.titleLabel  != nil && self.titleLabel?.text != nil && self.titleLabel?.text != "Loading")
+                {
+                self.loadTimer?.invalidate()
+                }
+                else
+                {
+                    //print("test")
+                }
+                    /*
+                if loadTimer != nil {
+                    print("dogs")
+                    loadTimer!.invalidate()
+                    loadTimer = nil
+                }
+                */
+            }
+        }
+    }
+    
     @objc func action()
     {
-        print("counter: " + String(describing: smallCoverImageCounter))
+        //print("counter: " + String(describing: smallCoverImageCounter))
+        
+        
+       
+        
+        
         if(scrollView.contentOffset.y > 100 && (self.navigationItem.titleView?.alpha)! == CGFloat(0.0) && smallCoverImageCounter == 0)
         {
             self.smallCoverImageCounter = 10
+            self.userInteractionCommitted = true
             //print("setting")
         }
         else if(scrollView.contentOffset.y < 100)
         {
             self.smallCoverImageCounter = 0
-
+            self.navigationItem.titleView?.alpha = 0.05
 
         }
-        
+       
         if(self.smallCoverImageCounter>0)
         {
             smallCoverImageCounter = smallCoverImageCounter - 1
-
-            let m = 1-CGFloat(smallCoverImageCounter)/10
-            //print(m)
-            //print(smallCoverImageCounter)
+            if(self.userInteractionCommitted)
+            {
             self.navigationItem.titleView?.alpha = CGFloat(1-CGFloat(smallCoverImageCounter)/20)
+            }
         }
         else if(scrollView.contentOffset.y < 100)
         {
+            
             var tempAlpha = (self.navigationItem.titleView?.alpha)! - 0.4
             if(tempAlpha<0)
             {
                 tempAlpha = 0
             }
             self.navigationItem.titleView?.alpha = tempAlpha
+            
         }
         
+        if(self.userInteractionCommitted == false)
+        {
+            //print("slammed")
+            let temp = UIView.init()
+            temp.frame = CGRect(x: 0, y: 0, width: 500, height: 100)
+            temp.backgroundColor = UIColor.white
+            self.navigationItem.titleView?.addSubview(temp)
+            
+            self.smallCoverImageCounter = 0
+            self.navigationItem.titleView?.alpha = 0
+            
+        }
+        else
+        {
+            for subview in (self.navigationItem.titleView?.subviews)!
+            {
+                subview.removeFromSuperview()
+            }
+        }
         
-        //print("action going")
-        //print(scrollView.contentOffset)
         
     }
     
@@ -109,15 +173,7 @@ class BookDetailViewController : UIViewController {
         
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.title = ""
-        //self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.navigationBar.isOpaque = false;
         
-        //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 0.5);
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = UIColor.clear
-        //let
         titleLabel?.text = "Loading..."
         BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
         checkoutButton.imageView?.image = #imageLiteral(resourceName: "reserveicon7.png")
@@ -131,13 +187,37 @@ class BookDetailViewController : UIViewController {
         
         formatDescription()
         
-        let x = ratingView.frame
-        let temp = UIView()
-        let frame = CGRect(x: 0, y: 0, width: x.width/5, height: x.height)
-        temp.backgroundColor = UIColor.red
-        temp.frame = frame
-        ratingView.addSubview(temp)
         
+        let x = ratingView.frame
+        /*
+        let temp = UIView()
+        //let frame = CGRect(x: -10, y: 0, width: x.width/3, height: x.height*1.4)
+        temp.backgroundColor = UIColor.red
+        //temp.frame = frame
+        let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+        animationView.contentMode = .scaleToFill
+        animationView.frame = CGRect(x: -10, y: 0, width: x.width/3, height: x.height*1.4)
+        //ratingView.addSubview(animationView)
+        //animationView.play()
+        //self.view.addSubview(animationView)
+        //animationView.backgroundColor = UIColor.red
+        animationView.loopAnimation = true
+        //animationView.play()
+        animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
+        */
+        var counter: Int = 0
+        while(counter<5)
+        {
+            counter = counter + 1;
+            let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+            let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+            animationView.contentMode = .scaleToFill
+            animationView.frame = frame
+            ratingView.addSubview(animationView)
+            //animationView.loopAnimation = true
+            //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
+            animationView.play()
+        }
         
         mapView.layer.cornerRadius = 25
         mapView.layer.masksToBounds = true
@@ -160,14 +240,19 @@ class BookDetailViewController : UIViewController {
         RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         if(self.selectedBook != nil)
         {
-            //print("Book was passed")
-            //print("Book info...")
-            //selectedBook!.printInfo()
-            //print(String(describing: selectedBook))
+            if(fromScanner == false)
+            {
             self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
             self.titleLabel?.text = selectedBook!.title
             self.authorLabel?.text = selectedBook!.author
-            print(String(describing: selectedBook?.BookCoverImage))
+            }
+            else
+            {
+                self.descBox!.attributedText = NSAttributedString(string: "Loading",  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
+                self.titleLabel?.text = "Loading"
+                self.authorLabel?.text = "Loading"
+            }
+            //print(String(describing: selectedBook?.BookCoverImage))
             //self.BookCoverImage = selectedBook!.BookCoverImage
 
             if(selectedBook?.BookCoverImage != nil)
@@ -198,7 +283,31 @@ class BookDetailViewController : UIViewController {
             else
             {
                 self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
-
+                let tempImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 38))
+                tempImageView.image = self.BookCoverImage.image
+                self.navigationItem.titleView = tempImageView
+                self.navigationItem.titleView?.frame = CGRect(x: 0, y: 0, width: 10, height: 38)
+                self.navigationItem.titleView?.alpha = 0.0
+                
+                //self.navigationItem.titleView.image
+                //let tempFrame = self.navigationItem.titleView?.frame
+                //    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+                
+                //self.navigationItem.titleView?.frame = CGRect(x: (tempFrame?.minX)!, y: (tempFrame?.minY)!, width: 10, height: (tempFrame?.height)!)
+                self.navigationItem.titleView?.contentMode = .scaleToFill
+                let widthConstraint = NSLayoutConstraint(item: self.navigationItem.titleView as Any, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 25)
+                let heightConstraint = NSLayoutConstraint(item: self.navigationItem.titleView as Any, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 35)
+                
+                self.navigationItem.titleView?.addConstraints([widthConstraint, heightConstraint])
+                self.navigationItem.titleView?.layer.cornerRadius = 2
+                self.navigationItem.titleView?.layer.masksToBounds = true
+                if(fromScanner)
+                {
+                loadTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
+                    #selector(SearchTableViewController.load), userInfo: nil,  repeats: true)
+                    RunLoop.main.add(loadTimer!, forMode: RunLoopMode.commonModes)
+                
+                }
                 
                 
             }
@@ -252,6 +361,8 @@ class BookDetailViewController : UIViewController {
                 
                 var JSONAsString = "describing =                       \"could not be found\" authors = \"not found\" title = not found"
                 let itemsDictionary =  String(describing: googleBooksJSON)
+                
+                //object.method(arg, arg1, arg2)
                 if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
                 {
                     JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/

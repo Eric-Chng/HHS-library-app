@@ -19,6 +19,7 @@
 		44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61781FA7053300A9399E /* MyBooksViewController.swift */; };
 		7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1432012C98D00A4E9A8 /* loader.json */; };
 		7B0EB1462012C9B800A4E9A8 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1452012C9B800A4E9A8 /* scan.json */; };
+		7B35588820194BE2003DE9E2 /* starPop.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B35588720194BE2003DE9E2 /* starPop.json */; };
 		7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F33851F9DBCA200EE3671 /* Scanner.swift */; };
 		7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */; };
 		7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */; };
@@ -56,6 +57,7 @@
 		76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0EB1432012C98D00A4E9A8 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		7B0EB1452012C9B800A4E9A8 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scan.json; sourceTree = "<group>"; };
+		7B35588720194BE2003DE9E2 /* starPop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starPop.json; sourceTree = "<group>"; };
 		7B3F33851F9DBCA200EE3671 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryOverlay.swift; sourceTree = "<group>"; };
 		7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryOverlayView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				7B78DBCB2009EA5A00592F09 /* bookUpdated.json */,
+				7B35588720194BE2003DE9E2 /* starPop.json */,
 				7B0EB1432012C98D00A4E9A8 /* loader.json */,
 				7B0EB1452012C9B800A4E9A8 /* scan.json */,
 			);
@@ -338,6 +341,7 @@
 				7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */,
 				82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */,
 				4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */,
+				7B35588820194BE2003DE9E2 /* starPop.json in Resources */,
 				4426E3EE1F9B0A9F007CD8E7 /* Main.storyboard in Resources */,
 				82AE23121FF36EE70014C7CF /* BookDetails.storyboard in Resources */,
 				82AE230E1FF36C210014C7CF /* Discover.storyboard in Resources */,

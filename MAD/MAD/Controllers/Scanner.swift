@@ -174,6 +174,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         if let destinationViewController = segue.destination as? BookDetailViewController {
             destinationViewController.selectedBook = self.currentBook!
+            destinationViewController.fromScanner = true
         }
     }
     
