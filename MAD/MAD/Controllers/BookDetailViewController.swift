@@ -84,8 +84,9 @@ class BookDetailViewController : UIViewController {
                 self.navigationItem.titleView?.alpha = 0.05
                 
                 //print(self.titleLabel?.text)
-                if(self.titleLabel  != nil && self.titleLabel?.text != nil && self.titleLabel?.text != "Loading")
+                if(self.titleLabel  != nil && self.titleLabel?.text != nil && self.titleLabel?.text != "Loading" && self.BookCoverImage != nil && self.BookCoverImage.image?.isEqual(#imageLiteral(resourceName: "loadingImage")) == false)
                 {
+                    print("Invalidating")
                 self.loadTimer?.invalidate()
                 }
                 else

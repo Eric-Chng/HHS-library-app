@@ -9,9 +9,15 @@
 import UIKit
 
 
-class CheckoutViewController: UIViewController, MyProtocol{
+class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDelegate{
     
     var lastSendTime:Int = Int(ProcessInfo.processInfo.systemUptime)
+    let loginButton: FBSDKLoginButton = {
+        let button = FBSDKLoginButton()
+        button.readPermissions = ["public_profile", "user_friends", "email"]
+        return button
+    }()
+    @IBOutlet weak var loginButtonView: UIView!
     
     func sendScannedValue(valueSent: String) {
         if(lastSendTime != Int(ProcessInfo.processInfo.systemUptime))
@@ -21,15 +27,7 @@ class CheckoutViewController: UIViewController, MyProtocol{
         scannerLabel.text = valueSent
         BookDetailViewController.updateISBN(newISBN: valueSent)
         print("sending value")
-        //self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)
-
-            //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
-            
-            
-            //self.navigationController?.push
-            //self.navigationController?.pushViewController(scanners, animated: true)
-        //super.window?.makeKeyAndVisible()
-        //self.tabBarController?.prefersStatusBarHidden = false;
+        
         }
     }
 
@@ -50,14 +48,15 @@ class CheckoutViewController: UIViewController, MyProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tabBarController?.tabBar.isHidden = false
-
-        //creating session
-        //let session = AVCaptureSession()
         
-        //Define capture device
-        //let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
-        
+        loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
+        loginButtonView.addSubview(loginButton)
+        loginButton.delegate = self
+        //loginButton.center = view.center
+        if let token = FBSDKAccessToken.current()
+        {
+            fetchProfile()
+        }
         if scannerValue != nil
         {
             print("Value from display = \(scannerValue!)")
@@ -65,8 +64,124 @@ class CheckoutViewController: UIViewController, MyProtocol{
        
         
         
-         //navigationController?.navigationBar.prefersLargeTitles = true
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func fetchProfile()
+    {
+        print("fetch profile")
+        /*
+        let params = ["fields" : "email, name"]
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: params)
+        graphRequest.start {
+            (urlResponse, requestResult)  in
+            
+            switch requestResult {
+            case .failed(let error):
+                print("error in graph request:", error)
+                break
+            case .success(let graphResponse):
+                if let responseDictionary = graphResponse.dictionaryValue {
+                    print(responseDictionary)
+                    
+                    print(responseDictionary["name"])
+                    print(responseDictionary["email"])
+                }
+            }
+        }
+         */
+        
+        let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
+        
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start { (connection, result, error) -> Void in
+            
+            
+            print("doing this")
+            if error != nil
+            {
+                print(error as Any)
+                return
+            }
+            
+            if let result = result as? [String:Any]
+            {
+                if let email = result["email"] as? String
+                {
+                    print("Email: " + email)
+                }
+                if let pictureDict = result["picture"] as? [String:Any]
+                {
+                    //print("Success boyo")
+                    //print("Email: " + email)
+                    //print(pictureDict)
+                    
+                    if let dataDict = pictureDict["data"] as? [String:Any]
+                    {
+                        //print("data dictionary success")
+                        if let profilePictureUrl = dataDict["url"] as? String
+                        {
+                            print("URL: " + profilePictureUrl)
+                            
+                        }
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        
+        let params = ["fields": "friends"] ///me/friends?fields=installed
+        
+        FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
+            
+            if let result = result as? [String:Any]
+            {
+            print("result start")
+            print(result)
+            print("result end")
+            }
+            if error != nil
+            {
+                print(error as Any)
+                return
+            }
+            /*
+            print("doing this")
+            if error != nil
+            {
+                print(error as Any)
+                return
+            }
+            
+            if let result = result as? [String:Any]
+            {
+                if let email = result["email"] as? String
+                {
+                    print("Email: " + email)
+                }
+                if let pictureDict = result["picture"] as? [String:Any]
+                {
+                    //print("Success boyo")
+                    //print("Email: " + email)
+                    //print(pictureDict)
+                    
+                    if let dataDict = pictureDict["data"] as? [String:Any]
+                    {
+                        //print("data dictionary success")
+                        if let profilePictureUrl = dataDict["url"] as? String
+                        {
+                            print("URL: " + profilePictureUrl)
+                            
+                        }
+                    }
+                    
+                }
+            }
+            */
+            
+        }
+        
     }
 
     @IBAction func goNext(_ sender: Any) {
@@ -81,6 +196,21 @@ class CheckoutViewController: UIViewController, MyProtocol{
         
     }
     
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult, error: Error!)
+    {
+        print("Completed login")
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+    
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        return true;
+    }
+    
+   
     
     
     
