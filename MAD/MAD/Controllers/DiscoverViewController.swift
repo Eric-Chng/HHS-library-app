@@ -35,7 +35,7 @@ class DiscoverViewController: UIViewController{
         animationView.frame = CGRect(x: 50, y: 700, width: 300, height: 200)
         
         
-        self.insideScrollView.addSubview(animationView)
+        //self.insideScrollView.addSubview(animationView)
         animationView.loopAnimation = true
         //animationView.play()
         animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
@@ -175,6 +175,61 @@ extension DiscoverViewController: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
+        if(collectionView.restorationIdentifier! == "facebookFeed")
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FacebookReviewsCollectionViewCell", for: indexPath) as! FacebookReviewsCollectionViewCell
+            let params = ["fields": "friends"]
+            FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
+                
+                if let result = result as? [String:Any]
+                {
+                    print("result start")
+                    //print(result)
+                    for x in result{
+                        print(x)
+                        print("break")
+                    }
+                    print("result end")
+                    if let dataDict = result["data"] as? NSArray
+                    {
+                        print("Data dictionary")
+                        for x in dataDict{
+                            print(x)
+                            print("data break")
+                        }
+                        print("bigs")
+                        print(dataDict[0])
+                        
+                        if let insideDataDict = dataDict[0] as? [String:Any]
+                        {
+                            print("inside")
+                            print(insideDataDict)
+                            print("done")
+                            //var insideDataDict2 = ["id": "14", "id": "15"]
+                            if let id = insideDataDict["id"] as? String
+                            {
+                                print("ID: " + id)
+                                cell.titleLabel.text = id;
+                                
+                                //id is friend's id
+                            }
+                        }
+                        
+                    }
+                }
+                if error != nil
+                {
+                    print(error as Any)
+                    return
+                }
+                
+                
+            }
+            return cell
+        }
+        else
+        {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookThumbNailCell", for: indexPath) as! BookCoverCollectionViewCell
         let row = indexPath.row
         if(collectionView.restorationIdentifier! == "librarianRecommended")
@@ -194,6 +249,8 @@ extension DiscoverViewController: UICollectionViewDataSource {
                 cell.coverImageView.image = popularBookArr[5-row].BookCoverImage.image
             }
             cell.titleLabel.text = popularBookArr[5-row].title
+        }
+            return cell
         }
         return cell
     }

@@ -27,6 +27,7 @@
 		7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F33851F9DBCA200EE3671 /* Scanner.swift */; };
 		7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */; };
 		7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */; };
+		7B4E3ECA201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E3EC9201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift */; };
 		7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */; };
 		7B5BDDF71FEF1E810089BC00 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDDF61FEF1E810089BC00 /* ResultsViewController.swift */; };
 		7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */; };
@@ -71,6 +72,7 @@
 		7B3F33851F9DBCA200EE3671 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryOverlay.swift; sourceTree = "<group>"; };
 		7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryOverlayView.swift; sourceTree = "<group>"; };
+		7B4E3EC9201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookReviewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		7B5BDDF61FEF1E810089BC00 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */,
+				7B4E3EC9201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift */,
 				7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */,
 			);
 			path = Views;
@@ -433,6 +436,7 @@
 				829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */,
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
 				7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */,
+				7B4E3ECA201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* CheckoutViewController.swift in Sources */,
 				7B395E3F201C2ECB00DF3299 /* NSObject+facebookObjectiveCLink.m in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,

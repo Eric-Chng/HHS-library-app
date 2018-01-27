@@ -56,6 +56,9 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         if let token = FBSDKAccessToken.current()
         {
             fetchProfile()
+            print("Token")
+            //print(token)
+            print(token.tokenString)
         }
         if scannerValue != nil
         {
@@ -138,49 +141,51 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
             if let result = result as? [String:Any]
             {
             print("result start")
-            print(result)
-            print("result end")
-            }
-            if error != nil
-            {
-                print(error as Any)
-                return
-            }
-            /*
-            print("doing this")
-            if error != nil
-            {
-                print(error as Any)
-                return
-            }
-            
-            if let result = result as? [String:Any]
-            {
-                if let email = result["email"] as? String
-                {
-                    print("Email: " + email)
+            //print(result)
+                for x in result{
+                    print(x)
+                    print("break")
                 }
-                if let pictureDict = result["picture"] as? [String:Any]
+            print("result end")
+                if let dataDict = result["data"] as? NSArray
                 {
-                    //print("Success boyo")
-                    //print("Email: " + email)
-                    //print(pictureDict)
+                    print("Data dictionary")
+                    for x in dataDict{
+                        print(x)
+                        print("data break")
+                    }
+                    print("bigs")
+                    print(dataDict[0])
                     
-                    if let dataDict = pictureDict["data"] as? [String:Any]
+                     if let insideDataDict = dataDict[0] as? [String:Any]
                     {
-                        //print("data dictionary success")
-                        if let profilePictureUrl = dataDict["url"] as? String
+                        print("inside")
+                        print(insideDataDict)
+                        print("done")
+                        //var insideDataDict2 = ["id": "14", "id": "15"]
+                        if let id = insideDataDict["id"] as? String
                         {
-                            print("URL: " + profilePictureUrl)
-                            
+                            print("ID: " + id)
+                            //id is friend's id
                         }
                     }
                     
                 }
             }
-            */
+            if error != nil
+            {
+                print(error as Any)
+                return
+            }
+            
             
         }
+        
+        let parames = ["fields": "picture.type(large)"] ///me/friends?fields=installed
+        //https://graph.facebook.com/110990426382408/picture?type=large
+
+        //110990426382408
+        
         
     }
 
