@@ -21,12 +21,12 @@ class LibraryOverlayView: MKOverlayRenderer {
     override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
         
         guard let overlay = self.overlay as? LibraryOverlay else {
-            print("scuffed")
+            //print("scuffed")
             return
         }
         
         let rect = self.rect(for: overlay.boundingMapRect)
-        print("BoundingRect: " + String(describing: overlay.boundingMapRect))
+        //print("BoundingRect: " + String(describing: overlay.boundingMapRect))
         UIGraphicsPushContext(context)
         
         overlay.image.draw(in: rect)

@@ -181,41 +181,60 @@ extension DiscoverViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FacebookReviewsCollectionViewCell", for: indexPath) as! FacebookReviewsCollectionViewCell
             let params = ["fields": "friends"]
             FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
-                
+                var ids: [String] = []
                 if let result = result as? [String:Any]
                 {
-                    print("result start")
+                    //print("result start")
                     //print(result)
-                    for x in result{
-                        print(x)
-                        print("break")
-                    }
-                    print("result end")
+                    //for x in result{
+                        //print(x)
+                        //print("break")
+                    //}
+                    //print("result end")
                     if let dataDict = result["data"] as? NSArray
                     {
-                        print("Data dictionary")
+                        //print("Data dictionary")
                         for x in dataDict{
-                            print(x)
-                            print("data break")
+                            //print(x)
+                            //print("data break")
                         }
-                        print("bigs")
-                        print(dataDict[0])
-                        
-                        if let insideDataDict = dataDict[0] as? [String:Any]
+                        //print("bigs")
+                        //print(dataDict[0])
+                        //if let insideDataDict = dataDict[0] as? [String:Any]
+                        for inner in dataDict
                         {
-                            print("inside")
-                            print(insideDataDict)
-                            print("done")
+                            let insideDataDict = inner as! [String: Any]
+                            if(indexPath.row == 1)
+                            {
+                                //print("look here")
+                            //print("inside")
+                            //print(insideDataDict)
+                            //print("done")
+                            }
                             //var insideDataDict2 = ["id": "14", "id": "15"]
                             if let id = insideDataDict["id"] as? String
                             {
-                                print("ID: " + id)
-                                cell.titleLabel.text = id;
+                                //print("ID: " + id)
+                                //cell.titleLabel.text = id;
+                                ids.append(id)
                                 
                                 //id is friend's id
                             }
                         }
-                        
+                        /*
+                        if let insideDataDict2 = dataDict[1] as? [String:Any]
+                        {
+                            if(indexPath.row == 1)
+                            {
+                            print("data part 2")
+                            print(dataDict[1])
+                            }
+                        }
+                        */
+                        if(indexPath.row < ids.count)
+                        {
+                            cell.userID = ids[indexPath.row]
+                        }
                     }
                 }
                 if error != nil

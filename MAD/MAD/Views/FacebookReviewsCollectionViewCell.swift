@@ -13,11 +13,15 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var coverImageView: UIImageView!
     
+    @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var blurredView: UIView!
     @IBOutlet weak var boundingView: UIView!
     var animationView: LOTAnimationView = LOTAnimationView(name: "scan");
     var timer = Timer()
+    var nameTimer = Timer()
+    var userID: String = ""
+
     var searching: Bool = false
     
     
@@ -32,7 +36,7 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
         animationView.contentMode = .scaleAspectFill
         animationView.frame = CGRect(x: 17, y: 55, width: 135, height: 135)
         coverImageView.tintColor = UIColor.red
-        
+        titleLabel.text = ""
         
         self.boundingView.addSubview(animationView)
         //self.boundingView.sendSubview(toBack: animationView)
@@ -44,13 +48,71 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
         animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
         
         
-        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(FacebookReviewsCollectionViewCell.action3), userInfo: nil,  repeats: true)
+        nameTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(FacebookReviewsCollectionViewCell.action2), userInfo: nil,  repeats: true)
+        
+        
         
     }
     
-    
-    @objc func action()
+    @objc func action2()
     {
+        
+        var titleAsNum = Int(userID)
+        if(titleAsNum != nil && (titleLabel.text?.count)! < 2)
+        {
+            
+            self.titleLabel.textColor = UIColor.clear
+
+            if let token = FBSDKAccessToken.current()
+            {
+                print("Token")
+                //print(token)
+                print(token.tokenString)
+                /*
+                 if let profileURL = URL(string: "https://graph.facebook.com/v2.11/110990426382408/accounts?" + token.tokenString)
+                 {
+                 
+                 }
+                 */
+                /*
+                 FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                 initWithGraphPath:@"/100024146984215"
+                 parameters:nil
+                 HTTPMethod:@"GET"];
+                 [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                 // Insert your code here
+                 }];
+                 */
+                let params = ["fields": "name"]
+                FBSDKGraphRequest(graphPath: userID, parameters: params).start { (connection, result, error) -> Void in
+                    //print(result)
+                    
+                    if let result = result as? [String:Any]
+                    {
+                        if let dataDict = result["name"] as? String
+                        {
+                            print("Name: " + dataDict)
+                            self.titleLabel.text = dataDict
+                            self.titleLabel.textColor = UIColor.black
+
+                        }
+                    }
+                    
+                    
+                }
+            }
+
+        }
+        else
+        {
+        }
+    }
+    
+    
+    @objc func action3()
+    {
+        
         //print(titleLabel.text)
         if(self.coverImageView.image != nil  && animationView.isHidden == false)
         {
@@ -60,16 +122,23 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
             
             //print(titleLabel.text)
         }
-        if(self.searching == false && self.titleLabel != nil && self.titleLabel.text != nil && self.titleLabel.text != "" && self.titleLabel.text != "Title")
+        if(self.searching == false && userID != nil && userID != "" && userID != "Title")
         {
-            print("Title: " + titleLabel.text!)
+            print("Title: " + userID)
             searching = true
-            if let url = URL(string: "https://graph.facebook.com/" + self.titleLabel.text! + "/picture?type=large") {
+            if let url = URL(string: "https://graph.facebook.com/" + userID + "/picture?type=large") {
             
             self.downloadCoverImage(url: url)
+                
+                
+                
+            
         }
         }
+        
+        
     }
+    
     
     func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -91,6 +160,21 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
                 {
                     
                     self.coverImageView.image = temp
+                    self.profilePicture.image = temp
+                    self.boundingView.bringSubview(toFront: self.profilePicture) //self.profilePicture
+                    self.coverImageView.image = #imageLiteral(resourceName: "abstractArtSampleCover")
+                    //self.profilePicture.layer.cornerRadius = 40
+                    //self.profilePicture.layer.bound
+                    //self.profilePicture.layer.masksToBounds = true
+                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
+                    self.profilePicture.clipsToBounds = true
+                    //UIColor.
+                    //174, 255, 0
+                    let customGreen = UIColor(red: 230.0/255.0, green: 131.0/255, blue: 180.0/255.0, alpha: 1)
+                    self.profilePicture.layer.borderColor = customGreen.cgColor
+                    self.profilePicture.layer.borderWidth = 3.0
+                    //boundingView.layer.cornerRadius=25
+                    //boundingView.layer.masksToBounds=true
                     found = true;
                 }
                 else
@@ -103,7 +187,7 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
         }
         if(found == false)
         {
-            self.coverImageView.image = #imageLiteral(resourceName: "loadingBacksplash")
+            //self.coverImageView.image = #imageLiteral(resourceName: "loadingBacksplash")
         }
     }
     

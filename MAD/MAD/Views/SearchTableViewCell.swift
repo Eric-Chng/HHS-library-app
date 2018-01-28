@@ -202,7 +202,7 @@ class SearchTableViewCell: UITableViewCell {
             //let bottomColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.5)
                     if(counter == 1)
                     {
-                        print("Got here well" + String(describing: self.numberInList))
+                        //print("Got here well" + String(describing: self.numberInList))
                     //let topColor = self.areaAverage();
                     //self.areaAverage()
                         self.getPrimaryColor()
@@ -296,7 +296,7 @@ class SearchTableViewCell: UITableViewCell {
         let image = self.bookCover?.image
         //if(self.numberInList == 1)
         //{
-            print("Doing some calcs")
+            //print("Doing some calcs")
             
         //}
         image?.getColors { colors in

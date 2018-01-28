@@ -19,6 +19,7 @@
 		44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61781FA7053300A9399E /* MyBooksViewController.swift */; };
 		7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1432012C98D00A4E9A8 /* loader.json */; };
 		7B0EB1462012C9B800A4E9A8 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1452012C9B800A4E9A8 /* scan.json */; };
+		7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */; };
 		7B35588820194BE2003DE9E2 /* starPop.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B35588720194BE2003DE9E2 /* starPop.json */; };
 		7B395E3A201C2D5D00DF3299 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */; };
 		7B395E3B201C2D5D00DF3299 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B395E39201C2D5C00DF3299 /* FBSDKLoginKit.framework */; };
@@ -62,6 +63,7 @@
 		76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0EB1432012C98D00A4E9A8 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		7B0EB1452012C9B800A4E9A8 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scan.json; sourceTree = "<group>"; };
+		7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookRatingModel.swift; sourceTree = "<group>"; };
 		7B35588720194BE2003DE9E2 /* starPop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starPop.json; sourceTree = "<group>"; };
 		7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7B395E39201C2D5C00DF3299 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */,
+				7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */,
 				7B92079B1FC0D0B1006F406B /* RatingControl.swift */,
 				449941121FA810E600272446 /* BookModel.swift */,
 			);
@@ -449,6 +452,7 @@
 				7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */,
 				443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */,
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,
+				7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */,
 				7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */,
 				7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */,
 				449941131FA810E600272446 /* BookModel.swift in Sources */,

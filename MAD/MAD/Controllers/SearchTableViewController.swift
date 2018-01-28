@@ -12,7 +12,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     var currentAuthors: [String] = [""]
-    var currentTitles: [String] = [""]
+    var currentTitles: [String] = []
     var currentCovers: [UIImage] = [UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage(), UIImage()]
     var currentISBNs: [String] = [""]
     var timer = Timer()
@@ -286,7 +286,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //d
-        print("ISBN: " + self.currentISBNs[indexPath.row])
+        //print("ISBN: " + self.currentISBNs[indexPath.row])
         //BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
         self.pressedItem = indexPath.row
         
@@ -309,13 +309,14 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             self.currentAuthors.append("NA")
             if(sendNewRequest)
             {
-                print("Good here")
                 sendNewRequest = false;
                 myCell.newRequest();
             }
         }
         else
         {
+            //if(indexPath.section == 1)
+            //{
             if(currentTitles.count > indexPath.row)
             {
                 if(self.requestCounter > 0)
@@ -332,6 +333,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image
             }
             }
+            //}
             
         }
         

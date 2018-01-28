@@ -178,15 +178,24 @@
                                                                             <nil key="highlightedColor"/>
                                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                                         </label>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOg-OC-ucQ">
+                                                                            <rect key="frame" x="100" y="130" width="65" height="65"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="65" id="hQA-pj-Afa"/>
+                                                                                <constraint firstAttribute="width" constant="65" id="nxG-i2-YA1"/>
+                                                                            </constraints>
+                                                                        </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="bottom" secondItem="kVp-5n-c44" secondAttribute="bottom" id="2t3-1k-Pft"/>
                                                                         <constraint firstAttribute="trailing" secondItem="naT-pg-Fd6" secondAttribute="trailing" constant="20" id="5xa-t9-U18"/>
+                                                                        <constraint firstItem="jOg-OC-ucQ" firstAttribute="top" secondItem="nVH-zc-mLw" secondAttribute="top" constant="130" id="6Mq-NA-RBP"/>
                                                                         <constraint firstAttribute="trailing" secondItem="mRB-ud-a4j" secondAttribute="trailing" constant="25" id="Fh5-or-Sne"/>
                                                                         <constraint firstItem="naT-pg-Fd6" firstAttribute="leading" secondItem="nVH-zc-mLw" secondAttribute="leading" constant="20" id="JGk-pb-9Wc"/>
                                                                         <constraint firstAttribute="bottom" secondItem="mRB-ud-a4j" secondAttribute="bottom" constant="60" id="N2H-tE-UIG"/>
                                                                         <constraint firstItem="kVp-5n-c44" firstAttribute="leading" secondItem="nVH-zc-mLw" secondAttribute="leading" id="USI-4x-H3E"/>
+                                                                        <constraint firstItem="jOg-OC-ucQ" firstAttribute="leading" secondItem="nVH-zc-mLw" secondAttribute="leading" constant="100" id="XFY-44-5Pi"/>
                                                                         <constraint firstItem="mRB-ud-a4j" firstAttribute="top" secondItem="nVH-zc-mLw" secondAttribute="top" constant="10" id="iW2-O2-RmT"/>
                                                                         <constraint firstAttribute="trailing" secondItem="kVp-5n-c44" secondAttribute="trailing" id="pQp-Xe-Eyb"/>
                                                                         <constraint firstItem="kVp-5n-c44" firstAttribute="top" secondItem="nVH-zc-mLw" secondAttribute="top" id="pxO-qv-HQ2"/>
@@ -207,6 +216,7 @@
                                                             <outlet property="blurredView" destination="rDV-Ue-cfC" id="YsJ-qn-vOq"/>
                                                             <outlet property="boundingView" destination="nVH-zc-mLw" id="hck-6N-hWt"/>
                                                             <outlet property="coverImageView" destination="mRB-ud-a4j" id="DZ2-b7-gMB"/>
+                                                            <outlet property="profilePicture" destination="jOg-OC-ucQ" id="q0A-zB-iUd"/>
                                                             <outlet property="titleLabel" destination="naT-pg-Fd6" id="LVv-rg-J0L"/>
                                                         </connections>
                                                     </collectionViewCell>
@@ -333,14 +343,6 @@
                                                     <outlet property="delegate" destination="HRS-tc-BrZ" id="J7y-he-4XV"/>
                                                 </connections>
                                             </collectionView>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYI-A5-7Wn">
-                                                <rect key="frame" x="0.0" y="702" width="375" height="189"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.28983840346336365" green="0.81910496950149536" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
