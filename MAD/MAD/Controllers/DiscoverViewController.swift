@@ -254,7 +254,7 @@ extension DiscoverViewController: UICollectionViewDataSource {
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
             //insert data for librarian recommended section
-            if(popularBookArr[row].BookCoverImage != nil)
+            if(popularBookArr[row].BookCoverImage != nil && (popularBookArr[row].BookCoverImage.image?.isEqual(#imageLiteral(resourceName: "loadingImage")))! == false)
             {
                 cell.coverImageView.image = popularBookArr[row].BookCoverImage.image
             }

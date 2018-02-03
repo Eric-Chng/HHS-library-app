@@ -5,11 +5,10 @@
 //  Created by David McAllister on 12/23/17.
 //  Copyright © 2017 Eric C. All rights reserved.
 //
-
 import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchBarDelegate {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     var currentAuthors: [String] = [""]
     var currentTitles: [String] = []
@@ -25,7 +24,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var tableViewSearch: UISearchBar!
     var sendNewRequest: Bool = false;
     var discoverViewController: [DiscoverViewController] = []
-        
+    
     
     
     
@@ -34,10 +33,10 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         tableViewSearch.becomeFirstResponder()
         let clearColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.0)
-
+        
         self.tableView.separatorColor = clearColor;
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -51,9 +50,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         //self.tableView.scroll
         if(self.tableView.contentOffset.y < -63)
         {
-        self.tableView.reloadData()
+            self.tableView.reloadData()
             //print("Offset: " + String(describing: self.tableView.contentOffset.y))
-
         }
         if(currentISBNs.count>3 && downloaded == false)
         {
@@ -82,7 +80,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
         
         /*"https://www.googleapis.com/books/v1/volumes?q=intitle:Hello&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
-
+        
         /*"https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
         //print("keywords:" + keywords + "]")
         //print("https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw")
@@ -143,20 +141,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                         let temp = JSONAsString[titleIndex...]
                         let titleAndOn = String(temp)
                         //print("Title and on: " + titleAndOn)
-
-                    //print("swung through")
-                    //print(JSONAsString)
+                        //print("swung through")
+                        //print(JSONAsString)
                         self.JSONsParsed.append(JSONAsString)
-                    let x = BookModel.init(JSON: JSONAsString)
+                        let x = BookModel.init(JSON: JSONAsString)
                         print("shaylan")
                         self.sendNewRequest = true
                         self.requestCounter = self.requestCounter + 1
-
-                   
-                    //print("shaylan")
-                    let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
-                    let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
-                   
+                        
+                        
+                        //print("shaylan")
+                        let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
+                        let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
+                        
                         if(counter == 0 && x.title!.count>3)
                         {
                             self.currentAuthors = []
@@ -165,56 +162,54 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                             self.currentThumbnails = []
                             self.currentBooks = []
                         }
-                    if JSONAsString.range(of: "authors = ") != nil
-                    {
-                    
-                    //print("The Author is \"" + finalAuthor + "\"")
-                        
-                        let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
-                        
-                        
-                        self.currentTitles.append(x.title!)
-                        self.currentAuthors.append(x.author!)
-                        self.currentISBNs.append(x.ISBN!)
-                        self.currentBooks.append(x)
-                        self.sendNewRequest = true
-                        if(x.googleImageURL != nil)
+                        if JSONAsString.range(of: "authors = ") != nil
                         {
-                        self.currentThumbnails.append(x.googleImageURL!)
+                            
+                            //print("The Author is \"" + finalAuthor + "\"")
+                            
+                            let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
+                            
+                            
+                            self.currentTitles.append(x.title!)
+                            self.currentAuthors.append(x.author!)
+                            self.currentISBNs.append(x.ISBN!)
+                            self.currentBooks.append(x)
+                            self.sendNewRequest = true
+                            if(x.googleImageURL != nil)
+                            {
+                                self.currentThumbnails.append(x.googleImageURL!)
+                            }
+                            else
+                            {
+                                print("Image URL not found")
+                            }
+                            
+                            //print("qualified if")
+                            //let substring1 = template[indexStartOfText...]
+                            let temp = JSONAsString[tempIndex...]
+                            //print(String(temp))
+                            JSONAsString = JSONAsString.substring(from: tempIndex)
+                            //JSONAsString = String(temp)
+                            //979x
+                            //31
+                            
+                            counter = counter + 1;
                         }
-                        else
-                        {
-                            print("Image URL not found")
-                        }
-                        
-                        //print("qualified if")
-                        //let substring1 = template[indexStartOfText...]
-                        let temp = JSONAsString[tempIndex...]
-                        //print(String(temp))
-                        JSONAsString = JSONAsString.substring(from: tempIndex)
-                        //JSONAsString = String(temp)
-                        //979x
-                        //31
-                        
-                        counter = counter + 1;
-                        }
-                    else{
-                        print(JSONAsString)
-                        JSONAsString = "break"
+                        else{
+                            print(JSONAsString)
+                            JSONAsString = "break"
                         }
                     }
                     /*
-                    for m in self.JSONsParsed
-                    {
-                        print("Initialization started")
-                        //print(m)
-
-                        let x = BookModel.init(JSON: m)
-                        print("Initialization ended")
-
-                    }
+                     for m in self.JSONsParsed
+                     {
+                     print("Initialization started")
+                     //print(m)
+                     let x = BookModel.init(JSON: m)
+                     print("Initialization ended")
+                     }
                      */
-                   
+                    
                 }
                 else
                 {
@@ -242,11 +237,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             }
         }
         task.resume()
-       
+        
         //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -270,14 +265,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             completion(data, response, error)
             }.resume()
     }
-
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //return currentAuthors.count
@@ -293,9 +287,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
         
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         // Retrieve cell
         let cellIdentifier: String = "cell"
         let myCell: SearchTableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? SearchTableViewCell)!
@@ -324,36 +318,34 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     self.requestCounter = self.requestCounter - 1
                     //print("Good here")
                     sendNewRequest = false;
-                myCell.newRequest();
+                    myCell.newRequest();
                 }
-            myCell.titleLabel.text = currentTitles[indexPath.row];
-            myCell.authorLabel.text = currentAuthors[indexPath.row]
-            if(currentBooks.count > indexPath.row)
-            {
-            myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image
-            }
+                myCell.titleLabel.text = currentTitles[indexPath.row];
+                myCell.authorLabel.text = currentAuthors[indexPath.row]
+                if(currentBooks.count > indexPath.row)
+                {
+                    myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image
+                }
             }
             //}
             
         }
         
         //myCell.imageView?.image = #imageLiteral(resourceName: "search")
-
         return myCell
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //print("preparing segue")
         if(segue.identifier == "SearchToBookDetail")
         {
-
-        let bookToPass = currentBooks[self.pressedItem]
-        //selectedBook
-        if let destinationViewController = segue.destination as? BookDetailViewController {
-            destinationViewController.selectedBook = bookToPass
-        }
+            
+            let bookToPass = currentBooks[self.pressedItem]
+            //selectedBook
+            if let destinationViewController = segue.destination as? BookDetailViewController {
+                destinationViewController.selectedBook = bookToPass
+            }
         }
     }
     
 }
-

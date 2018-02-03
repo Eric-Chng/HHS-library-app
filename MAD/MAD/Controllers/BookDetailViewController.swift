@@ -19,6 +19,7 @@ class BookDetailViewController : UIViewController {
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
     
+    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var descBox: UITextView!
@@ -40,6 +41,7 @@ class BookDetailViewController : UIViewController {
     var loadTimer: Timer? = Timer.init()
     var fromScanner: Bool = false
     var smallCoverImageCounter: Int = 0;
+    var loadedRating: Bool = false
     @IBAction func DoneButton(_ sender: Any) {
        // _ = popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -72,8 +74,94 @@ class BookDetailViewController : UIViewController {
         if(selectedBook!.title != "")
         {
         self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
+            var heightConstant = CGFloat(160)
+            if(self.descBox.contentSize.height<160)
+            {
+                
+                heightConstant = self.descBox.contentSize.height
+                
+                //print("Height:")
+                //print(self.descBox.contentSize.height)
+            }
+            else
+            {
+                heightConstant = 160
+            }
+            let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant)
+            if(self.descBox.contentSize.height != 36)
+            {
+            self.descBox.addConstraints([heightConstraint])
+            }
         self.titleLabel?.text = selectedBook!.title
         self.authorLabel?.text = selectedBook!.author
+            //ratingView.subviews
+            
+            if(loadedRating == false)
+            {
+                
+                var counter: Int = 0
+                let x = ratingView.frame
+
+                let ratingAsInt = Int(selectedBook!.rating) + 1
+                //print(ratingAsInt)
+                self.ratingLabel.text = String(describing: (selectedBook?.rating)!) + " out of 5 stars"
+                if((selectedBook?.rating)! < 0)
+                {
+                    self.ratingLabel.text = "No ratings found"
+
+                }
+                for view in self.ratingView.subviews {
+                    view.removeFromSuperview()
+                }
+                /*
+                if(counter<ratingAsInt)
+                {
+                    for view in self.ratingView.subviews {
+                        view.removeFromSuperview()
+                    }
+                }
+                 */
+                while(counter<ratingAsInt)
+                {
+                    loadedRating = true
+
+                    counter = counter + 1;
+                    let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+                    let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+                    animationView.contentMode = .scaleToFill
+                    animationView.frame = frame
+                    //animationView.backgroundColor = UIColor.white
+
+                    ratingView.addSubview(animationView)
+                    //animationView.loopAnimation = true
+                    //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
+                    animationView.play()
+                }
+                
+                counter = 0
+                
+                while(counter<5)
+                {
+                    counter = counter + 1;
+                    //let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+                    //let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+                    let frame = CGRect(x: x.width/4*CGFloat(counter)-x.width/5, y: x.height/2.3, width: x.width/6, height: x.height/2)
+                    
+                    //animationView.contentMode = .scaleToFill
+                    let emptyStarView = UIImageView(image: #imageLiteral(resourceName: "emptyStar"))
+                    emptyStarView.contentMode = .scaleToFill
+                    emptyStarView.frame = frame
+                    //animationView.frame = frame
+                    if(counter>ratingAsInt)
+                    {
+                    ratingView.addSubview(emptyStarView)
+                    }
+                    //animationView.loopAnimation = true
+                    //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
+                    //animationView.play()
+                }
+                
+            }
         }
         if(selectedBook!.BookCoverImage != nil)
         {
@@ -86,8 +174,13 @@ class BookDetailViewController : UIViewController {
                 //print(self.titleLabel?.text)
                 if(self.titleLabel  != nil && self.titleLabel?.text != nil && self.titleLabel?.text != "Loading" && self.BookCoverImage != nil && self.BookCoverImage.image?.isEqual(#imageLiteral(resourceName: "loadingImage")) == false)
                 {
-                    print("Invalidating")
+                    //print("Invalidating")
+                    
+                    if(selectedBook!.rating > -0.1)
+                    {
                 self.loadTimer?.invalidate()
+                    }
+                    
                 }
                 else
                 {
@@ -95,7 +188,6 @@ class BookDetailViewController : UIViewController {
                 }
                     /*
                 if loadTimer != nil {
-                    print("dogs")
                     loadTimer!.invalidate()
                     loadTimer = nil
                 }
@@ -170,8 +262,20 @@ class BookDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isTranslucent = false
+        //self.checkoutButton.image
+        //self.checkoutButton.backgroundImage(for: <#T##UIControlState#>)
+        self.checkoutButton.layer.cornerRadius = 10
+        self.checkoutButton.titleLabel?.text = "Hold"
+        self.checkoutButton.imageView?.layer.masksToBounds = true
         
-        
+        //self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        //self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        //self.navigationController
+        UIApplication.shared.statusBarStyle = .lightContent
+
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.title = ""
         
@@ -206,19 +310,32 @@ class BookDetailViewController : UIViewController {
         //animationView.play()
         animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
         */
+        for view in self.ratingView.subviews {
+            //view.removeFromSuperview()
+        }
+        
         var counter: Int = 0
+        
         while(counter<5)
         {
             counter = counter + 1;
-            let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
-            let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
-            animationView.contentMode = .scaleToFill
-            animationView.frame = frame
-            ratingView.addSubview(animationView)
+            //let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+            //let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+            let frame = CGRect(x: x.width/4*CGFloat(counter)-x.width/5, y: x.height/2.3, width: x.width/6, height: x.height/2)
+
+            //animationView.contentMode = .scaleToFill
+            let emptyStarView = UIImageView(image: #imageLiteral(resourceName: "emptyStar"))
+            emptyStarView.contentMode = .scaleToFill
+            emptyStarView.frame = frame
+            //animationView.frame = frame
+            
+            ratingView.addSubview(emptyStarView)
             //animationView.loopAnimation = true
             //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
-            animationView.play()
+            //animationView.play()
         }
+        
+        
         
         mapView.layer.cornerRadius = 25
         mapView.layer.masksToBounds = true
@@ -226,14 +343,11 @@ class BookDetailViewController : UIViewController {
         BookCoverImage.layer.cornerRadius=10
         BookCoverImage.layer.masksToBounds = true
         
-        checkoutButton.layer.cornerRadius=15
+        //checkoutButton.layer.cornerRadius=15
         checkoutButton.layer.masksToBounds=true
         
-        descriptionButton.layer.cornerRadius=15
-    descriptionButton.layer.masksToBounds=true
         
-        descriptionLabel.layer.cornerRadius=10
-        descriptionLabel.layer.masksToBounds=true
+        
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0004, 0.0004)), animated: true)
         timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
@@ -244,8 +358,80 @@ class BookDetailViewController : UIViewController {
             if(fromScanner == false)
             {
             self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
+                //self.descBox!.sizeToFit()
+                //print("Height:")
+                //print(self.descBox.contentSize.height)
+                var heightConstant = CGFloat(160)
+                if(self.descBox.contentSize.height<160)
+                {
+                    heightConstant = self.descBox.contentSize.height
+                }
+                else
+                {
+                    heightConstant = 160
+                }
+                let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant)
+                self.descBox.addConstraints([heightConstraint])
+            
+                
             self.titleLabel?.text = selectedBook!.title
             self.authorLabel?.text = selectedBook!.author
+                //look here
+                
+                var counter: Int = 0
+                let x = ratingView.frame
+                
+                let ratingAsInt = Int(selectedBook!.rating) + 1
+                //print(ratingAsInt)
+                self.ratingLabel.text = String(describing: (selectedBook?.rating)!) + " out of 5 stars"
+                if((selectedBook?.rating)! < 0)
+                {
+                    self.ratingLabel.text = "No ratings found"
+                    
+                }
+                for view in self.ratingView.subviews {
+                    view.removeFromSuperview()
+                }
+                
+                while(counter<ratingAsInt)
+                {
+                    loadedRating = true
+                    
+                    counter = counter + 1;
+                    let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+                    let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+                    animationView.contentMode = .scaleToFill
+                    animationView.frame = frame
+                    //animationView.backgroundColor = UIColor.white
+                    
+                    ratingView.addSubview(animationView)
+                    //animationView.loopAnimation = true
+                    //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
+                    animationView.play()
+                }
+                
+                counter = 0
+                
+                while(counter<5)
+                {
+                    counter = counter + 1;
+                    //let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+                    //let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+                    let frame = CGRect(x: x.width/4*CGFloat(counter)-x.width/5, y: x.height/2.3, width: x.width/6, height: x.height/2)
+                    
+                    //animationView.contentMode = .scaleToFill
+                    let emptyStarView = UIImageView(image: #imageLiteral(resourceName: "emptyStar"))
+                    emptyStarView.contentMode = .scaleToFill
+                    emptyStarView.frame = frame
+                    //animationView.frame = frame
+                    if(counter>ratingAsInt)
+                    {
+                        ratingView.addSubview(emptyStarView)
+                    }
+                    //animationView.loopAnimation = true
+                    //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
+                    //animationView.play()
+                }
             }
             else
             {

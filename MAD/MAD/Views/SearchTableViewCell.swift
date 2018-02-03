@@ -48,6 +48,7 @@ class SearchTableViewCell: UITableViewCell {
     func newRequest()
     {
         newSearch = true
+        //for layer in self.innerView.subla
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -123,8 +124,8 @@ class SearchTableViewCell: UITableViewCell {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = innerView.bounds
         
-        let topColor = UIColor(red: 0.7, green: 0.9, blue: 1, alpha: 0.25)
-        let bottomColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.5)
+        let topColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 0.25)
+        let bottomColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 0.25)
         
         /*
         bookCover.layer.shadowColor = UIColor.black.cgColor
@@ -170,7 +171,7 @@ class SearchTableViewCell: UITableViewCell {
                     {
                     for subLayer in innerView.layer.sublayers! {
                         subLayer.removeFromSuperlayer()
-                        //print("Clearing sublayers")
+                        print("Clearing sublayers")
                     }
                     }
                 }

@@ -25,6 +25,7 @@ class BookModel: NSObject {
     var author: String?
     var googleImageURL: String?
     var foundGoogleImage: Bool = false;
+    var rating: Double = -3.0 //not found if negative
     
     //var timer: Timer = Timer()
     
@@ -299,6 +300,36 @@ class BookModel: NSObject {
                         let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
                         finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
                         finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
+                        
+                        if let rangeToRating: Range<String.Index> = JSONAsString.range(of: "averageRating")
+                        {
+                        //duck start
+                        let distanceToRating = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToRating.lowerBound))
+                        let ratingIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToRating+17)
+                        let ratingAndOn = JSONAsString.substring(from: ratingIndex)
+                        let ratingEndIndex = ratingAndOn.index(ratingAndOn.startIndex, offsetBy: 2)
+                        let tempo = ratingAndOn[...ratingEndIndex]
+                        let temper = String(tempo)
+                            print("Rating: " + temper)
+                        if let ratingAsDouble = Double(temper)
+                        {
+                            print("As double: " + String(describing: ratingAsDouble))
+                            rating = ratingAsDouble
+                            }
+                            
+                            
+                            
+                            //print("Rating and on: " + ratingAndOn)
+                            /*
+                        let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: ";")!
+                        let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))-1
+                        let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
+                        finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
+                        finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
+                             */
+                        //duck end
+                        }
+                        
                         
                         var ignored:String = "";
                         while let rangeToBackslash: Range<String.Index> = finalDescription.range(of: "\\")
