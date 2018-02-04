@@ -42,6 +42,7 @@
 		7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B78DBCB2009EA5A00592F09 /* bookUpdated.json */; };
 		7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145DB200C5BA100127E68 /* UIImageColors.swift */; };
 		7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92079B1FC0D0B1006F406B /* RatingControl.swift */; };
+		7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */; };
 		828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F582A201D35CD00E36EAE /* BugReportViewController.swift */; };
 		829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */; };
 		82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */; };
@@ -95,6 +96,7 @@
 		7B78DBCB2009EA5A00592F09 /* bookUpdated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookUpdated.json; sourceTree = "<group>"; };
 		7B9145DB200C5BA100127E68 /* UIImageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		7B92079B1FC0D0B1006F406B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		828F582A201D35CD00E36EAE /* BugReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugReportViewController.swift; sourceTree = "<group>"; };
 		829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBooks.storyboard; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				7B6EE70420268A84003A8908 /* IntroductionPageViewController.swift */,
 				7B6EE7062026AEAC003A8908 /* FirstPageViewController.swift */,
 				7B6EE7092026CEFE003A8908 /* ThirdPageViewController.swift */,
+				7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */,
 				7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */,
 				7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */,
+				7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */,
 				449941131FA810E600272446 /* BookModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
