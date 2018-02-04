@@ -9,18 +9,37 @@
 import Foundation
 import UIKit
 
-class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BookIdProtocol{
+class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BookIdProtocol, FBSDKLoginButtonDelegate{
     var feedItems: NSArray = NSArray()
-    @IBOutlet weak var listTableView: UITableView!
+    
+    
+    
+    @IBOutlet weak var loginButtonView: UIView!
+    
+    @IBOutlet weak var profilePictureView: UIImageView!
+    
+    //@IBOutlet weak var listTableView: UITableView!
     var temp:String = ""
+    
+    let loginButton: FBSDKLoginButton = {
+        let button = FBSDKLoginButton()
+        button.readPermissions = ["public_profile", "user_friends", "email"]
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let m = BookModel.init(ISBN: "9781921019630")
-
-        //set delegates
         
-        self.listTableView.delegate = self
-        self.listTableView.dataSource = self
+        loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
+        
+        loginButtonView.addSubview(loginButton)
+        loginButton.delegate = self
+        if (FBSDKAccessToken.current()) != nil
+        {
+            self.fetchProfile()
+        }
+        self.profilePictureView.layer.cornerRadius = profilePictureView.layer.frame.width/2
+        self.profilePictureView.layer.masksToBounds = true
         
         let Idsearch = IdSearchBook()
             Idsearch.delegate = self
@@ -31,7 +50,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     func itemsDownloaded(items: NSArray) {
         
         feedItems = items
-        self.listTableView.reloadData()
+        //self.listTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,7 +77,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         // Set selected location to var
         //selectedLocation = feedItems[indexPath.row] as! LocationModel
         // Manually call segue to detail view controller
-        BookDetailViewController.updateISBN(newISBN: "9781921019630");
+        //BookDetailViewController.updateISBN(newISBN: "9781921019630");
         
         //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
         
@@ -73,6 +92,108 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         //self.navigationController?.push
         //self.navigationController?.pushViewController(scanners, animated: true)
     }
+    
+    func fetchProfile()
+    {
+        let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
+        
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start { (connection, result, error) -> Void in
+            
+            
+            print("doing this")
+            if error != nil
+            {
+                print(error as Any)
+                return
+            }
+            
+            if let result = result as? [String:Any]
+            {
+                /*
+                if let email = result["email"] as? String
+                {
+                    print("Email: " + email)
+                }
+                */
+                if let pictureDict = result["picture"] as? [String:Any]
+                {
+                    //print("Email: " + email)
+                    //print(pictureDict)
+                    
+                    if let dataDict = pictureDict["data"] as? [String:Any]
+                    {
+                        //print("data dictionary success")
+                        if let profilePictureUrl = dataDict["url"] as? String
+                        {
+                            print("URL: " + profilePictureUrl)
+                            if let url = URL(string: profilePictureUrl) {
+                                
+                                self.downloadImage(url: url)
+                            }
+                            
+                        }
+                    }
+                    
+                }
+            }
+            
+            
+        }
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult, error: Error!)
+    {
+        print("Completed login")
+        self.fetchProfile()
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        self.profilePictureView.image = nil
+    }
+    
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        return true;
+    }
+    
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    func downloadImage(url: URL) {
+        //print("Download Started")
+        
+        //var found: Bool = false;
+        getDataFromUrl(url: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            //print(response?.suggestedFilename ?? url.lastPathComponent)
+            //print("Download Finished")
+            DispatchQueue.main.async() {
+                let temp: UIImage? = UIImage(data: data)
+                if(temp != nil && Double((temp?.size.height)!)>20.0)
+                {
+                    
+                    self.profilePictureView.image = temp
+                    //found = true;
+                }
+                else
+                {
+                    /*
+                    if(self.foundGoogleImage == false)
+                    {
+                        print("Image not found")
+                        self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
+                    }
+                    */
+                }
+                //print(String(describing: temp?.size.height))
+                
+            }
+        }
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

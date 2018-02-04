@@ -17,10 +17,26 @@ class HomeViewController: UIViewController {
     var timeCounter: Int = 0
     let location = CLLocationCoordinate2DMake(37.33712,  -122.04898)
     let regionRadius: CLLocationDistance = 10
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         self.mapView.mapType = MKMapType.satellite;
+        if UserDefaults.standard.object(forKey: "FirstLogin") == nil
+        {
+        UserDefaults.standard.set("false", forKey: "FirstLogin")
+            self.performSegue(withIdentifier: "LaunchHelp", sender: self)
+
+        }
 
         //navBar.title = "Home"
         //navigationItem.title="Home"

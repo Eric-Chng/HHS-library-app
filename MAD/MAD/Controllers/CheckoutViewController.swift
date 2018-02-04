@@ -53,13 +53,15 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         loginButtonView.addSubview(loginButton)
         loginButton.delegate = self
         //loginButton.center = view.center
+        /*
         if let token = FBSDKAccessToken.current()
         {
             fetchProfile()
-            print("Token")
+            //print("Token")
             //print(token)
-            print(token.tokenString)
+            //print(token.tokenString)
         }
+        */
         if scannerValue != nil
         {
             print("Value from display = \(scannerValue!)")
@@ -72,7 +74,7 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
     
     func fetchProfile()
     {
-        print("fetch profile")
+        //print("fetch profile")
         /*
         let params = ["fields" : "email, name"]
         let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: params)
@@ -181,7 +183,7 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
             
         }
         
-        let parames = ["fields": "picture.type(large)"] ///me/friends?fields=installed
+        //let parames = ["fields": "picture.type(large)"] ///me/friends?fields=installed
         //https://graph.facebook.com/110990426382408/picture?type=large
 
         //110990426382408
@@ -193,7 +195,7 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         let scanners = self.storyboard?.instantiateViewController(withIdentifier: "Scanner") as! Scanner
         
         scanners.delegate = self
-        print("going next")
+        //print("going next")
         //self.navigationController?.push
         self.navigationController?.pushViewController(scanners, animated: true)
         //self.performSegue(withIdentifier: "scannerDetailViewSegue", sender: self)

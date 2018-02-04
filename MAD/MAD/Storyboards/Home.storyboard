@@ -92,11 +92,14 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="mapView" destination="MCI-yl-h8I" id="mYX-mV-uXl"/>
+                        <segue destination="SqN-VO-obD" kind="popoverPresentation" identifier="LaunchHelp" popoverAnchorView="TFP-Zg-yYE" id="pEB-NX-RyX">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfo-Rg-lUM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="-990.40479760119945"/>
+            <point key="canvasLocation" x="1764" y="-994"/>
         </scene>
         <!--Home-->
         <scene sceneID="Y2S-na-mI6">
@@ -123,6 +126,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sc-eB-55T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="882" y="-453"/>
+        </scene>
+        <!--IntroductionPages-->
+        <scene sceneID="34H-9e-ZRg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="IntroductionPages" id="SqN-VO-obD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pcA-0t-oZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2108" y="-278"/>
         </scene>
     </scenes>
     <resources>

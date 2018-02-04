@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Yb-H3-zCO">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Introduction Page View Controller-->
+        <scene sceneID="0xu-Zq-cPE">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0Yb-H3-zCO" customClass="IntroductionPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cW8-qb-QAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-9" y="137"/>
+        </scene>
+        <!--First Page View Controller-->
+        <scene sceneID="gzH-xB-zHO">
+            <objects>
+                <viewController storyboardIdentifier="page1" id="gq8-Oe-jwu" customClass="FirstPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XEb-4f-IE3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Library" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V8-l8-6Sg">
+                                <rect key="frame" x="27" y="352" width="320" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="siD-wa-Fvh"/>
+                                    <constraint firstAttribute="width" constant="320" id="wOq-2J-gfJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to Continue &gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSt-fg-es4">
+                                <rect key="frame" x="82" y="596" width="211" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="211" id="rdx-fT-IUs"/>
+                                    <constraint firstAttribute="height" constant="21" id="yBo-Hq-YYG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUF-F8-DPf">
+                                <rect key="frame" x="235" y="468" width="140" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKd-mR-JYz">
+                                <rect key="frame" x="107" y="180" width="160" height="160"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="singleBook" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-Re-nlE">
+                                        <rect key="frame" x="41" y="29" width="79" height="103"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="103" id="c4j-eg-oeg"/>
+                                            <constraint firstAttribute="width" constant="79" id="w1H-g2-znx"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96739047772008002" green="1" blue="0.30139204853873869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Xdg-Re-nlE" firstAttribute="centerY" secondItem="fKd-mR-JYz" secondAttribute="centerY" id="INV-8m-EZc"/>
+                                    <constraint firstAttribute="height" constant="160" id="WgE-yW-CZk"/>
+                                    <constraint firstAttribute="width" constant="160" id="iU3-yx-oAh"/>
+                                    <constraint firstItem="Xdg-Re-nlE" firstAttribute="centerX" secondItem="fKd-mR-JYz" secondAttribute="centerX" id="qvi-kg-o1f"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage books and discover your next favorite with the Homestead Library Mobile App." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zT-Tf-rC5">
+                                <rect key="frame" x="6" y="390" width="363" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="363" id="8VM-H4-nCc"/>
+                                    <constraint firstAttribute="height" constant="41" id="ASc-TH-Z0i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.31153470277786255" green="0.81509864330291748" blue="0.99726265668869019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Kcx-rT-tXk" firstAttribute="bottom" secondItem="YSt-fg-es4" secondAttribute="bottom" constant="50" id="8MN-Xt-BVa"/>
+                            <constraint firstItem="7zT-Tf-rC5" firstAttribute="top" secondItem="2V8-l8-6Sg" secondAttribute="bottom" constant="4" id="a9z-EF-r0b"/>
+                            <constraint firstItem="fKd-mR-JYz" firstAttribute="top" secondItem="Kcx-rT-tXk" secondAttribute="top" constant="160" id="e8D-hP-CmX"/>
+                            <constraint firstItem="YSt-fg-es4" firstAttribute="centerX" secondItem="Kcx-rT-tXk" secondAttribute="centerX" id="fMH-vJ-yHj"/>
+                            <constraint firstItem="7zT-Tf-rC5" firstAttribute="centerX" secondItem="Kcx-rT-tXk" secondAttribute="centerX" id="gGd-LF-dgx"/>
+                            <constraint firstItem="2V8-l8-6Sg" firstAttribute="top" secondItem="Kcx-rT-tXk" secondAttribute="top" constant="332" id="iF8-YJ-5wR"/>
+                            <constraint firstItem="fKd-mR-JYz" firstAttribute="centerX" secondItem="Kcx-rT-tXk" secondAttribute="centerX" id="kjJ-fN-Pfh"/>
+                            <constraint firstItem="2V8-l8-6Sg" firstAttribute="centerX" secondItem="Kcx-rT-tXk" secondAttribute="centerX" id="tRO-fs-Ab4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kcx-rT-tXk"/>
+                    </view>
+                    <connections>
+                        <outlet property="animationBoundingView" destination="KUF-F8-DPf" id="6N4-Pi-7vh"/>
+                        <outlet property="bookBoundingView" destination="fKd-mR-JYz" id="gLU-oc-siC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v3p-p2-P2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="829.60000000000002" y="40.929535232383813"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NJz-aj-QuK">
+            <objects>
+                <viewController storyboardIdentifier="page2" id="iHZ-Ny-GZA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x29-0N-gWH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Just a Snap Away" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StA-hE-9mu">
+                                <rect key="frame" x="29" y="350" width="320" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Io9-dJ-boW"/>
+                                    <constraint firstAttribute="height" constant="41" id="Rfh-eS-EZ9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBubble" translatesAutoresizingMaskIntoConstraints="NO" id="wlr-YB-KrK">
+                                <rect key="frame" x="107.5" y="180" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="URO-ng-4ZS"/>
+                                    <constraint firstAttribute="height" constant="160" id="WT2-Yl-pjR"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjJ-5p-vj2">
+                                <rect key="frame" x="107.5" y="180" width="160" height="160"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="8Ka-J0-tO8"/>
+                                    <constraint firstAttribute="width" constant="160" id="BBC-kf-NA6"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan the back of any book anywhere. Then, reserve it and pick it up at school." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN9-5m-OwA">
+                                <rect key="frame" x="6" y="391" width="363" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="363" id="SRe-ZB-Ylq"/>
+                                    <constraint firstAttribute="height" constant="41" id="b9f-tE-btS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.49179328150000001" green="1" blue="0.53588919059999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wlr-YB-KrK" firstAttribute="centerX" secondItem="8sV-TS-t3R" secondAttribute="centerX" id="Aa9-nV-xRE"/>
+                            <constraint firstItem="StA-hE-9mu" firstAttribute="top" secondItem="8sV-TS-t3R" secondAttribute="top" constant="326" id="LDN-Ox-HCo"/>
+                            <constraint firstItem="wlr-YB-KrK" firstAttribute="top" secondItem="8sV-TS-t3R" secondAttribute="top" constant="160" id="Ob3-HA-PVe"/>
+                            <constraint firstItem="PN9-5m-OwA" firstAttribute="centerX" secondItem="8sV-TS-t3R" secondAttribute="centerX" id="PqV-3N-c1m"/>
+                            <constraint firstItem="StA-hE-9mu" firstAttribute="centerX" secondItem="8sV-TS-t3R" secondAttribute="centerX" id="bRA-rJ-XP9"/>
+                            <constraint firstItem="cjJ-5p-vj2" firstAttribute="top" secondItem="8sV-TS-t3R" secondAttribute="top" constant="160" id="rDj-sL-al1"/>
+                            <constraint firstItem="cjJ-5p-vj2" firstAttribute="centerX" secondItem="8sV-TS-t3R" secondAttribute="centerX" id="rjo-Ww-dcU"/>
+                            <constraint firstItem="PN9-5m-OwA" firstAttribute="top" secondItem="StA-hE-9mu" secondAttribute="bottom" constant="4" id="up6-S8-A90"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8sV-TS-t3R"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MC1-mK-U21" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="829.60000000000002" y="752.47376311844084"/>
+        </scene>
+        <!--Third Page View Controller-->
+        <scene sceneID="jKl-Df-wDA">
+            <objects>
+                <viewController storyboardIdentifier="page3" id="NhH-O6-OJq" customClass="ThirdPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lhW-sb-WcV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="connectivityBubble" translatesAutoresizingMaskIntoConstraints="NO" id="D5B-6S-w5z">
+                                <rect key="frame" x="107" y="160" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Mse-KT-PDC"/>
+                                    <constraint firstAttribute="height" constant="160" id="PAW-wB-H2J"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Security and Connectivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4D-ue-LuL">
+                                <rect key="frame" x="18" y="333" width="340" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="QbM-2q-di1"/>
+                                    <constraint firstAttribute="height" constant="41" id="eIb-7Z-6iv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="29"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Full Facebook and Google Book integration. Login to see what your friends recommend. Backed by industry-standard security" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRT-xR-fge">
+                                <rect key="frame" x="6" y="376" width="330" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="gbb-BE-zrO"/>
+                                    <constraint firstAttribute="width" constant="330" id="oZP-cO-b2d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFx-Lp-2DD">
+                                <rect key="frame" x="36" y="511" width="302" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="302" id="HIC-Et-Mcc"/>
+                                    <constraint firstAttribute="height" constant="56" id="ovf-3V-52p"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We never see or store your credentials" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvN-Ex-OJ2">
+                                <rect key="frame" x="55" y="567" width="264" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="TEF-Dd-PEf"/>
+                                    <constraint firstAttribute="width" constant="264" id="Z42-6y-HkX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.93446938078372821" blue="0.28628920584353257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mFx-Lp-2DD" firstAttribute="centerX" secondItem="hXh-nJ-wqa" secondAttribute="centerX" id="6W6-zr-5RK"/>
+                            <constraint firstItem="WRT-xR-fge" firstAttribute="top" secondItem="G4D-ue-LuL" secondAttribute="bottom" constant="2" id="8uq-Tc-RmB"/>
+                            <constraint firstItem="hXh-nJ-wqa" firstAttribute="bottom" secondItem="mFx-Lp-2DD" secondAttribute="bottom" constant="100" id="E9Z-a2-3XG"/>
+                            <constraint firstItem="G4D-ue-LuL" firstAttribute="top" secondItem="D5B-6S-w5z" secondAttribute="bottom" constant="4" id="MSq-1o-1va"/>
+                            <constraint firstItem="JvN-Ex-OJ2" firstAttribute="centerX" secondItem="hXh-nJ-wqa" secondAttribute="centerX" id="N3h-ZU-9sQ"/>
+                            <constraint firstItem="G4D-ue-LuL" firstAttribute="centerX" secondItem="hXh-nJ-wqa" secondAttribute="centerX" id="R09-ca-uN3"/>
+                            <constraint firstItem="WRT-xR-fge" firstAttribute="centerX" secondItem="hXh-nJ-wqa" secondAttribute="centerX" id="c3b-TV-s99"/>
+                            <constraint firstItem="JvN-Ex-OJ2" firstAttribute="top" secondItem="mFx-Lp-2DD" secondAttribute="bottom" id="dir-yC-53V"/>
+                            <constraint firstItem="D5B-6S-w5z" firstAttribute="centerX" secondItem="hXh-nJ-wqa" secondAttribute="centerX" id="fu0-bD-8tU"/>
+                            <constraint firstItem="D5B-6S-w5z" firstAttribute="top" secondItem="hXh-nJ-wqa" secondAttribute="top" constant="160" id="zHk-k2-SfF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hXh-nJ-wqa"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginButtonView" destination="mFx-Lp-2DD" id="lEf-ge-acf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rCo-Ou-byc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="632.79999999999995" y="1433.433283358321"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="connectivityBubble" width="275" height="275"/>
+        <image name="discoverBubble" width="250" height="250"/>
+        <image name="singleBook" width="370" height="461"/>
+    </resources>
+</document>
