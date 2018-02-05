@@ -397,6 +397,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
+                        <outlet property="facebookReviewsCollectionView" destination="3bC-JJ-nKE" id="PC3-4K-m95"/>
                         <outlet property="insideScrollView" destination="qfC-1c-0Kx" id="ZNq-hJ-inR"/>
                         <outlet property="librarianRecommendedCollectionView" destination="8aG-i4-Ui3" id="d8e-sN-ha6"/>
                         <outlet property="popularTitleCollectionView" destination="8I6-2r-4gk" id="fal-tF-trN"/>

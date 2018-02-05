@@ -14,9 +14,11 @@ class DiscoverViewController: UIViewController{
     
     var url: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+"
     var popularBookArr: [BookModel] = []
-    var pressedItem: Int = 0
+    var reviewArr: [FacebookReviewModel] = []
+    var pressedItem: BookModel = BookModel()
     var timer = Timer()
     
+    @IBOutlet weak var facebookReviewsCollectionView: UICollectionView!
     @IBOutlet weak var popularTitleCollectionView: UICollectionView!
     @IBOutlet weak var librarianRecommendedCollectionView: UICollectionView!
     @IBOutlet weak var insideScrollView: UIView!
@@ -39,7 +41,68 @@ class DiscoverViewController: UIViewController{
         animationView.loopAnimation = true
         //animationView.play()
         animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(DiscoverViewController.action), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action2), userInfo: nil,  repeats: true)
+        //nameTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(FacebookReviewsCollectionViewCell.action2), userInfo: nil,  repeats: true)
+        
+        
+        
+    }
+    
+    @objc func action2()
+    {
+        //print("hello")
+        if let token = FBSDKAccessToken.current()
+        {
+            
+        let params = ["fields": "friends"]
+        FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
+            var ids: [String] = []
+            if let result = result as? [String:Any]
+            {
+                
+                if let dataDict = result["data"] as? NSArray
+                {
+                    
+                    //print("bigs")
+                    //print(dataDict[0])
+                    //if let insideDataDict = dataDict[0] as? [String:Any]
+                    var tempCounter: Int = 0
+
+                    for inner in dataDict
+                    {
+                        let insideDataDict = inner as! [String: Any]
+                        
+                        //var insideDataDict2 = ["id": "14", "id": "15"]
+                        if let id = insideDataDict["id"] as? String
+                        {
+                            //@Eric Cheng, make FacebookReviewModels as shown below from userIDs and books\/
+                            
+                            
+                            if(tempCounter<6)
+                            {
+                                
+                            self.reviewArr.append(FacebookReviewModel(bookModel: self.popularBookArr[tempCounter], userID: id, score: 4.5))
+                            }
+                            tempCounter = tempCounter + 1
+                            //id is friend's id
+                        }
+                    }
+                    
+                    self.facebookReviewsCollectionView.reloadData()
+                    self.timer.invalidate()
+                }
+            
+            }
+            if error != nil
+            {
+                print(error as Any)
+                return
+            }
+            
+            }
+        }
+ 
         
     }
     
@@ -82,7 +145,7 @@ class DiscoverViewController: UIViewController{
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
-        print("hello")
+        //print("hello")
         self.performSegue(withIdentifier: "discoverToSearch", sender: self)
     }
     
@@ -94,7 +157,7 @@ class DiscoverViewController: UIViewController{
         if(segue.identifier == "collectionViewDetail")
         {
             
-            let bookToPass = popularBookArr[self.pressedItem]
+            let bookToPass = self.pressedItem
             if let destinationViewController = segue.destination as? BookDetailViewController {
                 destinationViewController.selectedBook = bookToPass
             }
@@ -150,11 +213,18 @@ extension DiscoverViewController: UICollectionViewDelegate {
         print(indexPath.item)
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
-            self.pressedItem = indexPath.item
+            self.pressedItem = popularBookArr[indexPath.item]
         }
         else if(collectionView.restorationIdentifier! == "popularTitles")
         {
-            self.pressedItem = 5 - indexPath.item
+            self.pressedItem = popularBookArr[5 - indexPath.item]
+            
+        }
+        else if(collectionView.restorationIdentifier! == "facebookFeed")
+        {
+            //self.p
+            //self.pressedItem =
+            self.pressedItem = reviewArr[indexPath.item].bookModel
             
         }
         self.performSegue(withIdentifier: "collectionViewDetail", sender: self)
@@ -179,6 +249,7 @@ extension DiscoverViewController: UICollectionViewDataSource {
         if(collectionView.restorationIdentifier! == "facebookFeed")
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FacebookReviewsCollectionViewCell", for: indexPath) as! FacebookReviewsCollectionViewCell
+            /*
             let params = ["fields": "friends"]
             FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
                 var ids: [String] = []
@@ -233,7 +304,14 @@ extension DiscoverViewController: UICollectionViewDataSource {
                         */
                         if(indexPath.row < ids.count)
                         {
-                            cell.userID = ids[indexPath.row]
+                            //let currentReview = FacebookReviewModel(bookModel: self.popularBookArr[indexPath.row], userID: ids[indexPath.row], score: 4.5)
+                            //cell.userID = ids[indexPath.row]
+                            //cell.reviewModel = currentReview
+                            if(self.reviewArr.count > indexPath.row)
+                            {
+                            cell.reviewModel = self.reviewArr[indexPath.row]
+                            }
+                            
                         }
                     }
                 }
@@ -244,6 +322,11 @@ extension DiscoverViewController: UICollectionViewDataSource {
                 }
                 
                 
+            }
+            */
+            if(self.reviewArr.count > indexPath.row)
+            {
+                cell.reviewModel = self.reviewArr[indexPath.row]
             }
             return cell
         }
@@ -271,6 +354,6 @@ extension DiscoverViewController: UICollectionViewDataSource {
         }
             return cell
         }
-        return cell
+        //return cell
     }
 }

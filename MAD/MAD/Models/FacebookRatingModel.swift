@@ -15,12 +15,26 @@ class FacebookReviewModel
     var score: Double
     var userName: String
     var userImage: UIImage
+    var isPlaceHolder: Bool
     
     init(bookModel: BookModel, userID: String, score: Double)
     {
+        isPlaceHolder = false
         self.bookModel = bookModel
         self.userID = userID
         self.score = score
+        userName = ""
+        userImage = #imageLiteral(resourceName: "loadingBacksplash")
+        userName = self.getName(id: userID)
+        updatePicture()
+    }
+    
+    init()
+    {
+        isPlaceHolder = true
+        self.bookModel = BookModel()
+        self.userID = ""
+        self.score = 0.0
         userName = ""
         userImage = #imageLiteral(resourceName: "loadingBacksplash")
         userName = self.getName(id: userID)
@@ -33,11 +47,11 @@ class FacebookReviewModel
         var name: String = ""
             
         
-            if let token = FBSDKAccessToken.current()
+        if (FBSDKAccessToken.current()) != nil
             {
-                print("Token")
+                //print("Token")
                 //print(token)
-                print(token.tokenString)
+                //print(token.tokenString)
                 
                 let params = ["fields": "name"]
                 FBSDKGraphRequest(graphPath: id, parameters: params).start { (connection, result, error) -> Void in
@@ -49,12 +63,16 @@ class FacebookReviewModel
                         {
                             //print("Name: " + dataDict)
                             name = dataDict
+                            print("Name is: " + name)
+                            self.userName = dataDict
                         }
                     }
                     
                     
                 }
             }
+        
+        
         return name
     }
     

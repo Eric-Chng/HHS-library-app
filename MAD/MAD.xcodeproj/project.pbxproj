@@ -41,7 +41,6 @@
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
 		7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B78DBCB2009EA5A00592F09 /* bookUpdated.json */; };
 		7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145DB200C5BA100127E68 /* UIImageColors.swift */; };
-		7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92079B1FC0D0B1006F406B /* RatingControl.swift */; };
 		7BDEE2EE2026E78C004F3E4D /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */; };
 		7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */; };
 		828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F582A201D35CD00E36EAE /* BugReportViewController.swift */; };
@@ -95,7 +94,6 @@
 		7B72B8601F9B0DB5002E9668 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7B78DBCB2009EA5A00592F09 /* bookUpdated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookUpdated.json; sourceTree = "<group>"; };
 		7B9145DB200C5BA100127E68 /* UIImageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
-		7B92079B1FC0D0B1006F406B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
 		7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		828F582A201D35CD00E36EAE /* BugReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugReportViewController.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 			children = (
 				44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */,
 				7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */,
-				7B92079B1FC0D0B1006F406B /* RatingControl.swift */,
 				449941121FA810E600272446 /* BookModel.swift */,
 			);
 			path = Models;
@@ -481,7 +478,6 @@
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,
 				7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */,
 				7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */,
-				7B92079C1FC0D0B1006F406B /* RatingControl.swift in Sources */,
 				7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */,
 				449941131FA810E600272446 /* BookModel.swift in Sources */,
 			);

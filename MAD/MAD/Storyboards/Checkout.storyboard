@@ -18,40 +18,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[book id]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJp-hc-UQQ">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[book id]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJp-hc-UQQ">
                                 <rect key="frame" x="32" y="477" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-da-1eB">
-                                <rect key="frame" x="71" y="192" width="172" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="scanner" image="scanbutton"/>
-                                <connections>
-                                    <action selector="goNext:" destination="Gov-tV-Puz" eventType="touchUpInside" id="fsN-Zp-caT"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc5-pW-e8E">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc5-pW-e8E">
                                 <rect key="frame" x="32" y="448" width="65" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oj2-e7-PYa">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oj2-e7-PYa">
                                 <rect key="frame" x="106" y="336" width="169" height="47"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.92513370230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-da-1eB">
+                                <rect key="frame" x="101" y="222" width="172" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="1r0-Dv-v6d"/>
+                                    <constraint firstAttribute="height" constant="88" id="4IH-SR-wU2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="scanner" image="scanbutton"/>
+                                <connections>
+                                    <action selector="goNext:" destination="Gov-tV-Puz" eventType="touchUpInside" id="fsN-Zp-caT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oj2-e7-PYa" firstAttribute="leading" secondItem="FVQ-pN-qZT" secondAttribute="leading" constant="106" id="4Ha-yU-Ue1"/>
                             <constraint firstItem="FVQ-pN-qZT" firstAttribute="trailing" secondItem="oj2-e7-PYa" secondAttribute="trailing" constant="100" id="74e-PX-EVr"/>
+                            <constraint firstItem="NeU-da-1eB" firstAttribute="centerX" secondItem="FVQ-pN-qZT" secondAttribute="centerX" id="Mve-2s-vaO"/>
                             <constraint firstItem="oj2-e7-PYa" firstAttribute="top" secondItem="FVQ-pN-qZT" secondAttribute="top" constant="220" id="ZFz-tZ-ije"/>
                             <constraint firstItem="FVQ-pN-qZT" firstAttribute="bottom" secondItem="oj2-e7-PYa" secondAttribute="bottom" constant="235" id="g0f-GN-xEz"/>
+                            <constraint firstItem="NeU-da-1eB" firstAttribute="top" secondItem="FVQ-pN-qZT" secondAttribute="top" constant="106" id="x9x-Qt-lVE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FVQ-pN-qZT"/>
                     </view>
@@ -3951,6 +3956,6 @@ AAAAAAACVjA
         <image name="scanbutton" width="223" height="114"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GYa-Cw-95d"/>
+        <segue reference="2mD-LB-cm2"/>
     </inferredMetricsTieBreakers>
 </document>

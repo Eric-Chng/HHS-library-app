@@ -17,7 +17,10 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var blurredView: UIView!
     @IBOutlet weak var boundingView: UIView!
+    var reviewModel: FacebookReviewModel = FacebookReviewModel()
     var animationView: LOTAnimationView = LOTAnimationView(name: "scan");
+    var highResImageCounter: Int = 0
+    var placeHolderCounter: Int = 0
     var timer = Timer()
     var nameTimer = Timer()
     var userID: String = ""
@@ -48,8 +51,8 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
         animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
         
         
-        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(FacebookReviewsCollectionViewCell.action3), userInfo: nil,  repeats: true)
-        nameTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(FacebookReviewsCollectionViewCell.action2), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(FacebookReviewsCollectionViewCell.action2), userInfo: nil,  repeats: true)
+        //nameTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(FacebookReviewsCollectionViewCell.action2), userInfo: nil,  repeats: true)
         
         
         
@@ -57,7 +60,45 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
     
     @objc func action2()
     {
-        
+
+        if(self.reviewModel.isPlaceHolder == false)
+        {
+            //print("my dog")
+            if(self.reviewModel.bookModel.BookCoverImage.image != nil && self.reviewModel.bookModel.BookCoverImage.image?.isEqual(#imageLiteral(resourceName: "loadingImage")) == false && self.reviewModel.userImage.isEqual(#imageLiteral(resourceName: "loadingBacksplash")) == false && self.reviewModel.userName.count > 2)
+            {
+                self.placeHolderCounter = 0
+                self.highResImageCounter =  self.highResImageCounter + 1
+                //print("Loaded")
+                self.titleLabel.text = self.reviewModel.userName
+                self.coverImageView.image = self.reviewModel.bookModel.BookCoverImage.image
+                self.profilePicture.image = self.reviewModel.userImage
+                self.boundingView.bringSubview(toFront: self.profilePicture) //self.profilePicture
+                
+                self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
+                self.profilePicture.clipsToBounds = true
+                //UIColor.
+                //174, 255, 0
+                let customGreen = UIColor(red: 230.0/255.0, green: 131.0/255, blue: 180.0/255.0, alpha: 1)
+                self.profilePicture.layer.borderColor = customGreen.cgColor
+                self.profilePicture.layer.borderWidth = 3.0
+                
+            }
+            
+        }
+        else
+        {
+            self.placeHolderCounter = self.placeHolderCounter + 1
+            if(self.placeHolderCounter > 30)
+            {
+            self.titleLabel.text = "Placeholder"
+            }
+        }
+        if(self.highResImageCounter > 30)
+        {
+            self.timer.invalidate()
+        }
+
+        /*
         var titleAsNum = Int(userID)
         if(titleAsNum != nil && (titleLabel.text?.count)! < 2)
         {
@@ -66,24 +107,10 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
 
             if let token = FBSDKAccessToken.current()
             {
-                print("Token")
+                //print("Token")
                 //print(token)
                 print(token.tokenString)
-                /*
-                 if let profileURL = URL(string: "https://graph.facebook.com/v2.11/110990426382408/accounts?" + token.tokenString)
-                 {
-                 
-                 }
-                 */
-                /*
-                 FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
-                 initWithGraphPath:@"/100024146984215"
-                 parameters:nil
-                 HTTPMethod:@"GET"];
-                 [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                 // Insert your code here
-                 }];
-                 */
+                
                 let params = ["fields": "name"]
                 FBSDKGraphRequest(graphPath: userID, parameters: params).start { (connection, result, error) -> Void in
                     //print(result)
@@ -107,9 +134,10 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
         else
         {
         }
+        */
     }
     
-    
+    /*
     @objc func action3()
     {
         
@@ -124,7 +152,7 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
         }
         if(self.searching == false && userID != nil && userID != "" && userID != "Title")
         {
-            print("Title: " + userID)
+            //print("Title: " + userID)
             searching = true
             if let url = URL(string: "https://graph.facebook.com/" + userID + "/picture?type=large") {
             
@@ -138,6 +166,7 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
         
         
     }
+     */
     
     
     func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
