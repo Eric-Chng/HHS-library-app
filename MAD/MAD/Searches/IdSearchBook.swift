@@ -11,7 +11,7 @@ class IdSearchBook: NSObject {
     
     weak var delegate: BookIdProtocol!
     
-    let urlPath = "http://www.the-library-database.com/idsearch_book.php"
+    let urlPath = "http://www.the-library-database.com/isbn_book.php"
     
     func downloadItems(inputID: CLong) {
         
@@ -22,7 +22,7 @@ class IdSearchBook: NSObject {
          var request = URLRequest(url: url)
          request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
          request.httpMethod = "POST"
-         let postString = "password=secureAf&id=\(inputID)"
+         let postString = "password=secureAf&isbn=\(inputID)"
          request.httpBody = postString.data(using: .utf8)
          let task = URLSession.shared.dataTask(with: request) { data, response, error in
          guard let data = data, error == nil else {                                                 // check for fundamental networking error

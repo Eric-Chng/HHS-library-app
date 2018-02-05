@@ -43,7 +43,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let Idsearch = IdSearchBook()
             Idsearch.delegate = self
-        Idsearch.downloadItems(inputID:9780375831003000)
+        Idsearch.downloadItems(inputID:9780375831003)
         
     }
     
