@@ -15,6 +15,11 @@
 		449941131FA810E600272446 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941121FA810E600272446 /* BookModel.swift */; };
 		449941151FA8155300272446 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941141FA8155300272446 /* BookDetailViewController.swift */; };
 		44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */; };
+		44E5115820298CDC00A721B3 /* UserGetBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E5115720298CDC00A721B3 /* UserGetBooks.swift */; };
+		44E5115A2029959500A721B3 /* UserCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E511592029959500A721B3 /* UserCheckout.swift */; };
+		44E5115C2029980300A721B3 /* UserReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E5115B2029980300A721B3 /* UserReturn.swift */; };
+		44E5115E202998AC00A721B3 /* CheckoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E5115D202998AC00A721B3 /* CheckoutModel.swift */; };
+		44E511602029A61D00A721B3 /* IdSearchAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E5115F2029A61D00A721B3 /* IdSearchAuthor.swift */; };
 		44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61741FA7037600A9399E /* DiscoverViewController.swift */; };
 		44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61781FA7053300A9399E /* MyBooksViewController.swift */; };
 		7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1432012C98D00A4E9A8 /* loader.json */; };
@@ -64,6 +69,11 @@
 		449941121FA810E600272446 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		449941141FA8155300272446 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
+		44E5115720298CDC00A721B3 /* UserGetBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGetBooks.swift; sourceTree = "<group>"; };
+		44E511592029959500A721B3 /* UserCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheckout.swift; sourceTree = "<group>"; };
+		44E5115B2029980300A721B3 /* UserReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReturn.swift; sourceTree = "<group>"; };
+		44E5115D202998AC00A721B3 /* CheckoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutModel.swift; sourceTree = "<group>"; };
+		44E5115F2029A61D00A721B3 /* IdSearchAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdSearchAuthor.swift; sourceTree = "<group>"; };
 		44FE61741FA7037600A9399E /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		44FE61781FA7053300A9399E /* MyBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksViewController.swift; sourceTree = "<group>"; };
 		76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +189,10 @@
 			isa = PBXGroup;
 			children = (
 				443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */,
+				44E5115F2029A61D00A721B3 /* IdSearchAuthor.swift */,
+				44E5115720298CDC00A721B3 /* UserGetBooks.swift */,
+				44E511592029959500A721B3 /* UserCheckout.swift */,
+				44E5115B2029980300A721B3 /* UserReturn.swift */,
 			);
 			path = Searches;
 			sourceTree = "<group>";
@@ -244,6 +258,7 @@
 				44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */,
 				7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */,
 				449941121FA810E600272446 /* BookModel.swift */,
+				44E5115D202998AC00A721B3 /* CheckoutModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -457,6 +472,7 @@
 			files = (
 				7B725E121F9B21DC00FE56A1 /* HomeViewController.swift in Sources */,
 				829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */,
+				44E5115C2029980300A721B3 /* UserReturn.swift in Sources */,
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
 				828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */,
 				7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */,
@@ -465,6 +481,8 @@
 				7B395E3F201C2ECB00DF3299 /* NSObject+facebookObjectiveCLink.m in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,
 				7B6EE70A2026CEFE003A8908 /* ThirdPageViewController.swift in Sources */,
+				44E5115A2029959500A721B3 /* UserCheckout.swift in Sources */,
+				44E5115E202998AC00A721B3 /* CheckoutModel.swift in Sources */,
 				7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */,
 				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
@@ -473,9 +491,11 @@
 				7B6EE70520268A84003A8908 /* IntroductionPageViewController.swift in Sources */,
 				7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */,
 				44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */,
+				44E5115820298CDC00A721B3 /* UserGetBooks.swift in Sources */,
 				7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */,
 				443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */,
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,
+				44E511602029A61D00A721B3 /* IdSearchAuthor.swift in Sources */,
 				7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */,
 				7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */,
 				7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */,

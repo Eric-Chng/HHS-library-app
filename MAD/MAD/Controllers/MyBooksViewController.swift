@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BookIdProtocol, FBSDKLoginButtonDelegate{
+class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DownloadProtocol, FBSDKLoginButtonDelegate{
     var feedItems: NSArray = NSArray()
     
     
@@ -50,6 +50,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     func itemsDownloaded(items: NSArray) {
         
         feedItems = items
+        print(items.firstObject)
         //self.listTableView.reloadData()
     }
     
