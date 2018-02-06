@@ -1,26 +1,26 @@
 import Foundation
 import UIKit
 
-protocol AuthorProtocol: class {
-    func nameReceived(name: String)
-}
 
-class IdSearchAuthor: NSObject {
+
+class HoldbyBook: NSObject {
     
     
     
-    weak var delegate: AuthorProtocol!
+    weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/idsearch_author.php"
+    let urlPath = "http://www.the-library-database.com/php_scripts/hold_bookisbn.php"
     
     func downloadItems(inputID: CLong) {
         
+        
+        //print ("Book ID search started with \(inputID)")
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "password=secureAf&id=\(inputID)"
+        let postString = "password=secureAf&isbn=\(inputID)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -34,8 +34,7 @@ class IdSearchAuthor: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-            
+            //print("responseString = \(responseString)")
             self.parseJSON(data)
         }
         task.resume()
@@ -55,29 +54,44 @@ class IdSearchAuthor: NSObject {
             
         }
         
+        //NSArrays initialized
         var jsonElement = NSDictionary()
-        var nameResult = "nil"
+        let holds = NSMutableArray()
         
         for i in 0 ..< jsonResult.count
         {
             
             jsonElement = jsonResult[i] as! NSDictionary
             
-            if let name = jsonElement["name"] as! String? {
-                nameResult = name
+            let hold = HoldModel()
+            
+            
+            //JsonElement values are guaranteed to not be null through optional binding
+            if let id = jsonElement["hold_id"] as! String?,
+                let isbn = jsonElement["isbn"] as! String?,
+                let userid = jsonElement["user_id"] as! String?,
+                let start = jsonElement["timestart"] as! String?,
+                let ready = jsonElement["ready"] as! String?
+            {
+                hold.ID = id
+                hold.ISBN = isbn
+                hold.userID = userid
+                hold.startTimestamp = start
+                hold.ready = Int(ready)
             }
+            
+            holds.add(hold)
             
         }
         
-        //NSArrays initialized
-        
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.nameReceived(name: nameResult)
+            self.delegate.itemsDownloaded(items: holds)
             
         })
     }
     
 }
+
 
 

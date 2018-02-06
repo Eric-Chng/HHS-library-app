@@ -1,26 +1,23 @@
 import Foundation
 import UIKit
 
-protocol AuthorProtocol: class {
-    func nameReceived(name: String)
-}
 
-class IdSearchAuthor: NSObject {
+class HoldSetReady: NSObject {
     
     
+    weak var delegate: TransactionProtocol!
     
-    weak var delegate: AuthorProtocol!
+    let urlPath = "http://www.the-library-database.com/php_scripts/hold_setready.php"
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/idsearch_author.php"
-    
-    func downloadItems(inputID: CLong) {
+    //Pass in isbn of checkout book and userid
+    func downloadItems(id:CLong) {
         
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "password=secureAf&id=\(inputID)"
+        let postString = "password=secureAf&id=\(id)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -35,49 +32,26 @@ class IdSearchAuthor: NSObject {
             
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
-            
-            self.parseJSON(data)
+            self.checkTransaction(responseString)
         }
         task.resume()
         
     }
     
     
-    func parseJSON(_ data:Data) {
-        
-        var jsonResult = NSArray()
-        
-        do{
-            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            
-        } catch let error as NSError {
-            print(error)
-            
+    func checkTransaction(_ response:String?) {
+        var script_success = false;
+        if (response=="script success"){
+            script_success=true;
         }
-        
-        var jsonElement = NSDictionary()
-        var nameResult = "nil"
-        
-        for i in 0 ..< jsonResult.count
-        {
-            
-            jsonElement = jsonResult[i] as! NSDictionary
-            
-            if let name = jsonElement["name"] as! String? {
-                nameResult = name
-            }
-            
-        }
-        
-        //NSArrays initialized
-        
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.nameReceived(name: nameResult)
+            self.delegate.transactionProcessed(success: script_success)
             
         })
     }
     
 }
+
 
 

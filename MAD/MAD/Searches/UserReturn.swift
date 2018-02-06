@@ -10,14 +10,14 @@ class UserReturn: NSObject {
     let urlPath = "http://www.the-library-database.com/php_scripts/user_return.php"
     
     //Pass in isbn of checkout book and userid
-    func downloadItems(isbn: CLong,user:CLong) {
+    func downloadItems(isbn: CLong, transaction_ID:CLong) {
         
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "password=secureAf&isbn=\(isbn)&user=\(user)"
+        let postString = "password=secureAf&isbn=\(isbn)&transaction_id=\(transaction_ID)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
