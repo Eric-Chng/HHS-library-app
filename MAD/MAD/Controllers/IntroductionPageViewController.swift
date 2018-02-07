@@ -12,7 +12,7 @@ class IntroductionPageViewController: UIPageViewController, UIPageViewController
 
     lazy var orderedViewControllers: [UIViewController] =
         {
-            return [self.newVC(viewController: "page1"),self.newVC(viewController: "page2"),self.newVC(viewController: "page3")]
+            return [self.newVC(viewController: "page1"),self.newVC(viewController: "page2"),self.newVC(viewController: "page3"), self.newVC(viewController: "page4")]
     }()
     var pageControl = UIPageControl()
     

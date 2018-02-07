@@ -100,7 +100,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).start { (connection, result, error) -> Void in
             
             
-            print("doing this")
             if error != nil
             {
                 print(error as Any)

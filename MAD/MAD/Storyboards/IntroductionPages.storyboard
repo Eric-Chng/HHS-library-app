@@ -241,10 +241,92 @@
             </objects>
             <point key="canvasLocation" x="632.79999999999995" y="1433.433283358321"/>
         </scene>
+        <!--Final Page View Controller-->
+        <scene sceneID="rAx-mF-bAJ">
+            <objects>
+                <viewController storyboardIdentifier="page4" id="RcA-He-i7g" customClass="FinalPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zaj-xj-2CJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ready When You Are" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcc-aT-7D7">
+                                <rect key="frame" x="17" y="344" width="340" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="8Vt-XH-tIE"/>
+                                    <constraint firstAttribute="width" constant="340" id="FaZ-dD-VLJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="presentBubble" translatesAutoresizingMaskIntoConstraints="NO" id="p99-3s-SL0">
+                                <rect key="frame" x="107" y="180" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="5Fn-9u-eiw"/>
+                                    <constraint firstAttribute="width" constant="160" id="xbi-SS-8fa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can access these pages any time from the profile page." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdu-vB-cMJ">
+                                <rect key="frame" x="57.5" y="389" width="260" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="27g-kj-Wmr"/>
+                                    <constraint firstAttribute="height" constant="41" id="uUq-Qs-FBo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o47-w3-tJn">
+                                <rect key="frame" x="107" y="505" width="160" height="46"/>
+                                <color key="backgroundColor" red="0.99826866388320923" green="0.95583301782608032" blue="0.26428699493408203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="hPo-lI-75j"/>
+                                    <constraint firstAttribute="width" constant="160" id="pWx-OC-41c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Let's Go!">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="RcA-He-i7g" eventType="touchUpInside" id="mui-LU-bRw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30846178531646729" green="0.81733804941177368" blue="0.99710458517074585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dcc-aT-7D7" firstAttribute="top" secondItem="p99-3s-SL0" secondAttribute="bottom" constant="4" id="2Vm-Ao-fDJ"/>
+                            <constraint firstItem="o47-w3-tJn" firstAttribute="centerX" secondItem="dic-I2-4MW" secondAttribute="centerX" id="5cO-eq-nMr"/>
+                            <constraint firstItem="Pdu-vB-cMJ" firstAttribute="centerX" secondItem="dic-I2-4MW" secondAttribute="centerX" id="6Ap-Dw-B0E"/>
+                            <constraint firstItem="o47-w3-tJn" firstAttribute="top" secondItem="Pdu-vB-cMJ" secondAttribute="bottom" constant="75" id="DNS-fJ-AOL"/>
+                            <constraint firstItem="p99-3s-SL0" firstAttribute="top" secondItem="dic-I2-4MW" secondAttribute="top" constant="160" id="GKN-YG-B5e"/>
+                            <constraint firstItem="Pdu-vB-cMJ" firstAttribute="top" secondItem="Dcc-aT-7D7" secondAttribute="bottom" constant="4" id="KRy-2i-ibu"/>
+                            <constraint firstItem="p99-3s-SL0" firstAttribute="centerX" secondItem="dic-I2-4MW" secondAttribute="centerX" id="cGE-A3-Pge"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dic-I2-4MW"/>
+                    </view>
+                    <connections>
+                        <outlet property="goButton" destination="o47-w3-tJn" id="Sj9-8a-m5p"/>
+                        <outlet property="goButtonPressed" destination="o47-w3-tJn" id="XoI-Pw-Dmp"/>
+                        <segue destination="SBO-pq-LXx" kind="show" identifier="IntroToHome" action="showDetailViewController:sender:" id="8Rf-5a-MbL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYq-U7-NbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="2149"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Kcp-4h-XFu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="SBO-pq-LXx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDG-SE-C2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1691" y="2001"/>
+        </scene>
     </scenes>
     <resources>
         <image name="connectivityBubble" width="275" height="275"/>
         <image name="discoverBubble" width="250" height="250"/>
+        <image name="presentBubble" width="1000" height="1000"/>
         <image name="singleBook" width="370" height="461"/>
     </resources>
 </document>

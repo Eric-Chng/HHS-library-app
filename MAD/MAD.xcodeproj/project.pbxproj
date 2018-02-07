@@ -19,6 +19,7 @@
 		44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61781FA7053300A9399E /* MyBooksViewController.swift */; };
 		7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1432012C98D00A4E9A8 /* loader.json */; };
 		7B0EB1462012C9B800A4E9A8 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1452012C9B800A4E9A8 /* scan.json */; };
+		7B1D0488202BC0DB006FE135 /* FinalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D0487202BC0DB006FE135 /* FinalPageViewController.swift */; };
 		7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */; };
 		7B35588820194BE2003DE9E2 /* starPop.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B35588720194BE2003DE9E2 /* starPop.json */; };
 		7B395E3A201C2D5D00DF3299 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */; };
@@ -69,6 +70,7 @@
 		76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0EB1432012C98D00A4E9A8 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		7B0EB1452012C9B800A4E9A8 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scan.json; sourceTree = "<group>"; };
+		7B1D0487202BC0DB006FE135 /* FinalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalPageViewController.swift; sourceTree = "<group>"; };
 		7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookRatingModel.swift; sourceTree = "<group>"; };
 		7B35588720194BE2003DE9E2 /* starPop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starPop.json; sourceTree = "<group>"; };
 		7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				7B725E111F9B21DC00FE56A1 /* HomeViewController.swift */,
 				7B725E0D1F9B1C2D00FE56A1 /* CheckoutViewController.swift */,
 				7B6EE70420268A84003A8908 /* IntroductionPageViewController.swift */,
+				7B1D0487202BC0DB006FE135 /* FinalPageViewController.swift */,
 				7B6EE7062026AEAC003A8908 /* FirstPageViewController.swift */,
 				7B6EE7092026CEFE003A8908 /* ThirdPageViewController.swift */,
 				7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */,
@@ -465,6 +468,7 @@
 				7B395E3F201C2ECB00DF3299 /* NSObject+facebookObjectiveCLink.m in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,
 				7B6EE70A2026CEFE003A8908 /* ThirdPageViewController.swift in Sources */,
+				7B1D0488202BC0DB006FE135 /* FinalPageViewController.swift in Sources */,
 				7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */,
 				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
