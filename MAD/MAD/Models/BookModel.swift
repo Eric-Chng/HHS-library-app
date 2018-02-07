@@ -14,7 +14,6 @@ import UIKit
 class BookModel: NSObject {
     
     //properties
-    var ID: CLong?
     var name: String?
     var ISBN: String?
     var authorID: CLong?
@@ -39,14 +38,14 @@ class BookModel: NSObject {
     
     //constructor
     
-    init(ID: CLong, name: String, author: CLong, desc: String) {
+    init(ISBN: String, name: String, author: CLong, desc: String) {
         super.init()
         DispatchQueue.main.async {
             self.BookCoverImage = UIImageView.init(image: #imageLiteral(resourceName: "loadingImage"))
             //self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
         }
         
-        self.ID = ID
+        self.ISBN = ISBN
         self.name = name
         self.authorID = author
         self.desc = desc
@@ -205,7 +204,7 @@ class BookModel: NSObject {
     
     override var description: String
     {
-        return "Title: \(name), by \(authorID), ISBN: \(ISBN), ID: \(ID)"
+        return "Title: \(name), by \(authorID), ISBN: \(ISBN)"
     }
     
     func parseJSON(JSONAsString: String)

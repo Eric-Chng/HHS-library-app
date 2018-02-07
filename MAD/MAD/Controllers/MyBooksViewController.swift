@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BookIdProtocol, FBSDKLoginButtonDelegate{
+class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DownloadProtocol, FBSDKLoginButtonDelegate{
     var feedItems: NSArray = NSArray()
     
     
@@ -43,13 +43,14 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let Idsearch = IdSearchBook()
             Idsearch.delegate = self
-        Idsearch.downloadItems(inputID:9780375831003000)
+        Idsearch.downloadItems(inputID:9780375831003)
         
     }
     
     func itemsDownloaded(items: NSArray) {
         
         feedItems = items
+        print(items.firstObject)
         //self.listTableView.reloadData()
     }
     
