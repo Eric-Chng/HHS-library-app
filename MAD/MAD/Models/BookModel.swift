@@ -253,7 +253,7 @@ class BookModel: NSObject {
                 let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
                 
                 
-                var tempString = String(JSONAsString[...tempIndex])
+                let tempString = String(JSONAsString[...tempIndex])
                 var finalISBN = "Incomplete Google Books Listing"
                 if let rangeToISBN: Range<String.Index> = tempString.range(of: "type = \"ISBN_13\"")
                 {
@@ -355,8 +355,7 @@ class BookModel: NSObject {
                                 ignored = ignored + temp1;
                             }
                         }
-                            //print("finalDesc: " + finalDescription)
-                            //print("finalDesc2: " + finalDescription2)
+                            
                             
                             if(isQuote == false)
                             {
