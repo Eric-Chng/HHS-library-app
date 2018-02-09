@@ -15,6 +15,12 @@
 		449941131FA810E600272446 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941121FA810E600272446 /* BookModel.swift */; };
 		449941151FA8155300272446 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941141FA8155300272446 /* BookDetailViewController.swift */; };
 		44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */; };
+		44D527C8202D66D9000A34DD /* GetReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C7202D66D9000A34DD /* GetReview.swift */; };
+		44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C9202D68E0000A34DD /* ReviewModel.swift */; };
+		44D527CC202D69B9000A34DD /* AddRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527CB202D69B9000A34DD /* AddRating.swift */; };
+		44D527CE202D6BCC000A34DD /* UserSetFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527CD202D6BCC000A34DD /* UserSetFacebook.swift */; };
+		44D527D0202D6C65000A34DD /* UserLoginVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527CF202D6C65000A34DD /* UserLoginVerify.swift */; };
+		44D527D2202D6D75000A34DD /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527D1202D6D75000A34DD /* UserModel.swift */; };
 		44E5115820298CDC00A721B3 /* UserGetBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E5115720298CDC00A721B3 /* UserGetBooks.swift */; };
 		44E5115A2029959500A721B3 /* UserCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E511592029959500A721B3 /* UserCheckout.swift */; };
 		44E5115C2029980300A721B3 /* UserReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E5115B2029980300A721B3 /* UserReturn.swift */; };
@@ -75,6 +81,12 @@
 		449941121FA810E600272446 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		449941141FA8155300272446 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
+		44D527C7202D66D9000A34DD /* GetReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReview.swift; sourceTree = "<group>"; };
+		44D527C9202D68E0000A34DD /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		44D527CB202D69B9000A34DD /* AddRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRating.swift; sourceTree = "<group>"; };
+		44D527CD202D6BCC000A34DD /* UserSetFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetFacebook.swift; sourceTree = "<group>"; };
+		44D527CF202D6C65000A34DD /* UserLoginVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginVerify.swift; sourceTree = "<group>"; };
+		44D527D1202D6D75000A34DD /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		44E5115720298CDC00A721B3 /* UserGetBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGetBooks.swift; sourceTree = "<group>"; };
 		44E511592029959500A721B3 /* UserCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheckout.swift; sourceTree = "<group>"; };
 		44E5115B2029980300A721B3 /* UserReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReturn.swift; sourceTree = "<group>"; };
@@ -203,10 +215,14 @@
 				443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */,
 				44E5115F2029A61D00A721B3 /* IdSearchAuthor.swift */,
 				44E5115720298CDC00A721B3 /* UserGetBooks.swift */,
+				44D527CD202D6BCC000A34DD /* UserSetFacebook.swift */,
+				44D527CF202D6C65000A34DD /* UserLoginVerify.swift */,
 				44E511692029AB7200A721B3 /* HoldSetReady.swift */,
 				44E511652029AAC900A721B3 /* HoldByUser.swift */,
 				44E511672029AB2B00A721B3 /* HoldByUserReady.swift */,
 				44E511632029A96C00A721B3 /* HoldByBook.swift */,
+				44D527C7202D66D9000A34DD /* GetReview.swift */,
+				44D527CB202D69B9000A34DD /* AddRating.swift */,
 				44E511592029959500A721B3 /* UserCheckout.swift */,
 				44E5115B2029980300A721B3 /* UserReturn.swift */,
 			);
@@ -274,6 +290,8 @@
 			children = (
 				44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */,
 				44E511612029A86C00A721B3 /* HoldModel.swift */,
+				44D527C9202D68E0000A34DD /* ReviewModel.swift */,
+				44D527D1202D6D75000A34DD /* UserModel.swift */,
 				7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */,
 				449941121FA810E600272446 /* BookModel.swift */,
 				44E5115D202998AC00A721B3 /* CheckoutModel.swift */,
@@ -490,14 +508,19 @@
 			files = (
 				7B725E121F9B21DC00FE56A1 /* HomeViewController.swift in Sources */,
 				829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */,
+				44D527CC202D69B9000A34DD /* AddRating.swift in Sources */,
 				44E5115C2029980300A721B3 /* UserReturn.swift in Sources */,
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
+				44D527CE202D6BCC000A34DD /* UserSetFacebook.swift in Sources */,
 				828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */,
+				44D527D0202D6C65000A34DD /* UserLoginVerify.swift in Sources */,
+				44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */,
 				7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */,
 				7B4E3ECA201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* CheckoutViewController.swift in Sources */,
 				44E511662029AAC900A721B3 /* HoldByUser.swift in Sources */,
 				7B395E3F201C2ECB00DF3299 /* NSObject+facebookObjectiveCLink.m in Sources */,
+				44D527C8202D66D9000A34DD /* GetReview.swift in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,
 				7B6EE70A2026CEFE003A8908 /* ThirdPageViewController.swift in Sources */,
 				44E5115A2029959500A721B3 /* UserCheckout.swift in Sources */,
@@ -505,6 +528,7 @@
 				7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */,
 				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
+				44D527D2202D6D75000A34DD /* UserModel.swift in Sources */,
 				7B6EE7072026AEAC003A8908 /* FirstPageViewController.swift in Sources */,
 				7BFF53A5202BC3F6007A1C8B /* FinalPageViewController.swift in Sources */,
 				7B5BDDF71FEF1E810089BC00 /* ResultsViewController.swift in Sources */,
