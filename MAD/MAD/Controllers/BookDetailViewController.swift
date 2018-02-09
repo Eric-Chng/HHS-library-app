@@ -196,10 +196,18 @@ class BookDetailViewController : UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    //_ = popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
+    
+    }
+    
+    
     @objc func action()
     {
         //print("counter: " + String(describing: smallCoverImageCounter))
-        
+        print("hi")
         
        
         
@@ -269,9 +277,7 @@ class BookDetailViewController : UIViewController {
         self.checkoutButton.titleLabel?.text = "Hold"
         self.checkoutButton.imageView?.layer.masksToBounds = true
         
-        //self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
-        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        //self.navigationController?.navigationBar.shadowImage = UIImage()
+        
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         //self.navigationController
         UIApplication.shared.statusBarStyle = .lightContent
@@ -294,25 +300,8 @@ class BookDetailViewController : UIViewController {
         
         
         let x = ratingView.frame
-        /*
-        let temp = UIView()
-        //let frame = CGRect(x: -10, y: 0, width: x.width/3, height: x.height*1.4)
-        temp.backgroundColor = UIColor.red
-        //temp.frame = frame
-        let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
-        animationView.contentMode = .scaleToFill
-        animationView.frame = CGRect(x: -10, y: 0, width: x.width/3, height: x.height*1.4)
-        //ratingView.addSubview(animationView)
-        //animationView.play()
-        //self.view.addSubview(animationView)
-        //animationView.backgroundColor = UIColor.red
-        animationView.loopAnimation = true
-        //animationView.play()
-        animationView.play(fromProgress: 0, toProgress: 1.0, withCompletion: nil)
-        */
-        for view in self.ratingView.subviews {
-            //view.removeFromSuperview()
-        }
+        
+        
         
         var counter: Int = 0
         

@@ -26,6 +26,7 @@ class FinalPageViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: Any) {
         
+        //self.navigationController?.popViewController(animated: true)
         self.performSegue(withIdentifier: "IntroToHome", sender: self)
     }
     

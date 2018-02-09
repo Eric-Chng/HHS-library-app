@@ -49,6 +49,8 @@ class LoginViewController: UIViewController {
             (self.testView as? UIVisualEffectView)?.effect = UIBlurEffect(style: .dark)
         }
         */
+        
+        
         backBlurView.alpha = 0.4
         let blurEffect = UIBlurEffect(style: .light)
         let effectView = UIVisualEffectView(effect: blurEffect)
@@ -88,7 +90,19 @@ class LoginViewController: UIViewController {
     
     @IBAction func Submit(_ sender: Any)
     {
-        self.performSegue(withIdentifier: "LoginToTabs", sender: self)
+        if UserDefaults.standard.object(forKey: "FirstLogin") == nil
+        {
+            print("dog")
+            UserDefaults.standard.set("false", forKey: "FirstLogin")
+            self.performSegue(withIdentifier: "LoginToIntro", sender: self)
+            
+        }
+        else
+        {
+            print(UserDefaults.standard.object(forKey: "FirstLogin"))
+            self.performSegue(withIdentifier: "LoginToTabs", sender: self)
+
+        }
         
     }
     

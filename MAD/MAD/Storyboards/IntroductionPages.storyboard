@@ -320,17 +320,17 @@
                     </view>
                     <connections>
                         <outlet property="goButton" destination="IJp-78-zPG" id="4vZ-bg-V7R"/>
-                        <segue destination="SBO-pq-LXx" kind="show" identifier="IntroToHome" id="wWy-Ge-79G"/>
+                        <segue destination="SBO-pq-LXx" kind="showDetail" identifier="IntroToHome" action="showViewController:sender:" id="wWy-Ge-79G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-Q6-66S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1574" y="2901"/>
         </scene>
-        <!--Home-->
+        <!--Tabs-->
         <scene sceneID="Kcp-4h-XFu">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="SBO-pq-LXx" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Tabs" id="SBO-pq-LXx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDG-SE-C2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2250" y="2265"/>

@@ -126,6 +126,7 @@
                         <outlet property="slideUpView" destination="pAB-W7-v4O" id="Wih-aC-qLr"/>
                         <outlet property="userNameField" destination="5mv-zC-0aB" id="w5j-hH-qts"/>
                         <segue destination="204-LH-vMc" kind="show" identifier="LoginToTabs" action="showDetailViewController:sender:" id="hUp-Qw-cBt"/>
+                        <segue destination="WzX-dv-AQd" kind="show" identifier="LoginToIntro" id="1Gc-hI-rTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p07-CN-ZFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,6 +140,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UgN-ym-27e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-555" y="430"/>
+        </scene>
+        <!--IntroductionPages-->
+        <scene sceneID="QkO-rL-qil">
+            <objects>
+                <viewControllerPlaceholder storyboardName="IntroductionPages" id="WzX-dv-AQd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Thd-Ls-VKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-457" y="593"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

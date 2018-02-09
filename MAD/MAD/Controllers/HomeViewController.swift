@@ -30,13 +30,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        self.mapView.mapType = MKMapType.satellite;
-        if UserDefaults.standard.object(forKey: "FirstLogin") == nil
-        {
-        UserDefaults.standard.set("false", forKey: "FirstLogin")
-            self.performSegue(withIdentifier: "LaunchHelp", sender: self)
+        self.tabBarController?.tabBar.isHidden = false
 
-        }
+        self.mapView.mapType = MKMapType.satellite;
+        
 
         //navBar.title = "Home"
         //navigationItem.title="Home"
