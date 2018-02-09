@@ -11,7 +11,7 @@ class AddReview: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/review_insert.php"
     
-    func downloadItems(userID: CLong, isbn:CLong, rating: Int, text: String) {
+    func downloadItems(userID: String, isbn:String, rating: Int, text: String) {
         
         
         //print ("Book ID search started with \(inputID)")
@@ -35,7 +35,7 @@ class AddReview: NSObject {
             
             let responseString = String(data: data, encoding: .utf8)
             //print("responseString = \(responseString)")
-            self.processAction(responseString)
+            self.processAction(response:responseString!)
         }
         task.resume()
         

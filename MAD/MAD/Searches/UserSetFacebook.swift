@@ -10,7 +10,7 @@ class UserSetFacebook: NSObject {
     let urlPath = "http://www.the-library-database.com/php_scripts/user_setfacebook.php"
     
     //Pass in isbn of checkout book and userid
-    func setFacebookID(id:CLong, facebookid:CLong) {
+    func setFacebookID(id:String, facebookid:String) {
         
         
         let url = URL(string: urlPath)!

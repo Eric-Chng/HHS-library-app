@@ -13,7 +13,7 @@ class IdSearchBook: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/isbn_book.php"
     
-    func downloadItems(inputID: CLong) {
+    func downloadItems(inputID: String) {
         
         
          let url = URL(string: urlPath)!

@@ -10,7 +10,7 @@ class UserReturn: NSObject {
     let urlPath = "http://www.the-library-database.com/php_scripts/user_return.php"
     
     //Pass in isbn of checkout book and userid
-    func downloadItems(isbn: CLong, transaction_ID:CLong) {
+    func downloadItems(isbn: String, transaction_ID:String) {
         
         
         let url = URL(string: urlPath)!

@@ -11,7 +11,7 @@ class UserGetBooks: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/user_getbooks.php"
     
-    func downloadItems(inputID: CLong) {
+    func downloadItems(inputID: String) {
         
         
         //print ("Book ID search started with \(inputID)")

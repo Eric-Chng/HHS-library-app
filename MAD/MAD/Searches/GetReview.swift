@@ -11,7 +11,7 @@ class GetReview: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/review_twoidsearch.php"
     
-    func downloadItems(userID: CLong, isbn:CLong) {
+    func downloadItems(userID: String, isbn:String) {
         
         
         //print ("Book ID search started with \(inputID)")

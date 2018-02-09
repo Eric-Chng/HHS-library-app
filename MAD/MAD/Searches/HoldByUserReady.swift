@@ -11,7 +11,7 @@ class HoldbyUserReady: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/hold_userid_ready.php"
     
-    func downloadItems(inputID: CLong) {
+    func downloadItems(inputID: String) {
         
         
         //print ("Book ID search started with \(inputID)")

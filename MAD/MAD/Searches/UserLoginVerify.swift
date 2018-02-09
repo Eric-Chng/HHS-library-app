@@ -11,7 +11,7 @@ class UserLoginVerify: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/user_loginverify.php"
     
-    func verifyLogin(schoolID: CLong, password:CLong) {
+    func verifyLogin(schoolID: String, password:String) {
         
         
         //print ("Book ID search started with \(inputID)")
@@ -21,35 +21,6 @@ class UserLoginVerify: NSObject {
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let postString = "password=secureAf&schoolid=\(schoolID)&userpassword=\(password)"
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
-            self.parseJSON(data)
-        }
-        task.resume()
-        
-    }
-    func downloadItems(isbn:CLong) {
-        
-        
-        //print ("Book ID search started with \(inputID)")
-        
-        let url = URL(string: urlPath)!
-        var request = URLRequest(url: url)
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let postString = "password=secureAf&isbn=\(isbn)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -78,6 +49,7 @@ class UserLoginVerify: NSObject {
         task.resume()
         
     }
+    
     
     func parseJSON(_ data:Data) {
         

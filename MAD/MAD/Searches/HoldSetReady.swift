@@ -10,7 +10,7 @@ class HoldSetReady: NSObject {
     let urlPath = "http://www.the-library-database.com/php_scripts/hold_setready.php"
     
     //Pass in isbn of checkout book and userid
-    func downloadItems(id:CLong) {
+    func downloadItems(id:String) {
         
         
         let url = URL(string: urlPath)!

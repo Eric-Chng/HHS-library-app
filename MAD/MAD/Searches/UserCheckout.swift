@@ -13,7 +13,7 @@ class UserCheckout: NSObject {
     let urlPath = "http://www.the-library-database.com/php_scripts/user_checkout.php"
     
     //Pass in isbn of checkout book and userid
-    func downloadItems(isbn: CLong,user:CLong) {
+    func downloadItems(isbn: String,user:String) {
         
         
         let url = URL(string: urlPath)!

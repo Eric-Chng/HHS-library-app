@@ -8,7 +8,37 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, DownloadProtocol {
+    func itemsDownloaded(items: NSArray) {
+        if (String(describing: items.firstObject) == "failed") {
+            userNameField.text = ""
+            passwordField.text = ""
+        } else {
+            let user = items.firstObject
+            switch user {
+            case is UserModel:
+                let userCasted = user as! UserModel
+                UserDefaults.standard.set(userCasted.ID,forKey: "id")
+                if UserDefaults.standard.object(forKey: "FirstLogin") == nil
+                {
+                    print("dog")
+                    UserDefaults.standard.set("false", forKey: "FirstLogin")
+                    self.performSegue(withIdentifier: "LoginToIntro", sender: self)
+                    
+                }
+                else
+                {
+                    print(UserDefaults.standard.object(forKey: "FirstLogin"))
+                    self.performSegue(withIdentifier: "LoginToTabs", sender: self)
+                    
+                }
+            default:
+                userNameField.text = ""
+                passwordField.text = ""
+            }
+        }
+    }
+    
     @IBOutlet weak var slideUpView: UIView!
     var timer: Timer = Timer()
     var counter: Int = 0
@@ -90,19 +120,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func Submit(_ sender: Any)
     {
-        if UserDefaults.standard.object(forKey: "FirstLogin") == nil
-        {
-            print("dog")
-            UserDefaults.standard.set("false", forKey: "FirstLogin")
-            self.performSegue(withIdentifier: "LoginToIntro", sender: self)
-            
-        }
-        else
-        {
-            print(UserDefaults.standard.object(forKey: "FirstLogin"))
-            self.performSegue(withIdentifier: "LoginToTabs", sender: self)
-
-        }
+        let login = UserLoginVerify()
+        login.delegate = self
+        login.verifyLogin(schoolID: userNameField.text!, password: passwordField.text!)
+        
         
     }
     
