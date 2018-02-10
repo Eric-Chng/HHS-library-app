@@ -54,7 +54,7 @@ class DiscoverSearch: NSObject {
         
         //NSArrays initialized
         var jsonElement = NSDictionary()
-        let books = NSMutableArray<BookModel>()
+        let books = NSMutableArray()
         
         for i in 0 ..< jsonResult.count
         {
