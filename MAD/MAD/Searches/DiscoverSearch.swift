@@ -11,14 +11,14 @@ class DiscoverSearch: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/discover_booktitlesearch.php"
     
-    func downloadItems(inputID: String) {
+    func downloadItems(textquery: String) {
         
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "password=secureAf&isbn=\(inputID)"
+        let postString = "password=secureAf&textquery=\(textquery)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
