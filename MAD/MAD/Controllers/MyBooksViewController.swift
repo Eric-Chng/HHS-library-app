@@ -43,7 +43,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let onHoldUserSearch = HoldbyUser()
         onHoldUserSearch.delegate = self
-        onHoldUserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "id") as! CLong)
+        onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "id") as! String)!/* as! CLong*/)
         
         loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
         

@@ -98,10 +98,11 @@ class LoginViewController: UIViewController, DownloadProtocol {
         */
         
         //UserDefaults.standard.set(userCasted.ID,forKey: "id")
-        let userID = UserDefaults.standard.object(forKey: "id")
+        if let userID = UserDefaults.standard.object(forKey: "id")
+        {
         print("id: ")
-        print(userID)
-        let idAsString = String(describing: userID)
+        //print(userID)
+            let idAsString = String(describing: userID)
         
             print(idAsString)
 
@@ -110,22 +111,22 @@ class LoginViewController: UIViewController, DownloadProtocol {
         if(idAsString.count > 2 && String(describing: userCredential).count > 2)
         {
             
-            print("Username: " + idAsString)
-            print("Password: " + String(describing: userCredential))
+            //print("Username: " + idAsString)
+            //print("Password: " + String(describing: userCredential!))
             self.loginButton.setTitle("Logging in...", for: UIControlState.normal)
             //self.loginButton.titleLabel?.text = "Logging in..."
             let login = UserLoginVerify()
             login.delegate = self
             self.userNameField.text = idAsString
-            self.passwordField.text = String(describing: userCredential)
-            login.verifyLogin(schoolID: idAsString, password: String(describing: userCredential))
+            self.passwordField.text = String(describing: userCredential!)
+            login.verifyLogin(schoolID: idAsString, password: String(describing: userCredential!))
             
             }
         else{
             self.userNameField.text = ""
             self.passwordField.text = ""
         }
-        
+        }
         
         backBlurView.alpha = 0.4
         let blurEffect = UIBlurEffect(style: .light)
