@@ -247,15 +247,21 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGy-Dp-agn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
-                                                                <state key="normal" title="help"/>
+                                                                <state key="normal" title="Help"/>
+                                                                <connections>
+                                                                    <action selector="helpPressed:" destination="6Hl-13-aej" eventType="touchUpInside" id="7Gk-g1-tAf"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D27-sb-V8Z">
                                                                 <rect key="frame" x="111.5" y="0.0" width="112" height="30"/>
-                                                                <state key="normal" title="log out"/>
+                                                                <state key="normal" title="Log Out"/>
+                                                                <connections>
+                                                                    <action selector="logoutPressed:" destination="6Hl-13-aej" eventType="touchUpInside" id="Uky-qs-0ws"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqM-Lq-aTc">
                                                                 <rect key="frame" x="223.5" y="0.0" width="111.5" height="30"/>
-                                                                <state key="normal" title="report bug"/>
+                                                                <state key="normal" title="Report Bug"/>
                                                                 <connections>
                                                                     <segue destination="B9A-n0-GyI" kind="presentation" id="Dsh-tH-DCf"/>
                                                                 </connections>
@@ -326,11 +332,33 @@
                         <outlet property="loginButtonView" destination="Zwf-qT-3UC" id="SPf-Io-Axy"/>
                         <outlet property="profilePictureView" destination="cl5-sv-Uq1" id="TR5-O5-JX8"/>
                         <segue destination="6SQ-fA-jKJ" kind="show" identifier="bookInfoSegue" id="dA8-DS-xQo"/>
+                        <segue destination="iGZ-Bb-zjc" kind="popoverPresentation" identifier="helpSegue" popoverAnchorView="vrw-BT-m5x" id="Oim-df-03B">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="uGR-1R-k0r" kind="popoverPresentation" identifier="logoutSegue" popoverAnchorView="vrw-BT-m5x" id="HcR-Ed-uis">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhc-9U-Wmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1604" y="1965.5172413793105"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="S7D-Bj-Rak">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="uGR-1R-k0r" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NnA-qU-vql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2089" y="1504"/>
+        </scene>
+        <!--IntroductionPages-->
+        <scene sceneID="6Aj-xA-Wgh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="IntroductionPages" id="iGZ-Bb-zjc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pUG-yG-7Gc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2277" y="1715"/>
         </scene>
         <!--Bug Report View Controller-->
         <scene sceneID="eFW-qw-GLP">

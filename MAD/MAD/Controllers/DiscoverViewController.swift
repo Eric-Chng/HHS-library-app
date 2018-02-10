@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 import Lottie
 
-class DiscoverViewController: UIViewController{
+class DiscoverViewController: UIViewController, DownloadProtocol, UINavigationControllerDelegate
+{
+    
+    
     
     var url: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+"
     var popularBookArr: [BookModel] = []
@@ -49,15 +52,35 @@ class DiscoverViewController: UIViewController{
         
     }
     
+    func itemsDownloaded(items: NSArray)
+    {
+        if(items.count>0)
+        {
+            print("Discover received items")
+        }
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //print("view appeared")
+        if(self.reviewArr.count < 1)
+        {
+            //print("Reloading")
+            self.timer.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action2), userInfo: nil,  repeats: true)
+            
+        }
+    }
+    
     @objc func action2()
     {
-        //print("hello")
         if let token = FBSDKAccessToken.current()
         {
-            
+            print("Token found")
         let params = ["fields": "friends"]
         FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
-            var ids: [String] = []
+            //var ids: [String] = []
             if let result = result as? [String:Any]
             {
                 

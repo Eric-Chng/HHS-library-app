@@ -9,32 +9,48 @@
 import UIKit
 
 class LoginViewController: UIViewController, DownloadProtocol {
+    
+    @IBOutlet weak var incorrectCredentialsLabel: UILabel!
+    
     func itemsDownloaded(items: NSArray) {
+        //print("Items downloaded")
+        //self.loginButton.titleLabel?.text = "Login"
+        self.loginButton.setTitle("Login", for: UIControlState.normal)
         if (String(describing: items.firstObject) == "failed") {
+            //print("Login Failed")
             userNameField.text = ""
             passwordField.text = ""
+            self.incorrectCredentialsLabel.alpha = 1.0
+            
         } else {
             let user = items.firstObject
             switch user {
             case is UserModel:
                 let userCasted = user as! UserModel
-                UserDefaults.standard.set(userCasted.ID,forKey: "id")
+                UserDefaults.standard.set(self.userNameField.text,forKey: "id")
+                UserDefaults.standard.set(self.passwordField.text,forKey: "credential")
+
+                print("puppy")
+                print(UserDefaults.standard.object(forKey: "id"))
                 if UserDefaults.standard.object(forKey: "FirstLogin") == nil
                 {
-                    print("dog")
+                    //print("dog")
                     UserDefaults.standard.set("false", forKey: "FirstLogin")
                     self.performSegue(withIdentifier: "LoginToIntro", sender: self)
                     
                 }
                 else
                 {
-                    print(UserDefaults.standard.object(forKey: "FirstLogin"))
+                    //print(UserDefaults.standard.object(forKey: "FirstLogin"))
                     self.performSegue(withIdentifier: "LoginToTabs", sender: self)
                     
                 }
             default:
                 userNameField.text = ""
                 passwordField.text = ""
+                print("Login Failed!")
+                self.incorrectCredentialsLabel.alpha = 1.0
+
             }
         }
     }
@@ -55,6 +71,7 @@ class LoginViewController: UIViewController, DownloadProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.incorrectCredentialsLabel.alpha = 0.0
         self.userNameField.layer.cornerRadius = 12
         self.passwordField.layer.cornerRadius = 12
         self.userNameField.layer.masksToBounds = true
@@ -79,6 +96,31 @@ class LoginViewController: UIViewController, DownloadProtocol {
             (self.testView as? UIVisualEffectView)?.effect = UIBlurEffect(style: .dark)
         }
         */
+        
+        //UserDefaults.standard.set(userCasted.ID,forKey: "id")
+        let userID = UserDefaults.standard.object(forKey: "id")
+        print("id: ")
+        print(userID!)
+        let idAsString = String(describing: userID!)
+        
+            print(idAsString)
+
+        let userCredential = UserDefaults.standard.object(forKey: "credential")
+        
+        if(idAsString.count > 2 && String(describing: userCredential).count > 2)
+        {
+            
+            print("Username: " + idAsString)
+            print("Password: " + String(describing: userCredential))
+            self.loginButton.setTitle("Logging in...", for: UIControlState.normal)
+            //self.loginButton.titleLabel?.text = "Logging in..."
+            let login = UserLoginVerify()
+            login.delegate = self
+            self.userNameField.text = idAsString
+            self.passwordField.text = String(describing: userCredential!)
+            login.verifyLogin(schoolID: idAsString, password: String(describing: userCredential!))
+            
+            }
         
         
         backBlurView.alpha = 0.4
@@ -120,6 +162,8 @@ class LoginViewController: UIViewController, DownloadProtocol {
     
     @IBAction func Submit(_ sender: Any)
     {
+        self.loginButton.setTitle("Logging in...", for: UIControlState.normal)
+        self.loginButton.titleLabel?.text = "Logging in..."
         let login = UserLoginVerify()
         login.delegate = self
         login.verifyLogin(schoolID: userNameField.text!, password: passwordField.text!)

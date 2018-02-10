@@ -82,9 +82,20 @@
                                     <action selector="Submit:" destination="fQf-iE-rvz" eventType="touchUpInside" id="2kw-up-mKl"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect login, please try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTT-4z-dBi">
+                                <rect key="frame" x="82" y="386" width="250" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4En-En-ZFH"/>
+                                    <constraint firstAttribute="width" constant="250" id="fab-Ol-Eg5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ep4-89-XcE" firstAttribute="centerX" secondItem="Tji-AH-asb" secondAttribute="centerX" constant="-6" id="2bb-Ks-RR6"/>
+                            <constraint firstItem="DTT-4z-dBi" firstAttribute="top" secondItem="IAe-or-POd" secondAttribute="bottom" constant="4" id="30o-MH-F8t"/>
                             <constraint firstItem="bEO-W6-T7p" firstAttribute="top" secondItem="8Po-EL-bTC" secondAttribute="top" constant="-20" id="6db-HV-BWg"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="bEO-W6-T7p" secondAttribute="bottom" id="7s7-4H-aNZ"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="pAB-W7-v4O" secondAttribute="bottom" id="9fT-2q-MeI"/>
@@ -104,6 +115,7 @@
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="top" secondItem="ICa-AX-olF" secondAttribute="top" constant="20" id="bgz-Rd-CDJ"/>
                             <constraint firstItem="bEO-W6-T7p" firstAttribute="leading" secondItem="8Po-EL-bTC" secondAttribute="leading" id="kRD-3O-hg2"/>
                             <constraint firstItem="ICa-AX-olF" firstAttribute="bottom" secondItem="8Po-EL-bTC" secondAttribute="bottom" id="lmm-6Q-wvT"/>
+                            <constraint firstItem="DTT-4z-dBi" firstAttribute="centerX" secondItem="ICa-AX-olF" secondAttribute="centerX" id="mew-Cy-2lS"/>
                             <constraint firstItem="5mv-zC-0aB" firstAttribute="centerX" secondItem="Tji-AH-asb" secondAttribute="centerX" constant="-6" id="rJA-x5-4CL"/>
                             <constraint firstItem="ICa-AX-olF" firstAttribute="leading" secondItem="8Po-EL-bTC" secondAttribute="leading" id="sHy-be-OCX"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="trailing" secondItem="ICa-AX-olF" secondAttribute="trailing" id="sMG-4s-15c"/>
@@ -120,6 +132,7 @@
                         <outlet property="backgroundImage" destination="ICa-AX-olF" id="wwM-CY-0Wf"/>
                         <outlet property="fadeOutView" destination="puw-QQ-oGF" id="BAH-uA-7FY"/>
                         <outlet property="iconImage" destination="eQL-UC-N0H" id="hz0-ci-yQL"/>
+                        <outlet property="incorrectCredentialsLabel" destination="DTT-4z-dBi" id="k9F-ew-OvN"/>
                         <outlet property="libraryBackdrop" destination="egD-Xq-Ai2" id="7WF-Pf-sEJ"/>
                         <outlet property="loginButton" destination="IAe-or-POd" id="ybq-7B-bpi"/>
                         <outlet property="passwordField" destination="Ep4-89-XcE" id="Nij-NS-ZhV"/>

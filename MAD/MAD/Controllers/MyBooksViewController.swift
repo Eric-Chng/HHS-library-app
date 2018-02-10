@@ -53,6 +53,18 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         print(items.firstObject)
         //self.listTableView.reloadData()
     }
+    @IBAction func logoutPressed(_ sender: Any) {
+        
+        UserDefaults.standard.set("",forKey: "id")
+        UserDefaults.standard.set("",forKey: "credential")
+        self.performSegue(withIdentifier: "logoutSegue", sender: self)
+        
+    }
+    
+    @IBAction func helpPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "helpSegue", sender: self)
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of feed items
