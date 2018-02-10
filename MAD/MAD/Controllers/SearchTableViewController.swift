@@ -36,12 +36,12 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
             case is BookModel:
                 let bookCasted = book as! BookModel
                 print(bookCasted)
-                print("ladkfjl\n\n\n\n\n\n\n\n\n\n\n\n")
+                self.sendNewRequest = true
             default:
                 print("failed")
                 if (items.count == 1) {
                     // no books found in database ____________________________
-            }
+                }
             }
         }
         
