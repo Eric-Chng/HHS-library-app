@@ -25,6 +25,8 @@ class BookModel: NSObject {
     var googleImageURL: String?
     var foundGoogleImage: Bool = false;
     var rating: Double = -3.0 //not found if negative
+    var bookCount: Int? //COPIES OF BOOK AVAILABLE. WE SHOULD INITIALIZE WHEN USING IT
+    var bookTotal: Int?
     
     //var timer: Timer = Timer()
     

@@ -114,7 +114,7 @@ class GetReview: NSObject {
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.itemsDownloaded(items: ratings, from: "getReview")
+            self.delegate.itemsDownloaded(items: ratings, from: "GetReview")
             
         })
     }

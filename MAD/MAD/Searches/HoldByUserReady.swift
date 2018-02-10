@@ -86,7 +86,7 @@ class HoldbyUserReady: NSObject {
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.itemsDownloaded(items: holds, from: "holdByUserReady")
+            self.delegate.itemsDownloaded(items: holds, from: "HoldByUserReady")
             
         })
     }

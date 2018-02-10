@@ -3,18 +3,16 @@ import UIKit
 
 
 
-class HoldbyBook: NSObject {
+class DiscoverSearch: NSObject {
     
     
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/hold_bookisbn.php"
+    let urlPath = "http://www.the-library-database.com/php_scripts/discover_booktitlesearch.php"
     
     func downloadItems(inputID: String) {
         
-        
-        //print ("Book ID search started with \(inputID)")
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
@@ -34,7 +32,7 @@ class HoldbyBook: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
+            print("responseString = \(responseString)")
             self.parseJSON(data)
         }
         task.resume()
@@ -56,42 +54,44 @@ class HoldbyBook: NSObject {
         
         //NSArrays initialized
         var jsonElement = NSDictionary()
-        let holds = NSMutableArray()
+        let books = NSMutableArray<BookModel>()
         
         for i in 0 ..< jsonResult.count
         {
             
             jsonElement = jsonResult[i] as! NSDictionary
             
-            let hold = HoldModel()
+            let book = BookModel()
             
             
             //JsonElement values are guaranteed to not be null through optional binding
-            if let id = jsonElement["hold_id"] as! String?,
+            if let name = jsonElement["name"] as! String?,
                 let isbn = jsonElement["isbn"] as! String?,
-                let userid = jsonElement["user_id"] as! String?,
-                let start = jsonElement["timestart"] as! String?,
-                let ready = jsonElement["ready"] as! String?
+                let authorID = jsonElement["author_id"] as! String?,
+                let desc = jsonElement["description"] as! String?,
+                let bookcount = jsonElement["bookcount"] as! String?,
+                let booktotal = jsonElement["booktotal"] as! String?
             {
-                hold.ID = id
-                hold.ISBN = isbn
-                hold.userID = userid
-                hold.startTimestamp = start
-                hold.ready = Int(ready)
+                book.name = name
+                book.ISBN = isbn
+                book.authorID = CLong(authorID)
+                book.desc = desc
+                book.bookCount = Int(bookcount)
+                book.bookTotal = Int(booktotal)
+                print(book)
             }
             
-            holds.add(hold)
+            books.add(book)
             
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.itemsDownloaded(items: holds, from: "HoldByBook")
+            self.delegate.itemsDownloaded(items: books, from: "DiscoverSearch")
             
         })
     }
     
 }
-
 
 
