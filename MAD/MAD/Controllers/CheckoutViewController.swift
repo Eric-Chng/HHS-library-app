@@ -186,7 +186,6 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         //let parames = ["fields": "picture.type(large)"] ///me/friends?fields=installed
         //https://graph.facebook.com/110990426382408/picture?type=large
 
-        //110990426382408
         
         
     }
