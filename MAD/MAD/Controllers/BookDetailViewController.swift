@@ -14,7 +14,9 @@ import Lottie
 //import ObjectMapper
 
 
-class BookDetailViewController : UIViewController {
+class BookDetailViewController : UIViewController, DownloadProtocol {
+    
+    
     
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
@@ -64,8 +66,37 @@ class BookDetailViewController : UIViewController {
     }
     
     @IBAction func reserveButton(_ sender: Any) {
-        print("touched")
+        //print("touched")
+        if(self.checkoutButton.currentTitle! == "Hold")
+        {
         self.performSegue(withIdentifier: "reserveSegue", sender: self)
+        }
+    }
+    
+    func itemsDownloaded(items: NSArray) {
+        
+        print("Items received")
+        var counter: Int = 0
+        for x in items
+        {
+            print(x)
+            counter = counter + 1
+        }
+        if(items.count > 0)
+        {
+            self.checkoutButton.setTitle("Hold", for: UIControlState.normal)
+            
+            print("Found to be available")
+        }
+        else
+        {
+            self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
+            UIView.animate(withDuration: 1.0) {
+                self.checkoutButton.alpha = 0.8
+                self.checkoutButton.backgroundColor = UIColor.lightGray
+            }
+        }
+        
         
     }
     
@@ -175,10 +206,19 @@ class BookDetailViewController : UIViewController {
                 if(self.titleLabel  != nil && self.titleLabel?.text != nil && self.titleLabel?.text != "Loading" && self.BookCoverImage != nil && self.BookCoverImage.image?.isEqual(#imageLiteral(resourceName: "loadingImage")) == false)
                 {
                     //print("Invalidating")
-                    
+                    print("doggin it")
                     if(selectedBook!.rating > -0.1)
                     {
+                        print("puppo")
                 self.loadTimer?.invalidate()
+                        //print("check availability")
+                        self.checkAvailability()
+                    }
+                    else
+                    {
+                        self.loadTimer?.invalidate()
+                        self.checkAvailability()
+
                     }
                     
                 }
@@ -196,10 +236,18 @@ class BookDetailViewController : UIViewController {
         }
     }
     
+    func checkAvailability()
+    {
+        print("Checking")
+        let idSearch = IdSearchBook()
+        idSearch.delegate = self
+        idSearch.downloadItems(inputID: (self.selectedBook?.ISBN)!)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     //_ = popViewController(animated: true)
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
     
     }
     
@@ -207,7 +255,7 @@ class BookDetailViewController : UIViewController {
     @objc func action()
     {
         //print("counter: " + String(describing: smallCoverImageCounter))
-        print("hi")
+        //print("hi")
         
        
         
@@ -270,6 +318,9 @@ class BookDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.checkoutButton.setTitle("Checking Availability...", for: UIControlState.normal)
+
         self.navigationController?.navigationBar.isTranslucent = false
         //self.checkoutButton.image
         //self.checkoutButton.backgroundImage(for: <#T##UIControlState#>)
@@ -362,6 +413,8 @@ class BookDetailViewController : UIViewController {
                 let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant)
                 self.descBox.addConstraints([heightConstraint])
             
+                //print("doggy")
+                self.checkAvailability()
                 
             self.titleLabel?.text = selectedBook!.title
             self.authorLabel?.text = selectedBook!.author
