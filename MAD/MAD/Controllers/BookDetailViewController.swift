@@ -73,7 +73,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         }
     }
     
-    func itemsDownloaded(items: NSArray) {
+    func itemsDownloaded(items: NSArray, from: String) {
         
         print("Items received")
         var counter: Int = 0

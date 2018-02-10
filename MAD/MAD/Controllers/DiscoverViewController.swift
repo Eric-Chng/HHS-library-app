@@ -52,7 +52,7 @@ class DiscoverViewController: UIViewController, DownloadProtocol, UINavigationCo
         
     }
     
-    func itemsDownloaded(items: NSArray)
+    func itemsDownloaded(items: NSArray, from: String)
     {
         if(items.count>0)
         {

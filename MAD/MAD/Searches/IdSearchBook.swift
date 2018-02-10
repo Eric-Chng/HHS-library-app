@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol DownloadProtocol: class {
-    func itemsDownloaded(items: NSArray)
+    func itemsDownloaded(items: NSArray, from: String)
 }
 
 class IdSearchBook: NSObject {
@@ -76,7 +76,7 @@ class IdSearchBook: NSObject {
                 book.ISBN = isbn
                 book.authorID = CLong(authorID)
                 book.desc = desc
-
+                print(name)
             }
             
             books.add(book)
@@ -85,7 +85,7 @@ class IdSearchBook: NSObject {
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.itemsDownloaded(items: books)
+            self.delegate.itemsDownloaded(items: books, from: "idSearch")
             
         })
     }

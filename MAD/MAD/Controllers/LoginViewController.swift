@@ -12,7 +12,7 @@ class LoginViewController: UIViewController, DownloadProtocol {
     
     @IBOutlet weak var incorrectCredentialsLabel: UILabel!
     
-    func itemsDownloaded(items: NSArray) {
+    func itemsDownloaded(items: NSArray, from: String) {
         //print("Items downloaded")
         //self.loginButton.titleLabel?.text = "Login"
         self.loginButton.setTitle("Login", for: UIControlState.normal)
@@ -100,8 +100,8 @@ class LoginViewController: UIViewController, DownloadProtocol {
         //UserDefaults.standard.set(userCasted.ID,forKey: "id")
         let userID = UserDefaults.standard.object(forKey: "id")
         print("id: ")
-        print(userID!)
-        let idAsString = String(describing: userID!)
+        print(userID)
+        let idAsString = String(describing: userID)
         
             print(idAsString)
 
@@ -117,10 +117,14 @@ class LoginViewController: UIViewController, DownloadProtocol {
             let login = UserLoginVerify()
             login.delegate = self
             self.userNameField.text = idAsString
-            self.passwordField.text = String(describing: userCredential!)
-            login.verifyLogin(schoolID: idAsString, password: String(describing: userCredential!))
+            self.passwordField.text = String(describing: userCredential)
+            login.verifyLogin(schoolID: idAsString, password: String(describing: userCredential))
             
             }
+        else{
+            self.userNameField.text = ""
+            self.passwordField.text = ""
+        }
         
         
         backBlurView.alpha = 0.4

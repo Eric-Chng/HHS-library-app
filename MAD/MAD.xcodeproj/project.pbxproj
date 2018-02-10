@@ -60,6 +60,8 @@
 		7BDEE2EE2026E78C004F3E4D /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */; };
 		7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */; };
 		7BFF53A5202BC3F6007A1C8B /* FinalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFF53A4202BC3F5007A1C8B /* FinalPageViewController.swift */; };
+		82562A3B202EC0D500C16D5F /* MyBooksCheckOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82562A3A202EC0D400C16D5F /* MyBooksCheckOutTableViewCell.swift */; };
+		82562A3D202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */; };
 		828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F582A201D35CD00E36EAE /* BugReportViewController.swift */; };
 		829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */; };
 		82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */; };
@@ -130,6 +132,8 @@
 		7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
 		7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7BFF53A4202BC3F5007A1C8B /* FinalPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalPageViewController.swift; sourceTree = "<group>"; };
+		82562A3A202EC0D400C16D5F /* MyBooksCheckOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksCheckOutTableViewCell.swift; sourceTree = "<group>"; };
+		82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksOnHoldTableViewCell.swift; sourceTree = "<group>"; };
 		828F582A201D35CD00E36EAE /* BugReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugReportViewController.swift; sourceTree = "<group>"; };
 		829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBooks.storyboard; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 				829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */,
 				7B4E3EC9201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift */,
 				7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */,
+				82562A3A202EC0D400C16D5F /* MyBooksCheckOutTableViewCell.swift */,
+				82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -534,8 +540,10 @@
 				7B5BDDF71FEF1E810089BC00 /* ResultsViewController.swift in Sources */,
 				7B6EE70520268A84003A8908 /* IntroductionPageViewController.swift in Sources */,
 				44E5116A2029AB7200A721B3 /* HoldSetReady.swift in Sources */,
+				82562A3D202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift in Sources */,
 				7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */,
 				44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */,
+				82562A3B202EC0D500C16D5F /* MyBooksCheckOutTableViewCell.swift in Sources */,
 				44E5115820298CDC00A721B3 /* UserGetBooks.swift in Sources */,
 				7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */,
 				44E511682029AB2B00A721B3 /* HoldByUserReady.swift in Sources */,

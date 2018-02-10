@@ -9,11 +9,18 @@
 import Foundation
 import UIKit
 
-class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DownloadProtocol, FBSDKLoginButtonDelegate{
-    var feedItems: NSArray = NSArray()
+class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DownloadProtocol, FBSDKLoginButtonDelegate{
+    
+    
+    var checkouts: NSArray = NSArray()
+    var checkoutBooks: NSArray = NSArray()
+    var onholds: NSArray = []
+    var onholdBooks: NSArray = []
     
     
     
+    @IBOutlet weak var onHoldTableView: UITableView!
+    @IBOutlet weak var checkOutTableView: UITableView!
     @IBOutlet weak var loginButtonView: UIView!
     
     @IBOutlet weak var profilePictureView: UIImageView!
@@ -30,6 +37,14 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let UserSearch = UserGetBooks()
+        UserSearch.delegate = self
+        UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "id") as! String)
+        
+        let onHoldUserSearch = HoldbyUser()
+        onHoldUserSearch.delegate = self
+        onHoldUserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "id") as! CLong)
+        
         loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
         
         loginButtonView.addSubview(loginButton)
@@ -41,17 +56,28 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profilePictureView.layer.cornerRadius = profilePictureView.layer.frame.width/2
         self.profilePictureView.layer.masksToBounds = true
         
-        let UserSearch = UserGetBooks()
-            UserSearch.delegate = self
-        UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "id") as! String)
-        
     }
     
-    func itemsDownloaded(items: NSArray) {
-        
-        feedItems = items
-        print(items.firstObject)
-        //self.listTableView.reloadData()
+    func itemsDownloaded(items: NSArray, from: String) {
+        if(from.elementsEqual("userGetBooks")){
+        for i in items{
+            let book = i as! CheckoutModel
+            checkouts.adding(book);
+            let model = BookModel(ISBN: book.ISBN!)
+            checkoutBooks.adding(model)
+
+        }
+        }
+        else if(from.elementsEqual("holdByUser")){
+            for i in items{
+                let book = i as! HoldModel
+                onholds.adding(book)
+                let model = BookModel(ISBN: book.ISBN!)
+                onholdBooks.adding(model)
+            }
+        }
+//        print(items.firstObject)
+        self.checkOutTableView.reloadData()
     }
     @IBAction func logoutPressed(_ sender: Any) {
         
@@ -67,22 +93,53 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of feed items
-        return 1
+        var count:Int?
+        
+        if tableView == self.onHoldTableView {
+            count = onholds.count
+        }
+        
+        if tableView == self.checkOutTableView {
+            print(count ?? 0)
+            count =  checkouts.count
+        }
+        
+        return count!
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Retrieve cell
-        let cellIdentifier: String = "BasicCell"
-        let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
-        // Get references to labels of cell
+        if tableView == self.checkOutTableView {
+            let checkoutBook = checkouts[indexPath.row] as! CheckoutModel
+            let book = checkoutBooks[indexPath.row] as! BookModel
+           let  cell = tableView.dequeueReusableCell(withIdentifier: "bookcheckoutcell") as! MyBooksCheckOutTableViewCell
+            cell.bookImg = book.BookCoverImage
+            cell.bookTitle.text = book.name!
+            cell.dueDate.text = checkoutBook.endTimestamp;
+            return cell
+        }
+        else{
+            let  cell = tableView.dequeueReusableCell(withIdentifier: "bookcheckoutcell") as! MyBooksOnHoldTableViewCell
+            let onholdBook = onholds[indexPath.row] as! HoldModel
+            let book = onholdBooks[indexPath.row] as! BookModel
+            cell.bookImg = book.BookCoverImage
+            cell.bookTitle.text = book.name!
+            if((onholdBook.ready) != nil && onholdBook.ready == 1){
+                cell.ready.text = "ready"
+            }
+            else{
+                cell.ready.text = "not ready"
+            }
+            return cell;
+        }
         
-        myCell.textLabel!.text = "The Theory of Nothing"
-        //self.listTableView.reloadData()
-
-        return myCell
+//        if tableView == self.tableView1 {
+//            cell = tableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath)
+//            let previewDetail = sampleData1[indexPath.row]
+//            cell!.textLabel!.text = previewDetail.title
+//
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

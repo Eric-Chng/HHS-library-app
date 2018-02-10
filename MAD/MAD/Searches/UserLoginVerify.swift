@@ -39,7 +39,7 @@ class UserLoginVerify: NSObject {
                 DispatchQueue.main.async(execute: { () -> Void in
                     let users = NSMutableArray()
                     users.add("failed")
-                    self.delegate.itemsDownloaded(items: users)
+                    self.delegate.itemsDownloaded(items: users, from: "userLoginVerify")
                     
                 })
             }else {
@@ -101,7 +101,7 @@ class UserLoginVerify: NSObject {
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.itemsDownloaded(items: users)
+            self.delegate.itemsDownloaded(items: users, from: "userLoginVerify")
             
         })
     }
