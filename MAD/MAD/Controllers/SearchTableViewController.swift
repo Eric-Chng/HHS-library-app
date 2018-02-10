@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class SearchTableViewController: UITableViewController, UISearchBarDelegate {
+class SearchTableViewController: UITableViewController, UISearchBarDelegate, DownloadProtocol {
     
     @IBOutlet weak var searchBar: UISearchBar!
     var currentAuthors: [String] = [""]
@@ -24,12 +24,28 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var tableViewSearch: UISearchBar!
     var sendNewRequest: Bool = false;
     var discoverViewController: [DiscoverViewController] = []
-    
-    
-    
-    
+
     var currentCoversDownloaded:[Bool] = [false, false, false, false, false, false, false, false, false, false]
     
+    
+    
+    func itemsDownloaded(items: NSArray, from: String) {
+        
+        for book in items {
+        switch book {
+            case is BookModel:
+                let bookCasted = book as! BookModel
+                print(bookCasted)
+                print("ladkfjl\n\n\n\n\n\n\n\n\n\n\n\n")
+            default:
+                print("failed")
+                if (items.count == 1) {
+                    // no books found in database ____________________________
+            }
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +92,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.showsCancelButton = true
         //print("finding results for keyword: " + keywords)
+        
+        let discoverDatabaseSearch = DiscoverSearch()
+        discoverDatabaseSearch.delegate = self
+        discoverDatabaseSearch.downloadItems(textquery: keywords)
+        
+        
+        
         keywords = keywords.replacingOccurrences(of: " ", with: "+")
         let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
         
@@ -145,12 +168,12 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                         //print(JSONAsString)
                         self.JSONsParsed.append(JSONAsString)
                         let x = BookModel.init(JSON: JSONAsString)
-                        print("shaylan")
+
                         self.sendNewRequest = true
                         self.requestCounter = self.requestCounter + 1
                         
                         
-                        //print("shaylan")
+
                         let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
                         let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
                         

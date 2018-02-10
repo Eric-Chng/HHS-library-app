@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Lottie
 
-class DiscoverViewController: UIViewController, DownloadProtocol, UINavigationControllerDelegate
+class DiscoverViewController: UIViewController, UINavigationControllerDelegate
 {
     
     
@@ -51,16 +51,7 @@ class DiscoverViewController: UIViewController, DownloadProtocol, UINavigationCo
         
         
     }
-    
-    func itemsDownloaded(items: NSArray, from: String)
-    {
-        if(items.count>0)
-        {
-            print("Discover received items")
-        }
-        
-        
-    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         //print("view appeared")
