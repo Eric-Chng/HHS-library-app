@@ -397,9 +397,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         for tempvarforarray in books {
             if (tempvarforarray is BookModel && tempvarforarray != nil) {
                 print("search returned book")
-                let x = tempvarforarray as! BookModel
+                let intermediatetemp = tempvarforarray as! BookModel
+                let x = BookModel(ISBN: intermediatetemp.ISBN!)
                 print (x)
-                self.currentTitles.append(x.name!)
+                //self.currentTitles.append(x.title!)
+                self.currentTitles.append("test")
                 self.currentAuthors.append(x.author!)
                 self.currentISBNs.append(x.ISBN!)
                 self.currentBooks.append(x)

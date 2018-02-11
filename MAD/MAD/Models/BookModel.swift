@@ -48,7 +48,10 @@ class BookModel: NSObject {
         }
         
         self.ISBN = ISBN
-        self.name = name
+        //self.name = name
+        self.title = name
+        
+        
         self.authorID = author
         self.desc = desc
         
@@ -106,6 +109,7 @@ class BookModel: NSObject {
                 return
             }
         }
+        self.name = self.title
         task.resume()
     }
     
