@@ -246,6 +246,12 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.destination is HoldViewController {
+            (segue.destination as! HoldViewController).setBookModel(model: self.selectedBook!)
+            //destinationViewController.selectedBook = bookToPass
+        }
+        
+        
     //_ = popViewController(animated: true)
         //self.navigationController?.popViewController(animated: true)
     
@@ -868,6 +874,11 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         }
     }
     }
+    
+    @IBAction func unwindToDetail(segue:UIStoryboardSegue) {
+        
+    }
+
     
     func googleBooksImageURL(newURL: String)
     {

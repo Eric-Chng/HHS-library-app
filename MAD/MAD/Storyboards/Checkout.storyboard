@@ -43,7 +43,7 @@
                                     <constraint firstAttribute="width" constant="255" id="cos-lN-MLh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="scanner" image="scanbutton"/>
+                                <state key="normal" title="scanner" image="scanToCheckoutButton2"/>
                                 <connections>
                                     <action selector="goNext:" destination="Gov-tV-Puz" eventType="touchUpInside" id="fsN-Zp-caT"/>
                                 </connections>
@@ -55,6 +55,32 @@
                                     <constraint firstAttribute="height" constant="176" id="30i-w8-rdF"/>
                                     <constraint firstAttribute="width" constant="300" id="iIj-IJ-Tkz"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="57" id="g5g-1c-47C">
+                                        <rect key="frame" x="0.0" y="28" width="300" height="57"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g5g-1c-47C" id="zvE-Aq-8JN">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="56.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4v-2S-nTG">
+                                                    <rect key="frame" x="15" y="18" width="270" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="MKG-9O-U8M"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="O4v-2S-nTG" secondAttribute="trailing" constant="15" id="Wff-LS-dZI"/>
+                                                <constraint firstItem="O4v-2S-nTG" firstAttribute="centerY" secondItem="zvE-Aq-8JN" secondAttribute="centerY" id="uJ7-sr-o3X"/>
+                                                <constraint firstItem="O4v-2S-nTG" firstAttribute="leading" secondItem="zvE-Aq-8JN" secondAttribute="leading" constant="15" id="v6y-ZQ-pCe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-or-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L75-OO-TyW">
                                 <rect key="frame" x="166" y="335" width="42" height="21"/>
@@ -3988,7 +4014,7 @@ AAAAAAACVjA
 </mutableData>
         </image>
         <image name="plus" width="32" height="32"/>
-        <image name="scanbutton" width="340" height="185"/>
+        <image name="scanToCheckoutButton2" width="340" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2mD-LB-cm2"/>
