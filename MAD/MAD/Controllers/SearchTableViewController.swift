@@ -104,6 +104,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+        
+        //self.navigationController?.popViewController(animated: false)
         self.discoverViewController[0].view.setNeedsDisplay()
     }
     

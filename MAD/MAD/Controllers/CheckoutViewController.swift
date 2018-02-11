@@ -10,6 +10,7 @@ import UIKit
 
 
 class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDelegate{
+    @IBOutlet weak var holdTableView: UITableView!
     
     var lastSendTime:Int = Int(ProcessInfo.processInfo.systemUptime)
     let loginButton: FBSDKLoginButton = {
@@ -48,7 +49,10 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.holdTableView.layer.cornerRadius = 10
+        self.holdTableView.layer.masksToBounds = true
+        self.holdTableView.layer.borderColor = UIColor.lightGray.cgColor
+        self.holdTableView.layer.borderWidth = 0.5
         loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
         loginButtonView.addSubview(loginButton)
         loginButton.delegate = self

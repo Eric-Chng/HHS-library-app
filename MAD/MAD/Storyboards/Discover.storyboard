@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6v-XW-38L">
-                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="adh-F2-Z2F"/>
                                 </constraints>
@@ -30,13 +30,13 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYI-Xb-CUT">
-                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <connections>
                                     <action selector="searchButtonPressed:" destination="HRS-tc-BrZ" eventType="touchUpInside" id="mSn-ea-bCc"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8W-72-cdA">
-                                <rect key="frame" x="0.0" y="160" width="375" height="991"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="1087"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfC-1c-0Kx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
@@ -523,12 +523,13 @@
                         <outlet property="tableViewSearch" destination="dp5-fI-C2u" id="fAw-15-mlr"/>
                         <segue destination="55R-lw-cbe" kind="unwind" identifier="unwindSegueToVC1" animates="NO" unwindAction="unwindToVC1WithSegue:" id="mk0-nm-YcQ"/>
                         <segue destination="WJ9-rY-Swp" kind="show" identifier="SearchToBookDetail" id="uF4-ZG-LlG"/>
+                        <segue destination="HRS-tc-BrZ" kind="showDetail" identifier="searchUnwindSegue" animates="NO" action="showViewController:sender:" id="fJK-zv-T41"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYg-JZ-yAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="55R-lw-cbe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="128.80000000000001" y="1420.8395802098951"/>
+            <point key="canvasLocation" x="111" y="1336"/>
         </scene>
         <!--BookDetails-->
         <scene sceneID="CYQ-mq-OrQ">
@@ -585,6 +586,7 @@
         <image name="search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="488-Hg-Ztb"/>
+        <segue reference="uF4-ZG-LlG"/>
+        <segue reference="fJK-zv-T41"/>
     </inferredMetricsTieBreakers>
 </document>
