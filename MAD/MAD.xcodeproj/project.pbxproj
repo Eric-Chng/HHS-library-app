@@ -33,6 +33,7 @@
 		44E511662029AAC900A721B3 /* HoldByUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E511652029AAC900A721B3 /* HoldByUser.swift */; };
 		44E511682029AB2B00A721B3 /* HoldByUserReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E511672029AB2B00A721B3 /* HoldByUserReady.swift */; };
 		44E5116A2029AB7200A721B3 /* HoldSetReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E511692029AB7200A721B3 /* HoldSetReady.swift */; };
+		44F5AC882030B6F500C644CF /* HoldCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5AC872030B6F500C644CF /* HoldCreate.swift */; };
 		44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61741FA7037600A9399E /* DiscoverViewController.swift */; };
 		44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE61781FA7053300A9399E /* MyBooksViewController.swift */; };
 		7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1432012C98D00A4E9A8 /* loader.json */; };
@@ -104,6 +105,7 @@
 		44E511652029AAC900A721B3 /* HoldByUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldByUser.swift; sourceTree = "<group>"; };
 		44E511672029AB2B00A721B3 /* HoldByUserReady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldByUserReady.swift; sourceTree = "<group>"; };
 		44E511692029AB7200A721B3 /* HoldSetReady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldSetReady.swift; sourceTree = "<group>"; };
+		44F5AC872030B6F500C644CF /* HoldCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldCreate.swift; sourceTree = "<group>"; };
 		44FE61741FA7037600A9399E /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		44FE61781FA7053300A9399E /* MyBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksViewController.swift; sourceTree = "<group>"; };
 		76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 				44D527C7202D66D9000A34DD /* GetReview.swift */,
 				44D527CB202D69B9000A34DD /* AddRating.swift */,
 				44E511592029959500A721B3 /* UserCheckout.swift */,
+				44F5AC872030B6F500C644CF /* HoldCreate.swift */,
 				44E5115B2029980300A721B3 /* UserReturn.swift */,
 			);
 			path = Searches;
@@ -527,6 +530,7 @@
 				44E5115C2029980300A721B3 /* UserReturn.swift in Sources */,
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
 				44D527CE202D6BCC000A34DD /* UserSetFacebook.swift in Sources */,
+				44F5AC882030B6F500C644CF /* HoldCreate.swift in Sources */,
 				828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */,
 				44D527D0202D6C65000A34DD /* UserLoginVerify.swift in Sources */,
 				44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */,
