@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol AuthorProtocol: class {
-    func nameReceived(name: String)
+    func nameReceived(name: String, authorID: Int)
 }
 
 class IdSearchAuthor: NSObject {
@@ -34,12 +34,14 @@ class IdSearchAuthor: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+            //print("responseString = \(responseString)")
             
             tempstringreturn = self.parseJSON(data)
+            print("authorsearchclass 3 " + tempstringreturn)
+            
         }
         task.resume()
-        
+         print("authorsearchclass 4 " + tempstringreturn)
         return tempstringreturn
         
     }
@@ -67,20 +69,17 @@ class IdSearchAuthor: NSObject {
             print(jsonElement)
             if let name = jsonElement["name"] as! String? {
                 nameResult = name
-                //print("Name: " + name)
+                print("authorsearchclass 2 " + name)
                 return name
             }
             
         }
-        
-        //NSArrays initialized
-        
         DispatchQueue.main.async(execute: { () -> Void in
             
-            //self.delegate.nameReceived(name: "")
+            //self.delegate.nameReceived(name:nameResult, authorID:jsonElement["author_id"])
             
         })
-        return nameResult;
+        return "nil"
     }
     
 }

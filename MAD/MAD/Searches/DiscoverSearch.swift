@@ -3,7 +3,7 @@ import UIKit
 
 
 
-class DiscoverSearch: NSObject, AuthorProtocol {
+class DiscoverSearch: NSObject {
     func nameReceived(name: String) {
     }
     
@@ -44,9 +44,7 @@ class DiscoverSearch: NSObject, AuthorProtocol {
     
     
     func parseJSON(_ data:Data) {
-        
-        let authorsearch = IdSearchAuthor()
-        authorsearch.delegate = self
+    
         
         
         var jsonResult = NSArray()
@@ -74,7 +72,7 @@ class DiscoverSearch: NSObject, AuthorProtocol {
             //JsonElement values are guaranteed to not be null through optional binding
             if let name = jsonElement["name"] as! String?,
                 let isbn = jsonElement["isbn"] as! String?,
-                let authorID = jsonElement["author_id"] as! String?,
+                let authorID = jsonElement["author"] as! String?,
                 let desc = jsonElement["description"] as! String?,
                 let bookcount = jsonElement["bookcount"] as! String?,
                 let booktotal = jsonElement["booktotal"] as! String?
@@ -82,13 +80,11 @@ class DiscoverSearch: NSObject, AuthorProtocol {
                 book.name = name
                 book.title = name
                 book.ISBN = isbn
-                book.authorID = CLong(authorID)
-                let tempstringauthor = authorsearch.downloadItems(inputID: authorID)
-                book.author = tempstringauthor
+                book.author = authorID
                 book.desc = desc
                 book.bookCount = Int(bookcount)
                 book.bookTotal = Int(booktotal)
-                print(book)
+                print("author found in discoversearch" + book.author!)
             }
             
             books.add(book)
