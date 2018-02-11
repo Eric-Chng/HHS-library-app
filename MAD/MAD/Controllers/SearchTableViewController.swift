@@ -35,15 +35,26 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         switch book {
             case is BookModel:
                 let bookCasted = book as! BookModel
-                print(bookCasted)
                 self.sendNewRequest = true
             default:
                 print("failed")
                 if (items.count == 1) {
+                    return;
                     // no books found in database ____________________________
                 }
             }
         }
+        var temparray = NSMutableArray()
+        var count:Int = 0;
+        for itemUse in items {
+            print ("\(count)")
+            if (count<10) {
+                temparray.add(itemUse)
+            }
+            count = count + 1;
+        }
+        //Searches with library Database
+        displayResults(books: temparray)
         
     }
     
@@ -88,180 +99,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     //func searchBar(searchBar: UISearchBar, textDidChange: String) {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.tableView.reloadData()
-        var keywords = searchBar.text!;
+        let keywords = searchBar.text!;
         searchBar.resignFirstResponder()
         searchBar.showsCancelButton = true
         //print("finding results for keyword: " + keywords)
-        
         let discoverDatabaseSearch = DiscoverSearch()
         discoverDatabaseSearch.delegate = self
         discoverDatabaseSearch.downloadItems(textquery: keywords)
         
         
+        //Searches with google books API
+        //apiSearch(keywordSearch: keywords)
+        //Searches with local database when no method called here. It's called in itemsDownloaded()
         
-        keywords = keywords.replacingOccurrences(of: " ", with: "+")
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
-        
-        /*"https://www.googleapis.com/books/v1/volumes?q=intitle:Hello&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
-        
-        /*"https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
-        //print("keywords:" + keywords + "]")
-        //print("https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw")
-        guard let url = URL(string: todoEndpoint) else {
-            print("Error: cannot create URL for: " + todoEndpoint)
-            return
-        }
-        
-        
-        
-        
-        let urlRequest = URLRequest(url: url)
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest) {
-            (data, response, error) in
-            // check for any errors
-            guard error == nil else {
-                print("error calling with Google Books GET call with Keywords: " + keywords)
-                print(error!)
-                return
-            }
-            // make sure we got data
-            guard let responseData = data else {
-                print("Error: did not receive data")
-                return
-            }
-            // parse the result as JSON, since that's what the API provides
-            do {
-                guard let googleBooksJSON = try JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.mutableContainers)
-                    as? [String: Any]
-                    else {
-                        print("error trying to convert data to JSON")
-                        return
-                }
-                //print("Google Books JSON: " + String(describing: googleBooksJSON))
-                
-                
-                
-                
-                
-                
-                //Converts JSON into a String
-                
-                var JSONAsString = "describing =                       \"could not be found\" authors = \"not found\" title = not found"
-                let itemsDictionary = /*googleBooksJSON["items"] as? NSArray?*/ String(describing: googleBooksJSON)
-                if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
-                {
-                    JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/
-                    //print(JSONAsString)
-                    //print("End of JSON")
-                    
-                    var counter:Int = 0;
-                    //Parses out the title
-                    while let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")
-                    {
-                        let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
-                        let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
-                        let temp = JSONAsString[titleIndex...]
-                        let titleAndOn = String(temp)
-                        //print("Title and on: " + titleAndOn)
-                        //print("swung through")
-                        //print(JSONAsString)
-                        self.JSONsParsed.append(JSONAsString)
-                        let x = BookModel.init(JSON: JSONAsString)
-
-                        self.sendNewRequest = true
-                        self.requestCounter = self.requestCounter + 1
-                        
-                        
-
-                        let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
-                        let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
-                        
-                        if(counter == 0 && x.title!.count>3)
-                        {
-                            self.currentAuthors = []
-                            self.currentTitles = []
-                            self.currentISBNs = []
-                            self.currentThumbnails = []
-                            self.currentBooks = []
-                        }
-                        if JSONAsString.range(of: "authors = ") != nil
-                        {
-                            
-                            //print("The Author is \"" + finalAuthor + "\"")
-                            
-                            let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
-                            
-                            
-                            self.currentTitles.append(x.title!)
-                            self.currentAuthors.append(x.author!)
-                            self.currentISBNs.append(x.ISBN!)
-                            self.currentBooks.append(x)
-                            self.sendNewRequest = true
-                            if(x.googleImageURL != nil)
-                            {
-                                self.currentThumbnails.append(x.googleImageURL!)
-                            }
-                            else
-                            {
-                                print("Image URL not found")
-                            }
-                            
-                            //print("qualified if")
-                            //let substring1 = template[indexStartOfText...]
-                            let temp = JSONAsString[tempIndex...]
-                            //print(String(temp))
-                            JSONAsString = JSONAsString.substring(from: tempIndex)
-                            //JSONAsString = String(temp)
-                            //979x
-                            //31
-                            
-                            counter = counter + 1;
-                        }
-                        else{
-                            print(JSONAsString)
-                            JSONAsString = "break"
-                        }
-                    }
-                    /*
-                     for m in self.JSONsParsed
-                     {
-                     print("Initialization started")
-                     //print(m)
-                     let x = BookModel.init(JSON: m)
-                     print("Initialization ended")
-                     }
-                     */
-                    
-                }
-                else
-                {
-                    //print("No results found")
-                    self.currentTitles = []
-                    self.currentAuthors = []
-                    self.currentISBNs = []
-                    self.currentThumbnails = ["No thumbnail"]
-                    self.currentTitles.append("No results found")
-                    self.currentAuthors.append("NA")
-                    self.currentISBNs.append("bad")
-                }
-                
-                //let distanceToTitle = Int(distanceTotitle.distance(from: distanceTotitle.startIndex, to: rangeTotitle.lowerBound))
-                
-                
-                
-                // the todo object is a dictionary
-                // so we just access the title using the "title" key
-                // so check for a title and print it if we have one
-                
-            } catch  {
-                print("error trying to convert data to JSON")
-                return
-            }
-        }
-        task.resume()
-        
-        //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
         
     }
     
@@ -371,4 +221,218 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         }
     }
     
+    func apiSearch(keywordSearch: String){
+        var keywords = keywordSearch.replacingOccurrences(of: " ", with: "+")
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
+        
+        /*"https://www.googleapis.com/books/v1/volumes?q=intitle:Hello&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
+        
+        /*"https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
+        //print("keywords:" + keywords + "]")
+        //print("https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw")
+        guard let url = URL(string: todoEndpoint) else {
+            print("Error: cannot create URL for: " + todoEndpoint)
+            return
+        }
+        
+        
+        
+        
+        let urlRequest = URLRequest(url: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling with Google Books GET call with Keywords: " + keywords)
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let googleBooksJSON = try JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.mutableContainers)
+                    as? [String: Any]
+                    else {
+                        print("error trying to convert data to JSON")
+                        return
+                }
+                //print("Google Books JSON: " + String(describing: googleBooksJSON))
+                
+                
+                
+                
+                
+                
+                //Converts JSON into a String
+                
+                var JSONAsString = "describing =                       \"could not be found\" authors = \"not found\" title = not found"
+                let itemsDictionary = /*googleBooksJSON["items"] as? NSArray?*/ String(describing: googleBooksJSON)
+                if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
+                {
+                    JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/
+                    //print(JSONAsString)
+                    //print("End of JSON")
+                    
+                    var counter:Int = 0;
+                    //Parses out the title
+                    while let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")
+                    {
+                        let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
+                        let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
+                        let temp = JSONAsString[titleIndex...]
+                        let titleAndOn = String(temp)
+                        //print("Title and on: " + titleAndOn)
+                        //print("swung through")
+                        //print(JSONAsString)
+                        self.JSONsParsed.append(JSONAsString)
+                        let x = BookModel.init(JSON: JSONAsString)
+                        
+                        self.sendNewRequest = true
+                        self.requestCounter = self.requestCounter + 1
+                        
+                        
+                        
+                        let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
+                        let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
+                        
+                        if(counter == 0 && x.title!.count>3)
+                        {
+                            self.currentAuthors = []
+                            self.currentTitles = []
+                            self.currentISBNs = []
+                            self.currentThumbnails = []
+                            self.currentBooks = []
+                        }
+                        if JSONAsString.range(of: "authors = ") != nil
+                        {
+                            
+                            //print("The Author is \"" + finalAuthor + "\"")
+                            
+                            let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
+                            
+                            
+                            self.currentTitles.append(x.title!)
+                            self.currentAuthors.append(x.author!)
+                            self.currentISBNs.append(x.ISBN!)
+                            self.currentBooks.append(x)
+                            self.sendNewRequest = true
+                            if(x.googleImageURL != nil)
+                            {
+                                self.currentThumbnails.append(x.googleImageURL!)
+                            }
+                            else
+                            {
+                                print("Image URL not found")
+                            }
+                            
+                            //print("qualified if")
+                            //let substring1 = template[indexStartOfText...]
+                            let temp = JSONAsString[tempIndex...]
+                            //print(String(temp))
+                            JSONAsString = JSONAsString.substring(from: tempIndex)
+                            //JSONAsString = String(temp)
+                            //979x
+                            //31
+                            
+                            counter = counter + 1;
+                        }
+                        else{
+                            print(JSONAsString)
+                            JSONAsString = "break"
+                        }
+                    }
+                    /*
+                     for m in self.JSONsParsed
+                     {
+                     print("Initialization started")
+                     //print(m)
+                     let x = BookModel.init(JSON: m)
+                     print("Initialization ended")
+                     }
+                     */
+                    
+                }
+                else
+                {
+                    //print("No results found")
+                    self.currentTitles = []
+                    self.currentAuthors = []
+                    self.currentISBNs = []
+                    self.currentThumbnails = ["No thumbnail"]
+                    self.currentTitles.append("No results found")
+                    self.currentAuthors.append("NA")
+                    self.currentISBNs.append("bad")
+                }
+                
+                //let distanceToTitle = Int(distanceTotitle.distance(from: distanceTotitle.startIndex, to: rangeTotitle.lowerBound))
+                
+                
+                
+                // the todo object is a dictionary
+                // so we just access the title using the "title" key
+                // so check for a title and print it if we have one
+                
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        }
+        task.resume()
+        
+        //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
+    }
+    
+    func displayResults(books: NSMutableArray){
+
+        var counter:Int = books.count
+        for tempvarforarray in books {
+            if (tempvarforarray is BookModel) {
+                print("search returned book")
+            } else {
+                print(type(of: tempvarforarray))
+            }
+            let x = tempvarforarray as! BookModel
+            
+            if(counter == 0 && x.title!.count>3)
+            {
+                self.currentAuthors = []
+                self.currentTitles = []
+                self.currentISBNs = []
+                self.currentThumbnails = []
+                self.currentBooks = []
+            }
+            //if JSONAsString.range(of: "authors = ") != nil
+
+            
+                
+                //print("The Author is \"" + finalAuthor + "\"")
+                
+                
+            
+            self.currentTitles.append(x.title!)
+            self.currentAuthors.append(x.author!)
+            self.currentISBNs.append(x.ISBN!)
+            self.currentBooks.append(x)
+            self.sendNewRequest = true
+            if(x.googleImageURL != nil)
+            {
+                self.currentThumbnails.append(x.googleImageURL!)
+            }
+            else
+            {
+                print("Image URL not found")
+            }
+            
+            counter = counter + 1;
+            
+        }
+        
+        //task.resume()
+        
+    }
 }
