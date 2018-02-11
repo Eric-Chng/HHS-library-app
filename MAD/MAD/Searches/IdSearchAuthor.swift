@@ -13,8 +13,8 @@ class IdSearchAuthor: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/idsearch_author.php"
     
-    func downloadItems(inputID: String) {
-        
+    func downloadItems(inputID: String) -> String {
+        var tempstringreturn = "nil"
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
@@ -36,14 +36,16 @@ class IdSearchAuthor: NSObject {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
-            self.parseJSON(data)
+            tempstringreturn = self.parseJSON(data)
         }
         task.resume()
+        
+        return tempstringreturn
         
     }
     
     
-    func parseJSON(_ data:Data) {
+    func parseJSON(_ data:Data) ->String {
         
         var jsonResult = NSArray()
         
@@ -76,6 +78,7 @@ class IdSearchAuthor: NSObject {
             self.delegate.nameReceived(name: nameResult)
             
         })
+        return nameResult;
     }
     
 }

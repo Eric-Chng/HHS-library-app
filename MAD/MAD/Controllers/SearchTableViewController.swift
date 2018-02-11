@@ -47,7 +47,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         var temparray = NSMutableArray()
         var count:Int = 0;
         for itemUse in items {
-            print ("\(count)")
             if (count<10) {
                 temparray.add(itemUse)
             }
@@ -197,7 +196,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 myCell.authorLabel.text = currentAuthors[indexPath.row]
                 if(currentBooks.count > indexPath.row)
                 {
-                    myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image
+                    myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image //found nil while unwrapping optional
                 }
             }
             //}
@@ -389,46 +388,36 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     
     func displayResults(books: NSMutableArray){
 
-        var counter:Int = books.count
+        var counter:Int = 0
+        self.currentAuthors = []
+        self.currentTitles = []
+        self.currentISBNs = []
+        self.currentThumbnails = []
+        self.currentBooks = []
         for tempvarforarray in books {
-            if (tempvarforarray is BookModel) {
+            if (tempvarforarray is BookModel && tempvarforarray != nil) {
                 print("search returned book")
+                let x = tempvarforarray as! BookModel
+                print (x)
+                self.currentTitles.append(x.name!)
+                self.currentAuthors.append(x.author!)
+                self.currentISBNs.append(x.ISBN!)
+                self.currentBooks.append(x)
+                self.sendNewRequest = true
+                if(x.googleImageURL != nil)
+                {
+                    self.currentThumbnails.append(x.googleImageURL!)
+                }
+                else
+                {
+                    print("Image URL not found")
+                }
+                
+                counter = counter + 1;
             } else {
                 print(type(of: tempvarforarray))
             }
-            let x = tempvarforarray as! BookModel
             
-            if(counter == 0 && x.title!.count>3)
-            {
-                self.currentAuthors = []
-                self.currentTitles = []
-                self.currentISBNs = []
-                self.currentThumbnails = []
-                self.currentBooks = []
-            }
-            //if JSONAsString.range(of: "authors = ") != nil
-
-            
-                
-                //print("The Author is \"" + finalAuthor + "\"")
-                
-                
-            
-            self.currentTitles.append(x.title!)
-            self.currentAuthors.append(x.author!)
-            self.currentISBNs.append(x.ISBN!)
-            self.currentBooks.append(x)
-            self.sendNewRequest = true
-            if(x.googleImageURL != nil)
-            {
-                self.currentThumbnails.append(x.googleImageURL!)
-            }
-            else
-            {
-                print("Image URL not found")
-            }
-            
-            counter = counter + 1;
             
         }
         

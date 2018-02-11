@@ -73,6 +73,7 @@ class IdSearchBook: NSObject {
                 let desc = jsonElement["description"] as! String?
             {
                 book.name = name
+                book.title = name
                 book.ISBN = isbn
                 book.authorID = CLong(authorID)
                 book.desc = desc
