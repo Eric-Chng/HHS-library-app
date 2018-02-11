@@ -21,6 +21,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     var pressedItem: Int = 0
     var JSONsParsed: [String] = []
     var requestCounter: Int = 0
+    var libraryBookModels: [BookModel] = []
     @IBOutlet weak var tableViewSearch: UISearchBar!
     var sendNewRequest: Bool = false;
     var discoverViewController: [DiscoverViewController] = []
@@ -32,8 +33,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     func itemsDownloaded(items: NSArray, from: String) {
         
         for book in items {
+            //print(book)
         switch book {
             case is BookModel:
+                print("gotem")
+                print(book)
+                if((book as! BookModel).title != nil)
+                {
+                    print("Title gotten: " + (book as! BookModel).title!)
+                    self.currentTitles.append((book as! BookModel).title!)
+                    print(self.currentTitles[0])
+                    self.currentAuthors.append((book as! BookModel).author!)
+                    print("Author found: " + (book as! BookModel).author!)
+                }
                 let bookCasted = book as! BookModel
                 self.sendNewRequest = true
             default:
@@ -97,6 +109,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     
     //func searchBar(searchBar: UISearchBar, textDidChange: String) {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.currentTitles = []
+        self.currentAuthors = []
+        self.currentISBNs = []
         self.tableView.reloadData()
         let keywords = searchBar.text!;
         searchBar.resignFirstResponder()
@@ -147,6 +162,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //return currentAuthors.count
+        //print("Length of currentTitles: ")
+        //print(currentTitles.count)
         return currentTitles.count
     }
     
@@ -163,6 +180,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Retrieve cell
+        //print("retrieving")
         let cellIdentifier: String = "cell"
         let myCell: SearchTableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? SearchTableViewCell)!
         //print(sendNewRequest)
@@ -192,6 +210,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                     sendNewRequest = false;
                     myCell.newRequest();
                 }
+                //print("dogs")
                 myCell.titleLabel.text = currentTitles[indexPath.row];
                 myCell.authorLabel.text = currentAuthors[indexPath.row]
                 if(currentBooks.count > indexPath.row)
@@ -301,11 +320,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                         
                         if(counter == 0 && x.title!.count>3)
                         {
+                            /*
                             self.currentAuthors = []
                             self.currentTitles = []
                             self.currentISBNs = []
                             self.currentThumbnails = []
                             self.currentBooks = []
+                            */
                         }
                         if JSONAsString.range(of: "authors = ") != nil
                         {
@@ -331,9 +352,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                             
                             //print("qualified if")
                             //let substring1 = template[indexStartOfText...]
-                            let temp = JSONAsString[tempIndex...]
+                            //let temp = JSONAsString[tempIndex...]
                             //print(String(temp))
-                            JSONAsString = JSONAsString.substring(from: tempIndex)
+                            JSONAsString = String(JSONAsString[tempIndex...])
                             //JSONAsString = String(temp)
                             //979x
                             //31
@@ -358,7 +379,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 }
                 else
                 {
-                    //print("No results found")
+                    print("No results found")
                     self.currentTitles = []
                     self.currentAuthors = []
                     self.currentISBNs = []
@@ -389,9 +410,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     func displayResults(books: NSMutableArray){
 
         var counter:Int = 0
-        self.currentAuthors = []
-        self.currentTitles = []
-        self.currentISBNs = []
+        //self.currentAuthors = []
+        //self.currentTitles = []
+        //self.currentISBNs = []
         self.currentThumbnails = []
         self.currentBooks = []
         for tempvarforarray in books {
@@ -399,11 +420,12 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 print("search returned book")
                 let intermediatetemp = tempvarforarray as! BookModel
                 let x = BookModel(ISBN: intermediatetemp.ISBN!)
-                print (x)
+                print(x)
                 //self.currentTitles.append(x.title!)
-                self.currentTitles.append("test")
-                self.currentAuthors.append(x.author!)
-                self.currentISBNs.append(x.ISBN!)
+                //self.currentTitles.append("test")
+                //self.currentAuthors.append(x.author!)
+                //self.currentISBNs.append(x.ISBN!)
+                
                 self.currentBooks.append(x)
                 self.sendNewRequest = true
                 if(x.googleImageURL != nil)

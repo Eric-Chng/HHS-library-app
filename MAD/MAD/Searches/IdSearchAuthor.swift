@@ -62,11 +62,13 @@ class IdSearchAuthor: NSObject {
         
         for i in 0 ..< jsonResult.count
         {
-            
+            print("correctemundo")
             jsonElement = jsonResult[i] as! NSDictionary
-            
+            print(jsonElement)
             if let name = jsonElement["name"] as! String? {
                 nameResult = name
+                //print("Name: " + name)
+                return name
             }
             
         }
@@ -75,7 +77,7 @@ class IdSearchAuthor: NSObject {
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.nameReceived(name: nameResult)
+            //self.delegate.nameReceived(name: "")
             
         })
         return nameResult;
