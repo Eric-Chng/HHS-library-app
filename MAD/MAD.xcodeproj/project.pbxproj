@@ -16,6 +16,7 @@
 		449941131FA810E600272446 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941121FA810E600272446 /* BookModel.swift */; };
 		449941151FA8155300272446 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941141FA8155300272446 /* BookDetailViewController.swift */; };
 		44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */; };
+		44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8426A20303F7E00697F4B /* HoldDelete.swift */; };
 		44D527C8202D66D9000A34DD /* GetReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C7202D66D9000A34DD /* GetReview.swift */; };
 		44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C9202D68E0000A34DD /* ReviewModel.swift */; };
 		44D527CC202D69B9000A34DD /* AddRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527CB202D69B9000A34DD /* AddRating.swift */; };
@@ -85,6 +86,7 @@
 		449941121FA810E600272446 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		449941141FA8155300272446 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
+		44B8426A20303F7E00697F4B /* HoldDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldDelete.swift; sourceTree = "<group>"; };
 		44D527C7202D66D9000A34DD /* GetReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReview.swift; sourceTree = "<group>"; };
 		44D527C9202D68E0000A34DD /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		44D527CB202D69B9000A34DD /* AddRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRating.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				44D527CD202D6BCC000A34DD /* UserSetFacebook.swift */,
 				44D527CF202D6C65000A34DD /* UserLoginVerify.swift */,
 				44E511692029AB7200A721B3 /* HoldSetReady.swift */,
+				44B8426A20303F7E00697F4B /* HoldDelete.swift */,
 				44E511652029AAC900A721B3 /* HoldByUser.swift */,
 				44E511672029AB2B00A721B3 /* HoldByUserReady.swift */,
 				44E511632029A96C00A721B3 /* HoldByBook.swift */,
@@ -524,6 +527,7 @@
 				828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */,
 				44D527D0202D6C65000A34DD /* UserLoginVerify.swift in Sources */,
 				44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */,
+				44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */,
 				7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */,
 				7B4E3ECA201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* CheckoutViewController.swift in Sources */,

@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+// SLATED FOR DELETION
 protocol AuthorProtocol: class {
     func nameReceived(name: String, authorID: Int)
 }
