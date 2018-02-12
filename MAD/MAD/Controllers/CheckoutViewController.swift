@@ -98,12 +98,16 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Row selected")
+        if(indexPath.row < holdBookModels.count)
+        {
         let selectedModel = self.holdBookModels[indexPath.row]
-        print(selectedModel.title!)
+        //print(selectedModel.title!)
         let alert = UIAlertController(title: "Do you want to checkout " + selectedModel.title! + "?", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction!) in self.checkoutBook(isbn: selectedModel.ISBN!, holdID: self.holdIDs[indexPath.row])}))
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction!) in self.checkoutBook(isbn: selectedModel.ISBN!, holdID: self.holdIDs[indexPath.row])}))
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
         self.present(alert, animated: true, completion: nil)
+            
+        }
         //checkoutBook(isbn: selectedModel.ISBN!, holdID: self.holdIDs[indexPath.row])
     }
     
@@ -117,7 +121,7 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         let holdDelete = HoldDelete()
         holdDelete.delegate = self
         holdDelete.deleteHold(id: holdID)
-        
+        self.holdBookModels = []
         
         //UserCheckout.download
         
