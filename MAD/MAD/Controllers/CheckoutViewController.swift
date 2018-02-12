@@ -100,7 +100,7 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         print("Row selected")
         let selectedModel = self.holdBookModels[indexPath.row]
         print(selectedModel.title!)
-        let alert = UIAlertController(title: selectedModel.title!, message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Do you want to checkout " + selectedModel.title! + "?", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction!) in self.checkoutBook(isbn: selectedModel.ISBN!, holdID: self.holdIDs[indexPath.row])}))
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
         self.present(alert, animated: true, completion: nil)

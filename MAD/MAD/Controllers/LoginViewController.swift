@@ -29,8 +29,8 @@ class LoginViewController: UIViewController, DownloadProtocol {
                 //let userCasted = user as! UserModel
                 UserDefaults.standard.set(self.userNameField.text,forKey: "id")
                 UserDefaults.standard.set(self.passwordField.text,forKey: "credential")
+                UserDefaults.standard.set((user as! UserModel).name, forKey: "userName")
 
-                //print("puppy")
                 //print(UserDefaults.standard.object(forKey: "id"))
                 if UserDefaults.standard.object(forKey: "FirstLogin") == nil
                 {

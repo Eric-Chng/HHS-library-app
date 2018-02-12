@@ -19,6 +19,8 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     var checkedTimer: Timer = Timer()
     var heldTimer: Timer = Timer()
     
+    @IBOutlet weak var nameLabe: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
     
     
     @IBOutlet weak var onHoldTableView: UITableView!
@@ -82,7 +84,9 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.nameLabe.text = UserDefaults.standard.object(forKey: "userName") as? String
+        self.idLabel.text = (UserDefaults.standard.object(forKey: "userId") as! String)
+
         let UserSearch = UserGetBooks()
         UserSearch.delegate = self
         UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)

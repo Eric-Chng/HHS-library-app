@@ -41,22 +41,13 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxl-qO-R2Z">
-                                                                <rect key="frame" x="127.5" y="0.0" width="45" height="100"/>
+                                                                <rect key="frame" x="176.5" y="0.0" width="45" height="100"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0M-Bl-ar3">
-                                                                <rect key="frame" x="200.5" y="0.0" width="31" height="100"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade: #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="464-Jl-aap">
-                                                                <rect key="frame" x="259" y="0.0" width="70" height="100"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="70" id="2GO-7e-e8V"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="298" y="0.0" width="31" height="100"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -348,7 +339,9 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="checkOutTableView" destination="nzb-pm-Emr" id="HOE-mi-ihp"/>
+                        <outlet property="idLabel" destination="z0M-Bl-ar3" id="ymo-2T-FLQ"/>
                         <outlet property="loginButtonView" destination="Zwf-qT-3UC" id="SPf-Io-Axy"/>
+                        <outlet property="nameLabe" destination="rxl-qO-R2Z" id="WlE-in-tYT"/>
                         <outlet property="onHoldTableView" destination="5xO-sA-NVC" id="092-Lq-XfF"/>
                         <outlet property="profilePictureView" destination="cl5-sv-Uq1" id="TR5-O5-JX8"/>
                         <segue destination="6SQ-fA-jKJ" kind="show" identifier="bookInfoSegue" id="dA8-DS-xQo"/>
@@ -395,20 +388,22 @@
                                         <rect key="frame" x="3" y="3" width="369" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waq-ov-hiM">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="3LW-s7-B1J"/>
+                                                    <constraint firstAttribute="width" constant="80" id="3LW-s7-B1J"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="cancel"/>
                                                 <connections>
                                                     <segue destination="Y7w-Ql-o4q" kind="unwind" unwindAction="unwindToVC1WithSegue:" id="waE-y8-GZI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjN-Mg-aoY">
-                                                <rect key="frame" x="319" y="0.0" width="50" height="34"/>
+                                                <rect key="frame" x="289" y="0.0" width="80" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="HzZ-lI-Fds"/>
+                                                    <constraint firstAttribute="width" constant="80" id="HzZ-lI-Fds"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="submit"/>
                                                 <connections>
                                                     <action selector="submitButton:" destination="B9A-n0-GyI" eventType="touchUpInside" id="U2z-iG-556"/>
@@ -435,12 +430,12 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Bug" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ua5-Xv-T2x">
                                         <rect key="frame" x="10" y="10" width="355" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" red="0.97477999770000001" green="0.97601944669999996" blue="0.99493327249999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.40510121462429965" green="0.59277682293272516" blue="0.9971045852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="9rd-kL-rUi"/>
                                     <constraint firstAttribute="bottom" secondItem="ua5-Xv-T2x" secondAttribute="bottom" constant="10" id="FA2-hJ-PKS"/>
@@ -452,14 +447,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3o-DK-hu3">
                                 <rect key="frame" x="0.0" y="135" width="375" height="532"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo2-d2-a99">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zo2-d2-a99">
                                         <rect key="frame" x="20" y="50" width="335" height="462"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please tell us the speifics here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-yV-8Ni">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please tell us the speifics here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-yV-8Ni">
                                         <rect key="frame" x="5" y="10" width="365" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="PRH-9P-5pQ"/>

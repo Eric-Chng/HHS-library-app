@@ -43,13 +43,13 @@
                                     <constraint firstAttribute="width" constant="255" id="cos-lN-MLh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="scanner" image="scanToCheckoutButton2"/>
+                                <state key="normal" title="scanner" image="scanToCheckoutButton4"/>
                                 <connections>
                                     <action selector="goNext:" destination="Gov-tV-Puz" eventType="touchUpInside" id="fsN-Zp-caT"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-lY-rmf">
-                                <rect key="frame" x="37.5" y="390" width="300" height="176"/>
+                                <rect key="frame" x="37.5" y="396" width="300" height="176"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="176" id="30i-w8-rdF"/>
@@ -83,10 +83,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-or-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L75-OO-TyW">
-                                <rect key="frame" x="166" y="335" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-or finalize a hold-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L75-OO-TyW">
+                                <rect key="frame" x="87" y="335" width="200" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="sE0-pJ-roN"/>
+                                    <constraint firstAttribute="width" constant="200" id="sE0-pJ-roN"/>
                                     <constraint firstAttribute="height" constant="21" id="uNs-5t-l9H"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -94,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Holds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY6-mB-Q3U">
-                                <rect key="frame" x="37.5" y="368" width="111" height="21"/>
+                                <rect key="frame" x="37.5" y="374" width="111" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="111" id="7yq-GY-CaZ"/>
                                     <constraint firstAttribute="height" constant="21" id="O9n-7M-N8d"/>
@@ -107,7 +107,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oj2-e7-PYa" firstAttribute="leading" secondItem="FVQ-pN-qZT" secondAttribute="leading" constant="106" id="4Ha-yU-Ue1"/>
-                            <constraint firstItem="qNj-lY-rmf" firstAttribute="top" secondItem="NeU-da-1eB" secondAttribute="bottom" constant="84" id="6tv-WB-coY"/>
+                            <constraint firstItem="qNj-lY-rmf" firstAttribute="top" secondItem="NeU-da-1eB" secondAttribute="bottom" constant="90" id="6tv-WB-coY"/>
                             <constraint firstItem="FVQ-pN-qZT" firstAttribute="trailing" secondItem="oj2-e7-PYa" secondAttribute="trailing" constant="100" id="74e-PX-EVr"/>
                             <constraint firstItem="qNj-lY-rmf" firstAttribute="centerX" secondItem="FVQ-pN-qZT" secondAttribute="centerX" id="KtD-c5-UDg"/>
                             <constraint firstItem="L75-OO-TyW" firstAttribute="centerX" secondItem="FVQ-pN-qZT" secondAttribute="centerX" id="Nss-dO-ZBm"/>
@@ -4015,7 +4015,7 @@ AAAAAAACVjA
 </mutableData>
         </image>
         <image name="plus" width="32" height="32"/>
-        <image name="scanToCheckoutButton2" width="340" height="185"/>
+        <image name="scanToCheckoutButton4" width="340" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2mD-LB-cm2"/>

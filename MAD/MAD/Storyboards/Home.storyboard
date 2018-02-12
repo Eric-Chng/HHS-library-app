@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="1035"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFx-Fa-XDM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="810"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="770"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="withFade" translatesAutoresizingMaskIntoConstraints="NO" id="yBv-Ne-d3o">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
@@ -35,9 +35,9 @@
                                                 </constraints>
                                             </imageView>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MCI-yl-h8I">
-                                                <rect key="frame" x="8" y="217" width="359" height="360"/>
+                                                <rect key="frame" x="8" y="217" width="359" height="320"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="360" id="gg4-wH-RFb"/>
+                                                    <constraint firstAttribute="height" constant="320" id="gg4-wH-RFb"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="delegate" destination="zcJ-OU-37K" id="nPm-tx-U7w"/>
@@ -54,7 +54,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-ym-3zT">
-                                                <rect key="frame" x="8" y="637" width="359" height="160"/>
+                                                <rect key="frame" x="8" y="585" width="359" height="160"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGC-cx-gpk">
                                                         <rect key="frame" x="24" y="10" width="226" height="27"/>
@@ -118,7 +118,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" red="0.97477999765972634" green="0.9760194467464185" blue="0.99493327254641906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="HGC-cx-gpk" firstAttribute="leading" secondItem="xiN-ym-3zT" secondAttribute="leading" constant="24" id="3aE-Rz-kwX"/>
                                                     <constraint firstItem="w7U-i1-GDR" firstAttribute="centerX" secondItem="xiN-ym-3zT" secondAttribute="centerX" id="4kf-2k-oDJ"/>
@@ -137,7 +137,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE8-o7-nA2">
-                                                <rect key="frame" x="8" y="601" width="200" height="33"/>
+                                                <rect key="frame" x="8" y="549" width="200" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="oxR-6W-DmJ"/>
                                                     <constraint firstAttribute="width" constant="200" id="xs2-td-9SU"/>
@@ -156,12 +156,12 @@
                                             <constraint firstAttribute="trailing" secondItem="yBv-Ne-d3o" secondAttribute="trailing" id="Aoe-9X-tpx"/>
                                             <constraint firstItem="ig8-ch-0vH" firstAttribute="top" secondItem="OFx-Fa-XDM" secondAttribute="top" constant="180" id="Yhr-6z-J8G"/>
                                             <constraint firstItem="ig8-ch-0vH" firstAttribute="leading" secondItem="OFx-Fa-XDM" secondAttribute="leading" constant="8" id="d11-fS-ayN"/>
-                                            <constraint firstItem="xiN-ym-3zT" firstAttribute="top" secondItem="MCI-yl-h8I" secondAttribute="bottom" constant="60" id="go7-F1-zXM"/>
+                                            <constraint firstItem="xiN-ym-3zT" firstAttribute="top" secondItem="MCI-yl-h8I" secondAttribute="bottom" constant="48" id="go7-F1-zXM"/>
                                             <constraint firstItem="MCI-yl-h8I" firstAttribute="leading" secondItem="OFx-Fa-XDM" secondAttribute="leading" constant="8" id="j61-Z4-RZt"/>
-                                            <constraint firstAttribute="height" constant="810" id="qcT-J7-7hn"/>
+                                            <constraint firstAttribute="height" constant="770" id="qcT-J7-7hn"/>
                                             <constraint firstAttribute="trailing" secondItem="MCI-yl-h8I" secondAttribute="trailing" constant="8" id="rZP-Ub-T9g"/>
                                             <constraint firstItem="yBv-Ne-d3o" firstAttribute="top" secondItem="OFx-Fa-XDM" secondAttribute="top" id="u0e-Ky-OdU"/>
-                                            <constraint firstItem="OE8-o7-nA2" firstAttribute="top" secondItem="MCI-yl-h8I" secondAttribute="bottom" constant="24" id="vgb-bO-sfI"/>
+                                            <constraint firstItem="OE8-o7-nA2" firstAttribute="top" secondItem="MCI-yl-h8I" secondAttribute="bottom" constant="12" id="vgb-bO-sfI"/>
                                         </constraints>
                                     </view>
                                 </subviews>

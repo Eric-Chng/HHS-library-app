@@ -45,6 +45,11 @@ class BugReportViewController: UIViewController, MFMailComposeViewControllerDele
     @IBOutlet weak var cancelButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textField.layer.cornerRadius = 8
+        self.textField.layer.masksToBounds = true
+        self.textField.layer.borderColor = UIColor.darkGray.cgColor
+        self.textField.layer.borderWidth = 2
+        
     }
 
     override func didReceiveMemoryWarning() {

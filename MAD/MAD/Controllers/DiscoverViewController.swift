@@ -17,6 +17,9 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     
     var url: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+"
     var popularBookArr: [BookModel] = []
+    var librarianBookArr: [BookModel] = []
+    var reviewBookArr: [BookModel] = []
+
     var reviewArr: [FacebookReviewModel] = []
     var pressedItem: BookModel = BookModel()
     var timer = Timer()
@@ -33,12 +36,12 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     
     
     override func viewDidLoad() {
-        popularBookArr = [BookModel(ISBN: "9781594634239"), BookModel(ISBN:"9780590353427"), BookModel(ISBN: "9781594489785"), /*d*/ BookModel(ISBN:"9781101971062"), BookModel(ISBN:"9780439358071"), BookModel(ISBN:"9781439181713")]
+        
         
         let animationView: LOTAnimationView = LOTAnimationView(name: "bookUpdated");
         animationView.contentMode = .scaleAspectFill
         animationView.frame = CGRect(x: 50, y: 700, width: 300, height: 200)
-        
+        self.setArrays()
         
         //self.insideScrollView.addSubview(animationView)
         animationView.loopAnimation = true
@@ -66,7 +69,7 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     
     @objc func action2()
     {
-        if let token = FBSDKAccessToken.current()
+        if (FBSDKAccessToken.current()) != nil
         {
             print("Token found")
         let params = ["fields": "friends"]
@@ -96,7 +99,7 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
                             if(tempCounter<6)
                             {
                                 
-                            self.reviewArr.append(FacebookReviewModel(bookModel: self.popularBookArr[tempCounter], userID: id, score: 4.5))
+                            self.reviewArr.append(FacebookReviewModel(bookModel: self.reviewBookArr[tempCounter], userID: id, score: 4.5))
                             }
                             tempCounter = tempCounter + 1
                             //id is friend's id
@@ -156,6 +159,14 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
         
         
         
+    }
+    
+    func setArrays()
+    {
+        popularBookArr = [BookModel(ISBN: "9780141182773"), BookModel(ISBN:"9783608938180"), BookModel(ISBN: "9780810891951"), BookModel(ISBN:"9781594480003"), BookModel(ISBN:"9781555975098"), BookModel(ISBN:"9780199738410")]
+        librarianBookArr = [BookModel(ISBN: "9781845114657"), BookModel(ISBN: "9780545402163"), BookModel(ISBN:"9781883831073"), BookModel(ISBN:"9780812504675"), BookModel(ISBN:"9780553151671"), BookModel(ISBN:"9780553588255")]
+        reviewBookArr = [BookModel(ISBN:"9780439358071"), BookModel(ISBN:"9780590353427"), BookModel(ISBN: "9781594634239"), BookModel(ISBN: "9781594489785"), BookModel(ISBN:"9781101971062"), BookModel(ISBN:"9780439358071"), BookModel(ISBN:"9781439181713")]
+
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
@@ -227,11 +238,11 @@ extension DiscoverViewController: UICollectionViewDelegate {
         print(indexPath.item)
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
-            self.pressedItem = popularBookArr[indexPath.item]
+            self.pressedItem = librarianBookArr[indexPath.item]
         }
         else if(collectionView.restorationIdentifier! == "popularTitles")
         {
-            self.pressedItem = popularBookArr[5 - indexPath.item]
+            self.pressedItem = popularBookArr[indexPath.item]
             
         }
         else if(collectionView.restorationIdentifier! == "facebookFeed")
@@ -263,81 +274,7 @@ extension DiscoverViewController: UICollectionViewDataSource {
         if(collectionView.restorationIdentifier! == "facebookFeed")
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FacebookReviewsCollectionViewCell", for: indexPath) as! FacebookReviewsCollectionViewCell
-            /*
-            let params = ["fields": "friends"]
-            FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
-                var ids: [String] = []
-                if let result = result as? [String:Any]
-                {
-                    //print("result start")
-                    //print(result)
-                    //for x in result{
-                        //print(x)
-                        //print("break")
-                    //}
-                    //print("result end")
-                    if let dataDict = result["data"] as? NSArray
-                    {
-                        //print("Data dictionary")
-                        for x in dataDict{
-                            //print(x)
-                            //print("data break")
-                        }
-                        //print("bigs")
-                        //print(dataDict[0])
-                        //if let insideDataDict = dataDict[0] as? [String:Any]
-                        for inner in dataDict
-                        {
-                            let insideDataDict = inner as! [String: Any]
-                            if(indexPath.row == 1)
-                            {
-                                //print("look here")
-                            //print("inside")
-                            //print(insideDataDict)
-                            //print("done")
-                            }
-                            //var insideDataDict2 = ["id": "14", "id": "15"]
-                            if let id = insideDataDict["id"] as? String
-                            {
-                                //print("ID: " + id)
-                                //cell.titleLabel.text = id;
-                                ids.append(id)
-                                
-                                //id is friend's id
-                            }
-                        }
-                        /*
-                        if let insideDataDict2 = dataDict[1] as? [String:Any]
-                        {
-                            if(indexPath.row == 1)
-                            {
-                            print("data part 2")
-                            print(dataDict[1])
-                            }
-                        }
-                        */
-                        if(indexPath.row < ids.count)
-                        {
-                            //let currentReview = FacebookReviewModel(bookModel: self.popularBookArr[indexPath.row], userID: ids[indexPath.row], score: 4.5)
-                            //cell.userID = ids[indexPath.row]
-                            //cell.reviewModel = currentReview
-                            if(self.reviewArr.count > indexPath.row)
-                            {
-                            cell.reviewModel = self.reviewArr[indexPath.row]
-                            }
-                            
-                        }
-                    }
-                }
-                if error != nil
-                {
-                    print(error as Any)
-                    return
-                }
-                
-                
-            }
-            */
+            
             if(self.reviewArr.count > indexPath.row)
             {
                 cell.reviewModel = self.reviewArr[indexPath.row]
@@ -351,20 +288,20 @@ extension DiscoverViewController: UICollectionViewDataSource {
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
             //insert data for librarian recommended section
-            if(popularBookArr[row].BookCoverImage != nil && (popularBookArr[row].BookCoverImage.image?.isEqual(#imageLiteral(resourceName: "loadingImage")))! == false)
+            if(librarianBookArr[row].BookCoverImage != nil)
             {
-                cell.coverImageView.image = popularBookArr[row].BookCoverImage.image
+                cell.coverImageView.image = librarianBookArr[row].BookCoverImage.image
             }
-            cell.titleLabel.text = popularBookArr[row].title
+            cell.titleLabel.text = librarianBookArr[row].title
         }
         else if(collectionView.restorationIdentifier! == "popularTitles")
         {
             //insert data for popular titles section
-            if(popularBookArr[5-row].BookCoverImage != nil)
+            if(popularBookArr[row].BookCoverImage != nil)
             {
-                cell.coverImageView.image = popularBookArr[5-row].BookCoverImage.image
+                cell.coverImageView.image = popularBookArr[row].BookCoverImage.image
             }
-            cell.titleLabel.text = popularBookArr[5-row].title
+            cell.titleLabel.text = popularBookArr[row].title
         }
             return cell
         }

@@ -358,7 +358,9 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         
         let x = ratingView.frame
         
-        
+        let overlay = LibraryOverlay()
+        self.mapView.add(overlay)
+        self.mapView.delegate = self 
         
         var counter: Int = 0
         
@@ -395,7 +397,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         
         
         
-        mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0004, 0.0004)), animated: true)
+        mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04896), MKCoordinateSpanMake(0.0006, 0.0006)), animated: true)
         timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
             #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
         RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
@@ -890,6 +892,43 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         print("update happened")
         BookDetailViewController.ISBN = newISBN;
     }
+    
+    
+}
+
+extension BookDetailViewController: MKMapViewDelegate
+{
+    
+    
+    
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlay = overlay as? MKCircle {
+            let circleRenderer = MKCircleRenderer(circle: overlay)
+            circleRenderer.fillColor = UIColor.blue
+            circleRenderer.alpha = 0.05
+            return circleRenderer
+        }
+        else if let overlay = overlay as? MKPolygon {
+            let circleRenderer = MKPolygonRenderer(polygon: overlay)
+            circleRenderer.fillColor = UIColor.red
+            circleRenderer.alpha = 0.05
+            return circleRenderer
+        }
+        else {
+            //print("hellos")
+            if overlay is LibraryOverlay {
+                //print("bigs")
+                return LibraryOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "mapOverlay"))
+            }
+            return MKOverlayRenderer(overlay: overlay)
+        }
+    }
+    
+    
+    
+    
+    
     
     
 }
