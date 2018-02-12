@@ -18,7 +18,9 @@ class HomeViewController: UIViewController {
     let location = CLLocationCoordinate2DMake(37.33712,  -122.04898)
     let regionRadius: CLLocationDistance = 10
     
+    @IBOutlet weak var hoursView: UIView!
     
+    @IBOutlet weak var hoursButton: UILabel!
     
     
     
@@ -29,9 +31,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hoursButton.layer.cornerRadius = 12
+        self.hoursButton.layer.masksToBounds = true
         mapView.delegate = self
         self.tabBarController?.tabBar.isHidden = false
-
+        hoursView.layer.cornerRadius = 25
+        hoursView.layer.masksToBounds = true
         self.mapView.mapType = MKMapType.satellite;
         
 
@@ -144,7 +149,12 @@ class HomeViewController: UIViewController {
     }
     
     
-   
+    @IBAction func hoursButtonPressed(_ sender: Any) {
+        UIApplication.shared.open(URL(string : "http://www.hhs.fuhsd.org/library")!, options: [:], completionHandler: { (status) in
+            
+        })
+    }
+    
 
 }
 

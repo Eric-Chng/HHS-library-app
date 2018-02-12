@@ -13,9 +13,11 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     var checkouts: NSArray = NSArray()
-    var checkoutBooks: NSArray = NSArray()
+    var checkoutBooks: [BookModel] = []
     var onholds: NSArray = []
-    var onholdBooks: NSArray = []
+    var onholdBooks: [BookModel] = []
+    var checkedTimer: Timer = Timer()
+    var heldTimer: Timer = Timer()
     
     
     
@@ -34,16 +36,65 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         return button
     }()
     
+    @objc func checkedOutAction()
+    {
+        var counter: Int = 0
+        var blankModel: Bool = false
+        for book in self.checkoutBooks
+        {
+            counter = counter + 1
+            if(book.title == nil || book.title == "")
+            {
+                blankModel = true
+            }
+        }
+        if(counter > 0 && blankModel == false)
+        {
+            print("All books loaded")
+            self.checkedTimer.invalidate()
+            self.checkOutTableView.reloadData()
+        }
+    }
+    
+    @objc func heldAction()
+    {
+        var counter: Int = 0
+        var blankModel: Bool = false
+        for book in self.onholdBooks
+        {
+            counter = counter + 1
+            if(book.title == nil || book.title == "")
+            {
+                blankModel = true
+            }
+        }
+        if(counter > 0 && blankModel == false)
+        {
+            print("All books loaded")
+            self.heldTimer.invalidate()
+            self.onHoldTableView.reloadData()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let UserSearch = UserGetBooks()
         UserSearch.delegate = self
-        UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "id") as! String)
+        UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)
+        onHoldTableView.delegate = self
+        onHoldTableView.dataSource = self
         
+        checkOutTableView.delegate = self
+        checkOutTableView.dataSource = self
         let onHoldUserSearch = HoldbyUser()
+        
         onHoldUserSearch.delegate = self
-        onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "id") as! String)!/* as! CLong*/)
+        onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "userId") as! String)!/* as! CLong*/)
         
         loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
         
@@ -59,22 +110,34 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func itemsDownloaded(items: NSArray, from: String) {
-        if(from.elementsEqual("userGetBooks")){
-        for i in items{
+        print("downloaded")
+        print(from)
+        if(from.elementsEqual("UserGetBooks")){
+            print("getbooks")
+            print(items)
+        for i in items
+        {
+            print("item")
+            print(i)
             let book = i as! CheckoutModel
             checkouts.adding(book);
             let model = BookModel(ISBN: book.ISBN!)
-            checkoutBooks.adding(model)
+            checkoutBooks.append(model)
 
         }
+          self.checkedTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.checkedOutAction), userInfo: nil,  repeats: true)
         }
-        else if(from.elementsEqual("holdByUser")){
+        else if(from == "HoldByUser"){
+            print("userholds")
+            print(items)
+
             for i in items{
                 let book = i as! HoldModel
                 onholds.adding(book)
                 let model = BookModel(ISBN: book.ISBN!)
-                onholdBooks.adding(model)
+                onholdBooks.append(model)
             }
+            self.heldTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.heldAction), userInfo: nil,  repeats: true)
         }
 //        print(items.firstObject)
         self.checkOutTableView.reloadData()
@@ -93,44 +156,59 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("here?")
         var count:Int?
         
         if tableView == self.onHoldTableView {
-            count = onholds.count
+            count = self.onholdBooks.count
+            
         }
         
         if tableView == self.checkOutTableView {
-            print(count ?? 0)
-            count =  checkouts.count
+            //print(count ?? 0)
+            count =  self.checkoutBooks.count
         }
-        
+        print("Count")
+        print(count)
         return count!
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("Checking here")
         
         if tableView == self.checkOutTableView {
-            let checkoutBook = checkouts[indexPath.row] as! CheckoutModel
-            let book = checkoutBooks[indexPath.row] as! BookModel
-           let  cell = tableView.dequeueReusableCell(withIdentifier: "bookcheckoutcell") as! MyBooksCheckOutTableViewCell
-            cell.bookImg = book.BookCoverImage
-            cell.bookTitle.text = book.name!
-            cell.dueDate.text = checkoutBook.endTimestamp;
+            print("Checkout table")
+            
+            //let checkoutBook = checkouts[indexPath.row] as! CheckoutModel
+            let book = checkoutBooks[indexPath.row]
+           //let  cell = tableView.dequeueReusableCell(withIdentifier: "bookcheckoutcell") as! MyBooksCheckOutTableViewCell
+            let cell = UITableViewCell()
+
+            //cell.bookImg = book.BookCoverImage
+            cell.textLabel?.text = book.title
+            //cell.dueDate.text = checkoutBook.endTimestamp;
+            //print("Book name: " + book.name!)
             return cell
         }
         else{
-            let  cell = tableView.dequeueReusableCell(withIdentifier: "bookcheckoutcell") as! MyBooksOnHoldTableViewCell
-            let onholdBook = onholds[indexPath.row] as! HoldModel
-            let book = onholdBooks[indexPath.row] as! BookModel
-            cell.bookImg = book.BookCoverImage
-            cell.bookTitle.text = book.name!
-            if((onholdBook.ready) != nil && onholdBook.ready == 1){
+            //let  cell = tableView.dequeueReusableCell(withIdentifier: "bookonholdcell") as! MyBooksOnHoldTableViewCell
+            let cell = UITableViewCell()
+            //let onholdBook = onholds[indexPath.row] as! HoldModel
+            let book = onholdBooks[indexPath.row]
+            //cell.bookImg = book.BookCoverImage
+            //cell.bookTitle.text = book.name
+            cell.textLabel?.text = onholdBooks[indexPath.row].title
+            print("Book name: " + book.title!)
+            /*
+            if((onholdBook.ready) != nil/* && onholdBook.ready == 1*/){
                 cell.ready.text = "ready"
             }
             else{
                 cell.ready.text = "not ready"
             }
+             */
             return cell;
         }
         
@@ -154,7 +232,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //self.navigationController?.push
         //self.navigationController?.pushViewController(scanners, animated: true)
-        self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
+        //self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
         //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "bookInfoSegue") as! BookDetailViewController
         
         //scanners.delegate = self
