@@ -1,5 +1,6 @@
 # MAD-2018
 HHS Mobile App Development
+
 *By Eric Cheng, David McAllister, and Lily Li*
 
 Check out more details on our wiki: https://github.com/Eric-Cf/MAD-2018/wiki
