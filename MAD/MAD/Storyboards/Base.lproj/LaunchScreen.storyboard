@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,22 +24,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="oPY-s0-W2M">
                                 <rect key="frame" x="87" y="233" width="200" height="200"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3cE-zf-U1i"/>
+                                    <constraint firstAttribute="height" constant="200" id="JoS-JR-NhR"/>
                                     <constraint firstAttribute="width" secondItem="oPY-s0-W2M" secondAttribute="height" multiplier="1:1" id="mtQ-Cj-z8a"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oPY-s0-W2M" secondAttribute="trailing" constant="88" id="4dM-ea-dwt"/>
+                            <constraint firstItem="oPY-s0-W2M" firstAttribute="centerY" secondItem="Etz-Eh-HcK" secondAttribute="centerY" id="4pt-da-2nA"/>
+                            <constraint firstItem="oPY-s0-W2M" firstAttribute="centerX" secondItem="Etz-Eh-HcK" secondAttribute="centerX" id="5pC-SD-Fid"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Etz-Eh-HcK" secondAttribute="bottom" id="9ZA-vP-IKw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Etz-Eh-HcK" secondAttribute="top" constant="20" id="T6a-7k-2ST"/>
-                            <constraint firstItem="oPY-s0-W2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="YhW-qR-H3b"/>
                             <constraint firstItem="Etz-Eh-HcK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="asL-pt-ma7"/>
-                            <constraint firstItem="oPY-s0-W2M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="213" id="mZP-ac-p6B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Etz-Eh-HcK" secondAttribute="trailing" id="q17-dP-18C"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
