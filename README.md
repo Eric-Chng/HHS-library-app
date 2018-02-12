@@ -75,7 +75,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+This application is supported by a server side script, so any user just has to connect with their account (made with the library when they join the school)
 
 ## Built With
 
