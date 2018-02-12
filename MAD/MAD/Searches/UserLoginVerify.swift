@@ -76,6 +76,8 @@ class UserLoginVerify: NSObject {
             
             
             //JsonElement values are guaranteed to not be null through optional binding
+            //UserDefaults.standard.set(self.userNameField.text,forKey: "userId")
+            
             if let id = jsonElement["user_id"] as! String?,
                 let password = jsonElement["password"] as! String?,
                 let name = jsonElement["name"] as! String?,
@@ -83,6 +85,8 @@ class UserLoginVerify: NSObject {
                 let schoolid = jsonElement["schoolid"] as! String?
             {
                 user.ID = id
+                UserDefaults.standard.set(user.ID,forKey: "userId")
+
                 user.password = password
                 user.name = name
                 user.email = email

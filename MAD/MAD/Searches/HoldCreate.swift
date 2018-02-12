@@ -30,6 +30,7 @@ class HoldCreate: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
+            //print("Response string")
             //print("responseString = \(responseString)")
             self.checkTransaction(responseString)
         }

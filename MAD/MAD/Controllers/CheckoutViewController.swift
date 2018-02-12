@@ -9,7 +9,124 @@
 import UIKit
 
 
-class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDelegate{
+class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDelegate, UITableViewDelegate, UITableViewDataSource, DownloadProtocol, TransactionProtocol{
+    
+    var transactionCounter: Int = 0
+    
+    func transactionProcessed(success: Bool) {
+        print("Checkout progress: ")
+        print(success)
+        if(success == true && transactionCounter == 1)
+        {
+            transactionCounter = 0
+            self.holdBookModels = []
+            self.holdIDs = []
+            let userHolds = HoldbyUser()
+            userHolds.delegate = self
+            
+            userHolds.downloadItems(inputID: 1)
+            timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(CheckoutViewController.action), userInfo: nil,  repeats: true)
+        }
+        else
+        {
+            transactionCounter = transactionCounter + 1
+        }
+    }
+    
+    
+    var holdBookModels: [BookModel] = []
+    var holdIDs: [String] = []
+    var selectedBook: BookModel = BookModel()
+    var timer: Timer = Timer()
+    
+    func itemsDownloaded(items: NSArray, from: String) {
+        print("items found")
+        for x in items
+        {
+            let temp = x as! HoldModel
+            //{
+            holdIDs.append(temp.ID!)
+            let isbn = temp.ISBN
+            self.holdBookModels.append(BookModel(ISBN: temp.ISBN!))
+            print(isbn!)
+            
+            //}
+        }
+        
+    }
+    
+    @objc func action()
+    {
+        //print("acting")
+        var counter: Int = 0
+        var blankModel: Bool = false
+        for book in self.holdBookModels
+        {
+            counter = counter + 1
+            if(book.title == nil || book.title == "")
+            {
+                blankModel = true
+            }
+        }
+        if(counter > 0 && blankModel == false)
+        {
+            print("All books loaded")
+            self.timer.invalidate()
+            self.holdTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("checking here")
+        return self.holdBookModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cellIdentifier: String = "cell"
+        let myCell = UITableViewCell()
+        //let myCell: UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? UITableViewCell)!
+        //myCell.textLabel?.text = "tester"
+        myCell.textLabel?.text = "out of bounds"
+
+        if(indexPath.row < self.holdBookModels.count)
+        {
+        let currentTitle = self.holdBookModels[indexPath.row].title
+        myCell.textLabel?.text = currentTitle
+        }
+        return myCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Row selected")
+        let selectedModel = self.holdBookModels[indexPath.row]
+        print(selectedModel.title!)
+        let alert = UIAlertController(title: selectedModel.title!, message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction!) in self.checkoutBook(isbn: selectedModel.ISBN!, holdID: self.holdIDs[indexPath.row])}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert, animated: true, completion: nil)
+        //checkoutBook(isbn: selectedModel.ISBN!, holdID: self.holdIDs[indexPath.row])
+    }
+    
+    func checkoutBook(isbn: String, holdID: String)
+    {
+        let userCheckout = UserCheckout()
+        userCheckout.delegate = self
+        userCheckout.downloadItems(isbn: isbn, user: UserDefaults.standard.object(forKey: "userId") as! String)
+        
+        
+        let holdDelete = HoldDelete()
+        holdDelete.delegate = self
+        holdDelete.downloadItems(id: holdID)
+        //print("Checkout appeared")
+        
+        
+        //UserCheckout.download
+        
+        
+    }
+    
+    
+    
     @IBOutlet weak var holdTableView: UITableView!
     
     var lastSendTime:Int = Int(ProcessInfo.processInfo.systemUptime)
@@ -46,12 +163,28 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
     
     var scannerValue:String?
 
+    override func viewDidAppear(_ animated: Bool)
+    {
+        self.holdBookModels = []
+        self.holdIDs = []
+        //print("Checkout appeared")
+        let userHolds = HoldbyUser()
+        userHolds.delegate = self
+        
+        userHolds.downloadItems(inputID: 1)
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(CheckoutViewController.action), userInfo: nil,  repeats: true)
+
+        //userHolds.
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.holdTableView.layer.cornerRadius = 10
         self.holdTableView.layer.masksToBounds = true
         self.holdTableView.layer.borderColor = UIColor.lightGray.cgColor
+        self.holdTableView.delegate = self
+        self.holdTableView.dataSource = self
         self.holdTableView.layer.borderWidth = 0.5
         loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
         loginButtonView.addSubview(loginButton)
@@ -75,6 +208,9 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    //private override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //}
     
     func fetchProfile()
     {
