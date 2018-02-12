@@ -43,6 +43,10 @@ If you wanted, you could plug your own phone into the computer and select your p
 9. [After the application opens, log in with school id “1234567” and password “test”](Pictures/Proj9.png)
 10. [Feel free to browse the app!](Pictures/Proj10.png)
 The scanner portion of the app only works on an actual phone where the iPhone camera can be accessed.
+11. You can log in with facebook in the *Profile page*. Please use the following login information to see how our app uses facebook friend systems to enhance user experience.
+
+* Email: dmcallister452@student.fuhsd.org
+* Password: fblaJudgeLogin
 
 ## Key Features
 
@@ -54,6 +58,7 @@ The scanner portion of the app only works on an actual phone where the iPhone ca
 * Customized map to identify book locations
 * Bug reporting to enable continuous development
 * Smart resource management to reduce database calls and memory leaks
+* Facebook integration to allow for a social aspect to our application
 
 ## Database Structure
 
