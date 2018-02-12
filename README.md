@@ -33,6 +33,18 @@ A step by step series of how to run our project assuming prerequisites are met.
 
 1. [Open Xcode](Pictures/Proj1.png)
 2. [Locate the submission folder and enter the MAD folder inside, clicking on the MAD.xcworkspace file](Pictures/Proj2.png)
+3. [After clicking open, click on the uppermost blue MAD file. You may see some red errors](Pictures/Proj3.png)
+4. [Change the provisioning profile to your own developer account](Pictures/Proj4.png)
+5. [It might say “Failed to create provisioning profile”](Pictures/Proj5.png)
+6. [Edit the bundle identifier by adding a number to the end and click “Try Again”](Pictures/Proj6.png)
+7. [You can now view all the classes and storyboards that go into the application](Pictures/Proj7.png)
+8. [Make sure xcode is creating a simulator of a valid iphone version.](Pictures/Proj8.png) 
+If you wanted, you could plug your own phone into the computer and select your phone to download the app on your phone.
+9. [After the application opens, log in with school id “1234567” and password “test”](Pictures/Proj9.png)
+10. [Feel free to browse the app!](Pictures/Proj10.png)
+The scanner portion of the app only works on an actual phone where the iPhone camera can be accessed.
+
+
 
 And repeat
 
