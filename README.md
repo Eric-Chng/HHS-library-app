@@ -29,12 +29,10 @@ To run the application on your computer
 ### Installation and Use
 
 A step by step series of how to run our project assuming prerequisites are met.
+**Click any of the steps to view an image example of the step**
 
-Open Xcode 
-
-```
-Give the example
-```
+1. [Open Xcode](Pictures/Proj1.png)
+2. [Locate the submission folder and enter the MAD folder inside, clicking on the MAD.xcworkspace file](Pictures/Proj2.png)
 
 And repeat
 
