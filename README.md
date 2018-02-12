@@ -64,14 +64,14 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Key Features
 
--Robust backend relational database to store information
--Well commented database access code
--Checkout with your phone for ease of access
--Intelligent keyword search algorithm to look for books
--Hold system that lets you reserve a book to pick up later
--Customized map to identify book locations
--Bug reporting to enable continuous development
--Smart resource management to reduce database calls and memory leaks
+* Robust backend relational database to store information
+* Well commented database access code
+* Checkout with your phone for ease of access
+* Intelligent keyword search algorithm to look for books
+* Hold system that lets you reserve a book to pick up later
+* Customized map to identify book locations
+* Bug reporting to enable continuous development
+* Smart resource management to reduce database calls and memory leaks
 
 ## Deployment
 
@@ -96,7 +96,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU Lesser General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
