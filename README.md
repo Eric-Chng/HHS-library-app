@@ -62,25 +62,16 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Key Features
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+-Robust backend relational database to store information
+-Well commented database access code
+-Checkout with your phone for ease of access
+-Intelligent keyword search algorithm to look for books
+-Hold system that lets you reserve a book to pick up later
+-Customized map to identify book locations
+-Bug reporting to enable continuous development
+-Smart resource management to reduce database calls and memory leaks
 
 ## Deployment
 
