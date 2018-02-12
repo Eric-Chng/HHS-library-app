@@ -55,6 +55,11 @@ End with an example of getting some data out of the system or using it for a lit
 * Bug reporting to enable continuous development
 * Smart resource management to reduce database calls and memory leaks
 
+## Database Structure
+
+Database is a relational MySQL database running the InnoDB engine. It uses various foreign key checks to ensure the integrity of the data and eliminate potential errors in database calls.
+[You can see our design schema here](https://eric-cf.github.io/MAD-2018/) 
+
 ## Deployment
 
 This application is supported by a server side script, so any user just has to connect with their account (made with the library when they join the school)
