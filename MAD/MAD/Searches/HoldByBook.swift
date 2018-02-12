@@ -11,10 +11,9 @@ class HoldbyBook: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/hold_bookisbn.php"
     
+    //Gets all holds put on a book
     func downloadItems(inputID: String) {
         
-        
-        //print ("Book ID search started with \(inputID)")
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
@@ -34,7 +33,6 @@ class HoldbyBook: NSObject {
             }
             
             _ = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
             self.parseJSON(data)
         }
         task.resume()

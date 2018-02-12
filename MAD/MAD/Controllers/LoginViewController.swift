@@ -13,11 +13,8 @@ class LoginViewController: UIViewController, DownloadProtocol {
     @IBOutlet weak var incorrectCredentialsLabel: UILabel!
     
     func itemsDownloaded(items: NSArray, from: String) {
-        //print("Items downloaded")
-        //self.loginButton.titleLabel?.text = "Login"
         self.loginButton.setTitle("Login", for: UIControlState.normal)
         if (String(describing: items.firstObject) == "failed") {
-            //print("Login Failed")
             userNameField.text = ""
             passwordField.text = ""
             self.incorrectCredentialsLabel.alpha = 1.0
@@ -31,24 +28,20 @@ class LoginViewController: UIViewController, DownloadProtocol {
                 UserDefaults.standard.set(self.passwordField.text,forKey: "credential")
                 UserDefaults.standard.set((user as! UserModel).name, forKey: "userName")
 
-                //print(UserDefaults.standard.object(forKey: "id"))
                 if UserDefaults.standard.object(forKey: "FirstLogin") == nil
                 {
-                    //print("dog")
                     UserDefaults.standard.set("false", forKey: "FirstLogin")
                     self.performSegue(withIdentifier: "LoginToIntro", sender: self)
                     
                 }
                 else
                 {
-                    //print(UserDefaults.standard.object(forKey: "FirstLogin"))
                     self.performSegue(withIdentifier: "LoginToTabs", sender: self)
                     
                 }
             default:
                 userNameField.text = ""
                 passwordField.text = ""
-                print("Login Failed!")
                 self.incorrectCredentialsLabel.alpha = 1.0
 
             }
@@ -100,19 +93,15 @@ class LoginViewController: UIViewController, DownloadProtocol {
         //UserDefaults.standard.set(userCasted.ID,forKey: "id")
         if let userID = UserDefaults.standard.object(forKey: "id")
         {
-        print("id: ")
-        //print(userID)
             let idAsString = String(describing: userID)
         
-            print(idAsString)
 
         let userCredential = UserDefaults.standard.object(forKey: "credential")
         
         if(idAsString.count > 2 && String(describing: userCredential).count > 2)
         {
             
-            //print("Username: " + idAsString)
-            //print("Password: " + String(describing: userCredential!))
+
             self.loginButton.setTitle("Logging in...", for: UIControlState.normal)
             //self.loginButton.titleLabel?.text = "Logging in..."
             let login = UserLoginVerify()

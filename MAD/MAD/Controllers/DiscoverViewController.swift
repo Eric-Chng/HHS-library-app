@@ -57,10 +57,8 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
 
     
     override func viewDidAppear(_ animated: Bool) {
-        //print("view appeared")
         if(self.reviewArr.count < 1)
         {
-            //print("Reloading")
             self.timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action2), userInfo: nil,  repeats: true)
             
@@ -71,7 +69,6 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     {
         if (FBSDKAccessToken.current()) != nil
         {
-            print("Token found")
         let params = ["fields": "friends"]
         FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
             //var ids: [String] = []
@@ -81,9 +78,7 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
                 if let dataDict = result["data"] as? NSArray
                 {
                     
-                    //print("bigs")
-                    //print(dataDict[0])
-                    //if let insideDataDict = dataDict[0] as? [String:Any]
+
                     var tempCounter: Int = 0
 
                     for inner in dataDict
@@ -170,7 +165,6 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
-        //print("hello")
         self.performSegue(withIdentifier: "discoverToSearch", sender: self)
     }
     
@@ -235,7 +229,6 @@ extension DiscoverViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //code for collection view pressed
-        print(indexPath.item)
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
             self.pressedItem = librarianBookArr[indexPath.item]

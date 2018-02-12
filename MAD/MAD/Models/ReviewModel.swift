@@ -25,7 +25,7 @@ class ReviewModel: NSObject {
         
     }
     
-    //construct this shit
+    //construct
     
     init(ID: String, userID: String, ISBN: String, rating: Int, text:String) {
         self.ID = ID

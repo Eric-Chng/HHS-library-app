@@ -111,13 +111,12 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
     {
         let userCheckout = UserCheckout()
         userCheckout.delegate = self
-        userCheckout.downloadItems(isbn: isbn, user: UserDefaults.standard.object(forKey: "userId") as! String)
+        userCheckout.checkout(isbn: isbn, user: UserDefaults.standard.object(forKey: "userId") as! String)
         
         
         let holdDelete = HoldDelete()
         holdDelete.delegate = self
-        holdDelete.downloadItems(id: holdID)
-        //print("Checkout appeared")
+        holdDelete.deleteHold(id: holdID)
         
         
         //UserCheckout.download

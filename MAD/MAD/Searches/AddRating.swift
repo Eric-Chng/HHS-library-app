@@ -11,11 +11,9 @@ class AddReview: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/review_insert.php"
     
+    //Adds a review to the database
     func downloadItems(userID: String, isbn:String, rating: Int, text: String) {
-        
-        
-        //print ("Book ID search started with \(inputID)")
-        
+
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -34,7 +32,6 @@ class AddReview: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
             self.processAction(response:responseString!)
         }
         task.resume()

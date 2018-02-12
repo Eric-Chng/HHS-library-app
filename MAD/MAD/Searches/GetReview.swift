@@ -11,11 +11,10 @@ class GetReview: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/review_twoidsearch.php"
     
+    //Gets a specific review based on the user and book
     func downloadItems(userID: String, isbn:String) {
         
-        
-        //print ("Book ID search started with \(inputID)")
-        
+
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -34,7 +33,7 @@ class GetReview: NSObject {
             }
             
             _ = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
+
             self.parseJSON(data)
         }
         task.resume()
@@ -43,7 +42,7 @@ class GetReview: NSObject {
     func downloadItems(isbn:CLong) {
         
         
-        //print ("Book ID search started with \(inputID)")
+ 
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)

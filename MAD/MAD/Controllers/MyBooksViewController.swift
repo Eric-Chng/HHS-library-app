@@ -85,7 +85,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameLabe.text = UserDefaults.standard.object(forKey: "userName") as? String
-        self.idLabel.text = (UserDefaults.standard.object(forKey: "userId") as! String)
+        self.idLabel.text = (UserDefaults.standard.object(forKey: "id") as! String)
 
         let UserSearch = UserGetBooks()
         UserSearch.delegate = self
@@ -114,15 +114,9 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func itemsDownloaded(items: NSArray, from: String) {
-        print("downloaded")
-        print(from)
         if(from.elementsEqual("UserGetBooks")){
-            print("getbooks")
-            print(items)
         for i in items
         {
-            print("item")
-            print(i)
             let book = i as! CheckoutModel
             checkouts.adding(book);
             let model = BookModel(ISBN: book.ISBN!)
@@ -132,8 +126,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
           self.checkedTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.checkedOutAction), userInfo: nil,  repeats: true)
         }
         else if(from == "HoldByUser"){
-            print("userholds")
-            print(items)
 
             for i in items{
                 let book = i as! HoldModel
@@ -143,7 +135,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             self.heldTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.heldAction), userInfo: nil,  repeats: true)
         }
-//        print(items.firstObject)
         self.checkOutTableView.reloadData()
     }
     @IBAction func logoutPressed(_ sender: Any) {
@@ -161,7 +152,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("here?")
         var count:Int?
         
         if tableView == self.onHoldTableView {
@@ -173,17 +163,13 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             //print(count ?? 0)
             count =  self.checkoutBooks.count
         }
-        print("Count")
-        print(count)
         return count!
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Checking here")
         
         if tableView == self.checkOutTableView {
-            print("Checkout table")
             
             //let checkoutBook = checkouts[indexPath.row] as! CheckoutModel
             let book = checkoutBooks[indexPath.row]
@@ -204,7 +190,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             //cell.bookImg = book.BookCoverImage
             //cell.bookTitle.text = book.name
             cell.textLabel?.text = onholdBooks[indexPath.row].title
-            print("Book name: " + book.title!)
             /*
             if((onholdBook.ready) != nil/* && onholdBook.ready == 1*/){
                 cell.ready.text = "ready"
@@ -268,15 +253,11 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
                 */
                 if let pictureDict = result["picture"] as? [String:Any]
                 {
-                    //print("Email: " + email)
-                    //print(pictureDict)
                     
                     if let dataDict = pictureDict["data"] as? [String:Any]
                     {
-                        //print("data dictionary success")
                         if let profilePictureUrl = dataDict["url"] as? String
                         {
-                            print("URL: " + profilePictureUrl)
                             if let url = URL(string: profilePictureUrl) {
                                 
                                 self.downloadImage(url: url)
@@ -294,7 +275,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult, error: Error!)
     {
-        print("Completed login")
         self.fetchProfile()
     }
     
@@ -318,8 +298,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         //var found: Bool = false;
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            //print(response?.suggestedFilename ?? url.lastPathComponent)
-            //print("Download Finished")
             DispatchQueue.main.async() {
                 let temp: UIImage? = UIImage(data: data)
                 if(temp != nil && Double((temp?.size.height)!)>20.0)

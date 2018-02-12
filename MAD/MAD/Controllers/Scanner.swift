@@ -187,7 +187,6 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 if object.type == AVMetadataObject.ObjectType.ean13
                 {
                     if self.viewIfLoaded?.window != nil {
-                        print("Bigs: " + String(describing: self.viewIfLoaded?.window))
                     //delegate?.sendScannedValue(valueSent: object.stringValue!)
                         //BookDetailViewController.updateISBN(newISBN: object.stringValue!)
                         self.currentBook = BookModel.init(ISBN: object.stringValue!)

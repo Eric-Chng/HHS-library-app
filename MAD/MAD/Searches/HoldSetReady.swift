@@ -9,8 +9,8 @@ class HoldSetReady: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/hold_setready.php"
     
-    //Pass in isbn of checkout book and userid
-    func downloadItems(id:String) {
+    //Sets a hold as ready
+    func setHoldReady(id:String) {
         
         
         let url = URL(string: urlPath)!
@@ -31,7 +31,6 @@ class HoldSetReady: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
             self.checkTransaction(responseString)
         }
         task.resume()

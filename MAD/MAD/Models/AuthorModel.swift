@@ -22,7 +22,7 @@ class AuthorModel: NSObject {
         
     }
     
-    //construct this shit
+    //construct
     
     init(ID: CLong, name: String) {
         self.ID = ID

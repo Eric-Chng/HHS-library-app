@@ -12,11 +12,9 @@ class HoldViewController: UIViewController, TransactionProtocol {
     
     
     func transactionProcessed(success: Bool) {
-        //print(success)
         self.holdButton.setTitle("Set Hold", for: UIControlState.normal)
         if(success)
         {
-            print("Hold succeeded")
             self.holdButton.setTitle("Success", for: UIControlState.normal)
             let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
@@ -76,12 +74,7 @@ class HoldViewController: UIViewController, TransactionProtocol {
 
         let holdCreate = HoldCreate()
         holdCreate.delegate = self
-        //print(UserModel().ID)
-        //UserDefaults.standard.object(forKey: "id") as! String
-        //print(UserDefaults.standard.object(forKey: "userId") as! String)
-        //print("ID and ISBN: ")
-        //print(UserDefaults.standard.object(forKey: "id") as! String)
-        //print(self.isbn)
+
         holdCreate.createhold(isbn: self.isbn, user: UserDefaults.standard.object(forKey: "userId") as! String)
         //login.delegate = self
         //login.verifyLogin(schoolID: userNameField.text!, password: passwordField.text!)

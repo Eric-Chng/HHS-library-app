@@ -49,21 +49,16 @@ class FacebookReviewModel
         
         if (FBSDKAccessToken.current()) != nil
             {
-                //print("Token")
-                //print(token)
-                //print(token.tokenString)
+
                 
                 let params = ["fields": "name"]
                 FBSDKGraphRequest(graphPath: id, parameters: params).start { (connection, result, error) -> Void in
-                    //print(result)
                     
                     if let result = result as? [String:Any]
                     {
                         if let dataDict = result["name"] as? String
                         {
-                            //print("Name: " + dataDict)
                             name = dataDict
-                            print("Name is: " + name)
                             self.userName = dataDict
                         }
                     }
@@ -92,13 +87,10 @@ class FacebookReviewModel
     }
     
     func downloadCoverImage(url: URL) {
-        //print("Download Started")
         
         var found: Bool = false;
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            //print(response?.suggestedFilename ?? url.lastPathComponent)
-            //print("Download Finished")
             DispatchQueue.main.async() {
                 let temp: UIImage? = UIImage(data: data)
                 if(temp != nil && Double((temp?.size.height)!)>20.0)
@@ -111,7 +103,6 @@ class FacebookReviewModel
                 {
                     
                 }
-                //print(String(describing: temp?.size.height))
                 
             }
         }

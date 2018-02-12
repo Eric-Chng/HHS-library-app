@@ -66,7 +66,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     }
     
     @IBAction func reserveButton(_ sender: Any) {
-        //print("touched")
         if(self.checkoutButton.currentTitle! == "Hold")
         {
         self.performSegue(withIdentifier: "reserveSegue", sender: self)
@@ -75,7 +74,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     func itemsDownloaded(items: NSArray, from: String) {
         
-        print("Items received")
         var counter: Int = 0
         for x in items
         {
@@ -86,7 +84,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         {
             self.checkoutButton.setTitle("Hold", for: UIControlState.normal)
             
-            print("Found to be available")
         }
         else
         {
@@ -111,8 +108,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 
                 heightConstant = self.descBox.contentSize.height
                 
-                //print("Height:")
-                //print(self.descBox.contentSize.height)
+
             }
             else
             {
@@ -125,7 +121,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
             }
         self.titleLabel?.text = selectedBook!.title
         self.authorLabel?.text = selectedBook!.author
-            //ratingView.subviews
             
             if(loadedRating == false)
             {
@@ -134,7 +129,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 let x = ratingView.frame
 
                 let ratingAsInt = Int(selectedBook!.rating) + 1
-                //print(ratingAsInt)
                 self.ratingLabel.text = String(describing: (selectedBook?.rating)!) + " out of 5 stars"
                 if((selectedBook?.rating)! < 0)
                 {
@@ -144,14 +138,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 for view in self.ratingView.subviews {
                     view.removeFromSuperview()
                 }
-                /*
-                if(counter<ratingAsInt)
-                {
-                    for view in self.ratingView.subviews {
-                        view.removeFromSuperview()
-                    }
-                }
-                 */
+  
                 while(counter<ratingAsInt)
                 {
                     loadedRating = true
@@ -199,19 +186,13 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
             self.BookCoverImage.image = selectedBook!.BookCoverImage.image
             if self.navigationItem.titleView is UIImageView {
                 (self.navigationItem.titleView as! UIImageView).image = self.BookCoverImage.image
-                //print("here")
                 self.navigationItem.titleView?.alpha = 0.05
                 
-                //print(self.titleLabel?.text)
                 if(self.titleLabel  != nil && self.titleLabel?.text != nil && self.titleLabel?.text != "Loading" && self.BookCoverImage != nil && self.BookCoverImage.image?.isEqual(#imageLiteral(resourceName: "loadingImage")) == false)
                 {
-                    //print("Invalidating")
-                    print("doggin it")
                     if(selectedBook!.rating > -0.1)
                     {
-                        print("puppo")
                 self.loadTimer?.invalidate()
-                        //print("check availability")
                         self.checkAvailability()
                     }
                     else
@@ -224,21 +205,14 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 }
                 else
                 {
-                    //print("test")
                 }
-                    /*
-                if loadTimer != nil {
-                    loadTimer!.invalidate()
-                    loadTimer = nil
-                }
-                */
+                
             }
         }
     }
     
     func checkAvailability()
     {
-        print("Checking")
         let idSearch = IdSearchBook()
         idSearch.delegate = self
         idSearch.downloadItems(inputID: (self.selectedBook?.ISBN)!)
@@ -260,8 +234,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     @objc func action()
     {
-        //print("counter: " + String(describing: smallCoverImageCounter))
-        //print("hi")
+
         
        
         
@@ -270,7 +243,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         {
             self.smallCoverImageCounter = 10
             self.userInteractionCommitted = true
-            //print("setting")
         }
         else if(scrollView.contentOffset.y < 100)
         {
@@ -301,7 +273,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         
         if(self.userInteractionCommitted == false)
         {
-            //print("slammed")
             let temp = UIView.init()
             temp.frame = CGRect(x: 0, y: 0, width: 500, height: 100)
             temp.backgroundColor = UIColor.white
@@ -407,8 +378,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
             {
             self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
                 //self.descBox!.sizeToFit()
-                //print("Height:")
-                //print(self.descBox.contentSize.height)
                 var heightConstant = CGFloat(160)
                 if(self.descBox.contentSize.height<160)
                 {
@@ -421,18 +390,15 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant)
                 self.descBox.addConstraints([heightConstraint])
             
-                //print("doggy")
                 self.checkAvailability()
                 
             self.titleLabel?.text = selectedBook!.title
             self.authorLabel?.text = selectedBook!.author
-                //look here
                 
                 var counter: Int = 0
                 let x = ratingView.frame
                 
                 let ratingAsInt = Int(selectedBook!.rating) + 1
-                //print(ratingAsInt)
                 self.ratingLabel.text = String(describing: (selectedBook?.rating)!) + " out of 5 stars"
                 if((selectedBook?.rating)! < 0)
                 {
@@ -489,8 +455,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 self.titleLabel?.text = "Loading"
                 self.authorLabel?.text = "Loading"
             }
-            //print(String(describing: selectedBook?.BookCoverImage))
-            //self.BookCoverImage = selectedBook!.BookCoverImage
+
 
             if(selectedBook?.BookCoverImage != nil)
             {
@@ -587,7 +552,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                         print("error trying to convert data to JSON")
                         return
                 }
-                //print("Google Books JSON: " + String(describing: googleBooksJSON))
                 
                 
                 
@@ -603,8 +567,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
                 {
                     JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/
-                //print(JSONAsString)
-                //print("End of JSON")
                 
 
                     var finalTitle = "Not found: " + BookDetailViewController.ISBN
@@ -626,7 +588,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                     finalTitle = finalTitle.substring(to: lastQuoteIndex)
                 }
                     }
-                //print(finalTitle)
                     var finalAuthor = "Not available"
                 //Parses out the author
                 if let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")
@@ -634,12 +595,10 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 let distanceToAuthors = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToAuthors.lowerBound))
                 let authorsIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToAuthors+33)
                 let authorsAndOn = JSONAsString.substring(from: authorsIndex)
-                //print("oh boy" + authorsAndOn)
                 let rangeToQuote: Range<String.Index> = authorsAndOn.range(of: "\"")!
                 let distanceToQuote = Int(authorsAndOn.distance(from: authorsAndOn.startIndex, to: rangeToQuote.lowerBound))
                 let quoteIndex = authorsAndOn.index(authorsAndOn.startIndex, offsetBy: distanceToQuote)
                 finalAuthor = authorsAndOn.substring(to: quoteIndex)
-                //print("The Author is \"" + finalAuthor + "\"")
                     }
                     var finalDescription = "Not available";
                     
@@ -651,12 +610,10 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 let distanceToDescription = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToDescription.lowerBound))
                 let descriptionIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToDescription+15)
                 let descriptionAndOn = JSONAsString.substring(from: descriptionIndex)
-                //print("Description is: " + descriptionAndOn)
                     let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: ";")!
                 let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))-1
                 let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
                     finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
-                //print("Description is: " + finalDescription)
                     finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
                     var ignored:String = "";
                     while let rangeToBackslash: Range<String.Index> = finalDescription.range(of: "\\")
@@ -664,17 +621,12 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                         var isQuote:Bool = false;
                     let distanceToBackslash = Int(finalDescription.distance(from: finalDescription.startIndex, to: rangeToBackslash.lowerBound))
                     let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash)
-                        //print("finalDesc1: " + finalDescription)
                     var finalDescription2: String = finalDescription.substring(from: backslashIndex)
                     
                      
-                    //print("finalDesc: " + finalDescription2)
-                    //finalDescription2 = "0301";
                    let temp1 = finalDescription.substring(to: backslashIndex)
-                        //print("Test: " + finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)))
                         if(finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2))=="\\\"")
                         {
-                            //print("found to be a quote")
                             let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash+1)
                             isQuote = true;
                             finalDescription = finalDescription.substring(from: backslashIndex)
@@ -683,23 +635,16 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                     
                         if(isQuote == false)
                         {
-                            //print("final" + temp1)
-                            //print("made it to indexing")
                     let backslashIndex2 = finalDescription2.index(finalDescription2.startIndex, offsetBy: 6)
-                            //print("made it past indexing")
                     let temp2 = finalDescription2.substring(from: backslashIndex2)
-                            //print("made it past substringing")
                     finalDescription = temp1 + temp2
-                            //print("got finalDescription: " + finalDescription)
                         }
                     }
                     finalDescription = ignored + finalDescription;
                     //self.performSegue(withIdentifier: "reserveSegue", sender: self)
 
-                    //print(finalDescription)
-                    //print(rangeToBackslash2)
+
                     }
-                    //print(code)
                     //var y:Character = Character(code)
                     
                   
@@ -708,7 +653,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                     
                     
                     //var code:String = "Pok\u{00E9}mon"
-                    //print("Code: " + String(y))
                     
                 
                 DispatchQueue.main.async(execute: {() -> Void in
@@ -821,13 +765,11 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     }
     
     func downloadCoverImage(url: URL) {
-        print("Download Started")
         
         var found: Bool = false;
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() {
                 let temp: UIImage? = UIImage(data: data)
                 if(temp != nil && Double((temp?.size.height)!)>20.0)
@@ -855,18 +797,15 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
             self.getDataFromUrl(url: googleURL) { data, response, error in
                 guard let data = data, error == nil else { return }
                 print(response?.suggestedFilename ?? url.lastPathComponent)
-                print("Download Finished")
                 DispatchQueue.main.async() {
                     let temp: UIImage? = UIImage(data: data)
                     if(temp != nil && Double((temp?.size.height)!)>20.0)
                     {
-                        print("Doing it")
                         self.BookCoverImage.image = temp
                         self.foundGoogleImage = true
                     }
                     else
                     {
-                        print("Image not found 2")
                         //self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
                     }
                     print(String(describing: temp?.size.height))
@@ -889,7 +828,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     static func updateISBN(newISBN: String)
     {
-        print("update happened")
         BookDetailViewController.ISBN = newISBN;
     }
     

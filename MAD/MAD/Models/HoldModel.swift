@@ -25,7 +25,7 @@ class HoldModel: NSObject {
         
     }
     
-    //construct this shit
+    //construct
     
     init(ID: String, userID: String, ISBN: String, startTimestamp: String, ready:Int) {
         self.ID = ID

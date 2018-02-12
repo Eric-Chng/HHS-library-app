@@ -8,7 +8,7 @@ class HoldCreate: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/hold_create.php"
     
-    //Pass in isbn of checkout book and userid
+    //Pass in isbn of book and userid to create a hold
     func createhold(isbn: String,user:String) {
         
         
@@ -30,8 +30,6 @@ class HoldCreate: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("Response string")
-            //print("responseString = \(responseString)")
             self.checkTransaction(responseString)
         }
         task.resume()

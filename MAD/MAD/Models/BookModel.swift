@@ -61,7 +61,6 @@ class BookModel: NSObject {
     {
         self.ISBN = ISBN
         super.init()
-        //print("ISBN initializer")
         DispatchQueue.main.async {
             self.BookCoverImage = UIImageView.init(image: #imageLiteral(resourceName: "loadingImage"))
         }
@@ -123,8 +122,7 @@ class BookModel: NSObject {
         }
         
         
-        //print(JSON)
-        //print("Initializing")
+
         self.parseJSON(JSONAsString: JSON)
     }
     
@@ -152,13 +150,10 @@ class BookModel: NSObject {
     }
     
     func downloadCoverImage(url: URL) {
-        //print("Download Started")
         
         var found: Bool = false;
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            //print(response?.suggestedFilename ?? url.lastPathComponent)
-            //print("Download Finished")
             DispatchQueue.main.async() {
                 let temp: UIImage? = UIImage(data: data)
                 if(temp != nil && Double((temp?.size.height)!)>20.0)
@@ -175,32 +170,25 @@ class BookModel: NSObject {
                         self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
                     }
                 }
-                //print(String(describing: temp?.size.height))
                 
             }
         }
         if(found == false)
         {
             if let googleURL = URL(string: self.googleImageURL!) {
-                //print("Using GBooks Image")
                 self.getDataFromUrl(url: googleURL) { data, response, error in
                     guard let data = data, error == nil else { return }
-                    //print(response?.suggestedFilename ?? url.lastPathComponent)
-                    //print("Download Finished")
                     DispatchQueue.main.async() {
                         let temp: UIImage? = UIImage(data: data)
                         if(temp != nil && Double((temp?.size.height)!)>20.0)
                         {
-                            //print("Doing it")
                             self.BookCoverImage.image = temp
                             self.foundGoogleImage = true
                         }
                         else
                         {
-                            //print("Image not found 2")
                             //self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
                         }
-                        //print(String(describing: temp?.size.height))
                         
                     }
                 }
@@ -235,7 +223,6 @@ class BookModel: NSObject {
                 
             }
             self.title = finalTitle
-            //print(finalTitle)
             var finalAuthor = "Not available"
             //Parses out the author
             if let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")
@@ -244,7 +231,6 @@ class BookModel: NSObject {
                 let authorsIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToAuthors+33)
                 let temp = JSONAsString[authorsIndex...]
                 let authorsAndOn = String(temp)
-                //print("oh boy" + authorsAndOn)
                 let rangeToQuote: Range<String.Index> = authorsAndOn.range(of: "\"")!
                 let distanceToQuote = Int(authorsAndOn.distance(from: authorsAndOn.startIndex, to: rangeToQuote.lowerBound))-1
                 let quoteIndex = authorsAndOn.index(authorsAndOn.startIndex, offsetBy: distanceToQuote)
@@ -252,9 +238,7 @@ class BookModel: NSObject {
                 //finalAuthor = authorsAndOn.substring(to: quoteIndex)
                 let substring1 = authorsAndOn[...quoteIndex]
                 finalAuthor = String(substring1)
-                //print("Title: " + tempo)
                 self.author = finalAuthor
-                //print("Title: \"" + finalTitle + "\" by " + finalAuthor)
                 
                 let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
                 
@@ -274,7 +258,6 @@ class BookModel: NSObject {
                     
                 }
                 self.ISBN = finalISBN
-                //print("ISBN is " + finalISBN)
                 
                 var finalThumbnail: String = ""
                 if let rangeToThumbnail: Range<String.Index> = tempString.range(of: " thumbnail = ")
@@ -287,7 +270,6 @@ class BookModel: NSObject {
                     let distanceToEndQuote = Int(thumbnailAndOn.distance(from: thumbnailAndOn.startIndex, to: rangeToEndQuote.lowerBound))
                     let endQuoteIndex = thumbnailAndOn.index(thumbnailAndOn.startIndex, offsetBy: distanceToEndQuote-1)
                     finalThumbnail = /*String(thumbnailAndOn[...endQuoteIndex])*/thumbnailAndOn.substring(to: endQuoteIndex)
-                    //print("Thumbnail URL: " + finalThumbnail)
                     self.googleImageURL = finalThumbnail
                     if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + self.ISBN! + "-L.jpg") {
                         
@@ -308,7 +290,6 @@ class BookModel: NSObject {
                         
                         if let rangeToRating: Range<String.Index> = JSONAsString.range(of: "averageRating")
                         {
-                        //duck start
                         let distanceToRating = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToRating.lowerBound))
                         let ratingIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToRating+17)
                         let ratingAndOn = JSONAsString.substring(from: ratingIndex)
@@ -324,33 +305,22 @@ class BookModel: NSObject {
                             
                             
                             
-                            //print("Rating and on: " + ratingAndOn)
-                            /*
-                        let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: ";")!
-                        let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))-1
-                        let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
-                        finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
-                        finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
-                             */
-                        //duck end
+
                         }
                         
                         
                         var ignored:String = "";
                         while let rangeToBackslash: Range<String.Index> = finalDescription.range(of: "\\")
                         {
-                            //print("In the loop")
                             var isQuote:Bool = false;
                             let distanceToBackslash = Int(finalDescription.distance(from: finalDescription.startIndex, to: rangeToBackslash.lowerBound))
                             let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash)
-                            //print("finalDesc1: " + finalDescription)
                             let finalDescription2: String = String(finalDescription[backslashIndex...])//finalDescription.substring(from: backslashIndex)
                             
                             /*finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2))*/
                             
                             var temp1 = String(finalDescription[...backslashIndex])//finalDescription.substring(to: backslashIndex)
                             //if(String(finalDescription2[...finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)]) == "\\\"")
-                            //print("Quote check: [" + finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)) + "]")
                             if(finalDescription2.count>2)
                             {
                             if(finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2)) == "\\\"")
@@ -368,7 +338,6 @@ class BookModel: NSObject {
                                 var temp2 = finalDescription2
                                 if(finalDescription2.count>7)
                                 {
-                                //print(finalDescription2)
                                 let backslashIndex2 = finalDescription2.index(finalDescription2.startIndex, offsetBy: 8)
                                 temp2 = String(finalDescription2[backslashIndex2...]) //finalDescription2.substring(from: backslashIndex2)
                                 if(temp1.count > 1)
@@ -380,8 +349,6 @@ class BookModel: NSObject {
                                 {
                                     temp1 = ""
                                 }
-                                //print("Temp1: " + temp1)
-                                //print("Temp2: " + temp2)
                                 }
                                 finalDescription = temp1 + temp2
                             }
@@ -389,25 +356,19 @@ class BookModel: NSObject {
                             {
                                 if(ignored.count >  1)
                                 {
-                                    //print("Pre sub ignored: " + ignored)
                                     
                                     let temporaryIndex = ignored.index(ignored.endIndex, offsetBy: -2)
                                     ignored = String(ignored[...temporaryIndex])
                                     if(self.title == "Hello Hello")
                                     {
-                                        //print("Ignored: " + ignored)
                                     }
                                     ignored = ignored + "\""
                                 }
                                 let twoCharacterIndex = finalDescription.index(finalDescription.startIndex, offsetBy: 2)
                                 finalDescription = String(finalDescription[twoCharacterIndex...])
-                                //print("not a quote")
                             }
                         }
                         finalDescription = ignored + finalDescription;
-                        //print("Description...")
-                        //print(finalDescription)
-                        //print("[description end]")
                         self.desc = finalDescription
                         
                     }

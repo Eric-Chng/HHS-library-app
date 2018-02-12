@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+//Protocol that allows for asynchronous code, allowing other code to function even if network issues causes delays in the information download
 protocol DownloadProtocol: class {
     func itemsDownloaded(items: NSArray, from: String)
 }
@@ -12,7 +13,7 @@ class IdSearchBook: NSObject {
     weak var delegate: DownloadProtocol!
     
     let urlPath = "http://www.the-library-database.com/php_scripts/isbn_book.php"
-    
+    //Downloads book matching that isbn
     func downloadItems(inputID: String) {
         
         
@@ -34,7 +35,6 @@ class IdSearchBook: NSObject {
          }
          
          let responseString = String(data: data, encoding: .utf8)
-         print("responseString = \(responseString)")
             self.parseJSON(data)
          }
          task.resume()
@@ -81,7 +81,6 @@ class IdSearchBook: NSObject {
                 book.desc = desc
                 book.bookCount = Int(bookcount)
                 book.bookTotal = Int(booktotal)
-                print(name)
             }
             
             books.add(book)

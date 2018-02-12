@@ -93,7 +93,6 @@ class HomeViewController: UIViewController {
     
     @objc func action()
     {
-        //print("hello")
         timeCounter = timeCounter + 1
         if(timeCounter == 10)
         {
@@ -186,9 +185,7 @@ extension HomeViewController: MKMapViewDelegate
             return circleRenderer
         }
         else {
-            //print("hellos")
             if overlay is LibraryOverlay {
-                //print("bigs")
                 return LibraryOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "mapOverlay"))
             }
             return MKOverlayRenderer(overlay: overlay)

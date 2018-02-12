@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+//Called to verify when a transaction is successful
 protocol TransactionProtocol: class {
     func transactionProcessed(success: Bool)
 }
@@ -12,8 +13,8 @@ class UserCheckout: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/user_checkout.php"
     
-    //Pass in isbn of checkout book and userid
-    func downloadItems(isbn: String,user:String) {
+    //Checks out a book for a user
+    func checkout(isbn: String,user:String) {
         
         
         let url = URL(string: urlPath)!
@@ -34,7 +35,6 @@ class UserCheckout: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
             self.checkTransaction(responseString)
         }
         task.resume()

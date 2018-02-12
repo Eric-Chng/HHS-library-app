@@ -11,10 +11,9 @@ class UserLoginVerify: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/user_loginverify.php"
     
+    //Verifies login information
     func verifyLogin(schoolID: String, password:String) {
-        
-        
-        //print ("Book ID search started with \(inputID)")
+   
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
@@ -34,7 +33,6 @@ class UserLoginVerify: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
             if (responseString == "script failed") {
                 DispatchQueue.main.async(execute: { () -> Void in
                     let users = NSMutableArray()

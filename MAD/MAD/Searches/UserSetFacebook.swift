@@ -9,7 +9,7 @@ class UserSetFacebook: NSObject {
     
     let urlPath = "http://www.the-library-database.com/php_scripts/user_setfacebook.php"
     
-    //Pass in isbn of checkout book and userid
+    //Sets the facebookid of a user
     func setFacebookID(id:String, facebookid:String) {
         
         
@@ -31,7 +31,6 @@ class UserSetFacebook: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
             self.checkTransaction(responseString)
         }
         task.resume()

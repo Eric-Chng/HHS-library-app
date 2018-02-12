@@ -10,11 +10,9 @@ class UserGetBooks: NSObject {
     weak var delegate: DownloadProtocol!
     
     let urlPath = "http://www.the-library-database.com/php_scripts/user_getbooks.php"
-    
+    //Downloads all books that a user has checked out
     func downloadItems(inputID: String) {
-        
-        
-        //print ("Book ID search started with \(inputID)")
+
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
@@ -34,7 +32,7 @@ class UserGetBooks: NSObject {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(responseString)")
+            
             self.parseJSON(data)
         }
         task.resume()
