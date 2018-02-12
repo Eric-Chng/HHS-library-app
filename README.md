@@ -44,16 +44,6 @@ If you wanted, you could plug your own phone into the computer and select your p
 10. [Feel free to browse the app!](Pictures/Proj10.png)
 The scanner portion of the app only works on an actual phone where the iPhone camera can be accessed.
 
-
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Key Features
 
 * Robust backend relational database to store information
