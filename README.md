@@ -26,11 +26,11 @@ To run the application on your computer
 -Developer signing 
 ```
 
-### Installing
+### Installation and Use
 
-A step by step series of examples that tell you have to get a development env running
+A step by step series of how to run our project assuming prerequisites are met.
 
-Say what the step will be
+Open Xcode 
 
 ```
 Give the example
