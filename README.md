@@ -27,14 +27,21 @@ This app is designed to provide a mobile interface that works alongside a stable
 
 ## Getting Started
 
-Download Xcode to run the testing environment. You also need a de
+Download Xcode to run the testing environment. You can view the code, but you need a developer account to sign the instance to run on your computer. 
+Alternatively, you can download the app off of "TestFlight" onto your phone to run the app on your phone.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
+To view the code
 ```
-Give examples
+-Mac OS
+-XCode
+```
+To run the application on your computer
+```
+-Mac OS
+-XCode
+-Developer signing 
 ```
 
 ### Installing
@@ -81,17 +88,14 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* MySQL server hosted with bluehost.com
+* PHP access code hosted with bluehost.com
+* Swift code for UI and implementation
+* CocoaPods for library dependency management
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
@@ -105,7 +109,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Thanks to Stanford Mobile App Development course for posting learning resources
+* Thanks to Mr. Kuramoto, the San Mateo Library branch manager, for answering our questions about library operations
+* Thanks to Mr. Shelby, former computer engineer, for giving us feedback on user testing
+* Special thanks to Mrs. Amity Bateman
 
