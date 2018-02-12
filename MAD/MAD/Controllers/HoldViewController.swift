@@ -8,7 +8,18 @@
 
 import UIKit
 
-class HoldViewController: UIViewController {
+class HoldViewController: UIViewController, TransactionProtocol {
+    
+    
+    func transactionProcessed(success: Bool) {
+        print(success)
+        self.holdButton.setTitle("Set Hold", for: UIControlState.normal)
+        if(success)
+        {
+            print("Succeeded")
+        }
+    }
+    
 
     @IBOutlet weak var backgroundView: UIView!
     var currentModel: BookModel = BookModel()
@@ -53,7 +64,15 @@ class HoldViewController: UIViewController {
     
     @IBAction func holdPressed(_ sender: Any)
     {
-        
+        self.holdButton.setTitle("Processing Hold", for: UIControlState.normal)
+
+        let holdCreate = HoldCreate()
+        holdCreate.delegate = self
+        //print(UserDefaults.standard.object(forKey: "id") as! String)
+        print(self.isbn)
+        holdCreate.createhold(isbn: self.isbn, user: UserDefaults.standard.object(forKey: "id") as! String)
+        //login.delegate = self
+        //login.verifyLogin(schoolID: userNameField.text!, password: passwordField.text!)
     }
     func setBookModel(model: BookModel)
     {

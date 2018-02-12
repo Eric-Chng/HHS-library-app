@@ -311,7 +311,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-1v-yNE">
-                                    <rect key="frame" x="116" y="149" width="234" height="33"/>
+                                    <rect key="frame" x="116" y="124" width="234" height="33"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="33" id="k7y-BF-Mbe"/>
                                     </constraints>
@@ -320,7 +320,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxz-jE-WhA">
-                                    <rect key="frame" x="116" y="170" width="239" height="33"/>
+                                    <rect key="frame" x="116" y="145" width="239" height="33"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="33" id="7zq-ty-KYd"/>
                                     </constraints>
@@ -340,7 +340,7 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" placeholderIntrinsicWidth="60" placeholderIntrinsicHeight="30" image="loadingImage" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7vs-0M-UNn">
-                                    <rect key="frame" x="20" y="120" width="87.5" height="140"/>
+                                    <rect key="frame" x="20" y="95" width="87.5" height="140"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="140" id="sxh-1d-TwT"/>
                                     </constraints>
@@ -356,12 +356,9 @@
                                     <state key="normal" title="Set Hold">
                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <connections>
-                                        <action selector="holdPressed:" destination="lPK-fh-F4m" eventType="touchUpInside" id="7Ov-uz-cI7"/>
-                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Holds last 24 hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OJ-gS-G9V">
-                                    <rect key="frame" x="70.5" y="492" width="234" height="24"/>
+                                    <rect key="frame" x="70.5" y="562" width="234" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="234" id="Bng-LI-v7Z"/>
                                         <constraint firstAttribute="height" constant="24" id="ttd-9b-yEf"/>
@@ -370,6 +367,22 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruq-YB-12c">
+                                    <rect key="frame" x="32.5" y="514" width="310" height="50"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="310" id="Gep-fg-YtB"/>
+                                        <constraint firstAttribute="height" constant="50" id="UZ3-5r-20z"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                    <state key="normal" title="Set Hold">
+                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="holdPressed:" destination="lPK-fh-F4m" eventType="touchUpInside" id="mh9-oK-peO"/>
+                                        <action selector="reserveButton:" destination="wrM-me-emw" eventType="touchUpInside" id="MQN-u7-9iq"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -381,18 +394,20 @@
                                 <constraint firstItem="ofx-Cc-to8" firstAttribute="centerX" secondItem="GL1-jB-a63" secondAttribute="centerX" id="Dn1-E7-CWG"/>
                                 <constraint firstItem="7vs-0M-UNn" firstAttribute="width" secondItem="7vs-0M-UNn" secondAttribute="height" multiplier="5:8" id="Ey4-3J-AEX"/>
                                 <constraint firstItem="WNY-dO-tPy" firstAttribute="leading" secondItem="GL1-jB-a63" secondAttribute="leading" constant="14" id="JW7-rv-zuC"/>
+                                <constraint firstAttribute="bottom" secondItem="ruq-YB-12c" secondAttribute="bottom" constant="103" id="QKG-ln-a4l"/>
                                 <constraint firstItem="WNY-dO-tPy" firstAttribute="top" secondItem="GL1-jB-a63" secondAttribute="top" constant="52" id="XdT-RE-nGV"/>
                                 <constraint firstAttribute="trailing" secondItem="bX5-1v-yNE" secondAttribute="trailing" constant="25" id="YOh-mU-Xoa"/>
                                 <constraint firstItem="6OJ-gS-G9V" firstAttribute="centerX" secondItem="GL1-jB-a63" secondAttribute="centerX" id="ZGE-0z-1Ml"/>
                                 <constraint firstAttribute="trailing" secondItem="JiD-Uf-tjW" secondAttribute="trailing" constant="26" id="eOW-px-CmF"/>
                                 <constraint firstAttribute="bottom" secondItem="ofx-Cc-to8" secondAttribute="bottom" constant="113" id="ffI-nu-jTG"/>
-                                <constraint firstItem="7vs-0M-UNn" firstAttribute="top" secondItem="WNY-dO-tPy" secondAttribute="bottom" constant="35" id="gGC-bt-nza"/>
+                                <constraint firstItem="7vs-0M-UNn" firstAttribute="top" secondItem="WNY-dO-tPy" secondAttribute="bottom" constant="10" id="gGC-bt-nza"/>
                                 <constraint firstItem="bX5-1v-yNE" firstAttribute="top" secondItem="JiD-Uf-tjW" secondAttribute="bottom" constant="-6" id="nH7-la-s2Q"/>
                                 <constraint firstItem="Nde-Fs-LXc" firstAttribute="bottom" secondItem="WNY-dO-tPy" secondAttribute="bottom" id="njO-ij-p2R"/>
                                 <constraint firstAttribute="trailing" secondItem="Nde-Fs-LXc" secondAttribute="trailing" constant="8" id="pc5-do-7FS"/>
                                 <constraint firstItem="JiD-Uf-tjW" firstAttribute="top" secondItem="7vs-0M-UNn" secondAttribute="top" constant="2" id="qAf-sX-D9m"/>
                                 <constraint firstItem="Cxz-jE-WhA" firstAttribute="leading" secondItem="7vs-0M-UNn" secondAttribute="trailing" constant="8.5" id="qOQ-8h-icU"/>
-                                <constraint firstItem="ofx-Cc-to8" firstAttribute="top" secondItem="6OJ-gS-G9V" secondAttribute="bottom" constant="-2" id="z8W-Py-uLA"/>
+                                <constraint firstItem="ruq-YB-12c" firstAttribute="centerX" secondItem="GL1-jB-a63" secondAttribute="centerX" id="x1k-8L-OS3"/>
+                                <constraint firstItem="ofx-Cc-to8" firstAttribute="bottom" secondItem="6OJ-gS-G9V" secondAttribute="bottom" constant="-32" id="z8W-Py-uLA"/>
                             </constraints>
                         </view>
                         <blurEffect style="light"/>
@@ -401,7 +416,7 @@
                         <outlet property="authorLabel" destination="bX5-1v-yNE" id="C6r-Nz-HFZ"/>
                         <outlet property="backgroundView" destination="GL1-jB-a63" id="Zft-j6-tAC"/>
                         <outlet property="bookImageView" destination="7vs-0M-UNn" id="X5l-zJ-oEJ"/>
-                        <outlet property="holdButton" destination="ofx-Cc-to8" id="9iW-C3-IT9"/>
+                        <outlet property="holdButton" destination="ruq-YB-12c" id="IN6-O4-gxa"/>
                         <outlet property="isbnLabel" destination="Cxz-jE-WhA" id="FIC-0O-rhd"/>
                         <outlet property="titleLabel" destination="JiD-Uf-tjW" id="mC0-7N-6kL"/>
                         <segue destination="Q7C-mL-eHq" kind="unwind" identifier="holdUnwind" unwindAction="unwindToDetailWithSegue:" id="hFX-g4-Rpm"/>
