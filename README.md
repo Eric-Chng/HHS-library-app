@@ -59,6 +59,8 @@ Onboarding Page On First Launch
 
 ![barcode](https://user-images.githubusercontent.com/26942890/36134449-b9bf6b56-1039-11e8-91f7-18aed490d548.gif)
 
+14. If you ever run into any issues, submit a bug report at the bottom of the "My Books" page.
+
 ## Key Features
 
 * Robust backend relational database to store information

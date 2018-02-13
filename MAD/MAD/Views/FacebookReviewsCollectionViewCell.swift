@@ -90,7 +90,7 @@ class FacebookReviewsCollectionViewCell: UICollectionViewCell {
             self.placeHolderCounter = self.placeHolderCounter + 1
             if(self.placeHolderCounter > 30)
             {
-            self.titleLabel.text = "Placeholder"
+            self.titleLabel.text = "Not found"
             }
         }
         if(self.highResImageCounter > 30)

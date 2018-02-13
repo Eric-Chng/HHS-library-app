@@ -277,7 +277,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiD-Uf-tjW">
-                                    <rect key="frame" x="130" y="130" width="211" height="33"/>
+                                    <rect key="frame" x="130" y="130" width="264" height="33"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="33" id="Oz5-jn-aD3"/>
                                     </constraints>
@@ -374,7 +374,7 @@
                                 <constraint firstItem="WNY-dO-tPy" firstAttribute="top" secondItem="GL1-jB-a63" secondAttribute="top" constant="67" id="XdT-RE-nGV"/>
                                 <constraint firstAttribute="trailing" secondItem="bX5-1v-yNE" secondAttribute="trailing" constant="25" id="YOh-mU-Xoa"/>
                                 <constraint firstItem="6OJ-gS-G9V" firstAttribute="centerX" secondItem="GL1-jB-a63" secondAttribute="centerX" id="ZGE-0z-1Ml"/>
-                                <constraint firstAttribute="trailing" secondItem="JiD-Uf-tjW" secondAttribute="trailing" constant="73" id="eOW-px-CmF"/>
+                                <constraint firstAttribute="trailing" secondItem="JiD-Uf-tjW" secondAttribute="trailing" constant="20" id="eOW-px-CmF"/>
                                 <constraint firstAttribute="bottom" secondItem="ofx-Cc-to8" secondAttribute="bottom" constant="113" id="ffI-nu-jTG"/>
                                 <constraint firstItem="7vs-0M-UNn" firstAttribute="top" secondItem="WNY-dO-tPy" secondAttribute="bottom" constant="10" id="gGC-bt-nza"/>
                                 <constraint firstItem="bX5-1v-yNE" firstAttribute="top" secondItem="JiD-Uf-tjW" secondAttribute="bottom" constant="-10" id="nH7-la-s2Q"/>
