@@ -52,7 +52,8 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         if(counter > 0 && blankModel == false)
         {
-            print("All books loaded")
+            //print("All books loaded")
+            
             self.checkedTimer.invalidate()
             self.checkOutTableView.reloadData()
         }
@@ -79,7 +80,27 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.checkoutBooks = []
+        self.checkouts = NSArray()
+        self.onholdBooks = []
+        self.onholds = NSArray()
+        self.checkOutTableView.reloadData()
+        self.onHoldTableView.reloadData()
+        let UserSearch = UserGetBooks()
+        UserSearch.delegate = self
+        UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)
         
+        /*
+        onHoldTableView.delegate = self
+        onHoldTableView.dataSource = self
+        
+        checkOutTableView.delegate = self
+        checkOutTableView.dataSource = self
+        */
+        let onHoldUserSearch = HoldbyUser()
+        
+        onHoldUserSearch.delegate = self
+        onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "userId") as! String)!/* as! CLong*/)
     }
     
     override func viewDidLoad() {
@@ -87,18 +108,18 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         self.nameLabe.text = UserDefaults.standard.object(forKey: "userName") as? String
         self.idLabel.text = (UserDefaults.standard.object(forKey: "id") as! String)
 
-        let UserSearch = UserGetBooks()
-        UserSearch.delegate = self
-        UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)
+        //let UserSearch = UserGetBooks()
+        //UserSearch.delegate = self
+        //UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)
         onHoldTableView.delegate = self
         onHoldTableView.dataSource = self
         
         checkOutTableView.delegate = self
         checkOutTableView.dataSource = self
-        let onHoldUserSearch = HoldbyUser()
+        //let onHoldUserSearch = HoldbyUser()
         
-        onHoldUserSearch.delegate = self
-        onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "userId") as! String)!/* as! CLong*/)
+        //onHoldUserSearch.delegate = self
+        //onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "userId") as! String)!/* as! CLong*/)
         
         loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
         

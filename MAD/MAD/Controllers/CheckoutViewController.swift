@@ -70,14 +70,13 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         }
         if(counter > 0 && blankModel == false)
         {
-            print("All books loaded")
+            //print("All books loaded")
             self.timer.invalidate()
             self.holdTableView.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("checking here")
         return self.holdBookModels.count
     }
     
@@ -113,6 +112,8 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
     
     func checkoutBook(isbn: String, holdID: String)
     {
+        self.holdBookModels = []
+        self.holdTableView.reloadData()
         let userCheckout = UserCheckout()
         userCheckout.delegate = self
         userCheckout.checkout(isbn: isbn, user: UserDefaults.standard.object(forKey: "userId") as! String)
@@ -122,6 +123,7 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
         holdDelete.delegate = self
         holdDelete.deleteHold(id: holdID)
         self.holdBookModels = []
+        
         
         //UserCheckout.download
         
