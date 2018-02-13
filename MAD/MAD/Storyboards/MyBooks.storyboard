@@ -88,7 +88,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="329" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mzd-PI-b9Y" id="YTp-m9-Nlq">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="329" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="329" height="49.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="0gR-O1-h9X">
@@ -178,7 +178,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="329" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="abA-cA-agt" id="5L2-Kc-wU6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="329" height="49"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="329" height="49.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="K1f-q8-GYs">
