@@ -18,6 +18,7 @@ To view the code
 ```
 -Mac OS
 -XCode
+-Alternative Swift IDE (i.e. AppCode for Mac OS, text editor like Atom or SublimeText on Windows)
 ```
 To run the application on your computer
 ```
@@ -29,7 +30,6 @@ To run the application on your computer
 ### Installation and Use
 
 A step by step series of how to run our project assuming prerequisites are met.
-**Click any of the steps to view an image example of the step**
 
 1. Open Xcode and select "Open another project..."
 2. Locate the submission folder and enter the MAD folder inside, clicking on the white MAD.xcworkspace file
@@ -87,6 +87,9 @@ This application is supported by a server side script, so any user just has to c
 * PHP access code hosted with bluehost.com
 * Swift code for UI and implementation
 * CocoaPods for library dependency management
+* Lottie by Airbnb for in-app animations
+* Adobe Photoshop CC for app graphics
+* XCode Integrated Development Environment
 
 ## Authors
 
@@ -100,7 +103,21 @@ This project is licensed under the GNU Lesser General Public License v3.0 - see 
 
 ## Acknowledgments
 
-* Thanks to Stanford Mobile App Development course for posting learning resources
+* Thanks to Stanford Mobile App Development course for iOS app development learning resources
 * Thanks to Mr. Kuramoto, the San Mateo Library branch manager, for answering our questions about library operations
 * Thanks to Mr. Shelby, former computer engineer, for giving us feedback on user testing
-* Special thanks to Mrs. Amity Bateman for answering our questions on what features Homestead High school wanted the most for a school library app
+* Special thanks to Mrs. Amity Bateman for answering our questions on what features Homestead High School wanted most from a library app
+
+## Copyright Information
+
+* Book information and cover images powered by Google Books, labeled within the app consistent with their API usage policies
+* Facebook logo used for application graphics with explicit permission from the Facebook Brand Resource Center
+* Google logo used for application graphics in accordance with trademark usage guidelines available [here](https://www.google.com/permissions/trademark/rules.html)
+* Photo of Homestead High School cafeteria and horse statue provided by the Homestead High School Epitaph
+* Following image acknowledgements are consistent with the [Freepik terms of use](freepik.com/terms_of_use)
+* ["Boxing day sale background"](https://www.freepik.com/free-vector/boxing-day-sale-background_1442395.htm) image designed by [Freepik](freepik.com)
+* ["Safety lock logo"](https://www.freepik.com/free-vector/safety-lock-logo_717950.htm#term=lock%20icon&page=1&position=9) image designed by [Freepik](freepik.com)
+* ["Colorful books pack"](https://www.freepik.com/free-vector/colorful-books-pack_813860.htm#term=book&page=1&position=2) image designed by [Freepik](freepik.com)
+* All other images and icons are completely original
+
+

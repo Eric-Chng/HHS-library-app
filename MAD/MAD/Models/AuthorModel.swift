@@ -35,7 +35,7 @@ class AuthorModel: NSObject {
     //prints object's current state
     
     override var description: String {
-        return "Name: \(name)"
+        return "Name: \(String(describing: name))"
         
     }
     

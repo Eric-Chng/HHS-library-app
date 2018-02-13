@@ -29,7 +29,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     var currentCoversDownloaded:[Bool] = [false, false, false, false, false, false, false, false, false, false]
     
     
-    
+    @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
         
         for book in items {
@@ -46,7 +46,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                     self.currentAuthors.append((book as! BookModel).author!)
                     print("Author found: " + (book as! BookModel).author!)
                 }
-                let bookCasted = book as! BookModel
+                _ = book as! BookModel
                 self.sendNewRequest = true
             default:
                 print("failed")
@@ -56,7 +56,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 }
             }
         }
-        var temparray = NSMutableArray()
+        let temparray = NSMutableArray()
         var count:Int = 0;
         for itemUse in items {
             if (count<10) {
@@ -241,8 +241,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         }
     }
     
+    @available(iOS, deprecated: 9.0)
     func apiSearch(keywordSearch: String){
-        var keywords = keywordSearch.replacingOccurrences(of: " ", with: "+")
+        let keywords = keywordSearch.replacingOccurrences(of: " ", with: "+")
         let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + keywords + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
         
         /*"https://www.googleapis.com/books/v1/volumes?q=intitle:Hello&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"*/
@@ -409,6 +410,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
     }
     
+    @available(iOS, deprecated: 9.0)
     func displayResults(books: NSMutableArray){
 
         var counter:Int = 0
@@ -418,7 +420,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         self.currentThumbnails = []
         self.currentBooks = []
         for tempvarforarray in books {
-            if (tempvarforarray is BookModel && tempvarforarray != nil) {
+            if (tempvarforarray is BookModel) {
                 print("search returned book")
                 let intermediatetemp = tempvarforarray as! BookModel
                 let x = BookModel(ISBN: intermediatetemp.ISBN!)

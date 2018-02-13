@@ -49,6 +49,8 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         dismiss(animated: true, completion: nil)
         
     }
+    
+    //Expands the
     @IBAction func expandDescription(_ sender: Any) {
         print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
         //descBox?.attributedText = NSAttributedString(string: rawDescription,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
@@ -211,6 +213,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         }
     }
     
+    //Checks the availabilty of a book
     func checkAvailability()
     {
         let idSearch = IdSearchBook()
@@ -218,6 +221,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         idSearch.downloadItems(inputID: (self.selectedBook?.ISBN)!)
     }
     
+    //Passes the current BookModel to the HoldViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is HoldViewController {
@@ -231,13 +235,9 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     }
     
-    
+    //Checks for book information download status if the BookModel is not loaded
     @objc func action()
     {
-
-        
-       
-        
         
         if(scrollView.contentOffset.y > 100 && (self.navigationItem.titleView?.alpha)! == CGFloat(0.0) && smallCoverImageCounter == 0)
         {
@@ -293,6 +293,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         
     }
     
+    @available(iOS, deprecated: 9.0)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -516,6 +517,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
             
             
         }
+            /*
         else
         {
         
@@ -695,7 +697,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
             }
         }
        task.resume()
-    }
+    }*/
  
         
             //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
@@ -710,6 +712,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         
     }
     
+    @available(iOS, deprecated: 9.0)
     func formatDescription()
     {
         var addDots:Bool = false;
@@ -731,31 +734,17 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         descBox.sizeToFit();
     }
     
+    @available(iOS, deprecated: 9.0)
     func formatJSONDescription()
     {
         
-        var addDots:Bool = false;
-        /*DispatchQueue.main.async(execute: {() -> Void in
-
-            while (self.descBox?.contentSize.height)!>CGFloat(170)
-            /*self.descBox!.attributedText.length>365 */{
-
-            addDots = true;
-            
-                    let subRange = NSMakeRange(0,(self.descBox?.attributedText.length)!-5)
-                    self.descBox?.attributedText = self.descBox?.attributedText.attributedSubstring(from: subRange)
-                }
-                
-        })*/
-        //{//
             DispatchQueue.main.async(execute: {() -> Void in
 
                 let stringVersion = self.descBox?.attributedText.string
-                let stringIndex = self.descBox?.attributedText.string.range(of: " ", options: .backwards)?.lowerBound
+                //let stringIndex = self.descBox?.attributedText.string.range(of: " ", options: .backwards)?.lowerBound
             //let finalString = stringVersion?.substring(to: stringIndex!); <- readd if removing scrolling description
                 let finalString = stringVersion; self.descBox?.attributedText=NSAttributedString(string: finalString!+"\n(tap for more details)",attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ]);
             })
-        //}//
     }
     
     func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {

@@ -48,7 +48,6 @@ class LoginViewController: UIViewController, DownloadProtocol {
         }
     }
     
-    @IBOutlet weak var slideUpView: UIView!
     var timer: Timer = Timer()
     var counter: Int = 0
     @IBOutlet weak var userNameField: UITextField!
@@ -73,24 +72,7 @@ class LoginViewController: UIViewController, DownloadProtocol {
         self.iconImage.layer.masksToBounds = true
         loginButton.layer.cornerRadius = 12
         loginButton.layer.masksToBounds = true
-        let heightConstraint = NSLayoutConstraint(item: self.slideUpView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-        self.slideUpView.addConstraints([heightConstraint])
-        // Do any additional setup after loading the view.
-        //timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(LoginViewController.action), userInfo: nil,  repeats: true)
-        //let blurEffect = UIBlurEffect(style: .ExtraLight)
-        //blurView.animateWithDuration(1.5) {
-            //self.blurView.effect = blurEffect
-        //}
         
-        /*
-        testView = UIVisualEffectView()
-        // Put it somewhere, give it a frame...
-        UIView.animate(withDuration: 0.5) {
-            (self.testView as? UIVisualEffectView)?.effect = UIBlurEffect(style: .dark)
-        }
-        */
-        
-        //UserDefaults.standard.set(userCasted.ID,forKey: "id")
         if let userID = UserDefaults.standard.object(forKey: "id")
         {
             let idAsString = String(describing: userID)

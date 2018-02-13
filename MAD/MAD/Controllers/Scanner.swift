@@ -178,8 +178,9 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+    @available(iOS, deprecated: 9.0)
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if self.lastScan  < (Int(ProcessInfo.processInfo.systemUptime) - 1) && metadataObjects != nil && metadataObjects.count != 0
+        if self.lastScan  < (Int(ProcessInfo.processInfo.systemUptime) - 1)  && metadataObjects.count != 0
         {
             self.lastScan = Int(ProcessInfo.processInfo.systemUptime)
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject

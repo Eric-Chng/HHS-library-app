@@ -69,6 +69,7 @@ class GetReview: NSObject {
         
     }
     
+    //Parses retrieved JSON
     func parseJSON(_ data:Data) {
         
         var jsonResult = NSArray()

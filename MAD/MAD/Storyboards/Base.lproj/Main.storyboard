@@ -42,16 +42,12 @@
                                     <constraint firstAttribute="width" constant="140" id="jjm-Ty-zOE"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pAB-W7-v4O">
-                                <rect key="frame" x="0.0" y="342" width="414" height="0.0"/>
-                                <color key="backgroundColor" red="1" green="0.93272358179092407" blue="0.28394061326980591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="School ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-zC-0aB">
                                 <rect key="frame" x="51" y="220" width="300" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="bwn-Pp-bOy"/>
-                                    <constraint firstAttribute="width" constant="300" id="t5p-BY-upe"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="t5p-BY-upe"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -62,7 +58,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="f9d-y5-41G"/>
-                                    <constraint firstAttribute="width" constant="300" id="pvS-Kc-TT5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="pvS-Kc-TT5"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -73,7 +69,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Vwb-PN-6KK"/>
-                                    <constraint firstAttribute="width" constant="200" id="syE-sT-BzY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="syE-sT-BzY"/>
                                 </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,7 +82,7 @@
                                 <rect key="frame" x="82" y="386" width="250" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4En-En-ZFH"/>
-                                    <constraint firstAttribute="width" constant="250" id="fab-Ol-Eg5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="fab-Ol-Eg5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,9 +94,7 @@
                             <constraint firstItem="DTT-4z-dBi" firstAttribute="top" secondItem="IAe-or-POd" secondAttribute="bottom" constant="4" id="30o-MH-F8t"/>
                             <constraint firstItem="bEO-W6-T7p" firstAttribute="top" secondItem="8Po-EL-bTC" secondAttribute="top" constant="-20" id="6db-HV-BWg"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="bEO-W6-T7p" secondAttribute="bottom" id="7s7-4H-aNZ"/>
-                            <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="pAB-W7-v4O" secondAttribute="bottom" id="9fT-2q-MeI"/>
                             <constraint firstItem="egD-Xq-Ai2" firstAttribute="leading" secondItem="8Po-EL-bTC" secondAttribute="leading" id="CrK-Bu-Iv6"/>
-                            <constraint firstItem="pAB-W7-v4O" firstAttribute="width" secondItem="Tji-AH-asb" secondAttribute="width" id="Dvw-Gy-Qgx"/>
                             <constraint firstItem="5mv-zC-0aB" firstAttribute="top" secondItem="8Po-EL-bTC" secondAttribute="top" constant="200" id="EuO-Jm-J6e"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="top" secondItem="egD-Xq-Ai2" secondAttribute="top" constant="20" id="G1U-pk-G7S"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="trailing" secondItem="puw-QQ-oGF" secondAttribute="trailing" id="Oj4-QJ-O0q"/>
@@ -122,7 +116,6 @@
                             <constraint firstItem="puw-QQ-oGF" firstAttribute="leading" secondItem="8Po-EL-bTC" secondAttribute="leading" id="u1o-es-tnX"/>
                             <constraint firstItem="Ep4-89-XcE" firstAttribute="top" secondItem="5mv-zC-0aB" secondAttribute="bottom" constant="24" id="uCw-js-uWW"/>
                             <constraint firstItem="IAe-or-POd" firstAttribute="centerX" secondItem="ICa-AX-olF" secondAttribute="centerX" id="w5u-Cb-gJ7"/>
-                            <constraint firstItem="pAB-W7-v4O" firstAttribute="centerX" secondItem="8Po-EL-bTC" secondAttribute="centerX" id="wLs-xu-2kq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Po-EL-bTC"/>
                     </view>
@@ -136,7 +129,6 @@
                         <outlet property="libraryBackdrop" destination="egD-Xq-Ai2" id="7WF-Pf-sEJ"/>
                         <outlet property="loginButton" destination="IAe-or-POd" id="ybq-7B-bpi"/>
                         <outlet property="passwordField" destination="Ep4-89-XcE" id="Nij-NS-ZhV"/>
-                        <outlet property="slideUpView" destination="pAB-W7-v4O" id="Wih-aC-qLr"/>
                         <outlet property="userNameField" destination="5mv-zC-0aB" id="w5j-hH-qts"/>
                         <segue destination="204-LH-vMc" kind="show" identifier="LoginToTabs" action="showDetailViewController:sender:" id="hUp-Qw-cBt"/>
                         <segue destination="WzX-dv-AQd" kind="show" identifier="LoginToIntro" id="1Gc-hI-rTh"/>
@@ -161,66 +153,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Thd-Ls-VKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-457" y="593"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
-            <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="xxf-lV-EEd" kind="relationship" relationship="viewControllers" id="B7e-lq-hGy"/>
-                        <segue destination="aOV-GF-RoB" kind="relationship" relationship="viewControllers" id="tFq-Tc-dmb"/>
-                        <segue destination="ejY-RV-Zyv" kind="relationship" relationship="viewControllers" id="lij-Fe-zec"/>
-                        <segue destination="vEG-8M-A4H" kind="relationship" relationship="viewControllers" id="7IH-ph-wia"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-197" y="-57"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="VoN-wi-2PZ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="xxf-lV-EEd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="8sZ-vF-dbY"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ih3-Ol-34J" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="679" y="-345"/>
-        </scene>
-        <!--Checkout-->
-        <scene sceneID="q1y-nK-FQk">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Checkout" id="aOV-GF-RoB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="UzH-N6-Mhz"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RPo-91-Cpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="851" y="134"/>
-        </scene>
-        <!--Discover-->
-        <scene sceneID="wc8-px-ZlT">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Discover" id="ejY-RV-Zyv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="IBp-hC-IYl"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="coT-20-wOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1122" y="-16"/>
-        </scene>
-        <!--MyBooks-->
-        <scene sceneID="DTe-Iv-u8r">
-            <objects>
-                <viewControllerPlaceholder storyboardName="MyBooks" id="vEG-8M-A4H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XA6-zH-pwf"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8eP-17-G1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1168" y="97"/>
         </scene>
     </scenes>
     <resources>

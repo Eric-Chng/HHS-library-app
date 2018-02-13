@@ -34,7 +34,7 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
         self.navigationController?.pushViewController(scanners, animated: true)
     }
     
-    
+    @available(iOS, deprecated: 9.0)
     override func viewDidLoad() {
         
         
@@ -156,6 +156,7 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
         
     }
     
+    @available(iOS, deprecated: 9.0)
     func setArrays()
     {
         popularBookArr = [BookModel(ISBN: "9780141182773"), BookModel(ISBN:"9783608938180"), BookModel(ISBN: "9780810891951"), BookModel(ISBN:"9781594480003"), BookModel(ISBN:"9781555975098"), BookModel(ISBN:"9780199738410")]
@@ -206,7 +207,7 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
         let spacing: CGFloat = 10
         let totalHorizontalSpacing = (columns - 1) * spacing
         
-        let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / columns
+        _ = (collectionView.bounds.width - totalHorizontalSpacing) / columns
         let itemSize = CGSize(width: 170, height: 250)
         
         return itemSize
@@ -263,7 +264,7 @@ extension DiscoverViewController: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = UICollectionViewCell()
+        _ = UICollectionViewCell()
         if(collectionView.restorationIdentifier! == "facebookFeed")
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FacebookReviewsCollectionViewCell", for: indexPath) as! FacebookReviewsCollectionViewCell

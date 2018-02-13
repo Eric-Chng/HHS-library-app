@@ -58,32 +58,7 @@ class HomeViewController: UIViewController {
         //self.mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04898), MKCoordinateSpanMake(0.0005, 0.0005)), animated: true)
         
         
-       // MKOverlayView(
-       // var vertex: UnsafePointer<MKMapPoint> = [x]
-        //vertex.
-        let point1 = MKMapPointForCoordinate(CLLocationCoordinate2DMake(37.3373,  -122.04925))
-        let point2 = MKMapPointForCoordinate(CLLocationCoordinate2DMake(37.33694,  -122.04925))
-        let point3 = MKMapPointForCoordinate(CLLocationCoordinate2DMake(37.33694,  -122.0487))
-        let point4 = MKMapPointForCoordinate(CLLocationCoordinate2DMake(37.3373,  -122.0487))
-        /*vertex.append(CLLocationCoordinate2DMake(37.3373,  -122.0492))
-        vertex.append(CLLocationCoordinate2DMake(37.3369,  -122.0492))
-        vertex.append(CLLocationCoordinate2DMake(37.3369,  -122.0478))
-        vertex.append(CLLocationCoordinate2DMake(37.3373,  -122.0478))
-         */
-        //mapView.addOverlay(MKPolygon)
-        
-        //MKOverlayView(MKPolygon)
-       // mapView.add(MKPolygon)
-        //mapView.add()
-        //let m = MKOverlayView(
-        
-        //let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
-        //mapView.setRegion(coordinateRegion, animated: true)
-        let diskOverlay: MKCircle = MKCircle(center: location, radius: 10)
-        let squareOverlay: MKPolygon = MKPolygon(points: [point1, point2, point3, point4], count: 4)
-
-        //mapView.add(diskOverlay)
-        //mapView.add(squareOverlay)
+       
 
         
         

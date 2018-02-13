@@ -134,6 +134,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
         if(from.elementsEqual("UserGetBooks")){
         for i in items
@@ -204,51 +205,19 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
         }
         else{
-            //let  cell = tableView.dequeueReusableCell(withIdentifier: "bookonholdcell") as! MyBooksOnHoldTableViewCell
             let cell = UITableViewCell()
-            //let onholdBook = onholds[indexPath.row] as! HoldModel
-            let book = onholdBooks[indexPath.row]
-            //cell.bookImg = book.BookCoverImage
-            //cell.bookTitle.text = book.name
+            _ = onholdBooks[indexPath.row]
+            
             cell.textLabel?.text = onholdBooks[indexPath.row].title
-            /*
-            if((onholdBook.ready) != nil/* && onholdBook.ready == 1*/){
-                cell.ready.text = "ready"
-            }
-            else{
-                cell.ready.text = "not ready"
-            }
-             */
+           
             return cell;
         }
         
-//        if tableView == self.tableView1 {
-//            cell = tableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath)
-//            let previewDetail = sampleData1[indexPath.row]
-//            cell!.textLabel!.text = previewDetail.title
-//
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Set selected location to var
-        //selectedLocation = feedItems[indexPath.row] as! LocationModel
-        // Manually call segue to detail view controller
-        //BookDetailViewController.updateISBN(newISBN: "9781921019630");
         
-        //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
-        
-        
-        //self.navigationController?.push
-        //self.navigationController?.pushViewController(scanners, animated: true)
-        //self.performSegue(withIdentifier: "bookInfoSegue", sender: self)
-        //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "bookInfoSegue") as! BookDetailViewController
-        
-        //scanners.delegate = self
-        
-        //self.navigationController?.push
-        //self.navigationController?.pushViewController(scanners, animated: true)
     }
     
     func fetchProfile()

@@ -12,6 +12,9 @@ import MessageUI
 class BugReportViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var textField: UITextView!
+    
+    //Submit button pressed
+    @available(iOS, deprecated: 9.0)
     @IBAction func submitButton(_ sender: Any) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
@@ -22,9 +25,10 @@ class BugReportViewController: UIViewController, MFMailComposeViewControllerDele
         
     }
     
+    //Configures a view controller in which to send the email
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        mailComposerVC.mailComposeDelegate = self as MFMailComposeViewControllerDelegate // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         mailComposerVC.setToRecipients(["lily.jiayu@gmail.com"])
         mailComposerVC.setSubject("HHS MAD 2018 Bug Report")
@@ -33,6 +37,8 @@ class BugReportViewController: UIViewController, MFMailComposeViewControllerDele
         return mailComposerVC
     }
     
+    //Returns error message if email sending is unsuccessful
+    @available(iOS, deprecated: 9.0)
     func showSendMailErrorAlert() {
         let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()

@@ -39,6 +39,7 @@ class CheckoutViewController: UIViewController, MyProtocol, FBSDKLoginButtonDele
     var selectedBook: BookModel = BookModel()
     var timer: Timer = Timer()
     
+    @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
         print("items found")
         for x in items

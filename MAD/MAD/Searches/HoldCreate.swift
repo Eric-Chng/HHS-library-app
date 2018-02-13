@@ -36,7 +36,7 @@ class HoldCreate: NSObject {
         
     }
     
-    
+    //Checks for a request's success
     func checkTransaction(_ response:String?) {
         var script_success = false;
         if (response=="script success"){

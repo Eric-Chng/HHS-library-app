@@ -57,6 +57,7 @@ class BookModel: NSObject {
         
     }
     
+    @available(iOS, deprecated: 9.0)
     init(ISBN: String)
     {
         self.ISBN = ISBN
@@ -112,6 +113,7 @@ class BookModel: NSObject {
         task.resume()
     }
     
+    @available(iOS, deprecated: 9.0)
     init(JSON: String)
     {
         super.init()
@@ -198,9 +200,10 @@ class BookModel: NSObject {
     
     override var description: String
     {
-        return "Title: \(name), by \(authorID), ISBN: \(ISBN)"
+        return "Title: \(String(describing: name)), by \(String(describing: authorID) ), ISBN: \(String(describing: ISBN))"
     }
     
+    @available(iOS, deprecated: 9.0)
     func parseJSON(JSONAsString: String)
     {
 

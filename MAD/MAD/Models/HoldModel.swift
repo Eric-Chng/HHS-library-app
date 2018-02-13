@@ -41,7 +41,7 @@ class HoldModel: NSObject {
     //prints object's current state
     
     override var description: String {
-        return "ID: \(ID), User ID: \(userID), ISBN: \(ISBN)"
+        return "ID: \(String(describing: ID)), User ID: \(String(describing: userID)), ISBN: \(String(describing: ISBN))"
         
     }
     
