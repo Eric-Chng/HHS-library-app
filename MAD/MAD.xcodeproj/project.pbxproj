@@ -59,9 +59,9 @@
 		7B725E121F9B21DC00FE56A1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E111F9B21DC00FE56A1 /* HomeViewController.swift */; };
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
 		7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B78DBCB2009EA5A00592F09 /* bookUpdated.json */; };
-		7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9145DB200C5BA100127E68 /* UIImageColors.swift */; };
 		7BDEE2EE2026E78C004F3E4D /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */; };
 		7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */; };
+		7BF93C0D2033FC06006A98F4 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF93C0C2033FC05006A98F4 /* UIImageColors.swift */; };
 		7BFF53A5202BC3F6007A1C8B /* FinalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFF53A4202BC3F5007A1C8B /* FinalPageViewController.swift */; };
 		82562A3B202EC0D500C16D5F /* MyBooksCheckOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82562A3A202EC0D400C16D5F /* MyBooksCheckOutTableViewCell.swift */; };
 		82562A3D202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */; };
@@ -134,9 +134,9 @@
 		7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAD.entitlements; sourceTree = "<group>"; };
 		7B72B8601F9B0DB5002E9668 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7B78DBCB2009EA5A00592F09 /* bookUpdated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookUpdated.json; sourceTree = "<group>"; };
-		7B9145DB200C5BA100127E68 /* UIImageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
 		7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7BF93C0C2033FC05006A98F4 /* UIImageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		7BFF53A4202BC3F5007A1C8B /* FinalPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalPageViewController.swift; sourceTree = "<group>"; };
 		82562A3A202EC0D400C16D5F /* MyBooksCheckOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksCheckOutTableViewCell.swift; sourceTree = "<group>"; };
 		82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksOnHoldTableViewCell.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 		82AE22FA1FF36A7D0014C7CF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7B9145DB200C5BA100127E68 /* UIImageColors.swift */,
+				7BF93C0C2033FC05006A98F4 /* UIImageColors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -532,7 +532,6 @@
 				44D527D0202D6C65000A34DD /* UserLoginVerify.swift in Sources */,
 				44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */,
 				44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */,
-				7B9145DC200C5BA100127E68 /* UIImageColors.swift in Sources */,
 				7B4E3ECA201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* CheckoutViewController.swift in Sources */,
 				44E511662029AAC900A721B3 /* HoldByUser.swift in Sources */,
@@ -540,6 +539,7 @@
 				7B17B93B2030A2B90005D34B /* HoldViewController.swift in Sources */,
 				44D527C8202D66D9000A34DD /* GetReview.swift in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,
+				7BF93C0D2033FC06006A98F4 /* UIImageColors.swift in Sources */,
 				7B6EE70A2026CEFE003A8908 /* ThirdPageViewController.swift in Sources */,
 				44E5115A2029959500A721B3 /* UserCheckout.swift in Sources */,
 				44E5115E202998AC00A721B3 /* CheckoutModel.swift in Sources */,

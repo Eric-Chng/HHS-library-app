@@ -5,11 +5,13 @@ HHS Mobile App Development
 
 View the most recent ReadMe with image-filled installation instructions: https://github.com/Eric-Cf/MAD-2018/wiki
 
-This app is designed to provide a mobile interface that works alongside a stable backend database structure to provide users with information about available books, their holds, and their checkouts. Additionally, it implements a scanner API to allow users to checkout books with their phone cameras. The app was developed in conjunction with Homestead High School's library to ensure our app would be useful in a real world situation.
+The Homestead High School Library App is designed to provide a mobile interface that works alongside a stable backend database structure to provide users with information about available books, their holds, and their checkouts. Additionally, it implements a scanner that connects to web APIs in order to allow users to discover and hold books with their phone cameras. The app was developed in conjunction with Homestead High School's library to ensure our app would be useful in a real world situation.
+
+This application was programmed entirely in Apple's Swift language.
 
 ## Getting Started
 
-Download Xcode to run the testing environment. You can view the code, but you need a developer account to sign the instance to run on your computer. 
+Download Xcode to run the testing environment. You can view the code, but you need a developer account to sign the instance to run on your computer.
 Alternatively, you can download the app off of "TestFlight" onto your phone to run the app on your phone.
 
 ### Prerequisites
@@ -24,8 +26,37 @@ To run the application on your computer
 ```
 -Mac OS
 -XCode
--Developer signing 
+-Developer signing
 ```
+
+To run the application on your personal device
+```
+-iOS 9.0 or newer
+-TestFlight application (available on the App Store)
+```
+
+### Downloading on Personal Device with Apple's Testflight
+![testFlightIcon](https://developer.apple.com/assets/elements/icons/testflight/testflight-128x128_2x.png)
+
+TestFlight Logo
+
+Follow this process to get HHS Library running on your personal device.
+Support: iPhones with iOS 9.0 or newer, most iPads should be able to run the application in scaled mode
+
+1. Download Apple's official TestFlight application from the App Store
+2. Continue through introduction pages until page with "Redeem" in upper right-hand corner appears
+3. Select "Redeem" and enter one of the following codes into the text box
+* TGRLSDVF
+* ZZXDZWXX
+* FPHJGVQF
+* RHHSVPGP
+* GQVKMLPM
+* MSCLSWRF
+
+If the first code you select is unavailable, it was most likely entered by another adjudicator. If this is the case, please try one of the other provided codes.
+
+4. Download the application and enjoy.
+* Note: TestFlight has been having documented issues recently. If the application does not work on your device, follow the installation and use instructions.
 
 ### Installation and Use
 
@@ -77,7 +108,7 @@ Onboarding Page On First Launch
 ## Database Structure
 
 Database is a relational MySQL database running the InnoDB engine. It uses various foreign key checks to ensure the integrity of the data and eliminate potential errors in database calls.
-[You can see our design schema here](https://eric-cf.github.io/MAD-2018/) 
+[You can see our design schema here](https://eric-cf.github.io/MAD-2018/)
 
 ## Deployment
 
@@ -115,11 +146,10 @@ This project is licensed under the GNU Lesser General Public License v3.0 - see 
 * Book information and cover images powered by Google Books, labeled within the app consistent with their API usage policies
 * Facebook logo used for application graphics with explicit permission from the Facebook Brand Resource Center
 * Google logo used for application graphics in accordance with trademark usage guidelines available [here](https://www.google.com/permissions/trademark/rules.html)
+* The App Store, iOS, iPhone, iPad, XCode, and Swift are all registered trademarks of Apple Inc.
 * Photo of Homestead High School cafeteria and horse statue provided by the Homestead High School Epitaph
 * Following image acknowledgements are consistent with the [Freepik terms of use](freepik.com/terms_of_use)
 * ["Boxing day sale background"](https://www.freepik.com/free-vector/boxing-day-sale-background_1442395.htm) image designed by [Freepik](freepik.com)
 * ["Safety lock logo"](https://www.freepik.com/free-vector/safety-lock-logo_717950.htm#term=lock%20icon&page=1&position=9) image designed by [Freepik](freepik.com)
 * ["Colorful books pack"](https://www.freepik.com/free-vector/colorful-books-pack_813860.htm#term=book&page=1&position=2) image designed by [Freepik](freepik.com)
 * All other images and icons are completely original
-
-
