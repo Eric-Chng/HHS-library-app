@@ -7,7 +7,20 @@ View the most recent ReadMe with image-filled installation instructions: https:/
 
 The Homestead High School Library App is designed to provide a mobile interface that works alongside a stable backend database structure to provide users with information about available books, their holds, and their checkouts. Additionally, it implements a scanner that connects to web APIs in order to allow users to discover and hold books with their phone cameras. The app was developed in conjunction with Homestead High School's library to ensure our app would be useful in a real world situation.
 
-This application was programmed entirely in Apple's Swift language.
+This application was programmed entirely in Apple's Swift language. The backend was coded with a mix of MySQL and PHP.
+
+## Key Features
+
+* Robust backend relational database to store information
+* Book barcode scanner using RESTful APIs to generate book information
+* Well commented database access code
+* Checkout with your phone for ease of access
+* Intelligent keyword search algorithm to look for books
+* Hold system that lets you reserve a book to pick up later
+* Customized map to identify book locations
+* Bug reporting to enable continuous development
+* Smart resource management to reduce database calls and memory leaks
+* Facebook integration to allow for a social aspect to our application
 
 ## Getting Started
 
@@ -91,19 +104,6 @@ Onboarding Page On First Launch
 ![barcode](https://user-images.githubusercontent.com/26942890/36134449-b9bf6b56-1039-11e8-91f7-18aed490d548.gif)
 
 14. If you ever run into any issues, submit a bug report at the bottom of the "My Books" page.
-
-## Key Features
-
-* Robust backend relational database to store information
-* Book barcode scanner using RESTful APIs to generate book information
-* Well commented database access code
-* Checkout with your phone for ease of access
-* Intelligent keyword search algorithm to look for books
-* Hold system that lets you reserve a book to pick up later
-* Customized map to identify book locations
-* Bug reporting to enable continuous development
-* Smart resource management to reduce database calls and memory leaks
-* Facebook integration to allow for a social aspect to our application
 
 ## Database Structure
 
