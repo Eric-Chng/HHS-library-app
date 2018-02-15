@@ -36,7 +36,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8W-72-cdA">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1087"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="1092"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfC-1c-0Kx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="890"/>
@@ -247,6 +247,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDi-W1-dB2">
+                                                        <rect key="frame" x="274" y="10" width="46" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="reloadCollection:" destination="HRS-tc-BrZ" eventType="touchUpInside" id="cNL-lg-Cxb"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -351,6 +359,16 @@
                                                     <constraint firstAttribute="height" constant="50" id="dlA-6v-3PG"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull to Reload..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCs-Nq-VSy">
+                                                <rect key="frame" x="128" y="-31" width="118.5" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="6tX-on-mat"/>
+                                                    <constraint firstAttribute="width" constant="118.5" id="cok-zf-SZZ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -359,6 +377,8 @@
                                             <constraint firstAttribute="trailing" secondItem="8I6-2r-4gk" secondAttribute="trailing" id="A2Y-Ub-b7a"/>
                                             <constraint firstItem="8I6-2r-4gk" firstAttribute="leading" secondItem="qfC-1c-0Kx" secondAttribute="leading" id="BfS-IW-0dY"/>
                                             <constraint firstItem="pbI-0Z-Obj" firstAttribute="top" secondItem="8aG-i4-Ui3" secondAttribute="bottom" id="Dvl-6d-D3C"/>
+                                            <constraint firstAttribute="top" secondItem="TCs-Nq-VSy" secondAttribute="bottom" constant="10" id="Kf1-F1-F4H"/>
+                                            <constraint firstItem="TCs-Nq-VSy" firstAttribute="centerX" secondItem="qfC-1c-0Kx" secondAttribute="centerX" id="LgD-OY-VKA"/>
                                             <constraint firstItem="3bC-JJ-nKE" firstAttribute="top" secondItem="77t-ca-dxP" secondAttribute="bottom" id="MWe-1E-Mii"/>
                                             <constraint firstItem="8aG-i4-Ui3" firstAttribute="top" secondItem="fRT-XT-vOq" secondAttribute="bottom" id="P2K-G3-vku"/>
                                             <constraint firstItem="6KV-5g-FNY" firstAttribute="leading" secondItem="qfC-1c-0Kx" secondAttribute="leading" constant="166" id="P6K-ov-RGL"/>
@@ -405,21 +425,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gbc-bQ-s5I"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Discover" id="H00-Ri-7FR"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="facebookReviewsCollectionView" destination="3bC-JJ-nKE" id="PC3-4K-m95"/>
                         <outlet property="insideScrollView" destination="qfC-1c-0Kx" id="ZNq-hJ-inR"/>
                         <outlet property="librarianRecommendedCollectionView" destination="8aG-i4-Ui3" id="d8e-sN-ha6"/>
                         <outlet property="popularTitleCollectionView" destination="8I6-2r-4gk" id="fal-tF-trN"/>
+                        <outlet property="reloadLabel" destination="TCs-Nq-VSy" id="JK3-7O-run"/>
+                        <outlet property="scrollView" destination="f8W-72-cdA" id="0NN-fQ-qvj"/>
                         <segue destination="1bU-PI-XiU" kind="presentation" identifier="discoverToSearch" animates="NO" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="c69-3D-jyp"/>
                         <segue destination="WJ9-rY-Swp" kind="show" identifier="collectionViewDetail" id="488-Hg-Ztb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X22-Vb-nNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1674.4000000000001" y="1947.5262368815593"/>
+            <point key="canvasLocation" x="-2210" y="1587"/>
         </scene>
         <!--Discover-->
         <scene sceneID="W26-JO-99Y">
@@ -598,6 +621,7 @@
         <image name="search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="c69-3D-jyp"/>
         <segue reference="488-Hg-Ztb"/>
         <segue reference="fJK-zv-T41"/>
     </inferredMetricsTieBreakers>

@@ -23,7 +23,11 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     var reviewArr: [FacebookReviewModel] = []
     var pressedItem: BookModel = BookModel()
     var timer = Timer()
+    var scrollTimer = Timer()
+    var reloading: Bool = false
+    @IBOutlet weak var reloadLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var facebookReviewsCollectionView: UICollectionView!
     @IBOutlet weak var popularTitleCollectionView: UICollectionView!
     @IBOutlet weak var librarianRecommendedCollectionView: UICollectionView!
@@ -54,16 +58,65 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
         
         
     }
-
     
+    @available(iOS, deprecated: 9.0)
+    @IBAction func reloadCollection(_ sender: Any) {
+        print("Reloading collection")
+        self.timer.invalidate()
+        self.reviewArr = []
+        self.librarianBookArr = []
+        self.popularBookArr = []
+        self.setArrays()
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(DiscoverViewController.action), userInfo: nil,  repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action2), userInfo: nil,  repeats: true)
+    }
+    
+    /*
+    func reloadCollections()
+    {
+        
+    }
+    */
+    
+    @available(iOS, deprecated: 9.0)
     override func viewDidAppear(_ animated: Bool) {
+        self.reloadLabel.alpha = 0
         if(self.reviewArr.count < 1)
         {
             self.timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action2), userInfo: nil,  repeats: true)
             
         }
+        self.scrollTimer.invalidate()
+        scrollTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action3), userInfo: nil,  repeats: true)
+        RunLoop.main.add(scrollTimer, forMode: RunLoopMode.commonModes)
+
+
     }
+    
+    @available(iOS, deprecated: 9.0)
+    @objc func action3()
+    {
+        
+        if(self.reloading == false && self.scrollView.contentOffset.y < -65)
+        {
+            self.reloading = true
+            self.reloadLabel.text = "Reloading..."
+            self.reloadCollection(self)
+        }
+        else if(self.reloading == false && self.scrollView.contentOffset.y < 0)
+        {
+            self.reloadLabel.alpha = 0.013*(self.scrollView.contentOffset.y*(-1)-10)
+        }
+        else if(self.scrollView.contentOffset.y > -5)
+        {
+            self.reloading = false
+            self.reloadLabel.alpha = 0
+            self.reloadLabel.text = "Pull to Reload..."
+        }
+    }
+
     
     @objc func action2()
     {
@@ -232,18 +285,27 @@ extension DiscoverViewController: UICollectionViewDelegate {
         //code for collection view pressed
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
+            if(self.librarianBookArr.count > indexPath.item)
+            {
             self.pressedItem = librarianBookArr[indexPath.item]
+            }
         }
         else if(collectionView.restorationIdentifier! == "popularTitles")
         {
+            if(self.popularBookArr.count > indexPath.item)
+            {
             self.pressedItem = popularBookArr[indexPath.item]
+            }
             
         }
         else if(collectionView.restorationIdentifier! == "facebookFeed")
         {
             //self.p
             //self.pressedItem =
+            if(self.reviewArr.count > indexPath.item)
+            {
             self.pressedItem = reviewArr[indexPath.item].bookModel
+            }
             
         }
         self.performSegue(withIdentifier: "collectionViewDetail", sender: self)
