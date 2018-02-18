@@ -219,7 +219,9 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "discoverToSearch", sender: self)
+        //self.performSegue(withIdentifier: "discoverToSearch", sender: self)
+        self.performSegue(withIdentifier: "testSegue", sender: self)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

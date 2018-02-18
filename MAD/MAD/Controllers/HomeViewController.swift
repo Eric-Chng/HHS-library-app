@@ -64,6 +64,10 @@ class HomeViewController: UIViewController {
         
     }
     
+    @IBAction func reviewTestButton(_ sender: Any) {
+        let reviewController = self.storyboard?.instantiateViewController(withIdentifier: "reviewController") as! ReviewViewController
+        self.present(reviewController, animated: true, completion: nil)
+    }
     
     
     @objc func action()

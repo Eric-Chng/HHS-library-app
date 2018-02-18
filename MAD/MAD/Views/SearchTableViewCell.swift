@@ -31,12 +31,13 @@ class SearchTableViewCell: UITableViewCell {
     static var count: Int = 0
     var numberInList: Int = 0
     var newSearch: Bool = true;
+    @IBOutlet weak var borderView: UIView!
     
+    @IBOutlet weak var circleView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //print("bigs")
         SearchTableViewCell.count = SearchTableViewCell.count + 1
         numberInList = SearchTableViewCell.count
 
@@ -66,48 +67,11 @@ class SearchTableViewCell: UITableViewCell {
             bookCover.image = nil
             //bookCover.image = #imageLiteral(resourceName: "loadingImage")
             self.counter = 0
-            if(self.numberInList == 1)
-            {
-                print("Dog " + String(describing: self.counter))
-
-            }
+            
             titleHolder = self.titleLabel.text!;
             //ranOnce = false
         }
-        /*
-        if(self.bookCover.image != nil)
-        {
-            let data1: NSData = UIImagePNGRepresentation(imageHolder)! as NSData
-            let data2: NSData = UIImagePNGRepresentation(self.bookCover.image!)! as NSData
-        if(data1.isEqual(data2))
-        {
-            print("equal")
-         }
-            else
-        {
-            print("unequal" + String(describing: self.numberInList))
-            }
-        }
-         
-            imageHolder = self.bookCover.image!
-            print(String(describing: numberInList) + "Test: " + self.titleLabel.text!)
-            print(String(describing: numberInList) + "Test2: " + self.titleHolder)
-            print("Worked" + String(describing: numberInList))
-            printColor = false
-            colorFound = false
-            //bookCover.image = nil
-            //bookCover.image = #imageLiteral(resourceName: "loadingImage")
-            self.counter = 0
-            if(self.numberInList == 1)
-            {
-                print("Dog " + String(describing: self.counter))
-                
-            }
-            titleHolder = self.titleLabel.text!;
-            //ranOnce = false
-        }
-        }
-        */
+        
 
         if(counter<20)
         {
@@ -120,7 +84,8 @@ class SearchTableViewCell: UITableViewCell {
         upperView.layer.masksToBounds=true
         bookCover.layer.cornerRadius=15
         bookCover.layer.masksToBounds=true
-        
+        borderView.layer.cornerRadius = 26
+            borderView.layer.masksToBounds = true
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = innerView.bounds
         
@@ -133,10 +98,11 @@ class SearchTableViewCell: UITableViewCell {
         bookCover.layer.shadowOpacity = 0.3
         bookCover.layer.shadowOffset = CGSize(width: 0, height: 0)
              */
-        
+            self.circleView.layer.cornerRadius = self.circleView.frame.size.width/2
+            self.circleView.layer.masksToBounds = true
             cellView.layer.shadowColor = UIColor.black.cgColor
             cellView.layer.shadowRadius = 15
-            cellView.layer.shadowOpacity = 0.25
+            cellView.layer.shadowOpacity = 0.1
             cellView.layer.shadowOffset = CGSize(width: 0, height: 0)
             
             titleLabel.layer.shadowColor = UIColor.black.cgColor
@@ -150,7 +116,6 @@ class SearchTableViewCell: UITableViewCell {
             authorLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
             
         //bookCover.layer.masksToBounds = false
-        //print("shaylan")
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
         //innerView.layer.insertSublayer(gradientLayer, at: 0)
         }
@@ -185,8 +150,12 @@ class SearchTableViewCell: UITableViewCell {
                         let topColor = UIColor(red: 0.7, green: 0.9, blue: 1, alpha: 0.25)
                         let bottomColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.25)
                         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
+                        UIView.animate(withDuration: 0.5) {
+                            UIView.animate(withDuration: 1.0) {
 
-                    innerView.layer.insertSublayer(gradientLayer, at: 0)
+                    //self.innerView.layer.insertSublayer(gradientLayer, at: 0)
+                            }
+                        }
                         self.displayDefault = false
                     }
 
@@ -248,7 +217,10 @@ class SearchTableViewCell: UITableViewCell {
                     //print(String(describing: colorFound) + " " + String(describing: counter))
                     printColor = false
                     gradientLayer2.colors = [UIColor.white, UIColor.white]
-                    innerView.layer.insertSublayer(gradientLayer2, at: 0)
+                    UIView.animate(withDuration: 0.5) {
+
+                    //self.innerView.layer.insertSublayer(gradientLayer2, at: 0)
+                    }
                     //print("Sublayers: " + String(describing: innerView.layer.sublayers!.count))
                     //func adjustBrightness(by percentage: CGFloat = 30.0) -> UIColor {
                         let percentage = CGFloat(90.0)
@@ -279,7 +251,21 @@ class SearchTableViewCell: UITableViewCell {
                         self.authorLabel.textColor = UIColor.white
                     }
             gradientLayer.colors = [self.coverColor.withAlphaComponent(0.5).cgColor, self.coverColor.withAlphaComponent(0.5).cgColor]
-            innerView.layer.insertSublayer(gradientLayer, at: 0)
+                    if(gradientLayer.colors!.count > 0)
+                    {
+                    UIView.animate(withDuration: 1.0) {
+                        //self.innerView.alpha = 0.2
+                        //self.innerView.backgroundColor = self.coverColor
+                        //gradientLayer.colors?[0] as? UIColor
+                        self.circleView.backgroundColor = self.coverColor
+                        self.borderView.backgroundColor = self.coverColor
+                        self.titleLabel.textColor = UIColor.black
+                        self.authorLabel.textColor = UIColor.black
+                        self.borderView.alpha = 0.7
+
+            //self.innerView.layer.insertSublayer(gradientLayer, at: 0)
+                    }
+                    }
                     //print("put into sublayer")
                 //self.colorFound = false
                 }

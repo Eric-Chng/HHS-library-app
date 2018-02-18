@@ -27,6 +27,7 @@ class BookModel: NSObject {
     var rating: Double = -3.0 //not found if negative
     var bookCount: Int? //COPIES OF BOOK AVAILABLE. WE SHOULD INITIALIZE WHEN USING IT
     var bookTotal: Int?
+    var setTitle: Bool = true
     
     //var timer: Timer = Timer()
     
@@ -40,8 +41,10 @@ class BookModel: NSObject {
     
     //constructor
     
-    init(ISBN: String, name: String, author: CLong, desc: String) {
+    @available(iOS, deprecated: 9.0)
+    init(ISBN: String, name: String, author: String, desc: String) {
         super.init()
+        self.setTitle = false
         DispatchQueue.main.async {
             self.BookCoverImage = UIImageView.init(image: #imageLiteral(resourceName: "loadingImage"))
             //self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
@@ -52,9 +55,9 @@ class BookModel: NSObject {
         self.title = name
         
         
-        self.authorID = author
+        self.author = author
         self.desc = desc
-        
+        downloadData(ISBN: ISBN)
     }
     
     @available(iOS, deprecated: 9.0)
@@ -62,6 +65,13 @@ class BookModel: NSObject {
     {
         self.ISBN = ISBN
         super.init()
+        downloadData(ISBN: ISBN)
+        
+    }
+    
+    @available(iOS, deprecated: 9.0)
+    func downloadData(ISBN: String)
+    {
         DispatchQueue.main.async {
             self.BookCoverImage = UIImageView.init(image: #imageLiteral(resourceName: "loadingImage"))
         }
@@ -69,7 +79,7 @@ class BookModel: NSObject {
         var JSONAsString: String = ""
         
         
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN + "&key=AIzaSyCvF4JpS257MnToHz9nv7339wwchjWSB-w"// + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -96,7 +106,7 @@ class BookModel: NSObject {
                     else {
                         print("error trying to convert data to JSON")
                         return
-                                //Converts JSON into a String
+                            //Converts JSON into a String
                             DispatchQueue.main.async(execute: {() -> Void in
                             })
                 }
@@ -225,7 +235,10 @@ class BookModel: NSObject {
                 finalTitle = String(finalTitle[...lastQuoteIndex]) //finalTitle.substring(to: lastQuoteIndex)
                 
             }
+            if(self.setTitle == true)
+            {
             self.title = finalTitle
+            }
             var finalAuthor = "Not available"
             //Parses out the author
             if let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")
@@ -241,7 +254,10 @@ class BookModel: NSObject {
                 //finalAuthor = authorsAndOn.substring(to: quoteIndex)
                 let substring1 = authorsAndOn[...quoteIndex]
                 finalAuthor = String(substring1)
+                if(self.setTitle == true)
+                {
                 self.author = finalAuthor
+                }
                 
                 let tempIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle + distanceToSemiColon)
                 
@@ -299,10 +315,10 @@ class BookModel: NSObject {
                         let ratingEndIndex = ratingAndOn.index(ratingAndOn.startIndex, offsetBy: 2)
                         let tempo = ratingAndOn[...ratingEndIndex]
                         let temper = String(tempo)
-                            print("Rating: " + temper)
+                            //print("Rating: " + temper)
                         if let ratingAsDouble = Double(temper)
                         {
-                            print("As double: " + String(describing: ratingAsDouble))
+                            //print("As double: " + String(describing: ratingAsDouble))
                             rating = ratingAsDouble
                             }
                             

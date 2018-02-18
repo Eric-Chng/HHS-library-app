@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class SearchTableViewController: UITableViewController, UISearchBarDelegate, DownloadProtocol {
+class SearchTableViewController: UITableViewController, UISearchBarDelegate, DownloadProtocol, UITabBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     var currentAuthors: [String] = [""]
@@ -31,8 +31,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     
     @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
-        
+        var counter: Int = 0
         for book in items {
+            counter = counter + 1
             //print(book)
         switch book {
             case is BookModel:
@@ -56,6 +57,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 }
             }
         }
+        if(counter < 1)
+        {
+            currentTitles.append("No Results Found")
+            currentAuthors.append("Please try another query")
+        }
         let temparray = NSMutableArray()
         var count:Int = 0;
         for itemUse in items {
@@ -71,7 +77,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.navigationController.b
+        self.navigationItem.hidesBackButton = true
         tableViewSearch.becomeFirstResponder()
         let clearColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.0)
         
@@ -103,10 +110,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
-        
-        //self.navigationController?.popViewController(animated: false)
-        self.discoverViewController[0].view.setNeedsDisplay()
+        //performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+        //self.performSegue(withIdentifier: "searchUnwindSegue", sender: self)
+        self.navigationController?.popViewController(animated: false)
+        //self.dismiss(animated: false, completion: nil)
+        //self.discoverViewController[0].view.setNeedsDisplay()
     }
     
     //func searchBar(searchBar: UISearchBar, textDidChange: String) {
@@ -239,6 +247,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 destinationViewController.selectedBook = bookToPass
             }
         }
+        else if(segue.identifier != "unwindSegueToVC1")
+        {
+            //performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+
+        }
     }
     
     @available(iOS, deprecated: 9.0)
@@ -283,7 +296,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                         return
                 }
                 //print("Google Books JSON: " + String(describing: googleBooksJSON))
-                
                 
                 
                 
@@ -410,6 +422,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
     }
     
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController)
+    {
+            print("Test received")
+    }
+    
     @available(iOS, deprecated: 9.0)
     func displayResults(books: NSMutableArray){
 
@@ -423,18 +440,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
             if (tempvarforarray is BookModel) {
                 print("search returned book")
                 let intermediatetemp = tempvarforarray as! BookModel
-                let x = BookModel(ISBN: intermediatetemp.ISBN!)
-                print(x)
+                //let x = BookModel(ISBN: intermediatetemp.ISBN!)
+                let y = BookModel.init(ISBN: intermediatetemp.ISBN!, name: intermediatetemp.name!, author: intermediatetemp.author!, desc: "")
+                //print(x)
                 //self.currentTitles.append(x.title!)
                 //self.currentTitles.append("test")
                 //self.currentAuthors.append(x.author!)
                 //self.currentISBNs.append(x.ISBN!)
                 
-                self.currentBooks.append(x)
+                self.currentBooks.append(y)
                 self.sendNewRequest = true
-                if(x.googleImageURL != nil)
+                if(y.googleImageURL != nil)
                 {
-                    self.currentThumbnails.append(x.googleImageURL!)
+                    self.currentThumbnails.append(y.googleImageURL!)
                 }
                 else
                 {
@@ -449,7 +467,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
             
         }
         
-        //task.resume()
         
     }
 }

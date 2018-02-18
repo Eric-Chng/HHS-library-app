@@ -59,6 +59,9 @@
 		7B725E121F9B21DC00FE56A1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E111F9B21DC00FE56A1 /* HomeViewController.swift */; };
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
 		7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B78DBCB2009EA5A00592F09 /* bookUpdated.json */; };
+		7B9E22C52037F424009A2B9D /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E22C42037F424009A2B9D /* Review.storyboard */; };
+		7B9E22C72037FC24009A2B9D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E22C62037FC24009A2B9D /* ReviewViewController.swift */; };
+		7B9E22C92037FD19009A2B9D /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E22C82037FD19009A2B9D /* done.json */; };
 		7BDEE2EE2026E78C004F3E4D /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */; };
 		7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */; };
 		7BF93C0D2033FC06006A98F4 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF93C0C2033FC05006A98F4 /* UIImageColors.swift */; };
@@ -134,6 +137,9 @@
 		7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAD.entitlements; sourceTree = "<group>"; };
 		7B72B8601F9B0DB5002E9668 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7B78DBCB2009EA5A00592F09 /* bookUpdated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookUpdated.json; sourceTree = "<group>"; };
+		7B9E22C42037F424009A2B9D /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
+		7B9E22C62037FC24009A2B9D /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		7B9E22C82037FD19009A2B9D /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
 		7BDEE2ED2026E78C004F3E4D /* Tabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
 		7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7BF93C0C2033FC05006A98F4 /* UIImageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
@@ -255,6 +261,7 @@
 			children = (
 				7B78DBCB2009EA5A00592F09 /* bookUpdated.json */,
 				7B35588720194BE2003DE9E2 /* starPop.json */,
+				7B9E22C82037FD19009A2B9D /* done.json */,
 				7B0EB1432012C98D00A4E9A8 /* loader.json */,
 				7B0EB1452012C9B800A4E9A8 /* scan.json */,
 			);
@@ -279,6 +286,7 @@
 				7B6EE7092026CEFE003A8908 /* ThirdPageViewController.swift */,
 				7BE9AAF22026E2E400697FD1 /* LoginViewController.swift */,
 				7B17B93A2030A2B90005D34B /* HoldViewController.swift */,
+				7B9E22C62037FC24009A2B9D /* ReviewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -331,6 +339,7 @@
 				4426E3F11F9B0A9F007CD8E7 /* LaunchScreen.storyboard */,
 				82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */,
 				82AE23111FF36EE70014C7CF /* BookDetails.storyboard */,
+				7B9E22C42037F424009A2B9D /* Review.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -449,6 +458,8 @@
 				4426E3F31F9B0A9F007CD8E7 /* LaunchScreen.storyboard in Resources */,
 				7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */,
 				7B0EB1462012C9B800A4E9A8 /* scan.json in Resources */,
+				7B9E22C52037F424009A2B9D /* Review.storyboard in Resources */,
+				7B9E22C92037FD19009A2B9D /* done.json in Resources */,
 				7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */,
 				82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */,
 				4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */,
@@ -559,6 +570,7 @@
 				44E5115820298CDC00A721B3 /* UserGetBooks.swift in Sources */,
 				7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */,
 				44E511682029AB2B00A721B3 /* HoldByUserReady.swift in Sources */,
+				7B9E22C72037FC24009A2B9D /* ReviewViewController.swift in Sources */,
 				443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */,
 				44E511642029A96C00A721B3 /* HoldByBook.swift in Sources */,
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,
