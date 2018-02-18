@@ -40,7 +40,6 @@ class AddReview: NSObject {
     
     //Checks for request's success
     func processAction(response:String) {
-        
         var script_success = false;
         if (response=="script success"){
             script_success=true;
