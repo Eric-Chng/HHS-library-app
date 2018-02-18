@@ -197,11 +197,6 @@ class BookModel: NSObject {
                             self.BookCoverImage.image = temp
                             self.foundGoogleImage = true
                         }
-                        else
-                        {
-                            //self.BookCoverImage.image = #imageLiteral(resourceName: "loadingImage")
-                        }
-                        
                     }
                 }
             }
@@ -290,7 +285,8 @@ class BookModel: NSObject {
                     let endQuoteIndex = thumbnailAndOn.index(thumbnailAndOn.startIndex, offsetBy: distanceToEndQuote-1)
                     finalThumbnail = /*String(thumbnailAndOn[...endQuoteIndex])*/thumbnailAndOn.substring(to: endQuoteIndex)
                     self.googleImageURL = finalThumbnail
-                    if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + self.ISBN! + "-L.jpg") {
+                    if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + self.ISBN! + "-L.jpg")
+                    {
                         
                         self.downloadCoverImage(url: url)
                     }

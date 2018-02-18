@@ -89,9 +89,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="148"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DF6-J5-6wH">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="74.666666666666671" height="20.333333333333332"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" red="0.32732637164498357" green="0.52168585267730005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="76.666666666666671" height="20.333333333333332"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="270" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" placeholderIntrinsicWidth="185" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="wE8-Np-dqK">
@@ -164,6 +164,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StZ-He-2Tp">
+                                                <rect key="frame" x="29" y="757" width="317" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="39" id="LjV-ee-Ozb"/>
+                                                    <constraint firstAttribute="width" constant="317" id="MxF-5H-Ppi"/>
+                                                </constraints>
+                                                <state key="normal" title="Leave Your Own Review"/>
+                                                <connections>
+                                                    <action selector="leaveReviewPressed:" destination="wrM-me-emw" eventType="touchUpInside" id="hX8-J7-zwv"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -178,6 +189,7 @@
                                             <constraint firstItem="b6z-ka-eea" firstAttribute="top" secondItem="lZi-hZ-1I2" secondAttribute="bottom" constant="40" id="OVO-c9-eUe"/>
                                             <constraint firstItem="kRo-bX-lPt" firstAttribute="width" secondItem="d1d-f2-XUH" secondAttribute="width" id="QdF-Dz-kkP"/>
                                             <constraint firstItem="i7a-4q-9mS" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="8" id="QyC-rL-0zP"/>
+                                            <constraint firstItem="StZ-He-2Tp" firstAttribute="top" secondItem="Vtg-B1-qVD" secondAttribute="bottom" id="XPe-Cq-j7B"/>
                                             <constraint firstItem="lZi-hZ-1I2" firstAttribute="top" secondItem="qWt-SV-meU" secondAttribute="top" constant="250" id="buR-MH-4dA"/>
                                             <constraint firstItem="lZi-hZ-1I2" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="10" id="e5j-Jg-OGO"/>
                                             <constraint firstAttribute="trailing" secondItem="b6z-ka-eea" secondAttribute="trailing" constant="8" id="hat-KY-Jnv"/>
@@ -185,6 +197,7 @@
                                             <constraint firstItem="d1d-f2-XUH" firstAttribute="bottom" secondItem="nR1-Sv-cbj" secondAttribute="bottom" constant="-30" id="k8i-SV-TEv"/>
                                             <constraint firstItem="Liq-wl-BpK" firstAttribute="centerY" secondItem="qWt-SV-meU" secondAttribute="centerY" id="kn5-VK-Mug"/>
                                             <constraint firstItem="TtY-r9-RzJ" firstAttribute="bottom" secondItem="lZi-hZ-1I2" secondAttribute="top" constant="6" id="od1-VG-KBV"/>
+                                            <constraint firstItem="StZ-He-2Tp" firstAttribute="centerX" secondItem="qWt-SV-meU" secondAttribute="centerX" id="pQZ-PL-jWQ"/>
                                             <constraint firstAttribute="trailing" secondItem="Liq-wl-BpK" secondAttribute="trailing" constant="8" id="qHm-v4-2J1"/>
                                             <constraint firstItem="Vtg-B1-qVD" firstAttribute="top" secondItem="b6z-ka-eea" secondAttribute="bottom" constant="4" id="rwJ-3x-THb"/>
                                             <constraint firstAttribute="bottom" secondItem="b6z-ka-eea" secondAttribute="bottom" constant="98" id="ryq-8k-sGR"/>
@@ -253,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LK9-ys-Tps" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2408.8000000000002" y="938.2308845577212"/>
+            <point key="canvasLocation" x="2407.971014492754" y="937.50000000000011"/>
         </scene>
         <!--Hold View Controller-->
         <scene sceneID="0Tc-xe-B0D">

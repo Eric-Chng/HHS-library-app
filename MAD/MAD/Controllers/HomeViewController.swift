@@ -64,8 +64,10 @@ class HomeViewController: UIViewController {
         
     }
     
+    @available(iOS, deprecated: 9.0)
     @IBAction func reviewTestButton(_ sender: Any) {
         let reviewController = self.storyboard?.instantiateViewController(withIdentifier: "reviewController") as! ReviewViewController
+        reviewController.setBookModel(model: BookModel(ISBN: "9781594480003"))
         self.present(reviewController, animated: true, completion: nil)
     }
     

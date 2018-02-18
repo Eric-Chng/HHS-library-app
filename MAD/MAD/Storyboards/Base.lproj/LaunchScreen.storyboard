@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,15 +13,19 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController modalPresentationStyle="overFullScreen" id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="efR-eW-nfF"/>
+                        <viewControllerLayoutGuide type="bottom" id="g97-55-MGJ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingBacksplash" translatesAutoresizingMaskIntoConstraints="NO" id="Etz-Eh-HcK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="-6" width="375" height="824"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="oPY-s0-W2M">
-                                <rect key="frame" x="87" y="233" width="200" height="200"/>
+                                <rect key="frame" x="87" y="305.66666666666669" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="3cE-zf-U1i"/>
                                     <constraint firstAttribute="height" constant="200" id="JoS-JR-NhR"/>
@@ -34,14 +37,16 @@
                         <constraints>
                             <constraint firstItem="oPY-s0-W2M" firstAttribute="centerY" secondItem="Etz-Eh-HcK" secondAttribute="centerY" id="4pt-da-2nA"/>
                             <constraint firstItem="oPY-s0-W2M" firstAttribute="centerX" secondItem="Etz-Eh-HcK" secondAttribute="centerX" id="5pC-SD-Fid"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Etz-Eh-HcK" secondAttribute="bottom" id="9ZA-vP-IKw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Etz-Eh-HcK" secondAttribute="top" constant="20" id="T6a-7k-2ST"/>
-                            <constraint firstItem="Etz-Eh-HcK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="asL-pt-ma7"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Etz-Eh-HcK" secondAttribute="trailing" id="q17-dP-18C"/>
+                            <constraint firstItem="g97-55-MGJ" firstAttribute="top" secondItem="Etz-Eh-HcK" secondAttribute="bottom" constant="-40" id="9ZA-vP-IKw"/>
+                            <constraint firstItem="efR-eW-nfF" firstAttribute="bottom" secondItem="Etz-Eh-HcK" secondAttribute="top" constant="50" id="T6a-7k-2ST"/>
+                            <constraint firstItem="Etz-Eh-HcK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="asL-pt-ma7"/>
+                            <constraint firstAttribute="trailing" secondItem="Etz-Eh-HcK" secondAttribute="trailing" id="q17-dP-18C"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

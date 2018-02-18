@@ -517,193 +517,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
             
             
         }
-            /*
-        else
-        {
         
-        
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + BookDetailViewController.ISBN
-        guard let url = URL(string: todoEndpoint) else {
-            print("Error: cannot create URL")
-            return
-        }
-        
-       
-        
-        
-        let urlRequest = URLRequest(url: url)
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest) {
-            (data, response, error) in
-            // check for any errors
-            guard error == nil else {
-                print("error calling with Google Books GET call with ISBN: " + BookDetailViewController.ISBN)
-                print(error!)
-                return
-            }
-            // make sure we got data
-            guard let responseData = data else {
-                print("Error: did not receive data")
-                return
-            }
-            // parse the result as JSON, since that's what the API provides
-            do {
-                guard let googleBooksJSON = try JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.mutableContainers)
-                    as? [String: Any]
-                    else {
-                        print("error trying to convert data to JSON")
-                        return
-                }
-                
-                
-                
-                
-                
-                
-                //Converts JSON into a String
-                
-                var JSONAsString = "describing =                       \"could not be found\" authors = \"not found\" title = not found"
-                let itemsDictionary =  String(describing: googleBooksJSON)
-                
-                //object.method(arg, arg1, arg2)
-                if itemsDictionary != "[\"totalItems\": 0, \"kind\": books#volumes]"
-                {
-                    JSONAsString = itemsDictionary/*String(describing: itemsDictionary!![0])*/
-                
-
-                    var finalTitle = "Not found: " + BookDetailViewController.ISBN
-                //Parses out the title
-                if let rangeTotitle: Range<String.Index> = JSONAsString.range(of: " title = ")
-                {
-                let distanceTotitle = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeTotitle.lowerBound))
-                let titleIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceTotitle+9)
-                let titleAndOn = JSONAsString.substring(from: titleIndex)
-                let rangeToSemiColon: Range<String.Index> = titleAndOn.range(of: ";")!
-                let distanceToSemiColon = Int(titleAndOn.distance(from: titleAndOn.startIndex, to: rangeToSemiColon.lowerBound))
-                let finalIndex = titleAndOn.index(titleAndOn.startIndex, offsetBy: distanceToSemiColon)
-                finalTitle = titleAndOn.substring(to: finalIndex)
-                if finalTitle.range(of: "\"") != nil
-                {
-                    let firstQuoteIndex = finalTitle.index(finalTitle.startIndex, offsetBy: 1)
-                    finalTitle = finalTitle.substring(from: firstQuoteIndex)
-                    let lastQuoteIndex = finalTitle.index(finalTitle.endIndex, offsetBy: -1)
-                    finalTitle = finalTitle.substring(to: lastQuoteIndex)
-                }
-                    }
-                    var finalAuthor = "Not available"
-                //Parses out the author
-                if let rangeToAuthors: Range<String.Index> = JSONAsString.range(of: "authors = ")
-                {
-                let distanceToAuthors = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToAuthors.lowerBound))
-                let authorsIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToAuthors+33)
-                let authorsAndOn = JSONAsString.substring(from: authorsIndex)
-                let rangeToQuote: Range<String.Index> = authorsAndOn.range(of: "\"")!
-                let distanceToQuote = Int(authorsAndOn.distance(from: authorsAndOn.startIndex, to: rangeToQuote.lowerBound))
-                let quoteIndex = authorsAndOn.index(authorsAndOn.startIndex, offsetBy: distanceToQuote)
-                finalAuthor = authorsAndOn.substring(to: quoteIndex)
-                    }
-                    var finalDescription = "Not available";
-                    
-                    
-                    
-                //Parses out the description
-                if let rangeToDescription: Range<String.Index> = JSONAsString.range(of: "description = ")
-                {
-                let distanceToDescription = Int(JSONAsString.distance(from: JSONAsString.startIndex, to: rangeToDescription.lowerBound))
-                let descriptionIndex = JSONAsString.index(JSONAsString.startIndex, offsetBy: distanceToDescription+15)
-                let descriptionAndOn = JSONAsString.substring(from: descriptionIndex)
-                    let rangeToDescriptionQuote: Range<String.Index> = descriptionAndOn.range(of: ";")!
-                let distanceToDescriptionQuote = Int(descriptionAndOn.distance(from: descriptionAndOn.startIndex, to: rangeToDescriptionQuote.lowerBound))-1
-                let descriptionQuoteIndex = descriptionAndOn.index(descriptionAndOn.startIndex, offsetBy: distanceToDescriptionQuote)
-                    finalDescription = descriptionAndOn.substring(to: descriptionQuoteIndex)
-                    finalDescription = finalDescription.replacingOccurrences(of: "\\U2019", with: "\'")
-                    var ignored:String = "";
-                    while let rangeToBackslash: Range<String.Index> = finalDescription.range(of: "\\")
-                    {
-                        var isQuote:Bool = false;
-                    let distanceToBackslash = Int(finalDescription.distance(from: finalDescription.startIndex, to: rangeToBackslash.lowerBound))
-                    let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash)
-                    var finalDescription2: String = finalDescription.substring(from: backslashIndex)
-                    
-                     
-                   let temp1 = finalDescription.substring(to: backslashIndex)
-                        if(finalDescription2.substring(to: finalDescription2.index(finalDescription2.startIndex, offsetBy: 2))=="\\\"")
-                        {
-                            let backslashIndex = finalDescription.index(finalDescription.startIndex, offsetBy: distanceToBackslash+1)
-                            isQuote = true;
-                            finalDescription = finalDescription.substring(from: backslashIndex)
-                            ignored = ignored + temp1;
-                        }
-                    
-                        if(isQuote == false)
-                        {
-                    let backslashIndex2 = finalDescription2.index(finalDescription2.startIndex, offsetBy: 6)
-                    let temp2 = finalDescription2.substring(from: backslashIndex2)
-                    finalDescription = temp1 + temp2
-                        }
-                    }
-                    finalDescription = ignored + finalDescription;
-                    //self.performSegue(withIdentifier: "reserveSegue", sender: self)
-
-
-                    }
-                    //var y:Character = Character(code)
-                    
-                  
-                    //❄️
-                    //UTF8Decoder.decode(test)
-                    
-                    
-                    //var code:String = "Pok\u{00E9}mon"
-                    
-                
-                DispatchQueue.main.async(execute: {() -> Void in
-                    //Sets Title Label To Correct Value
-                    self.titleLabel?.text = finalTitle;
-                    self.authorLabel?.text = finalAuthor;
-                    self.descBox?.text = finalDescription;
-                    
-                    //self.formatJSONDescription()
-
-                    
-
-
-                })
-            }
-            else
-            {
-                DispatchQueue.main.async(execute: {() -> Void in
-                    //Sets Title Label To Correct Value
-                    self.titleLabel?.text = BookDetailViewController.ISBN;
-                    self.authorLabel?.text = "not found";
-                    self.descBox?.text = "not found";
-                    self.descBox.sizeToFit()
-
-                    
-                })
-            }
-
-                //let distanceToTitle = Int(distanceTotitle.distance(from: distanceTotitle.startIndex, to: rangeTotitle.lowerBound))
-                
-                
-                
-                // the todo object is a dictionary
-                // so we just access the title using the "title" key
-                // so check for a title and print it if we have one
-                
-            } catch  {
-                print("error trying to convert data to JSON")
-                return
-            }
-        }
-       task.resume()
-    }*/
- 
-        
-            //if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + BookDetailViewController.ISBN + "-L.jpg") {
-            //imageView.contentMode = .scaleAspectFit
-                //self.downloadCoverImage(url: url)
-        //}
     }
 
     
@@ -711,6 +525,15 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         super.viewDidAppear(animated)
         
     }
+    
+    @IBAction func leaveReviewPressed(_ sender: Any)
+    {
+        let tempReview = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "reviewController") as! ReviewViewController
+        tempReview.setBookModel(model: self.selectedBook!)
+        self.present(tempReview, animated: true, completion: nil)
+    }
+    
+
     
     @available(iOS, deprecated: 9.0)
     func formatDescription()

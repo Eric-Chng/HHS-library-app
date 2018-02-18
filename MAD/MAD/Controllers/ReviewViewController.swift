@@ -9,7 +9,16 @@
 import UIKit
 import Lottie
 
-class ReviewViewController: UIViewController {
+class ReviewViewController: UIViewController, TransactionProtocol {
+    
+    
+    func transactionProcessed(success: Bool) {
+        if(success == true)
+        {
+            print("Rating added successfully")
+        }
+    }
+    
 
     
     var currentScore: Int = 0
@@ -18,11 +27,15 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var starView2: UIView!
     
     @IBOutlet weak var starView3: UIView!
-    
+    var setLowResPhoto: Bool = false
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starView4: UIView!
-    
+    var loadTimer: Timer = Timer()
+
     @IBOutlet weak var starView5: UIView!
     @IBOutlet weak var bookCoverImageView: UIImageView!
+    @IBOutlet weak var submitButton: UIButton!
+    var bookModel: BookModel = BookModel()
     
     @IBOutlet weak var ratingCommentaryLabel: UILabel!
     
@@ -31,8 +44,32 @@ class ReviewViewController: UIViewController {
         self.updateStarViews()
         self.bookCoverImageView.layer.cornerRadius = 8
         self.bookCoverImageView.layer.masksToBounds = true
+        submitButton.layer.cornerRadius = 15
+        submitButton.layer.masksToBounds = true
+        loadTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(ReviewViewController.action), userInfo: nil,  repeats: true)
         // Do any additional setup after loading the view.
     }
+    
+    @objc func action()
+    {
+        if(self.bookModel.title != nil && self.bookModel.title!.count > 1)
+        {
+            self.titleLabel.text = self.bookModel.title
+        }
+        if(self.setLowResPhoto == false && self.bookModel.BookCoverImage != nil && self.bookModel.BookCoverImage.image != nil/*&& Double((self.bookModel.BookCoverImage.image!.size.height))>20.0*/)
+        {
+            self.setLowResPhoto = true
+            self.bookCoverImageView.image = self.bookModel.BookCoverImage.image
+        }
+        
+        if(self.bookModel.foundGoogleImage == true)
+        {
+            self.bookCoverImageView.image = self.bookModel.BookCoverImage.image
+            self.loadTimer.invalidate()
+        }
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -241,7 +278,6 @@ class ReviewViewController: UIViewController {
         }
         if(self.starView5.layer.sublayers != nil)
         {
-            //print("clearing 5")
 
             for subLayer in self.starView5.layer.sublayers! {
                 if(subLayer.isKind(of: UIButton.classForCoder()) == false)
@@ -258,6 +294,21 @@ class ReviewViewController: UIViewController {
         
     }
     
+    func setBookModel(model: BookModel)
+    {
+        self.bookModel = model
+    }
+    
+    @IBAction func submitPressed(_ sender: Any)
+    {
+        if(self.bookModel.ISBN != nil)
+        {
+            let addRate = AddReview()
+            addRate.delegate = self
+            addRate.downloadItems(userID: UserDefaults.standard.object(forKey: "userId") as! String, isbn: self.bookModel.ISBN!, rating: self.currentScore, text: self.ratingCommentaryLabel.text!)
+        }
+        
+    }
     
     
 }

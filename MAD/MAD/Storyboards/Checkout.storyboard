@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cMb-Ej-cpe">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="Gov-tV-Puz" customClass="CheckoutViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lV6-K4-rU9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[book id]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJp-hc-UQQ">
@@ -37,7 +37,7 @@
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.92513370230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-da-1eB">
-                                <rect key="frame" x="60" y="176" width="255" height="130"/>
+                                <rect key="frame" x="60" y="200" width="255" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="Cvd-JY-H8J"/>
                                     <constraint firstAttribute="width" constant="255" id="cos-lN-MLh"/>
@@ -49,10 +49,9 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-lY-rmf">
-                                <rect key="frame" x="37.5" y="396" width="300" height="176"/>
+                                <rect key="frame" x="37.666666666666664" y="420" width="300" height="269"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="176" id="30i-w8-rdF"/>
                                     <constraint firstAttribute="width" constant="300" id="iIj-IJ-Tkz"/>
                                 </constraints>
                                 <prototypes>
@@ -60,7 +59,7 @@
                                         <rect key="frame" x="0.0" y="28" width="300" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g5g-1c-47C" id="zvE-Aq-8JN">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="56.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="56.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4v-2S-nTG">
@@ -84,7 +83,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-or finalize a hold-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L75-OO-TyW">
-                                <rect key="frame" x="87" y="335" width="200" height="21"/>
+                                <rect key="frame" x="87.666666666666686" y="359" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="sE0-pJ-roN"/>
                                     <constraint firstAttribute="height" constant="21" id="uNs-5t-l9H"/>
@@ -94,7 +93,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Holds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY6-mB-Q3U">
-                                <rect key="frame" x="37.5" y="374" width="111" height="21"/>
+                                <rect key="frame" x="37.666666666666657" y="398" width="111" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="111" id="7yq-GY-CaZ"/>
                                     <constraint firstAttribute="height" constant="21" id="O9n-7M-N8d"/>
@@ -110,6 +109,7 @@
                             <constraint firstItem="qNj-lY-rmf" firstAttribute="centerX" secondItem="FVQ-pN-qZT" secondAttribute="centerX" id="KtD-c5-UDg"/>
                             <constraint firstItem="L75-OO-TyW" firstAttribute="centerX" secondItem="FVQ-pN-qZT" secondAttribute="centerX" id="Nss-dO-ZBm"/>
                             <constraint firstItem="NeU-da-1eB" firstAttribute="centerX" secondItem="FVQ-pN-qZT" secondAttribute="centerX" id="PLZ-ij-pzQ"/>
+                            <constraint firstItem="FVQ-pN-qZT" firstAttribute="bottom" secondItem="qNj-lY-rmf" secondAttribute="bottom" constant="40" id="U5T-og-VT1"/>
                             <constraint firstItem="NeU-da-1eB" firstAttribute="top" secondItem="FVQ-pN-qZT" secondAttribute="top" constant="60" id="bHL-RC-xnu"/>
                             <constraint firstItem="L75-OO-TyW" firstAttribute="top" secondItem="NeU-da-1eB" secondAttribute="bottom" constant="29" id="e8L-xo-5TY"/>
                             <constraint firstItem="qNj-lY-rmf" firstAttribute="top" secondItem="ZY6-mB-Q3U" secondAttribute="bottom" constant="1" id="shH-32-KEu"/>
@@ -141,7 +141,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xL0-a5-Btp">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -161,7 +161,7 @@
             <objects>
                 <viewController storyboardIdentifier="Scanner" title="Scanner" id="BXR-eU-mEX" customClass="Scanner" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJe-CK-8Lw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="NNj-Dm-8S8"/>
@@ -177,17 +177,16 @@
         <!--BookDetails-->
         <scene sceneID="hpa-VJ-szo">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G7T-cj-po4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="BookDetails" id="Ac4-Xt-wZf" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="SyZ-fN-8NW"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G7T-cj-po4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2116" y="737"/>
         </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="Oie-K2-0qS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dXm-xk-uq4" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="BookDetailViewController" id="7pj-MX-fIS" userLabel="Book Detail View Controller" customClass="BookDetailViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtL-yk-TY5" customClass="ViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
@@ -201,6 +200,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1500"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXm-xk-uq4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2628" y="737"/>
         </scene>
@@ -210,6 +210,6 @@
         <image name="scanToCheckoutButton4" width="340" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GYa-Cw-95d"/>
+        <segue reference="2mD-LB-cm2"/>
     </inferredMetricsTieBreakers>
 </document>
