@@ -13,10 +13,19 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     
     
     func transactionProcessed(success: Bool) {
+        print("Transaction followed")
         if(success == true)
         {
             print("Rating added successfully")
         }
+        self.submitButton.setTitle("Success", for: UIControlState.normal)
+        let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+        //self.present(alert, animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
+
+        //self.dismiss(animated: true, completion: nil)
+
     }
     
 
@@ -31,6 +40,7 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starView4: UIView!
     var loadTimer: Timer = Timer()
+    var orangeColor: UIColor = UIColor()
 
     @IBOutlet weak var starView5: UIView!
     @IBOutlet weak var bookCoverImageView: UIImageView!
@@ -42,6 +52,8 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateStarViews()
+        orangeColor = self.submitButton.backgroundColor!
+        self.submitButton.backgroundColor = UIColor.lightGray
         self.bookCoverImageView.layer.cornerRadius = 8
         self.bookCoverImageView.layer.masksToBounds = true
         submitButton.layer.cornerRadius = 15
@@ -70,7 +82,19 @@ class ReviewViewController: UIViewController, TransactionProtocol {
         
     }
     
-
+    func updateButton()
+    {
+        if(self.currentScore < 1)
+        {
+            UIView.animate(withDuration: 0.4)
+            {
+                self.submitButton.backgroundColor = UIColor.init(red: 1.0, green: 0.38, blue: 0, alpha: 1.0)
+                //self.submitButton.backgroundColor
+            }
+            self.submitButton.setTitle("Submit", for: UIControlState.normal)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -84,6 +108,7 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     
     @IBAction func oneStarPressed(_ sender: Any)
     {
+        self.updateButton()
         self.currentScore = 1
         self.updateStarViews()
         self.ratingCommentaryLabel.text = "Poor"
@@ -92,6 +117,7 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     
     @IBAction func twoStarPressed(_ sender: Any)
     {
+        self.updateButton()
         self.currentScore = 2
         self.updateStarViews()
         self.ratingCommentaryLabel.text = "Mediocre"
@@ -100,6 +126,7 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     
     @IBAction func threeStarPressed(_ sender: Any)
     {
+        self.updateButton()
         self.currentScore = 3
         self.updateStarViews()
         self.ratingCommentaryLabel.text = "Good"
@@ -108,6 +135,7 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     
     @IBAction func fourStarPressed(_ sender: Any)
     {
+        self.updateButton()
         self.currentScore = 4
         self.updateStarViews()
         self.ratingCommentaryLabel.text = "Very Good"
@@ -117,6 +145,7 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     
     @IBAction func fiveStarPressed(_ sender: Any)
     {
+        self.updateButton()
         self.currentScore = 5
         self.updateStarViews()
         self.ratingCommentaryLabel.text = "Amazing"
@@ -301,10 +330,11 @@ class ReviewViewController: UIViewController, TransactionProtocol {
     
     @IBAction func submitPressed(_ sender: Any)
     {
-        if(self.bookModel.ISBN != nil)
+        if(self.bookModel.ISBN != nil && self.submitButton.currentTitle == "Submit")
         {
             let addRate = AddReview()
             addRate.delegate = self
+            
             addRate.downloadItems(userID: UserDefaults.standard.object(forKey: "userId") as! String, isbn: self.bookModel.ISBN!, rating: self.currentScore, text: self.ratingCommentaryLabel.text!)
         }
         

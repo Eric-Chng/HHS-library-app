@@ -165,12 +165,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StZ-He-2Tp">
-                                                <rect key="frame" x="29" y="757" width="317" height="39"/>
+                                                <rect key="frame" x="30" y="765" width="315" height="50"/>
+                                                <color key="backgroundColor" red="0.40510121459999998" green="0.5927768229" blue="0.9971045852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="39" id="LjV-ee-Ozb"/>
-                                                    <constraint firstAttribute="width" constant="317" id="MxF-5H-Ppi"/>
+                                                    <constraint firstAttribute="height" constant="50" id="LjV-ee-Ozb"/>
                                                 </constraints>
-                                                <state key="normal" title="Leave Your Own Review"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <state key="normal" title="Leave Your Own Review">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="leaveReviewPressed:" destination="wrM-me-emw" eventType="touchUpInside" id="hX8-J7-zwv"/>
                                                 </connections>
@@ -184,12 +187,13 @@
                                             <constraint firstItem="Liq-wl-BpK" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="8" id="AWW-At-ZJa"/>
                                             <constraint firstItem="kRo-bX-lPt" firstAttribute="leading" secondItem="d1d-f2-XUH" secondAttribute="leading" constant="8" id="DZv-Kp-1Fb"/>
                                             <constraint firstItem="b6z-ka-eea" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="8" id="FpI-gd-5n7"/>
+                                            <constraint firstAttribute="trailing" secondItem="StZ-He-2Tp" secondAttribute="trailing" constant="30" id="G8b-t8-XeW"/>
                                             <constraint firstItem="GED-9b-aYE" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="14" id="JhD-Fq-9XB"/>
                                             <constraint firstItem="GED-9b-aYE" firstAttribute="top" secondItem="lZi-hZ-1I2" secondAttribute="bottom" id="M8E-45-daA"/>
                                             <constraint firstItem="b6z-ka-eea" firstAttribute="top" secondItem="lZi-hZ-1I2" secondAttribute="bottom" constant="40" id="OVO-c9-eUe"/>
                                             <constraint firstItem="kRo-bX-lPt" firstAttribute="width" secondItem="d1d-f2-XUH" secondAttribute="width" id="QdF-Dz-kkP"/>
                                             <constraint firstItem="i7a-4q-9mS" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="8" id="QyC-rL-0zP"/>
-                                            <constraint firstItem="StZ-He-2Tp" firstAttribute="top" secondItem="Vtg-B1-qVD" secondAttribute="bottom" id="XPe-Cq-j7B"/>
+                                            <constraint firstItem="StZ-He-2Tp" firstAttribute="top" secondItem="Vtg-B1-qVD" secondAttribute="bottom" constant="8" id="XPe-Cq-j7B"/>
                                             <constraint firstItem="lZi-hZ-1I2" firstAttribute="top" secondItem="qWt-SV-meU" secondAttribute="top" constant="250" id="buR-MH-4dA"/>
                                             <constraint firstItem="lZi-hZ-1I2" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="10" id="e5j-Jg-OGO"/>
                                             <constraint firstAttribute="trailing" secondItem="b6z-ka-eea" secondAttribute="trailing" constant="8" id="hat-KY-Jnv"/>
@@ -204,6 +208,7 @@
                                             <constraint firstItem="TtY-r9-RzJ" firstAttribute="leading" secondItem="lZi-hZ-1I2" secondAttribute="leading" constant="4" id="soN-ce-hQQ"/>
                                             <constraint firstItem="GED-9b-aYE" firstAttribute="bottom" secondItem="b6z-ka-eea" secondAttribute="top" id="t8R-xG-pyR"/>
                                             <constraint firstAttribute="height" constant="830" id="tbx-Xs-UXK"/>
+                                            <constraint firstItem="StZ-He-2Tp" firstAttribute="leading" secondItem="qWt-SV-meU" secondAttribute="leading" constant="30" id="y0l-i2-JED"/>
                                             <constraint firstItem="kRo-bX-lPt" firstAttribute="top" secondItem="d1d-f2-XUH" secondAttribute="bottom" constant="5" id="yz4-YY-0LN"/>
                                         </constraints>
                                     </view>
@@ -259,6 +264,7 @@
                         <outlet property="mapView" destination="b6z-ka-eea" id="P1V-zc-0fb"/>
                         <outlet property="ratingLabel" destination="kRo-bX-lPt" id="A2j-m1-HuX"/>
                         <outlet property="ratingView" destination="d1d-f2-XUH" id="7d3-ZY-11H"/>
+                        <outlet property="reviewButton" destination="StZ-He-2Tp" id="cpk-0g-ZOK"/>
                         <outlet property="scrollView" destination="ur8-JP-dcj" id="pLt-fS-vqi"/>
                         <outlet property="titleLabel" destination="L5Q-jg-UDe" id="6hJ-MM-087"/>
                         <segue destination="lPK-fh-F4m" kind="presentation" identifier="reserveSegue" modalTransitionStyle="crossDissolve" id="lq1-JA-27F"/>

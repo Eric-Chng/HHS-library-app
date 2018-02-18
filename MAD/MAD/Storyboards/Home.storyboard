@@ -150,7 +150,7 @@
                                                 <color key="textColor" red="0.95423677774589666" green="0.47422305842176304" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Ip-eK4">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Ip-eK4">
                                                 <rect key="frame" x="116" y="180" width="80" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Review"/>
@@ -400,13 +400,13 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rh-2j-Wnj">
-                                <rect key="frame" x="30" y="648" width="315" height="60"/>
+                                <rect key="frame" x="30" y="638" width="315" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.3711759234" blue="0.17241364209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="AQ7-MS-iQz"/>
+                                    <constraint firstAttribute="height" constant="50" id="AQ7-MS-iQz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <state key="normal" title="Submit">
+                                <state key="normal" title="Choose a Star Rating">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -414,7 +414,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your friends will see this ratng on the Discover page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaF-FG-2zQ">
-                                <rect key="frame" x="37" y="706" width="300" height="21"/>
+                                <rect key="frame" x="37" y="686" width="300" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="nGk-Ta-vYY"/>
                                     <constraint firstAttribute="height" constant="21" id="oh6-hS-OIz"/>
@@ -450,7 +450,7 @@
                             <constraint firstItem="aaF-FG-2zQ" firstAttribute="centerX" secondItem="VGd-Tb-eL4" secondAttribute="centerX" id="WCd-F1-9T1"/>
                             <constraint firstItem="KOp-rR-nJK" firstAttribute="leading" secondItem="4HP-RU-8zf" secondAttribute="trailing" constant="4" id="XYy-It-3Qk"/>
                             <constraint firstItem="Yly-js-OQx" firstAttribute="top" secondItem="VGd-Tb-eL4" secondAttribute="top" constant="10" id="Y5c-9n-Pd6"/>
-                            <constraint firstItem="VGd-Tb-eL4" firstAttribute="bottom" secondItem="6Rh-2j-Wnj" secondAttribute="bottom" constant="70" id="ZIm-oz-D0G"/>
+                            <constraint firstItem="VGd-Tb-eL4" firstAttribute="bottom" secondItem="6Rh-2j-Wnj" secondAttribute="bottom" constant="90" id="ZIm-oz-D0G"/>
                             <constraint firstItem="kiY-oP-P6N" firstAttribute="height" secondItem="dnw-NS-wCs" secondAttribute="height" id="Zz6-nH-EG1"/>
                             <constraint firstItem="hY7-Kb-9fc" firstAttribute="centerY" secondItem="hdt-ZC-e42" secondAttribute="centerY" id="bFC-Nr-NkK"/>
                             <constraint firstItem="6Iu-Yx-Gun" firstAttribute="top" secondItem="dnw-NS-wCs" secondAttribute="top" id="bRn-CH-qwa"/>

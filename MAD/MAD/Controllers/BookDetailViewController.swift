@@ -20,7 +20,8 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
-    
+    @IBOutlet weak var reviewButton: UIButton!
+    var holdButtonHidden: Bool = false
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var ratingView: UIView!
@@ -163,22 +164,17 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
                 while(counter<5)
                 {
                     counter = counter + 1;
-                    //let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
-                    //let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+                    
                     let frame = CGRect(x: x.width/4*CGFloat(counter)-x.width/5, y: x.height/2.3, width: x.width/6, height: x.height/2)
                     
-                    //animationView.contentMode = .scaleToFill
                     let emptyStarView = UIImageView(image: #imageLiteral(resourceName: "emptyStar"))
                     emptyStarView.contentMode = .scaleToFill
                     emptyStarView.frame = frame
-                    //animationView.frame = frame
                     if(counter>ratingAsInt)
                     {
                     ratingView.addSubview(emptyStarView)
                     }
-                    //animationView.loopAnimation = true
-                    //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
-                    //animationView.play()
+                    
                 }
                 
             }
@@ -223,22 +219,41 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     //Passes the current BookModel to the HoldViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        self.loadTimer?.invalidate()
+        self.timer.invalidate()
         if segue.destination is HoldViewController {
             (segue.destination as! HoldViewController).setBookModel(model: self.selectedBook!)
-            //destinationViewController.selectedBook = bookToPass
         }
-        
-        
-    //_ = popViewController(animated: true)
-        //self.navigationController?.popViewController(animated: true)
-    
     }
     
     //Checks for book information download status if the BookModel is not loaded
     @objc func action()
     {
-        
+        if(self.reviewButton.window != nil)
+        {
+            let screenHeight = UIScreen.main.bounds.height
+            let tempY = screenHeight + scrollView.contentOffset.y - 80
+            //print(tempY)
+            let bottomReviewButton = self.reviewButton.frame.maxY
+            //print(bottomReviewButton)
+            if(tempY > bottomReviewButton && self.holdButtonHidden == false)
+            {
+                
+                self.holdButtonHidden = true
+                UIView.animate(withDuration: 0.2)
+                {
+                    self.checkoutButton.alpha = 0.0
+                }
+            }
+            else if(tempY < bottomReviewButton)
+            {
+                self.holdButtonHidden = false
+                UIView.animate(withDuration: 0.2)
+                {
+                    self.checkoutButton.alpha = 1.0
+                }
+            }
+        }
         if(scrollView.contentOffset.y > 100 && (self.navigationItem.titleView?.alpha)! == CGFloat(0.0) && smallCoverImageCounter == 0)
         {
             self.smallCoverImageCounter = 10
@@ -293,15 +308,16 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         
     }
     
+    
+    
     @available(iOS, deprecated: 9.0)
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.checkoutButton.setTitle("Checking Availability...", for: UIControlState.normal)
-
+        self.reviewButton.layer.cornerRadius = 10
+        self.reviewButton.layer.masksToBounds = true
         self.navigationController?.navigationBar.isTranslucent = false
-        //self.checkoutButton.image
-        //self.checkoutButton.backgroundImage(for: <#T##UIControlState#>)
         self.checkoutButton.layer.cornerRadius = 10
         self.checkoutButton.titleLabel?.text = "Hold"
         self.checkoutButton.imageView?.layer.masksToBounds = true
@@ -523,7 +539,15 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
+            #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        if(self.fromScanner == true)
+        {
+            loadTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
+                #selector(SearchTableViewController.load), userInfo: nil,  repeats: true)
+            RunLoop.main.add(loadTimer!, forMode: RunLoopMode.commonModes)
+        }
     }
     
     @IBAction func leaveReviewPressed(_ sender: Any)
