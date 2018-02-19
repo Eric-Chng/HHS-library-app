@@ -242,7 +242,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         {
             
             let bookToPass = currentBooks[self.pressedItem]
-            //selectedBook
+            //selectedBooke
             if let destinationViewController = segue.destination as? BookDetailViewController {
                 destinationViewController.selectedBook = bookToPass
             }

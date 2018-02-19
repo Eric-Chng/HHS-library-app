@@ -79,7 +79,7 @@ class BookModel: NSObject {
         var JSONAsString: String = ""
         
         
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN + "&key=AIzaSyCvF4JpS257MnToHz9nv7339wwchjWSB-w"// + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN + "&key=AIzaSyCvF4JpS257MnToHz9nv7339wwchjWSB-w" + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return

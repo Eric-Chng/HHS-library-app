@@ -54,7 +54,7 @@
                                                     <constraint firstAttribute="height" constant="33" id="onY-az-oOc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
-                                                <color key="textColor" red="0.42918694019999998" green="0.826531291" blue="0.80726766589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-ym-3zT">
@@ -82,7 +82,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click for more information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7U-i1-GDR">
                                                         <rect key="frame" x="59" y="121" width="240" height="28"/>
-                                                        <color key="backgroundColor" red="0.99826866390000002" green="0.95583301779999996" blue="0.26428699490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.62456130981445312" green="0.94161897897720337" blue="0.20731985569000244" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="240" id="Tks-5E-qRd"/>
                                                             <constraint firstAttribute="height" constant="28" id="aCZ-Ql-8VA"/>
@@ -147,7 +147,7 @@
                                                     <constraint firstAttribute="width" constant="200" id="xs2-td-9SU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
-                                                <color key="textColor" red="0.95423677774589666" green="0.47422305842176304" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Ip-eK4">
