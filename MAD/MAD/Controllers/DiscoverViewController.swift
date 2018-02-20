@@ -285,6 +285,7 @@ extension DiscoverViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //code for collection view pressed
+        var stopSegue: Bool = false
         if(collectionView.restorationIdentifier! == "librarianRecommended")
         {
             if(self.librarianBookArr.count > indexPath.item)
@@ -302,15 +303,20 @@ extension DiscoverViewController: UICollectionViewDelegate {
         }
         else if(collectionView.restorationIdentifier! == "facebookFeed")
         {
+            stopSegue = true
             //self.p
             //self.pressedItem =
-            if(self.reviewArr.count > indexPath.item)
+            if(self.reviewArr.count > indexPath.item && reviewArr[indexPath.item].bookModel.ISBN != nil)
             {
+                stopSegue = false
             self.pressedItem = reviewArr[indexPath.item].bookModel
             }
             
         }
+        if(stopSegue == false)
+        {
         self.performSegue(withIdentifier: "collectionViewDetail", sender: self)
+        }
         
     }
     

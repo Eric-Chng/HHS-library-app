@@ -11,37 +11,18 @@ import Lottie
 
 class ReviewViewController: UIViewController, TransactionProtocol {
     
-    
-    func transactionProcessed(success: Bool) {
-        print("Transaction followed")
-        if(success == true)
-        {
-            print("Rating added successfully")
-        }
-        self.submitButton.setTitle("Success", for: UIControlState.normal)
-        let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
-        //self.present(alert, animated: true, completion: nil)
-        //self.dismiss(animated: true, completion: nil)
-        self.present(alert, animated: true, completion: nil)
-
-        //self.dismiss(animated: true, completion: nil)
-
-    }
-    
-
-    
     var currentScore: Int = 0
     @IBOutlet weak var starView1: UIView!
     
     @IBOutlet weak var starView2: UIView!
-    
+    var closeTimer: Timer = Timer()
     @IBOutlet weak var starView3: UIView!
     var setLowResPhoto: Bool = false
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starView4: UIView!
     var loadTimer: Timer = Timer()
     var orangeColor: UIColor = UIColor()
-
+    var counter: Int = 0
     @IBOutlet weak var starView5: UIView!
     @IBOutlet weak var bookCoverImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
@@ -61,6 +42,39 @@ class ReviewViewController: UIViewController, TransactionProtocol {
         loadTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(ReviewViewController.action), userInfo: nil,  repeats: true)
         // Do any additional setup after loading the view.
     }
+    
+    func transactionProcessed(success: Bool) {
+        print("Transaction followed")
+        if(success == true)
+        {
+            print("Rating added successfully")
+            self.submitButton.setTitle("Success", for: UIControlState.normal)
+            let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+            //self.present(alert, animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
+            closeTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ReviewViewController.closeAction), userInfo: nil,  repeats: true)
+        }
+        
+
+        //self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @objc func closeAction()
+    {
+        //print(counter)
+        counter = counter + 1
+        if(counter == 10)
+        {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else if(counter == 12)
+        {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     
     @objc func action()
     {

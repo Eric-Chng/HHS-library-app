@@ -214,7 +214,10 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
     {
         let idSearch = IdSearchBook()
         idSearch.delegate = self
+        if(self.selectedBook?.ISBN != nil)
+        {
         idSearch.downloadItems(inputID: (self.selectedBook?.ISBN)!)
+        }
     }
     
     //Passes the current BookModel to the HoldViewController
