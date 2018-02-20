@@ -99,7 +99,8 @@ The scanner portion of the app only works on an actual phone where a camera can 
 ![img_5589](https://user-images.githubusercontent.com/26942890/36135024-3baa4cb4-103d-11e8-9bbd-3068dd2de9d1.PNG)
 Onboarding Page On First Launch
 
-13. Below is an example barcode to be used with the scanner.  You can also scan any book not found in the library to pull up information about it from online api's. We encourage you to try this out with books around your house!
+13. Below is an example barcode to be used with the scanner. 
+**You can also scan any book not found in the library to pull up information about it from online api's.** We encourage you to try this out with books around your house!
 
 ![barcode](https://user-images.githubusercontent.com/26942890/36134449-b9bf6b56-1039-11e8-91f7-18aed490d548.gif)
 
