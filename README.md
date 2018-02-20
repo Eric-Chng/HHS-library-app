@@ -9,6 +9,20 @@ The Homestead High School Library App is designed to provide a mobile interface 
 
 This application was programmed entirely in Apple's Swift language. The backend was coded with a mix of MySQL and PHP.
 
+### Table of Contents
+- [Key Features](#key-features)
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Running on Your Personal iOS Device](#downloading-on-personal-device-with-apple-testflight)
+- [Installation and Use with Xcode](#installation-and-use)
+- [Logging In](#loggin-in)
+- [Program Technical Information](#database-structure)
+- [Authors and License](#authors)
+- [Acknowledgements](#acknowledgements)
+- [Copyright Information](#copyright-information)
+
+
+
 ## Key Features
 
 * Robust backend relational database to store information
@@ -24,8 +38,28 @@ This application was programmed entirely in Apple's Swift language. The backend 
 
 ## Getting Started
 
-Download Xcode to run the testing environment. You can view the code, but you need a developer account to sign the instance to run on your computer.
-Alternatively, you can download the app off of "TestFlight" onto your phone to run the app on your phone.
+The following are the best ways to test HHS Library given your access to certain devices.
+
+### Mac OS Computer
+Download XCode from the Mac App Store and create a free developer account on [Apple's Developer Portal](developer.apple.com)
+* XCode is a large download so you can [test HHS Library on your personal Apple device](#downloading-on-personal-device-with-apple-testflight) with TestFlight in the meantime.
+
+Once you are done downloading XCode, consult the [Installation and Use](#installation-and-use) section of this ReadMe.
+
+
+### Windows and iPhone
+The best solution for adjudicators with a Windows and iOS device is to open the code on a text editor (we recommend Atom or Sublime Text) in Windows and test app functionality on a personal iOS device.
+* Download link to [Atom Text Editor](https://atom.io)
+* Download link to [Sublime Text Editor](https://www.sublimetext.com)
+Install HHS Library on your personal device with [these instructions](#downloading-on-personal-device-with-apple-testflight).
+
+
+### Windows Without an iOS Device
+The only way to view Swift code on a Windows device is through a text editor. These will not be able to build the project, but coding style and class structure is visible. Our code compiles without warnings or errors.
+* Download link to [Atom Text Editor](https://atom.io)
+* Download link to [Sublime Text Editor](https://www.sublimetext.com)
+To experience the app in use, please watch this video showing the application in use:   
+[link.com](link.com)
 
 ### Prerequisites
 
@@ -106,6 +140,18 @@ We encourage you to try this out with books around your house!
 ![barcode](https://user-images.githubusercontent.com/26942890/36134449-b9bf6b56-1039-11e8-91f7-18aed490d548.gif)
 
 14. If you ever run into any issues, submit a bug report at the bottom of the "My Books" page.
+
+## Logging in
+
+Application login credentials
+
+* Student ID: "1234567"
+* Password: "test"
+
+Facebook login credentials
+
+* Email: dmcallister452@student.fuhsd.org
+* Password: fblaJudgeLogin
 
 ## Database Structure
 
