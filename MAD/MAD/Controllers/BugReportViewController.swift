@@ -30,7 +30,7 @@ class BugReportViewController: UIViewController, MFMailComposeViewControllerDele
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self as MFMailComposeViewControllerDelegate // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
-        mailComposerVC.setToRecipients(["lily.jiayu@gmail.com"])
+        mailComposerVC.setToRecipients(["homesteadhighschoollibrary@gmail.com"])
         mailComposerVC.setSubject("HHS MAD 2018 Bug Report")
         mailComposerVC.setMessageBody(textField.text, isHTML: false)
         
