@@ -57,8 +57,8 @@ Install HHS Library on your personal device with [these instructions](#downloadi
 ### Windows Without an iOS Device
 The only way to view Swift code on a Windows device is through a text editor. These will not be able to build the project, but coding style and class structure is visible. Our code compiles without warnings or errors.
 * Download link to [Atom Text Editor](https://atom.io)
-* Download link to [Sublime Text Editor](https://www.sublimetext.com)
-To experience the app in use, please watch this video showing the application in use:   
+* Download link to [Sublime Text Editor](https://www.sublimetext.com).   
+To experience the app in use, please watch this video showing the application in use:    
 [link.com](link.com)
 
 ### Prerequisites
