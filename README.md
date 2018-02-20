@@ -3,7 +3,7 @@ HHS Mobile App Development
 
 *By Eric Cheng, David McAllister, and Lily Li*
 
-View the most recent ReadMe with image-filled installation instructions: https://github.com/Eric-Cf/MAD-2018/wiki
+View the most recent ReadMe with image-filled installation instructions: https://github.com/Eric-Cf/MAD-2018
 
 The Homestead High School Library App is designed to provide a mobile interface that works alongside a stable backend database structure to provide users with information about available books, their holds, and their checkouts. Additionally, it implements a scanner that connects to web APIs in order to allow users to discover and hold books with their phone cameras. The app was developed in conjunction with Homestead High School's library to ensure our app would be useful in a real world situation.
 
@@ -59,7 +59,15 @@ The only way to view Swift code on a Windows device is through a text editor. Th
 * Download link to [Atom Text Editor](https://atom.io)
 * Download link to [Sublime Text Editor](https://www.sublimetext.com).   
 To experience the app in use, please watch this video showing the application in use:    
+<<<<<<< Updated upstream
 [link.com](link.com)
+=======
+<<<<<<< HEAD
+[https://youtu.be/gyWMiTwOpqE](https://youtu.be/gyWMiTwOpqE)
+=======
+[link.com](link.com)
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
 ### Prerequisites
 
