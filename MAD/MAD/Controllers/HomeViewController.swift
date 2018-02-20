@@ -87,6 +87,38 @@ class HomeViewController: UIViewController {
         }
         if(timeCounter == 25)
         {
+            let fantasyAnnotationCords = CLLocationCoordinate2DMake(37.3372,  -122.04904)
+            let fantasyAnnotation = MKPointAnnotation.init()
+            fantasyAnnotation.coordinate = fantasyAnnotationCords
+            fantasyAnnotation.title = "Fantasy"
+            self.mapView.addAnnotation(fantasyAnnotation)
+            
+            let mysteryAnnotationCords = CLLocationCoordinate2DMake(37.3372,  -122.048819)
+            let mysteryAnnotation = MKPointAnnotation.init()
+            mysteryAnnotation.coordinate = mysteryAnnotationCords
+            mysteryAnnotation.title = "Mystery"
+            self.mapView.addAnnotation(mysteryAnnotation)
+            
+            let scifiAnnotationCords = CLLocationCoordinate2DMake(37.3371,  -122.048796)
+            let scifiAnnotation = MKPointAnnotation.init()
+            scifiAnnotation.coordinate = scifiAnnotationCords
+            scifiAnnotation.title = "Sci-Fi"
+            self.mapView.addAnnotation(scifiAnnotation)
+            
+            let referenceAnnotationCords = CLLocationCoordinate2DMake/*(37.3372,  -122.048796)*/(37.33715,  -122.04892)
+            let referenceAnnotation = MKPointAnnotation.init()
+            referenceAnnotation.coordinate = referenceAnnotationCords
+            referenceAnnotation.title = "Reference"
+            self.mapView.addAnnotation(referenceAnnotation)
+            
+            let computerAnnotationCords = CLLocationCoordinate2DMake/*(37.3372,  -122.048796)*/(37.33704,  -122.04887)
+            let computerAnnotation = MKPointAnnotation.init()
+            computerAnnotation.coordinate = computerAnnotationCords
+            computerAnnotation.title = "Computer"
+            self.mapView.addAnnotation(computerAnnotation)
+            
+            //self.mapView.addAnnotation(annotation)
+            
             MKMapView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveEaseIn, animations: {
                 self.mapView.mapType = MKMapType.standard;
                 
@@ -152,6 +184,74 @@ extension HomeViewController: MKMapViewDelegate
     }
  */
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "MyPin"
+        
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+            annotationView?.image = #imageLiteral(resourceName: "xButton")
+            let temp = MKMarkerAnnotationView.init(annotation: annotation, reuseIdentifier: "temp")
+            //temp.glyphImage = #imageLiteral(resourceName: "xButton")
+            if(annotation.title!!.isEqual("Fantasy") == true)
+            {
+            temp.glyphImage = #imageLiteral(resourceName: "fantasySmall")
+            temp.selectedGlyphImage = #imageLiteral(resourceName: "fantasyBig")
+            temp.markerTintColor = UIColor.init(red: 0.92, green: 0.63, blue: 1.0, alpha: 1.0)
+            }
+            else if(annotation.title!!.isEqual("Mystery") == true)
+            {
+                temp.glyphImage = #imageLiteral(resourceName: "mysterySmall")
+                temp.selectedGlyphImage = #imageLiteral(resourceName: "mysteryBig")
+                //temp.markerTintColor = UIColor.init(red: 0.92, green: 0.63, blue: 1.0, alpha: 1.0)
+                temp.markerTintColor = UIColor.blue
+            }
+            else if(annotation.title!!.isEqual("Sci-Fi") == true)
+            {
+                temp.glyphImage = #imageLiteral(resourceName: "scifiSmall")
+                temp.selectedGlyphImage = #imageLiteral(resourceName: "scifiBig")
+                //temp.markerTintColor = UIColor.init(red: 0.92, green: 0.63, blue: 1.0, alpha: 1.0)
+                //temp.markerTintColor = UIColor.blue
+            }
+            else if(annotation.title!!.isEqual("Reference") == true)
+            {
+                print("Reference")
+                temp.glyphImage = #imageLiteral(resourceName: "referenceSmall")
+                temp.selectedGlyphImage = #imageLiteral(resourceName: "referenceBig")
+                //temp.markerTintColor = UIColor.init(red: 0.92, green: 0.63, blue: 1.0, alpha: 1.0)
+                temp.markerTintColor = UIColor.darkGray
+            }
+            else if(annotation.title!!.isEqual("Computer") == true)
+            {
+                temp.glyphImage = #imageLiteral(resourceName: "computerSmall")
+                temp.selectedGlyphImage = #imageLiteral(resourceName: "computerBig")
+                //temp.markerTintColor = UIColor.init(red: 0.92, green: 0.63, blue: 1.0, alpha: 1.0)
+                temp.markerTintColor = UIColor.cyan
+            }
+            //temp.glyphText = "Fantasy"
+            //temp.title
+            temp.titleVisibility = .adaptive
+            // if you want a disclosure button, you'd might do something like:
+            //
+            let detailButton = UIButton(type: .infoLight)
+            annotationView?.rightCalloutAccessoryView = detailButton
+            return temp
+
+        } else
+        {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
+    }
+    
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKCircle {
             let circleRenderer = MKCircleRenderer(circle: overlay)
@@ -167,7 +267,7 @@ extension HomeViewController: MKMapViewDelegate
         }
         else {
             if overlay is LibraryOverlay {
-                return LibraryOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "mapOverlay"))
+                return LibraryOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "mapOverlay2"))
             }
             return MKOverlayRenderer(overlay: overlay)
         }

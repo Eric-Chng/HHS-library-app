@@ -11,7 +11,7 @@ import MapKit
 class LibraryOverlay: NSObject, MKOverlay {
     
     var boundingMapRect: MKMapRect
-    var image: UIImage = #imageLiteral(resourceName: "mapOverlay")
+    var image: UIImage = #imageLiteral(resourceName: "mapOverlay2")
     var coordinate: CLLocationCoordinate2D
     
     override init()

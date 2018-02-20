@@ -88,6 +88,16 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HHS Library is a closed service and does not allow sign ups. Contact a librarian if you need an account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdh-Ao-XLb">
+                                <rect key="frame" x="56" y="633" width="262" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4Px-Rp-dbG"/>
+                                    <constraint firstAttribute="width" constant="262" id="bOH-9R-eB3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ep4-89-XcE" firstAttribute="centerX" secondItem="Tji-AH-asb" secondAttribute="centerX" constant="-6" id="2bb-Ks-RR6"/>
@@ -101,8 +111,10 @@
                             <constraint firstItem="eQL-UC-N0H" firstAttribute="top" secondItem="8Po-EL-bTC" secondAttribute="top" constant="50" id="Pt2-j3-g1c"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="trailing" secondItem="bEO-W6-T7p" secondAttribute="trailing" id="SXm-mZ-CXG"/>
                             <constraint firstItem="IAe-or-POd" firstAttribute="top" secondItem="Ep4-89-XcE" secondAttribute="bottom" constant="24" id="TPI-GJ-NgN"/>
+                            <constraint firstItem="Fdh-Ao-XLb" firstAttribute="centerX" secondItem="ICa-AX-olF" secondAttribute="centerX" id="VJ7-7s-PnV"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="top" secondItem="puw-QQ-oGF" secondAttribute="top" constant="40" id="VWR-JO-IR3"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="trailing" secondItem="egD-Xq-Ai2" secondAttribute="trailing" id="WAz-i0-Qbp"/>
+                            <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="Fdh-Ao-XLb" secondAttribute="bottom" constant="100" id="XHy-4y-zgd"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="egD-Xq-Ai2" secondAttribute="bottom" constant="-40" id="Yp7-Do-6zK"/>
                             <constraint firstItem="eQL-UC-N0H" firstAttribute="centerX" secondItem="ICa-AX-olF" secondAttribute="centerX" id="aq5-h1-vck"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="puw-QQ-oGF" secondAttribute="bottom" constant="-40" id="asZ-eL-5Vd"/>
@@ -136,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p07-CN-ZFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178.2608695652175" y="200.54347826086959"/>
+            <point key="canvasLocation" x="-1178.4000000000001" y="200.24630541871923"/>
         </scene>
         <!--Tabs-->
         <scene sceneID="xfo-tO-7Du">
