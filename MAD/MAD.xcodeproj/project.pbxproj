@@ -17,6 +17,7 @@
 		449941151FA8155300272446 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941141FA8155300272446 /* BookDetailViewController.swift */; };
 		44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */; };
 		44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8426A20303F7E00697F4B /* HoldDelete.swift */; };
+		44D2164F203E38B8008F9BC4 /* BookInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2164E203E38B8008F9BC4 /* BookInsert.swift */; };
 		44D527C8202D66D9000A34DD /* GetReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C7202D66D9000A34DD /* GetReview.swift */; };
 		44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C9202D68E0000A34DD /* ReviewModel.swift */; };
 		44D527CC202D69B9000A34DD /* AddRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527CB202D69B9000A34DD /* AddRating.swift */; };
@@ -91,6 +92,7 @@
 		449941141FA8155300272446 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
 		44B8426A20303F7E00697F4B /* HoldDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldDelete.swift; sourceTree = "<group>"; };
+		44D2164E203E38B8008F9BC4 /* BookInsert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInsert.swift; sourceTree = "<group>"; };
 		44D527C7202D66D9000A34DD /* GetReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReview.swift; sourceTree = "<group>"; };
 		44D527C9202D68E0000A34DD /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		44D527CB202D69B9000A34DD /* AddRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRating.swift; sourceTree = "<group>"; };
@@ -206,7 +208,7 @@
 		4426E3E51F9B0A9F007CD8E7 /* MAD */ = {
 			isa = PBXGroup;
 			children = (
-				443C20EE200AA2E100AACC25 /* Searches */,
+				443C20EE200AA2E100AACC25 /* Database Connections */,
 				7BF586371FF839D00047611E /* Animations */,
 				4426E3F41F9B0A9F007CD8E7 /* Info.plist */,
 				82AE23001FF36B080014C7CF /* Resources */,
@@ -225,7 +227,7 @@
 			path = MAD;
 			sourceTree = "<group>";
 		};
-		443C20EE200AA2E100AACC25 /* Searches */ = {
+		443C20EE200AA2E100AACC25 /* Database Connections */ = {
 			isa = PBXGroup;
 			children = (
 				443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */,
@@ -243,8 +245,9 @@
 				44E511592029959500A721B3 /* UserCheckout.swift */,
 				44F5AC872030B6F500C644CF /* HoldCreate.swift */,
 				44E5115B2029980300A721B3 /* UserReturn.swift */,
+				44D2164E203E38B8008F9BC4 /* BookInsert.swift */,
 			);
-			path = Searches;
+			path = "Database Connections";
 			sourceTree = "<group>";
 		};
 		7B72B85F1F9B0DB5002E9668 /* Frameworks */ = {
@@ -549,6 +552,7 @@
 				7B395E3F201C2ECB00DF3299 /* NSObject+facebookObjectiveCLink.m in Sources */,
 				7B17B93B2030A2B90005D34B /* HoldViewController.swift in Sources */,
 				44D527C8202D66D9000A34DD /* GetReview.swift in Sources */,
+				44D2164F203E38B8008F9BC4 /* BookInsert.swift in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,
 				7BF93C0D2033FC06006A98F4 /* UIImageColors.swift in Sources */,
 				7B6EE70A2026CEFE003A8908 /* ThirdPageViewController.swift in Sources */,
