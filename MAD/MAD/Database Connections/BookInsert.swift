@@ -14,7 +14,7 @@ class BookInsert: NSObject {
     //Adds a review to the database
     func downloadItems(isbn: String, title:String, author: String, desc: String) {
         
-        let newString = desc.replacingOccurrences(of: "'", with: "\'")
+        let newString = desc.replacingOccurrences(of: "'", with: "\\'")
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
