@@ -14,8 +14,7 @@ import Lottie
 //import ObjectMapper
 
 
-class BookDetailViewController : UIViewController, DownloadProtocol {
-    
+class BookDetailViewController : UIViewController, DownloadProtocol, TransactionProtocol {
     
     
     @IBOutlet weak var titleLabel:UILabel?
@@ -73,6 +72,25 @@ class BookDetailViewController : UIViewController, DownloadProtocol {
         {
         self.performSegue(withIdentifier: "reserveSegue", sender: self)
         }
+        else if(self.checkoutButton.currentTitle! == "Unavailable")
+        {
+            let bookInsert = BookInsert.init()
+            print(self.selectedBook!.ISBN!)
+            print(self.selectedBook!.title!)
+            print(self.selectedBook!.author!)
+            print(self.selectedBook!.desc)
+            bookInsert.delegate = self
+            bookInsert.downloadItems(isbn: self.selectedBook!.ISBN!, title: self.selectedBook!.title!, author: self.selectedBook!.author!, desc: self.selectedBook!.desc)
+        }
+    }
+    
+    func transactionProcessed(success: Bool) {
+        print("Transaction processed")
+        if(success == true)
+        {
+            print("Book added successfully")
+        }
+        
     }
     
     func itemsDownloaded(items: NSArray, from: String) {
