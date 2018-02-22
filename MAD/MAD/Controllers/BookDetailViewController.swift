@@ -113,7 +113,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             self.checkoutButton.setTitle("Hold", for: UIControlState.normal)
             
         }
-        else
+        else if(checkoutButton.backgroundColor?.isEqual(UIColor.lightGray) == false)
         {
             self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
             UIView.animate(withDuration: 1.0) {
