@@ -9,20 +9,6 @@ The Homestead High School Library App is designed to provide a mobile interface 
 
 This application was programmed entirely in Apple's Swift language. The backend was coded with a mix of MySQL and PHP.
 
-### Table of Contents
-- [Key Features](#key-features)
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Running on Your Personal iOS Device](#downloading-on-personal-device-with-apple-testflight)
-- [Installation and Use with Xcode](#installation-and-use)
-- [Logging In](#loggin-in)
-- [Program Technical Information](#database-structure)
-- [Authors and License](#authors)
-- [Acknowledgements](#acknowledgements)
-- [Copyright Information](#copyright-information)
-
-
-
 ## Key Features
 
 * Robust backend relational database to store information
@@ -59,15 +45,7 @@ The only way to view Swift code on a Windows device is through a text editor. Th
 * Download link to [Atom Text Editor](https://atom.io)
 * Download link to [Sublime Text Editor](https://www.sublimetext.com).   
 To experience the app in use, please watch this video showing the application in use:    
-<<<<<<< Updated upstream
-[link.com](link.com)
-=======
-<<<<<<< HEAD
 [https://youtu.be/gyWMiTwOpqE](https://youtu.be/gyWMiTwOpqE)
-=======
-[link.com](link.com)
->>>>>>> origin/master
->>>>>>> Stashed changes
 
 ### Prerequisites
 
