@@ -14,11 +14,13 @@ class BookInsert: NSObject {
     //Adds a review to the database
     func downloadItems(isbn: String, title:String, author: String, desc: String) {
         
+        let newString = desc.replacingOccurrences(of: "'", with: "\'")
+        
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "password=secureAf&isbn=\(isbn)&title=\(title)&author=\(author)&desc=\(desc)"
+        let postString = "password=secureAf&isbn=\(isbn)&title=\(title)&author=\(author)&desc=\(newString)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
