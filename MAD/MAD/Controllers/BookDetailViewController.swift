@@ -75,10 +75,12 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         else if(self.checkoutButton.currentTitle! == "Unavailable")
         {
             let bookInsert = BookInsert.init()
+            /*
             print(self.selectedBook!.ISBN!)
             print(self.selectedBook!.title!)
             print(self.selectedBook!.author!)
             print(self.selectedBook!.desc)
+            */
             bookInsert.delegate = self
             bookInsert.downloadItems(isbn: self.selectedBook!.ISBN!, title: self.selectedBook!.title!, author: self.selectedBook!.author!, desc: self.selectedBook!.desc)
         }
@@ -89,6 +91,11 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         if(success == true)
         {
             print("Book added successfully")
+            let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+            //self.present(alert, animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         
     }

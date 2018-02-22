@@ -71,6 +71,7 @@ class ReviewViewController: UIViewController, TransactionProtocol {
         }
         else if(counter == 12)
         {
+            closeTimer.invalidate()
             self.dismiss(animated: true, completion: nil)
         }
     }
