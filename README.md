@@ -160,9 +160,8 @@ This application is supported by a server side script, so any user just has to c
 
 ## Authors
 
-* **Eric Cheng** - *Database and Backend* - [Eric-Cf](https://github.com/Eric-Cf)
-* **David McAllister** - *UI design and Implementation* - [mcallisterdavid](https://github.com/mcallisterdavid)
-* **Lily Li** - *Login and Code Deployment* - [lilyli333](https://github.com/lilyli333)
+* **Eric Cheng** - *Database Structure and Backend* - [Eric-Cf](https://github.com/Eric-Cf)
+* **David McAllister** - *UI design and API functionality* - [mcallisterdavid](https://github.com/mcallisterdavid)
 
 ## License
 
