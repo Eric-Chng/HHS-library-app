@@ -129,11 +129,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         //print("finding results for keyword: " + keywords)
         let discoverDatabaseSearch = DiscoverSearch()
         discoverDatabaseSearch.delegate = self
-        //discoverDatabaseSearch.downloadItems(textquery: keywords)
+        discoverDatabaseSearch.downloadItems(textquery: keywords)
         
         
         //Searches with google books API
-        apiSearch(keywordSearch: keywords)
+        //apiSearch(keywordSearch: keywords)
         //Searches with local database when no method called here. It's called in itemsDownloaded()
         
         
