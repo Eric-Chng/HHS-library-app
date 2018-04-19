@@ -2,7 +2,7 @@
 //  BugReportViewController.swift
 //  MAD
 //
-//  Created by Lily Li on 1/27/18.
+//  Created by David McAllister on 1/27/18.
 //  Copyright © 2018 Eric C. All rights reserved.
 //
 

@@ -7,4 +7,11 @@ target 'MAD' do
 
   # Pods for MAD
 pod ‘lottie-ios’
+pod 'SnapKit', '~> 4.0.0'
+pod ‘ViewAnimator’
+pod 'BulletinBoard'
+pod ‘CollectionKit’
+pod 'ChameleonFramework/Swift'
+pod ‘ScalingCarousel’
+pod 'IGListKit', '~> 3.0'
 end

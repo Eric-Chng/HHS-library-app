@@ -40,6 +40,7 @@
 		7B0EB1462012C9B800A4E9A8 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1452012C9B800A4E9A8 /* scan.json */; };
 		7B17B93B2030A2B90005D34B /* HoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17B93A2030A2B90005D34B /* HoldViewController.swift */; };
 		7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */; };
+		7B2D675C208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D675B208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift */; };
 		7B35588820194BE2003DE9E2 /* starPop.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B35588720194BE2003DE9E2 /* starPop.json */; };
 		7B395E3A201C2D5D00DF3299 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */; };
 		7B395E3B201C2D5D00DF3299 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B395E39201C2D5C00DF3299 /* FBSDKLoginKit.framework */; };
@@ -116,6 +117,7 @@
 		7B0EB1452012C9B800A4E9A8 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scan.json; sourceTree = "<group>"; };
 		7B17B93A2030A2B90005D34B /* HoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldViewController.swift; sourceTree = "<group>"; };
 		7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookRatingModel.swift; sourceTree = "<group>"; };
+		7B2D675B208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B35588720194BE2003DE9E2 /* starPop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starPop.json; sourceTree = "<group>"; };
 		7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7B395E39201C2D5C00DF3299 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				7B5BDDF81FEF5FA90089BC00 /* SearchTableViewCell.swift */,
 				82562A3A202EC0D400C16D5F /* MyBooksCheckOutTableViewCell.swift */,
 				82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */,
+				7B2D675B208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -517,10 +520,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MAD/Pods-MAD-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BulletinBoard.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/CollectionKit/CollectionKit.framework",
+				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ScalingCarousel/ScalingCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BulletinBoard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollectionKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScalingCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +580,7 @@
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
 				44D527D2202D6D75000A34DD /* UserModel.swift in Sources */,
 				7B6EE7072026AEAC003A8908 /* FirstPageViewController.swift in Sources */,
+				7B2D675C208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift in Sources */,
 				7BFF53A5202BC3F6007A1C8B /* FinalPageViewController.swift in Sources */,
 				7B5BDDF71FEF1E810089BC00 /* ResultsViewController.swift in Sources */,
 				7B6EE70520268A84003A8908 /* IntroductionPageViewController.swift in Sources */,

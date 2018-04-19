@@ -30,16 +30,16 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="977"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFx-Fa-XDM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="770"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="withFade" translatesAutoresizingMaskIntoConstraints="NO" id="yBv-Ne-d3o">
+                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="withFade" translatesAutoresizingMaskIntoConstraints="NO" id="yBv-Ne-d3o">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="176" id="fg0-Fm-V8w"/>
                                                 </constraints>
                                             </imageView>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MCI-yl-h8I">
-                                                <rect key="frame" x="8" y="217" width="359" height="320"/>
+                                                <rect key="frame" x="8" y="437" width="359" height="320"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="320" id="gg4-wH-RFb"/>
                                                 </constraints>
@@ -48,7 +48,7 @@
                                                 </connections>
                                             </mapView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig8-ch-0vH">
-                                                <rect key="frame" x="7.9999999999999964" y="180" width="56.666666666666657" height="33"/>
+                                                <rect key="frame" x="7.9999999999999964" y="400" width="56.666666666666657" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56.5" id="5VE-zb-lQX"/>
                                                     <constraint firstAttribute="height" constant="33" id="onY-az-oOc"/>
@@ -58,7 +58,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-ym-3zT">
-                                                <rect key="frame" x="8" y="585" width="359" height="160"/>
+                                                <rect key="frame" x="8" y="805" width="359" height="160"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGC-cx-gpk">
                                                         <rect key="frame" x="24" y="10" width="226" height="27"/>
@@ -141,7 +141,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE8-o7-nA2">
-                                                <rect key="frame" x="8" y="549" width="200" height="33"/>
+                                                <rect key="frame" x="8" y="769" width="200" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="oxR-6W-DmJ"/>
                                                     <constraint firstAttribute="width" constant="200" id="xs2-td-9SU"/>
@@ -166,11 +166,11 @@
                                             <constraint firstItem="MCI-yl-h8I" firstAttribute="top" secondItem="ig8-ch-0vH" secondAttribute="bottom" constant="4" id="7JR-Co-hSr"/>
                                             <constraint firstItem="xiN-ym-3zT" firstAttribute="centerX" secondItem="OFx-Fa-XDM" secondAttribute="centerX" id="AE1-79-71n"/>
                                             <constraint firstAttribute="trailing" secondItem="yBv-Ne-d3o" secondAttribute="trailing" id="Aoe-9X-tpx"/>
-                                            <constraint firstItem="ig8-ch-0vH" firstAttribute="top" secondItem="OFx-Fa-XDM" secondAttribute="top" constant="180" id="Yhr-6z-J8G"/>
+                                            <constraint firstItem="ig8-ch-0vH" firstAttribute="top" secondItem="OFx-Fa-XDM" secondAttribute="top" constant="400" id="Yhr-6z-J8G"/>
                                             <constraint firstItem="ig8-ch-0vH" firstAttribute="leading" secondItem="OFx-Fa-XDM" secondAttribute="leading" constant="8" id="d11-fS-ayN"/>
                                             <constraint firstItem="xiN-ym-3zT" firstAttribute="top" secondItem="MCI-yl-h8I" secondAttribute="bottom" constant="48" id="go7-F1-zXM"/>
                                             <constraint firstItem="MCI-yl-h8I" firstAttribute="leading" secondItem="OFx-Fa-XDM" secondAttribute="leading" constant="8" id="j61-Z4-RZt"/>
-                                            <constraint firstAttribute="height" constant="770" id="qcT-J7-7hn"/>
+                                            <constraint firstAttribute="height" constant="1200" id="qcT-J7-7hn"/>
                                             <constraint firstAttribute="trailing" secondItem="MCI-yl-h8I" secondAttribute="trailing" constant="8" id="rZP-Ub-T9g"/>
                                             <constraint firstItem="yBv-Ne-d3o" firstAttribute="top" secondItem="OFx-Fa-XDM" secondAttribute="top" id="u0e-Ky-OdU"/>
                                             <constraint firstItem="OE8-o7-nA2" firstAttribute="top" secondItem="MCI-yl-h8I" secondAttribute="bottom" constant="12" id="vgb-bO-sfI"/>
@@ -204,6 +204,7 @@
                     <connections>
                         <outlet property="hoursButton" destination="w7U-i1-GDR" id="NVP-GY-bfp"/>
                         <outlet property="hoursView" destination="xiN-ym-3zT" id="dib-44-rUL"/>
+                        <outlet property="innerScrollView" destination="OFx-Fa-XDM" id="8TV-Bk-TLY"/>
                         <outlet property="mapView" destination="MCI-yl-h8I" id="mYX-mV-uXl"/>
                         <segue destination="SqN-VO-obD" kind="popoverPresentation" identifier="LaunchHelp" popoverAnchorView="TFP-Zg-yYE" id="pEB-NX-RyX">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -218,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfo-Rg-lUM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="-994.00299850074975"/>
+            <point key="canvasLocation" x="1764" y="-994.58128078817742"/>
         </scene>
         <!--Review-->
         <scene sceneID="eSz-6T-NPT">
