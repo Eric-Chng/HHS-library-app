@@ -1,7 +1,7 @@
 # MAD-2018
 HHS Mobile App Development
 
-*By Eric Cheng, David McAllister, and Lily Li*
+*By Eric Cheng and David McAllister*
 
 View the most recent ReadMe with image-filled installation instructions: https://github.com/Eric-Cf/MAD-2018
 
