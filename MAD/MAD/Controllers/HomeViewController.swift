@@ -484,7 +484,8 @@ class HomeViewController: UIViewController {
         //navigationItem.title="Home"
         //setupNavigationBarItems()
             navigationController?.navigationBar.prefersLargeTitles = true
-        
+        navigationController?.navigationBar.barTintColor = UIColor(red: 160/255, green: 196/255, blue: 1, alpha: 1)
+        //160, 196, 255
         // Do any additional setup after loading the view, typically from a nib.\
         
         
@@ -507,6 +508,12 @@ class HomeViewController: UIViewController {
     @objc func action()
     {
         timeCounter = timeCounter + 1
+        if(timeCounter == 8)
+        {
+            scalingCarousel.scrollToItem(at: IndexPath.init(row: 3, section: 0), at: UICollectionViewScrollPosition(rawValue: 2), animated: true)
+            //self.innerScrollView.backgroundColor = UIColor(red: 160/255, green: 196/255, blue: 1, alpha: 1)
+
+        }
         if(timeCounter == 10)
         {
             //let duration = NSTimeIntervl
@@ -586,7 +593,6 @@ class HomeViewController: UIViewController {
         scalingCarousel.delegate = self
         scalingCarousel.translatesAutoresizingMaskIntoConstraints = false
         scalingCarousel.backgroundColor = .white
-        
         scalingCarousel.register(CodeCell.self, forCellWithReuseIdentifier: "cell")
         
         innerScrollView.addSubview(scalingCarousel)
@@ -610,6 +616,12 @@ extension HomeViewController: UICollectionViewDataSource {
         
         if let scalingCell = cell as? ScalingCarouselCell {
             scalingCell.mainView.backgroundColor = .blue
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "sampleCover"))
+            imageView.frame = CGRect(x: 15, y: 0, width: scalingCell.mainView.frame.width-30, height: scalingCell.mainView.frame.height)
+            scalingCell.mainView.backgroundColor = UIColor.clear
+            scalingCell.mainView.addSubview(imageView)
+            imageView.layer.cornerRadius = 4;
+            imageView.layer.masksToBounds = true;
         }
         
         return cell
@@ -729,219 +741,3 @@ extension HomeViewController: MKMapViewDelegate
 
 
 
-
-
-/*
-//typealias CarouselDatasource = StoryboardViewController
-extension HomeViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        
-        if let scalingCell = cell as? ScalingCarouselCell {
-            scalingCell.mainView.backgroundColor = .red
-        }
-        
-        return cell
-    }
-}
-
-//typealias CarouselDelegate = StoryboardViewController
-extension HomeViewController: UICollectionViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //carousel.didScroll()
-        
-        guard let currentCenterIndex = bookCarousel.currentCenterCellIndex?.row else { return }
-        
-        //output.text = String(describing: currentCenterIndex)
-    }
-}
-
-//private typealias ScalingCarouselFlowDelegate = StoryboardViewController
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 0
-    }
-}
-*/
-
-
-
-
-/*
-    extension HomeViewController: UICollectionViewDataSource {
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 8
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            
-            if let scalingCell = cell as? ScalingCarouselCell {
-                scalingCell.mainView.backgroundColor = .blue
-            }
-            
-            return cell
-        }
-    }
-    
-    extension HomeViewController: UICollectionViewDelegate {
-        
-        func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            //scalingCarousel.didScroll()
-        }
-    }
-    
-    
-    
- 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("requesting number of recommendations")
-        return 3;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("requesting cell")
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeRecommendationCell", for: indexPath)
-        if let scalingCell = cell as? HomeRecommendationCollectionViewCell {
-            scalingCell.mainView.backgroundColor = .red
-        }
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
-        return cell;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    {
-        print(indexPath.row)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //carousel.didScroll()
-        
-        guard let currentCenterIndex = self.bookCarousel.currentCenterCellIndex?.row else { return }
-        
-        //output.text = String(describing: currentCenterIndex)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 0
-    }
- 
-    
-
-
-/*
-extension DiscoverViewController
-{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return popularBookArr.count
-        
-    }
-    
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        _ = UICollectionViewCell()
-        if(collectionView.restorationIdentifier! == "facebookFeed")
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FacebookReviewsCollectionViewCell", for: indexPath) as! FacebookReviewsCollectionViewCell
-            
-            if(self.reviewArr.count > indexPath.row)
-            {
-                cell.reviewModel = self.reviewArr[indexPath.row]
-            }
-            return cell
-        }
-        else
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookThumbNailCell", for: indexPath) as! BookCoverCollectionViewCell
-            let row = indexPath.row
-            if(collectionView.restorationIdentifier! == "librarianRecommended")
-            {
-                //insert data for librarian recommended section
-                if(librarianBookArr[row].BookCoverImage != nil)
-                {
-                    cell.coverImageView.image = librarianBookArr[row].BookCoverImage.image
-                }
-                cell.titleLabel.text = librarianBookArr[row].title
-            }
-            else if(collectionView.restorationIdentifier! == "popularTitles")
-            {
-                //insert data for popular titles section
-                if(popularBookArr[row].BookCoverImage != nil)
-                {
-                    cell.coverImageView.image = popularBookArr[row].BookCoverImage.image
-                }
-                cell.titleLabel.text = popularBookArr[row].title
-            }
-            return cell
-        }
-        //return cell
-    }
-
-}
-
-extension DiscoverViewController
-{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //code for collection view pressed
-        var stopSegue: Bool = false
-        if(collectionView.restorationIdentifier! == "librarianRecommended")
-        {
-            if(self.librarianBookArr.count > indexPath.item)
-            {
-                self.pressedItem = librarianBookArr[indexPath.item]
-            }
-        }
-        else if(collectionView.restorationIdentifier! == "popularTitles")
-        {
-            if(self.popularBookArr.count > indexPath.item)
-            {
-                self.pressedItem = popularBookArr[indexPath.item]
-            }
-            
-        }
-        else if(collectionView.restorationIdentifier! == "facebookFeed")
-        {
-            stopSegue = true
-            //self.p
-            //self.pressedItem =
-            if(self.reviewArr.count > indexPath.item && reviewArr[indexPath.item].bookModel.ISBN != nil)
-            {
-                stopSegue = false
-                self.pressedItem = reviewArr[indexPath.item].bookModel
-            }
-            
-        }
-        if(stopSegue == false)
-        {
-            self.performSegue(withIdentifier: "collectionViewDetail", sender: self)
-        }
-        
-    }
-
-}
-
- */*/
