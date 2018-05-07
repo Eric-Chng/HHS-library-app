@@ -21,11 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingBacksplashLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="Etz-Eh-HcK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="eEC-cx-13Z">
                                 <rect key="frame" x="0.0" y="-6" width="375" height="824"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="oPY-s0-W2M">
                                 <rect key="frame" x="87" y="305.66666666666669" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.56131883550101069" green="1" blue="0.11957807200530479" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="3cE-zf-U1i"/>
                                     <constraint firstAttribute="height" constant="200" id="JoS-JR-NhR"/>
@@ -35,12 +36,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oPY-s0-W2M" firstAttribute="centerY" secondItem="Etz-Eh-HcK" secondAttribute="centerY" id="4pt-da-2nA"/>
-                            <constraint firstItem="oPY-s0-W2M" firstAttribute="centerX" secondItem="Etz-Eh-HcK" secondAttribute="centerX" id="5pC-SD-Fid"/>
-                            <constraint firstItem="g97-55-MGJ" firstAttribute="top" secondItem="Etz-Eh-HcK" secondAttribute="bottom" constant="-40" id="9ZA-vP-IKw"/>
-                            <constraint firstItem="efR-eW-nfF" firstAttribute="bottom" secondItem="Etz-Eh-HcK" secondAttribute="top" constant="50" id="T6a-7k-2ST"/>
-                            <constraint firstItem="Etz-Eh-HcK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="asL-pt-ma7"/>
-                            <constraint firstAttribute="trailing" secondItem="Etz-Eh-HcK" secondAttribute="trailing" id="q17-dP-18C"/>
+                            <constraint firstItem="g97-55-MGJ" firstAttribute="top" secondItem="eEC-cx-13Z" secondAttribute="bottom" constant="-40" id="A3B-ym-lGB"/>
+                            <constraint firstItem="eEC-cx-13Z" firstAttribute="top" secondItem="efR-eW-nfF" secondAttribute="bottom" constant="-50" id="Mk4-r6-Okv"/>
+                            <constraint firstItem="eEC-cx-13Z" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Z1n-BL-YEY"/>
+                            <constraint firstItem="oPY-s0-W2M" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gqk-c1-Dkf"/>
+                            <constraint firstItem="oPY-s0-W2M" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qQ5-hE-rJk"/>
+                            <constraint firstAttribute="trailing" secondItem="eEC-cx-13Z" secondAttribute="trailing" id="wXZ-Js-pld"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -54,7 +55,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loadingBacksplashLaunch" width="562" height="1218"/>
         <image name="loadingIcon" width="512" height="512"/>
+        <image name="test" width="375" height="812"/>
     </resources>
 </document>
