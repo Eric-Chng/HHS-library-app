@@ -37,6 +37,10 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         button.readPermissions = ["public_profile", "user_friends", "email"]
         return button
     }()
+    @IBAction func xButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        //self.navigationController?.popViewController(animated: true)
+    }
     
     @objc func checkedOutAction()
     {
@@ -102,12 +106,14 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         onHoldUserSearch.delegate = self
         onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "userId") as! String)!/* as! CLong*/)
     }
+    @IBOutlet weak var delinquencyView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameLabe.text = UserDefaults.standard.object(forKey: "userName") as? String
-        self.idLabel.text = (UserDefaults.standard.object(forKey: "id") as! String)
-
+        self.idLabel.text = "ID: " + (UserDefaults.standard.object(forKey: "id") as! String)
+        delinquencyView.layer.cornerRadius = 6
+        delinquencyView.layer.masksToBounds = true
         //let UserSearch = UserGetBooks()
         //UserSearch.delegate = self
         //UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)
@@ -121,7 +127,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         //onHoldUserSearch.delegate = self
         //onHoldUserSearch.downloadItems(inputID: Int(UserDefaults.standard.object(forKey: "userId") as! String)!/* as! CLong*/)
         
-        loginButton.frame = CGRect(x: 0, y: 0, width: loginButtonView.frame.width, height: loginButtonView.frame.height)
+        loginButton.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-40, height: loginButtonView.frame.height)
         
         loginButtonView.addSubview(loginButton)
         loginButton.delegate = self
@@ -209,7 +215,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             _ = onholdBooks[indexPath.row]
             
             cell.textLabel?.text = onholdBooks[indexPath.row].title
-           
+           cell.detailTextLabel?.text = "test"
             return cell;
         }
         

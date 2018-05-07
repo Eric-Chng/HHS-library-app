@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,6 +49,33 @@
             </objects>
             <point key="canvasLocation" x="679" y="-345"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="w4B-wQ-eBy">
+            <objects>
+                <viewController id="HJI-Rw-7uU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZfV-1p-3pq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hA6-hT-ZJs">
+                                <rect key="frame" x="0.0" y="601" width="375" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96694713830000001" green="0.76442193979999995" blue="0.43557900189999998" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0yK-Mr-3Er">
+                                <rect key="frame" x="124" y="588" width="87" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="mvW-bz-RYM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GWF-xp-GPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="-830.73463268365822"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nca-29-eEw">
             <objects>
@@ -61,7 +89,6 @@
                         <segue destination="ixQ-kw-amd" kind="relationship" relationship="viewControllers" id="9j4-V2-E3u"/>
                         <segue destination="aaq-iz-RgZ" kind="relationship" relationship="viewControllers" id="QPd-Jf-yvY"/>
                         <segue destination="jY5-uS-ZNX" kind="relationship" relationship="viewControllers" id="Y3J-ti-OJE"/>
-                        <segue destination="4by-c9-QJp" kind="relationship" relationship="viewControllers" id="8GP-RM-I2h"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KlM-DN-HTB" sceneMemberID="firstResponder"/>

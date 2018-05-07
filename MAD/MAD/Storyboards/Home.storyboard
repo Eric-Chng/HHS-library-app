@@ -54,7 +54,7 @@
                                                     <constraint firstAttribute="height" constant="33" id="onY-az-oOc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" red="0.30846178530000001" green="0.81733804939999999" blue="0.9971045852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-ym-3zT">
@@ -147,7 +147,7 @@
                                                     <constraint firstAttribute="width" constant="200" id="xs2-td-9SU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" red="0.30846178530000001" green="0.81733804939999999" blue="0.9971045852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Ip-eK4">
@@ -183,9 +183,6 @@
                                     <constraint firstAttribute="bottom" secondItem="OFx-Fa-XDM" secondAttribute="bottom" id="ohI-3u-QEn"/>
                                     <constraint firstItem="OFx-Fa-XDM" firstAttribute="top" secondItem="Zz3-PP-fXI" secondAttribute="top" id="uga-Qh-Qys"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="ocr-sH-Aub" id="CeC-og-1NM"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -198,7 +195,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WFa-eI-n3S"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="ocr-sH-Aub"/>
+                    <navigationItem key="navigationItem" title="Home" id="ite-a2-bUv">
+                        <barButtonItem key="rightBarButtonItem" width="80" id="ULv-mJ-mbw">
+                            <connections>
+                                <action selector="profileButtonClicked:" destination="zcJ-OU-37K" id="VjR-BK-9S8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
@@ -206,6 +209,8 @@
                         <outlet property="hoursView" destination="xiN-ym-3zT" id="dib-44-rUL"/>
                         <outlet property="innerScrollView" destination="OFx-Fa-XDM" id="8TV-Bk-TLY"/>
                         <outlet property="mapView" destination="MCI-yl-h8I" id="mYX-mV-uXl"/>
+                        <outlet property="profileButton" destination="ULv-mJ-mbw" id="RWh-iD-v6o"/>
+                        <outlet property="scrollView" destination="Zz3-PP-fXI" id="roj-rh-QD5"/>
                         <segue destination="SqN-VO-obD" kind="popoverPresentation" identifier="LaunchHelp" popoverAnchorView="TFP-Zg-yYE" id="pEB-NX-RyX">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -213,6 +218,9 @@
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                         <segue destination="CzJ-4s-vuS" kind="popoverPresentation" identifier="reviewSegue" popoverAnchorView="TFP-Zg-yYE" id="sHC-ge-o2x">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="RKh-6g-CD6" kind="popoverPresentation" identifier="profileSegue" popoverAnchorView="TFP-Zg-yYE" id="XDK-4F-5Wx">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
@@ -229,19 +237,36 @@
             </objects>
             <point key="canvasLocation" x="2572" y="-936"/>
         </scene>
+        <!--MyBooks-->
+        <scene sceneID="2nI-OI-y62">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyBooks" id="RKh-6g-CD6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OVh-ad-4QK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2651" y="-776"/>
+        </scene>
         <!--Home-->
         <scene sceneID="Y2S-na-mI6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenVerticallyCompact="YES" id="EoL-cc-Gvg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="biM-Jr-qgW"/>
+                    <tabBarItem key="tabBarItem" title="       Home" image="home" selectedImage="home" id="biM-Jr-qgW">
+                        <inset key="imageInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Home" id="eKz-U3-J9u"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HDd-tM-2tO">
+                    <navigationBar key="navigationBar" alpha="0.59999999999999998" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HDd-tM-2tO">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.078967933014560843" green="0.75274258209924483" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iGZ-zO-u8X">
