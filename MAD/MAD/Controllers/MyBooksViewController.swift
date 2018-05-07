@@ -137,9 +137,17 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         self.profilePictureView.layer.cornerRadius = profilePictureView.layer.frame.width/2
         self.profilePictureView.layer.masksToBounds = true
-        
+        reportBugButton.layer.cornerRadius = 4
+        reportBugButton.layer.masksToBounds = true
+        logoutButton.layer.cornerRadius = 4
+        logoutButton.layer.masksToBounds = true
+        helpButton.layer.cornerRadius = 4
+        helpButton.layer.masksToBounds = true
     }
     
+    @IBOutlet weak var reportBugButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var helpButton: UIButton!
     @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
         if(from.elementsEqual("UserGetBooks")){
@@ -206,6 +214,10 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
 
             //cell.bookImg = book.BookCoverImage
             cell.textLabel?.text = book.title
+            cell.textLabel?.textColor = UIColor.darkGray;
+            //cell.textLabel?.font.pointSize = 12
+
+
             //cell.dueDate.text = checkoutBook.endTimestamp;
             //print("Book name: " + book.name!)
             return cell
@@ -216,6 +228,9 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             
             cell.textLabel?.text = onholdBooks[indexPath.row].title
            cell.detailTextLabel?.text = "test"
+            //let font = UIFont(
+            cell.textLabel?.textColor = UIColor.darkGray;
+            //cell.textLabel?.font.pointSize = 12
             return cell;
         }
         

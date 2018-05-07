@@ -81,27 +81,21 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nzb-pm-Emr">
-                                                        <rect key="frame" x="3" y="36" width="329" height="186"/>
+                                                        <rect key="frame" x="-14" y="36" width="346" height="186"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookcheckoutcell" rowHeight="50" id="Mzd-PI-b9Y" customClass="MyBooksCheckOutTableViewCell" customModule="MAD" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="329" height="50"/>
+                                                                <rect key="frame" x="0.0" y="28" width="346" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mzd-PI-b9Y" id="YTp-m9-Nlq">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="329" height="49.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="49.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="0gR-O1-h9X">
                                                                             <rect key="frame" x="3" y="3" width="323" height="44"/>
                                                                             <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m6T-yd-e4M">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="width" constant="50" id="dCj-Ok-xeQ"/>
-                                                                                    </constraints>
-                                                                                </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Book Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkf-MQ-dwa">
-                                                                                    <rect key="frame" x="112.5" y="0.0" width="76.5" height="44"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="76.5" height="44"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -115,13 +109,10 @@
                                                                             </subviews>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="trailing" secondItem="0E9-nB-7d2" secondAttribute="trailing" id="1ba-A3-wDy"/>
-                                                                                <constraint firstItem="m6T-yd-e4M" firstAttribute="top" secondItem="0gR-O1-h9X" secondAttribute="top" id="5SG-74-n3Q"/>
-                                                                                <constraint firstItem="m6T-yd-e4M" firstAttribute="leading" secondItem="0gR-O1-h9X" secondAttribute="leading" id="8aZ-83-aGH"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="tkf-MQ-dwa" secondAttribute="bottom" id="Tuv-6e-7Q2"/>
                                                                                 <constraint firstItem="tkf-MQ-dwa" firstAttribute="top" secondItem="0gR-O1-h9X" secondAttribute="top" id="Vm9-pA-t9X"/>
                                                                                 <constraint firstItem="0E9-nB-7d2" firstAttribute="top" secondItem="0gR-O1-h9X" secondAttribute="top" id="XO7-fV-zgc"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="0E9-nB-7d2" secondAttribute="bottom" id="ebU-1L-Vss"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="m6T-yd-e4M" secondAttribute="bottom" id="wsV-RM-11a"/>
                                                                             </constraints>
                                                                         </stackView>
                                                                     </subviews>
@@ -133,7 +124,6 @@
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
-                                                                    <outlet property="bookImg" destination="m6T-yd-e4M" id="OTM-BU-7IG"/>
                                                                     <outlet property="bookTitle" destination="tkf-MQ-dwa" id="G2O-Qx-WfL"/>
                                                                     <outlet property="dueDate" destination="0E9-nB-7d2" id="e70-DT-GyN"/>
                                                                 </connections>
@@ -147,7 +137,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="nzb-pm-Emr" firstAttribute="leading" secondItem="nw7-VN-rG4" secondAttribute="leading" constant="3" id="7uc-hj-zbA"/>
+                                                    <constraint firstItem="nzb-pm-Emr" firstAttribute="leading" secondItem="nw7-VN-rG4" secondAttribute="leading" constant="-14" id="7uc-hj-zbA"/>
                                                     <constraint firstItem="nzb-pm-Emr" firstAttribute="top" secondItem="sMU-Ik-X0v" secondAttribute="bottom" constant="3" id="B6U-nu-eTC"/>
                                                     <constraint firstItem="sMU-Ik-X0v" firstAttribute="leading" secondItem="nw7-VN-rG4" secondAttribute="leading" constant="3" id="DNF-uz-Qco"/>
                                                     <constraint firstAttribute="trailing" secondItem="nzb-pm-Emr" secondAttribute="trailing" constant="3" id="Gg0-eB-8oS"/>
@@ -170,14 +160,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5xO-sA-NVC">
-                                                        <rect key="frame" x="3" y="36" width="329" height="186"/>
+                                                        <rect key="frame" x="-14" y="36" width="346" height="186"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookonholdcell" rowHeight="50" id="abA-cA-agt" customClass="MyBooksOnHoldTableViewCell" customModule="MAD" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="329" height="50"/>
+                                                                <rect key="frame" x="0.0" y="28" width="346" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="abA-cA-agt" id="5L2-Kc-wU6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="329" height="49.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="346" height="49.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="K1f-q8-GYs">
@@ -236,7 +226,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="5xO-sA-NVC" firstAttribute="leading" secondItem="60t-L6-7u9" secondAttribute="leading" constant="3" id="6IP-ax-Hbb"/>
+                                                    <constraint firstItem="5xO-sA-NVC" firstAttribute="leading" secondItem="60t-L6-7u9" secondAttribute="leading" constant="-14" id="6IP-ax-Hbb"/>
                                                     <constraint firstItem="5xO-sA-NVC" firstAttribute="top" secondItem="eCb-e3-JZ3" secondAttribute="bottom" constant="3" id="B1O-10-O5H"/>
                                                     <constraint firstItem="eCb-e3-JZ3" firstAttribute="top" secondItem="60t-L6-7u9" secondAttribute="top" constant="3" id="JuJ-X2-Tg1"/>
                                                     <constraint firstAttribute="height" constant="225" id="btM-cT-Cec"/>
@@ -249,26 +239,38 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5s-iI-JSA">
                                                 <rect key="frame" x="20" y="805" width="335" height="30"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yUC-T2-4ba">
+                                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="yUC-T2-4ba">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGy-Dp-agn">
-                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
-                                                                <state key="normal" title="Help"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="30"/>
+                                                                <color key="backgroundColor" red="0.078967933010000005" green="0.7527425821" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                <state key="normal" title="Help">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
                                                                 <connections>
                                                                     <action selector="helpPressed:" destination="6Hl-13-aej" eventType="touchUpInside" id="7Gk-g1-tAf"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D27-sb-V8Z">
-                                                                <rect key="frame" x="111.5" y="0.0" width="112" height="30"/>
-                                                                <state key="normal" title="Log Out"/>
+                                                                <rect key="frame" x="116.5" y="0.0" width="102" height="30"/>
+                                                                <color key="backgroundColor" red="0.078967933010000005" green="0.7527425821" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                <state key="normal" title="Log Out">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
                                                                 <connections>
                                                                     <action selector="logoutPressed:" destination="6Hl-13-aej" eventType="touchUpInside" id="Uky-qs-0ws"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqM-Lq-aTc">
-                                                                <rect key="frame" x="223.5" y="0.0" width="111.5" height="30"/>
-                                                                <state key="normal" title="Report Bug"/>
+                                                                <rect key="frame" x="232.5" y="0.0" width="102.5" height="30"/>
+                                                                <color key="backgroundColor" red="0.078967933010000005" green="0.7527425821" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                <state key="normal" title="Report Bug">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
                                                                 <connections>
                                                                     <segue destination="B9A-n0-GyI" kind="presentation" id="Dsh-tH-DCf"/>
                                                                 </connections>
@@ -285,7 +287,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwf-qT-3UC" userLabel="FacebookLoginView">
-                                                <rect key="frame" x="20" y="700" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="740" width="335" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mku-oj-nfO"/>
@@ -328,7 +330,7 @@
                                             <constraint firstAttribute="trailing" secondItem="62N-Kd-Wab" secondAttribute="trailing" constant="20" id="5s0-wo-DIA"/>
                                             <constraint firstItem="TuT-fs-j8f" firstAttribute="leading" secondItem="Rle-cH-BC0" secondAttribute="leading" constant="20" id="Ew3-Xt-A2c"/>
                                             <constraint firstAttribute="trailing" secondItem="60t-L6-7u9" secondAttribute="trailing" constant="20" id="Gka-Vx-6R7"/>
-                                            <constraint firstItem="Zwf-qT-3UC" firstAttribute="top" secondItem="Rle-cH-BC0" secondAttribute="top" constant="700" id="JeS-G1-sac"/>
+                                            <constraint firstItem="Zwf-qT-3UC" firstAttribute="top" secondItem="Rle-cH-BC0" secondAttribute="top" constant="740" id="JeS-G1-sac"/>
                                             <constraint firstAttribute="trailing" secondItem="TuT-fs-j8f" secondAttribute="trailing" constant="20" id="MYQ-5D-X4J"/>
                                             <constraint firstItem="60t-L6-7u9" firstAttribute="leading" secondItem="Rle-cH-BC0" secondAttribute="leading" constant="20" id="S6h-44-qdv"/>
                                             <constraint firstAttribute="bottom" secondItem="n5s-iI-JSA" secondAttribute="bottom" constant="20" id="TrY-2J-PjX"/>
@@ -372,11 +374,14 @@
                     <connections>
                         <outlet property="checkOutTableView" destination="nzb-pm-Emr" id="HOE-mi-ihp"/>
                         <outlet property="delinquencyView" destination="TuT-fs-j8f" id="RQW-y7-w0l"/>
+                        <outlet property="helpButton" destination="qGy-Dp-agn" id="bVp-dF-fC0"/>
                         <outlet property="idLabel" destination="z0M-Bl-ar3" id="ymo-2T-FLQ"/>
                         <outlet property="loginButtonView" destination="Zwf-qT-3UC" id="SPf-Io-Axy"/>
+                        <outlet property="logoutButton" destination="D27-sb-V8Z" id="bNw-f5-I6e"/>
                         <outlet property="nameLabe" destination="rxl-qO-R2Z" id="WlE-in-tYT"/>
                         <outlet property="onHoldTableView" destination="5xO-sA-NVC" id="092-Lq-XfF"/>
                         <outlet property="profilePictureView" destination="cl5-sv-Uq1" id="TR5-O5-JX8"/>
+                        <outlet property="reportBugButton" destination="IqM-Lq-aTc" id="2bD-sM-Z2K"/>
                         <segue destination="6SQ-fA-jKJ" kind="show" identifier="bookInfoSegue" id="dA8-DS-xQo"/>
                         <segue destination="iGZ-Bb-zjc" kind="popoverPresentation" identifier="helpSegue" popoverAnchorView="vrw-BT-m5x" id="Oim-df-03B">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>

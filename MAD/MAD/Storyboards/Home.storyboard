@@ -82,13 +82,13 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click for more information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7U-i1-GDR">
                                                         <rect key="frame" x="59" y="121" width="240" height="28"/>
-                                                        <color key="backgroundColor" red="0.62456130981445312" green="0.94161897897720337" blue="0.20731985569000244" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.078967933010000005" green="0.7527425821" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="240" id="Tks-5E-qRd"/>
                                                             <constraint firstAttribute="height" constant="28" id="aCZ-Ql-8VA"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday - Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOm-pf-Hkk">
@@ -117,6 +117,7 @@
                                                             <constraint firstAttribute="width" constant="235" id="67S-ab-AQH"/>
                                                             <constraint firstAttribute="height" constant="30" id="PDF-M9-mOo"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                         <connections>
                                                             <action selector="hoursButtonPressed:" destination="zcJ-OU-37K" eventType="touchUpInside" id="sDQ-Th-FeN"/>
                                                         </connections>

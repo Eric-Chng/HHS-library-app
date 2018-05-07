@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         addCarousel()
-        self.hoursButton.layer.cornerRadius = 12
+        self.hoursButton.layer.cornerRadius = 4
         self.hoursButton.layer.masksToBounds = true
         mapView.delegate = self
         self.tabBarController?.tabBar.isHidden = false
