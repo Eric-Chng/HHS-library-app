@@ -9,7 +9,7 @@
 
 import UIKit
 import ScalingCarousel
-
+import Koloda
 import MapKit
 
 class CodeCell: ScalingCarouselCell {
@@ -28,7 +28,7 @@ class CodeCell: ScalingCarouselCell {
 
 class HomeViewController: UIViewController {
     
-    // MARK: - Properties (Private)
+    var kolodaView: KolodaView!
     fileprivate var scalingCarousel: ScalingCarouselView!
     @IBOutlet weak var mapView: MKMapView!
     var timer: Timer = Timer()
@@ -47,7 +47,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addCarousel()
+        //addCarousel()
+        addKoloda()
         self.hoursButton.layer.cornerRadius = 4
         self.hoursButton.layer.masksToBounds = true
         mapView.delegate = self
@@ -55,20 +56,11 @@ class HomeViewController: UIViewController {
         hoursView.layer.cornerRadius = 25
         hoursView.layer.masksToBounds = true
         self.mapView.mapType = MKMapType.satellite;
-        /*
-         self.bookCarousel.delegate = self
-         
-         self.bookCarousel.dataSource = self
-         self.bookCarousel.translatesAutoresizingMaskIntoConstraints = false
-         */
-        //navBar.title = "Home"
-        //navigationItem.title="Home"
-        //setupNavigationBarItems()
-            navigationController?.navigationBar.prefersLargeTitles = true
-       // navigationController?.navigationBar.barTintColor = UIColor(red: 160/255, green: 196/255, blue: 1, alpha: 1)
-        //160, 196, 255
-        // Do any additional setup after loading the view, typically from a nib.\
+        //kolodaView.dataSource = self
+        //kolodaView.delegate = self
         
+            navigationController?.navigationBar.prefersLargeTitles = true
+        tomorrowLabel.alpha = 0;
         scrollView.delegate = self
         mapView.layer.cornerRadius = 25
         mapView.layer.masksToBounds = true
@@ -78,7 +70,6 @@ class HomeViewController: UIViewController {
         
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04898), MKCoordinateSpanMake(0.01, 0.01)), animated: true)
-        //self.mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04898), MKCoordinateSpanMake(0.0005, 0.0005)), animated: true)
         setUpProfileButton()
         
         imageView.setImage(#imageLiteral(resourceName: "user"), for: UIControlState.selected)
@@ -106,6 +97,26 @@ class HomeViewController: UIViewController {
         static let NavBarHeightLargeState: CGFloat = 96.5
     }
 
+    private func addKoloda() {
+        
+        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        kolodaView = KolodaView(frame: frame)
+        kolodaView.dataSource = self
+        kolodaView.delegate = self
+        kolodaView.translatesAutoresizingMaskIntoConstraints = false
+        //scalingCarousel.backgroundColor = .white
+        //scalingCarousel.register(CodeCell.self, forCellWithReuseIdentifier: "cell")
+        
+        innerScrollView.addSubview(kolodaView)
+        //kolodaView.center = innerScrollView.convert(innerScrollView.center, from:innerScrollView.superview)
+
+        // Constraints
+        kolodaView.widthAnchor.constraint(equalTo: innerScrollView.widthAnchor, multiplier: 0.4).isActive = true
+        //kolodaView.centerXAnchor.constraint(equalTo: innerScrollView.centerXAnchor)
+        kolodaView.heightAnchor.constraint(equalToConstant: 260).isActive = true
+        kolodaView.centerXAnchor.constraint(equalTo: innerScrollView.centerXAnchor, constant: 0.5).isActive = true
+        kolodaView.topAnchor.constraint(equalTo: innerScrollView.topAnchor, constant: 10).isActive = true
+    }
     
     @IBAction func profileButtonClicked()
     {
@@ -176,12 +187,14 @@ class HomeViewController: UIViewController {
     @objc func action()
     {
         timeCounter = timeCounter + 1
+        /*
         if(timeCounter == 8)
         {
             scalingCarousel.scrollToItem(at: IndexPath.init(row: 3, section: 0), at: UICollectionViewScrollPosition(rawValue: 2), animated: true)
             //self.innerScrollView.backgroundColor = UIColor(red: 160/255, green: 196/255, blue: 1, alpha: 1)
 
         }
+ */
         if(timeCounter == 10)
         {
             //let duration = NSTimeIntervl
@@ -250,8 +263,15 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func rightSwipePressed(_ sender: Any)
+    {
+        self.kolodaView.swipe(SwipeResultDirection.right)
+    }
     
-    // MARK: - Configuration
+    @IBAction func leftSwipePressed(_ sender: Any)
+    {
+        self.kolodaView.swipe(SwipeResultDirection.left)
+    }
     
     private func addCarousel() {
         
@@ -270,6 +290,43 @@ class HomeViewController: UIViewController {
         scalingCarousel.heightAnchor.constraint(equalToConstant: 260).isActive = true
         scalingCarousel.leadingAnchor.constraint(equalTo: innerScrollView.leadingAnchor).isActive = true
         scalingCarousel.topAnchor.constraint(equalTo: innerScrollView.topAnchor, constant: 10).isActive = true
+    }
+    let images = [#imageLiteral(resourceName: "sampleCover2"), #imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2")]
+    @IBOutlet weak var tomorrowLabel: UILabel!
+    
+}
+
+extension HomeViewController: KolodaViewDataSource {
+    
+    
+    
+    func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
+        return images.count
+    }
+    
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
+        return DragSpeed.moderate
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+        return UIImageView(image: images[index])
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+        //return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)![0] as? OverlayView
+        return OverlayView()
+    }
+}
+
+extension HomeViewController: KolodaViewDelegate {
+    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+        koloda.reloadData()
+        UIView.animate(withDuration: 1, animations: {self.tomorrowLabel.alpha = 1;})
+        
+    }
+    
+    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
+        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
     }
 }
 
