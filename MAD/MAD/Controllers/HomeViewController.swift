@@ -11,6 +11,7 @@ import UIKit
 import ScalingCarousel
 import Koloda
 import MapKit
+import Popover
 
 class CodeCell: ScalingCarouselCell {
     
@@ -111,11 +112,12 @@ class HomeViewController: UIViewController {
         //kolodaView.center = innerScrollView.convert(innerScrollView.center, from:innerScrollView.superview)
 
         // Constraints
-        kolodaView.widthAnchor.constraint(equalTo: innerScrollView.widthAnchor, multiplier: 0.4).isActive = true
+        kolodaView.widthAnchor.constraint(equalTo: innerScrollView.widthAnchor, multiplier: 0.45).isActive = true
         //kolodaView.centerXAnchor.constraint(equalTo: innerScrollView.centerXAnchor)
         kolodaView.heightAnchor.constraint(equalToConstant: 260).isActive = true
         kolodaView.centerXAnchor.constraint(equalTo: innerScrollView.centerXAnchor, constant: 0.5).isActive = true
         kolodaView.topAnchor.constraint(equalTo: innerScrollView.topAnchor, constant: 10).isActive = true
+        self.waitForDownload()
     }
     
     @IBAction func profileButtonClicked()
@@ -273,6 +275,15 @@ class HomeViewController: UIViewController {
         self.kolodaView.swipe(SwipeResultDirection.left)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let bookToPass = self.recommendationBookArr[bookSwipedID]
+        if let destinationViewController = segue.destination as? BookDetailViewController {
+            destinationViewController.selectedBook = bookToPass
+        }
+    }
+    
+    var bookSwipedID: Int = 0
+    
     private func addCarousel() {
         
         let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -291,7 +302,14 @@ class HomeViewController: UIViewController {
         scalingCarousel.leadingAnchor.constraint(equalTo: innerScrollView.leadingAnchor).isActive = true
         scalingCarousel.topAnchor.constraint(equalTo: innerScrollView.topAnchor, constant: 10).isActive = true
     }
+    var coverTimer: Timer = Timer()
     let images = [#imageLiteral(resourceName: "sampleCover2"), #imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2")]
+    
+    var recommendationBookArr = [BookModel(ISBN: "9780684833392"), BookModel(ISBN: "9780804139021"), BookModel(ISBN: "9781400095957"), BookModel(ISBN: "9780393061703"), BookModel(ISBN: "9780679732761"), BookModel(ISBN: "9781451673265"), BookModel(ISBN: ""), BookModel(ISBN: "9781848664173"), BookModel(ISBN: "9781101981085"), BookModel(ISBN: "9781786072108"), BookModel(ISBN: "9780993790904"), BookModel(ISBN: "9780141182773"), BookModel(ISBN: "9780810891951"), BookModel(ISBN:"9781594480003"), BookModel(ISBN:"9781555975098")]
+    var cardsToCheck: [Int] = [0, 1, 2, 3, 4, 5, 6]
+    var numCards: Int = 0
+    var counter: Int = 0
+
     @IBOutlet weak var tomorrowLabel: UILabel!
     
 }
@@ -301,7 +319,7 @@ extension HomeViewController: KolodaViewDataSource {
     
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        return images.count
+        return recommendationBookArr.count
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
@@ -309,7 +327,90 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIImageView(image: images[index])
+        let image = recommendationBookArr[index].BookCoverImage.image
+        if(image?.isEqual(#imageLiteral(resourceName: "loadingImage")))!
+        {
+            return UIImageView(image: UIImage())
+            //sleep(1)
+            /*
+            cardsToCheck.append(index)
+            print("waiting")
+            if let url = URL(string: "http://covers.openlibrary.org/b/isbn/" + recommendationBookArr[index].ISBN! + "-L.jpg")
+            {
+                print("testPoint3")
+
+                //return UIImageView(image: self.downloadCoverImage(url: url))
+            }
+ */
+        }
+       // print("testPoint4")
+
+        return UIImageView(image: recommendationBookArr[index].BookCoverImage.image)
+    }
+    
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    func downloadCoverImage(url: URL) -> UIImage {
+        var returnedImage: UIImage = #imageLiteral(resourceName: "loadingImage")
+        getDataFromUrl(url: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            
+            
+            DispatchQueue.main.async() {
+                let temp: UIImage? = UIImage(data: data)
+                if(temp != nil && Double((temp?.size.height)!)>20.0)
+                {
+                    
+                    returnedImage = temp!
+                    print("testPoint1")
+                }
+                
+                
+            }
+        }
+        print("testPoint2")
+        return returnedImage
+        
+    }
+    
+    func waitForDownload()
+    {
+        coverTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(HomeViewController.downloadCheck), userInfo: nil,  repeats: true)
+
+    }
+    
+    @objc func downloadCheck()
+    {
+        //print("download check")
+        if(counter<6)
+        {
+            let image = recommendationBookArr[counter].BookCoverImage.image
+            if(image?.isEqual(#imageLiteral(resourceName: "loadingImage")))!
+            {
+                
+            }
+            else
+            {
+                print("found:")
+                print(counter)
+                //cardsToCheck.remove(at: counter)
+                let temp = counter + 1
+                counter = temp
+                //kolodaView.insertCardAtIndexRange(CountableRange(counter...counter))
+                numCards = numCards + 1
+            }
+        }
+        if(counter == 6)
+        {
+            print("All downloaded")
+            self.kolodaView.reloadData()
+            coverTimer.invalidate()
+        }
+        
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
@@ -326,9 +427,47 @@ extension HomeViewController: KolodaViewDelegate {
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
+        //UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
+        
+        let aView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 40))
+        let bookTitleLabel = UILabel.init(frame: CGRect.init(x: 10, y: 10, width: 140, height: 22))
+        bookTitleLabel.text = self.recommendationBookArr[index].title
+        bookTitleLabel.font = UIFont (name: "HelveticaNeue-Medium", size: 18)
+        bookTitleLabel.textAlignment = NSTextAlignment.center
+        aView.addSubview(bookTitleLabel)
+        let authorTitleLabel = UILabel.init(frame: CGRect.init(x: 10, y: 29, width: 140, height: 18))
+        authorTitleLabel.text = self.recommendationBookArr[index].author
+        authorTitleLabel.font = UIFont (name: "HelveticaNeue-Medium", size: 12)
+        authorTitleLabel.textColor = UIColor.darkGray
+        authorTitleLabel.textAlignment = NSTextAlignment.center
+        aView.addSubview(authorTitleLabel)
+        let options = [
+            .type(.down),
+            .cornerRadius(8),
+            .animationIn(0.2),
+            .animationOut(0.1),
+            .blackOverlayColor(UIColor(white: 0.0, alpha: 0.05)),
+            .arrowSize(CGSize(width: 16.0, height: 10.0))
+            //.border
+            ] as [PopoverOption]
+        let popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        popover.show(aView, fromView: self.kolodaView)
+
+    
     }
+    
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        if(direction == SwipeResultDirection.right)
+        {
+            self.bookSwipedID = index
+            self.performSegue(withIdentifier: "rightSwipeSegue", sender: self)
+            //print(self.recommendationBookArr[index].title)
+        }
+    }
+   
+    
 }
+
 
 extension HomeViewController: UICollectionViewDataSource {
     
@@ -366,18 +505,7 @@ extension HomeViewController: UIScrollViewDelegate {
         moveAndResizeImage(for: height)
     }
     
-    /*
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        <#code#>
-    }
- */
-    
-    /*
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let height = navigationController?.navigationBar.frame.height else { return }
-        moveAndResizeImage(for: height)
-    }
- */
+   
 }
 
 

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '079E652E1F412BF421B04BF5160DB822'
+               BlueprintIdentifier = '14ADE4809FD04B9112B37855D9BC3953'
                BlueprintName = 'ScalingCarousel'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ScalingCarousel.framework'>

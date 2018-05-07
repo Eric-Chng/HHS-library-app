@@ -592,12 +592,30 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         
     }
 
-    
+    var navBarBackgroundColor: UIColor = UIColor.white
+    var navBarTintColor: UIColor = UIColor.white
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIView.animate(withDuration: 0.8, animations: {self.navigationController?.navigationBar.backgroundColor = self.navBarBackgroundColor
+            self.navigationController?.navigationBar.barTintColor = self.navBarTintColor
+
+            //self.navigationController?.navigationBar.tintColor = self.navBarTintColor})
+        })
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
             #selector(SearchTableViewController.action), userInfo: nil,  repeats: true)
         RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        navBarBackgroundColor = (self.navigationController?.navigationBar.backgroundColor)!
+        navBarTintColor = (self.navigationController?.navigationBar.barTintColor)!
+        UIView.animate(withDuration: 0.8, animations: {self.navigationController?.navigationBar.backgroundColor = UIColor.white
+            self.navigationController?.navigationBar.barTintColor = UIColor.white
+            //self.navigationController?.navigationBar.tintColor = UIColor.white})
+        })
+
+        
         if(self.fromScanner == true)
         {
             loadTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:

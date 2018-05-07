@@ -30,7 +30,7 @@
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puw-QQ-oGF">
                                 <rect key="frame" x="0.0" y="4" width="375" height="814"/>
-                                <color key="backgroundColor" red="0.45441640110421233" green="0.84898250994694957" blue="0.16929025935352454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.75294117650000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingBacksplash" translatesAutoresizingMaskIntoConstraints="NO" id="ICa-AX-olF">
                                 <rect key="frame" x="0.0" y="-6" width="375" height="824"/>
@@ -71,8 +71,9 @@
                                     <constraint firstAttribute="height" constant="30" id="Vwb-PN-6KK"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="syE-sT-BzY"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.078431372550000003" green="0.75294117650000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="Submit:" destination="fQf-iE-rvz" eventType="touchUpInside" id="2kw-up-mKl"/>
@@ -84,8 +85,8 @@
                                     <constraint firstAttribute="height" constant="21" id="4En-En-ZFH"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="fab-Ol-Eg5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HHS Library is a closed service and does not allow sign ups. Contact a librarian if you need an account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdh-Ao-XLb">
@@ -94,8 +95,8 @@
                                     <constraint firstAttribute="height" constant="45" id="4Px-Rp-dbG"/>
                                     <constraint firstAttribute="width" constant="262" id="bOH-9R-eB3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

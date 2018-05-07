@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingBacksplash" translatesAutoresizingMaskIntoConstraints="NO" id="Etz-Eh-HcK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingBacksplashLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="Etz-Eh-HcK">
                                 <rect key="frame" x="0.0" y="-6" width="375" height="824"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="oPY-s0-W2M">
@@ -54,7 +54,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loadingBacksplash" width="562" height="1218"/>
+        <image name="loadingBacksplashLaunch" width="562" height="1218"/>
         <image name="loadingIcon" width="512" height="512"/>
     </resources>
 </document>

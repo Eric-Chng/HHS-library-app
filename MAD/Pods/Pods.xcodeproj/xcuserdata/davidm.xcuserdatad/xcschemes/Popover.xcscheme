@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '001F7CBA1F6D294EABF05E81E7AC6133'
-               BlueprintName = 'SnapKit'
+               BlueprintIdentifier = '24A4912ADED2AC024A657B05FD963A72'
+               BlueprintName = 'Popover'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SnapKit.framework'>
+               BuildableName = 'Popover.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
