@@ -327,7 +327,7 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        let image = recommendationBookArr[index].BookCoverImage.image
+        let image: UIImage? = recommendationBookArr[index].getImage()
         if(image?.isEqual(#imageLiteral(resourceName: "loadingImage")))!
         {
             return UIImageView(image: UIImage())
@@ -388,8 +388,8 @@ extension HomeViewController: KolodaViewDataSource {
         //print("download check")
         if(counter<6)
         {
-            let image = recommendationBookArr[counter].BookCoverImage.image
-            if(image?.isEqual(#imageLiteral(resourceName: "loadingImage")))!
+            let image = recommendationBookArr[counter].getImage()
+            if(image.isEqual(#imageLiteral(resourceName: "loadingImage")))
             {
                 
             }

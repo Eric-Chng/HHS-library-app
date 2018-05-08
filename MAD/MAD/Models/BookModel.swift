@@ -18,7 +18,7 @@ class BookModel: NSObject {
     var ISBN: String?
     var authorID: CLong?
     var desc: String! = "No description found"
-    var BookCoverImage: UIImageView!
+    var BookCoverImage: UIImageView! 
     var title: String?
     var JSONParsed: Bool = false
     var author: String?
@@ -37,6 +37,18 @@ class BookModel: NSObject {
     
     override init()
     {
+    }
+    
+    func getImage() -> UIImage
+    {
+        if(self.BookCoverImage != nil && self.BookCoverImage.image != nil)
+        {
+            return self.BookCoverImage.image!
+        }
+        else
+        {
+            return #imageLiteral(resourceName: "loadingImage")
+        }
     }
     
     //constructor
@@ -79,7 +91,7 @@ class BookModel: NSObject {
         var JSONAsString: String = ""
         
         
-        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN + "&key=AIzaSyCvF4JpS257MnToHz9nv7339wwchjWSB-w" + "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
+        let todoEndpoint: String = "https://www.googleapis.com/books/v1/volumes?q=isbn+" + ISBN/* + "&key=AIzaSyCvF4JpS257MnToHz9nv7339wwchjWSB-w" */+ "&key=AIzaSyBCy__wwGef5LX93ipVp1Ca5ovoLpMqjqw"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -173,6 +185,7 @@ class BookModel: NSObject {
                     
                     self.BookCoverImage.image = temp
                     found = true;
+                    print("Image downloaded")
                 }
                 else
                 {
