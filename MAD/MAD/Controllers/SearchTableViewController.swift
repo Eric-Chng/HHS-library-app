@@ -206,6 +206,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 sendNewRequest = false;
                 myCell.newRequest();
             }
+            myCell.bookCover.image = nil
         }
         else
         {
@@ -402,6 +403,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                     self.currentTitles.append("No results found")
                     self.currentAuthors.append("NA")
                     self.currentISBNs.append("bad")
+
                 }
                 
                 //let distanceToTitle = Int(distanceTotitle.distance(from: distanceTotitle.startIndex, to: rangeTotitle.lowerBound))
