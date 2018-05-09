@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cMb-Ej-cpe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cMb-Ej-cpe">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -169,17 +169,39 @@
                     <view key="view" contentMode="scaleToFill" id="RJe-CK-8Lw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSH-wR-jXV">
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                                <color key="backgroundColor" red="0.23921568627450981" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJY-0c-yRh">
+                                <rect key="frame" x="0.0" y="729" width="375" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NNj-Dm-8S8" firstAttribute="bottom" secondItem="LJY-0c-yRh" secondAttribute="top" id="GAz-fi-tCc"/>
+                            <constraint firstItem="NNj-Dm-8S8" firstAttribute="bottom" secondItem="LJY-0c-yRh" secondAttribute="bottom" id="KXt-KR-Ri6"/>
+                            <constraint firstItem="NNj-Dm-8S8" firstAttribute="trailing" secondItem="LJY-0c-yRh" secondAttribute="trailing" id="SBB-dD-R4o"/>
+                            <constraint firstItem="NNj-Dm-8S8" firstAttribute="trailing" secondItem="SSH-wR-jXV" secondAttribute="trailing" id="WjM-y5-d9i"/>
+                            <constraint firstItem="NNj-Dm-8S8" firstAttribute="bottom" secondItem="SSH-wR-jXV" secondAttribute="bottom" id="afQ-H3-fxf"/>
+                            <constraint firstItem="LJY-0c-yRh" firstAttribute="leading" secondItem="NNj-Dm-8S8" secondAttribute="leading" id="azh-pa-gC4"/>
+                            <constraint firstItem="SSH-wR-jXV" firstAttribute="leading" secondItem="NNj-Dm-8S8" secondAttribute="leading" id="dx7-Qz-ggI"/>
+                            <constraint firstItem="SSH-wR-jXV" firstAttribute="top" secondItem="NNj-Dm-8S8" secondAttribute="top" id="ibY-Df-xVx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NNj-Dm-8S8"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="f4o-BL-Sk2"/>
                     <connections>
+                        <outlet property="introAnimationView" destination="LJY-0c-yRh" id="veh-Ju-m3Q"/>
+                        <outlet property="testView" destination="SSH-wR-jXV" id="zFT-Zv-Nne"/>
                         <segue destination="Ac4-Xt-wZf" kind="show" identifier="scannerPushToDetail" id="GYa-Cw-95d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jt-1H-MHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="1018.7406296851575"/>
+            <point key="canvasLocation" x="1516" y="1018.2266009852217"/>
         </scene>
         <!--BookDetails-->
         <scene sceneID="hpa-VJ-szo">

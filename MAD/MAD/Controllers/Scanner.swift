@@ -25,149 +25,177 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.tabBarController?.tabBar.isHidden = true
-
-        
-        //delegate?.sendScannedValue(valueSent: "hello world")
+        blueView = UIView()
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        blueView.frame = view.layer.bounds
+        blueView.translatesAutoresizingMaskIntoConstraints = false
         
         /*
-        view.backgroundColor = UIColor.black
-        captureSession = AVCaptureSession()
+         let horizontalConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: -20)
+         let verticalConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+         let widthConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: view.widthAnchor, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+         let heightConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: view.heightAnchor, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 80)
+         blueView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+         */
+        introAnimationView.addSubview(blueView)
         
-        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
-        let videoInput: AVCaptureDeviceInput
-        
-        do {
-            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
-        } catch {
-            return
-        }
-        
-        if (captureSession.canAddInput(videoInput)) {
-            captureSession.addInput(videoInput)
-        } else {
-            failed()
-            return
-        }
-        
-        let metadataOutput = AVCaptureMetadataOutput()
-        
-        if (captureSession.canAddOutput(metadataOutput)) {
-            captureSession.addOutput(metadataOutput)
-            
-            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            metadataOutput.metadataObjectTypes = [.ean8, .ean13, .pdf417]
-        } else {
-            failed()
-            return
-        }
-        
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.frame = view.layer.bounds
-        videoPreviewLayer.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(videoPreviewLayer)
-        
-        captureSession.startRunning()
-    }
-    
-    func failed() {
-        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
-        captureSession = nil
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if (captureSession?.isRunning == false) {
-            captureSession.startRunning()
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if (captureSession?.isRunning == true) {
-            captureSession.stopRunning()
-        }
-    }
-    
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
-        captureSession.stopRunning()
-        
-        if let metadataObject = metadataObjects.first {
-            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
-            guard let stringValue = readableObject.stringValue else { return }
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            found(code: stringValue)
-        }
-        
-        dismiss(animated: true)
-    }
-    
-    func found(code: String) {
-        print(code)
-        delegate?.sendScannedValue(valueSent: code)
-
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
-}
- 
- */
+        blueView.widthAnchor.constraint(equalTo: introAnimationView.widthAnchor, multiplier: 1).isActive = true
+        //blueView.centerXAnchor.constraint(equalTo: innerScrollView.centerXAnchor)
+        blueView.heightAnchor.constraint(equalToConstant: introAnimationView.frame.height).isActive = true
+        blueView.leftAnchor.constraint(equalTo: introAnimationView.leftAnchor, constant: 0).isActive = true
+        blueView.topAnchor.constraint(equalTo: introAnimationView.topAnchor, constant: 0).isActive = true
+        blueView.backgroundColor = testView.backgroundColor
         
         //print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
         
-        //creating session
-        let captureSession = AVCaptureSession()
         
-        //Define capture device
-        if let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
-        {
-        do
-        {
-            
-            let input = try AVCaptureDeviceInput(device: captureDevice) as AVCaptureDeviceInput
-            captureSession.addInput(input)
-            
-        }
-        catch let error as NSError
-        {
-            print(error)
-        }
-        
-        let output = AVCaptureMetadataOutput()
-        captureSession.addOutput(output)
-        
-        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        
-        output.metadataObjectTypes = [AVMetadataObject.ObjectType.ean13]
-        
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        
-        videoPreviewLayer.frame = view.layer.bounds
-        view.layer.addSublayer(videoPreviewLayer)
-            //view.sendSubview(toBack: videoPreviewLayer)
-            captureSession.startRunning()
-            
-            //print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
-        }
-        else
-        {
-           print("Camera not found")
-        }
 
         // Do any additional setup after loading the view.
 
 
 }
+    var scannerAdded: Bool = false
+    var blueView: UIView = UIView()
+    @IBOutlet weak var introAnimationView: UIView!
+    override func viewDidAppear(_ animated: Bool)
+    {
+        //print()
+        //creating session
+        blueView = UIView()
+        let screenSize = UIScreen.main.bounds
+        //let screenWidth = screenSize.width
+        //let screenHeight = screenSize.height
+        blueView.frame = view.layer.bounds
+        blueView.translatesAutoresizingMaskIntoConstraints = false
+
+        /*
+        let horizontalConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: -20)
+        let verticalConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: view.widthAnchor, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+        let heightConstraint = NSLayoutConstraint(item: blueView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: view.heightAnchor, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 80)
+        blueView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+         */
+        introAnimationView.addSubview(blueView)
+
+        blueView.widthAnchor.constraint(equalTo: introAnimationView.widthAnchor, multiplier: 1).isActive = true
+        //blueView.centerXAnchor.constraint(equalTo: innerScrollView.centerXAnchor)
+        blueView.heightAnchor.constraint(equalToConstant: introAnimationView.frame.height*2.2).isActive = true
+        blueView.leftAnchor.constraint(equalTo: introAnimationView.leftAnchor, constant: 0).isActive = true
+        blueView.topAnchor.constraint(equalTo: introAnimationView.topAnchor, constant: -200).isActive = true
+        blueView.backgroundColor = testView.backgroundColor
+        
+        /*
+        blueView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        UIView.animate(withDuration: 0.7) {
+            self.blueView.layoutIfNeeded()
+        }
+        */
+
+        /*
+         UIView.animate(withDuration: 5) {
+         self.view.layoutIfNeeded()
+         }
+         */
+        
+        
+        
+        /*
+        heightConstraint.constant = -screenHeight
+        UIView.animate(withDuration: 5) {
+            blueView.layoutIfNeeded()
+        }
+        */
+        if(self.scannerAdded == false)
+        {
+            self.scannerAdded = true
+        //Define capture device
+        if let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
+        {
+            captureSession = AVCaptureSession()
+
+            do
+            {
+                
+                let input = try AVCaptureDeviceInput(device: captureDevice) as AVCaptureDeviceInput
+                captureSession.addInput(input)
+                
+            }
+            catch let error as NSError
+            {
+                print(error)
+            }
+            
+            let output = AVCaptureMetadataOutput()
+            captureSession.addOutput(output)
+            
+            output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            
+            output.metadataObjectTypes = [AVMetadataObject.ObjectType.ean13]
+            
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            
+            videoPreviewLayer.frame = UIScreen.main.bounds
+            testView.layer.addSublayer(videoPreviewLayer)
+            //view.sendSubview(toBack: videoPreviewLayer)
+            captureSession.startRunning()
+            print("Video feed started")
+            for x in blueView.constraints
+            {
+                //print(x)
+                //print(x.constant)
+                if(x.constant == introAnimationView.frame.height)
+                {
+                    //self.blueView.removeConstraint(x)
+                    
+                    x.constant = 0
+                    
+                }
+                
+            }
+            
+            UIView.animate(withDuration: 0.37) {
+                self.blueView.layoutIfNeeded()
+            }
+            let tempVIew = UIView(frame: CGRect(x: 200, y: 200, width: 200, height: 200))
+            view.addSubview(tempVIew)
+            //print("Uptime: " + String(Int(ProcessInfo.processInfo.systemUptime)))
+        }
+        else
+        {
+            print("Camera not found")
+        }
+        }
+        else
+        {
+            captureSession.startRunning()
+
+            for x in blueView.constraints
+            {
+                //print(x)
+                //print(x.constant)
+                if(x.constant == introAnimationView.frame.height)
+                {
+                    //self.blueView.removeConstraint(x)
+                    
+                    x.constant = 0
+                    
+                }
+                
+            }
+            
+            UIView.animate(withDuration: 0.37) {
+                self.blueView.layoutIfNeeded()
+            }
+        }
+    }
+    @IBOutlet weak var testView: UIView!
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureSession.stopRunning()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("preparing segue")
@@ -201,8 +229,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
                     //_ = navigationController?.popViewController(animated: true)
                     }
-                    //let alert = UIAlertController(title: "Book Barcode Found", message: object.stringValue, preferredStyle: .alert)
-                //alert.addAction(UIAlertAction(title: "KYS Varun", style: .default, handler: {(action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)}))
+                    
                     
                     //alert.addAction(UIAlertAction(title: "Checkout", style: .default, handler: nil))
                     
