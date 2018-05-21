@@ -86,27 +86,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         blueView.topAnchor.constraint(equalTo: introAnimationView.topAnchor, constant: -200).isActive = true
         blueView.backgroundColor = testView.backgroundColor
         
-        /*
-        blueView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-        UIView.animate(withDuration: 0.7) {
-            self.blueView.layoutIfNeeded()
-        }
-        */
-
-        /*
-         UIView.animate(withDuration: 5) {
-         self.view.layoutIfNeeded()
-         }
-         */
-        
-        
-        
-        /*
-        heightConstraint.constant = -screenHeight
-        UIView.animate(withDuration: 5) {
-            blueView.layoutIfNeeded()
-        }
-        */
+      
         if(self.scannerAdded == false)
         {
             self.scannerAdded = true
