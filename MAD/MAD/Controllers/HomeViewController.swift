@@ -133,11 +133,6 @@ class HomeViewController: UIViewController {
     
     func setUpProfileButton()
     {
-        //let imageView = UIImageView(image: #imageLiteral(resourceName: "user"))
-        //imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        //profileButton.width = 400
-        //profileButton.siz
-        //profileButton.height = 200
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.addSubview(imageView)
         navigationBar.alpha = 0.5
@@ -315,7 +310,7 @@ class HomeViewController: UIViewController {
     var coverTimer: Timer = Timer()
     let images = [#imageLiteral(resourceName: "sampleCover2"), #imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2")]
     
-    var recommendationBookArr = [BookModel(ISBN: "9780684833392"), BookModel(ISBN: "9780804139021"), BookModel(ISBN: "9781400095957"), BookModel(ISBN: "9780393061703"), BookModel(ISBN: "9780679732761"), BookModel(ISBN: "9781451673265"), BookModel(ISBN: "9781848664173"), BookModel(ISBN: "9781101981085"), BookModel(ISBN: "9781786072108"), BookModel(ISBN: "9780993790904"), BookModel(ISBN: "9780141182773"), BookModel(ISBN: "9780810891951"), BookModel(ISBN:"9781594480003"), BookModel(ISBN:"9781555975098")]
+    var recommendationBookArr = [BookModel(ISBN: "9781786072108"), BookModel(ISBN: "9781101981085"), BookModel(ISBN: "9780993790904"), BookModel(ISBN: "9780141182773"), BookModel(ISBN: "9780810891951"), BookModel(ISBN:"9781594480003"), BookModel(ISBN:"9781555975098"), BookModel(ISBN: "9780804139021"), BookModel(ISBN: "9781848664173"), BookModel(ISBN: "9781451673265")]
     var cardsToCheck: [Int] = [0, 1, 2, 3, 4, 5, 6]
     var numCards: Int = 0
     var counter: Int = 0
