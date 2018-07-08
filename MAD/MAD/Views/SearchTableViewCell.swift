@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class SearchTableViewCell: UITableViewCell {
 
@@ -59,8 +60,8 @@ class SearchTableViewCell: UITableViewCell {
         if(newSearch)
         {
             newSearch = false
-            print(String(describing: numberInList) + "Test: " + self.titleLabel.text!)
-            print(String(describing: numberInList) + "Test2: " + self.titleHolder)
+//            print(String(describing: numberInList) + "Test: " + self.titleLabel.text!)
+//            print(String(describing: numberInList) + "Test2: " + self.titleHolder)
             print("Worked" + String(describing: numberInList))
             printColor = false
             colorFound = false
@@ -100,20 +101,20 @@ class SearchTableViewCell: UITableViewCell {
              */
             self.circleView.layer.cornerRadius = self.circleView.frame.size.width/2
             self.circleView.layer.masksToBounds = true
-            cellView.layer.shadowColor = UIColor.black.cgColor
-            cellView.layer.shadowRadius = 15
-            cellView.layer.shadowOpacity = 0.1
-            cellView.layer.shadowOffset = CGSize(width: 0, height: 0)
-            
-            titleLabel.layer.shadowColor = UIColor.black.cgColor
-            titleLabel.layer.shadowRadius = 6
-            titleLabel.layer.shadowOpacity = 0.3
-            titleLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
-            
-            authorLabel.layer.shadowColor = UIColor.black.cgColor
-            authorLabel.layer.shadowRadius = 6
-            authorLabel.layer.shadowOpacity = 0.3
-            authorLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
+//            cellView.layer.shadowColor = UIColor.black.cgColor
+//            cellView.layer.shadowRadius = 15
+//            cellView.layer.shadowOpacity = 0.1
+//            cellView.layer.shadowOffset = CGSize(width: 0, height: 0)
+//
+//            titleLabel.layer.shadowColor = UIColor.black.cgColor
+//            titleLabel.layer.shadowRadius = 6
+//            titleLabel.layer.shadowOpacity = 0.3
+//            titleLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
+//
+//            authorLabel.layer.shadowColor = UIColor.black.cgColor
+//            authorLabel.layer.shadowRadius = 6
+//            authorLabel.layer.shadowOpacity = 0.3
+//            authorLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
             
         //bookCover.layer.masksToBounds = false
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
@@ -123,13 +124,7 @@ class SearchTableViewCell: UITableViewCell {
         {
             if(Double((bookCover.image?.size.height)!)>20.0 && bookCover.image?.isEqual(#imageLiteral(resourceName: "loadingImage")) == false)
             {
-                if(self.numberInList == 1)
-                {
-                    //print("Made2")
-                    
-                }
-                //if(counter < 10)
-                //{
+                
                 if(printColor)
                 {
                     if(innerView.layer.sublayers != nil)
@@ -145,7 +140,7 @@ class SearchTableViewCell: UITableViewCell {
                     if(self.displayDefault)
                     {
                         let gradientLayer = CAGradientLayer()
-                        gradientLayer.frame = innerView.bounds
+//                        gradientLayer.frame = innerView.bounds
                         
                         let topColor = UIColor(red: 0.7, green: 0.9, blue: 1, alpha: 0.25)
                         let bottomColor = UIColor(red: 0.3, green: 0.7, blue: 1, alpha: 0.25)
@@ -225,15 +220,15 @@ class SearchTableViewCell: UITableViewCell {
                     //func adjustBrightness(by percentage: CGFloat = 30.0) -> UIColor {
                         let percentage = CGFloat(90.0)
                         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-                        if self.coverColor.getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
-                            if b < 1.0 {
-                                let newB: CGFloat = max(min(b + (percentage/100.0)*b, 1.0), 0,0)
-                                self.coverColor = UIColor(hue: h, saturation: s, brightness: newB, alpha: a)
-                            } else {
-                                let newS: CGFloat = min(max(s - (percentage/100.0)*s, 0.0), 1.0)
-                                self.coverColor = UIColor(hue: h, saturation: newS, brightness: b, alpha: a)
-                            }
-                        }
+//                        if self.coverColor.getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
+//                            if b < 1.0 {
+//                                let newB: CGFloat = max(min(b + (percentage/100.0)*b, 1.0), 0,0)
+//                                self.coverColor = UIColor(hue: h, saturation: s, brightness: newB, alpha: a)
+//                            } else {
+//                                let newS: CGFloat = min(max(s - (percentage/100.0)*s, 0.0), 1.0)
+//                                self.coverColor = UIColor(hue: h, saturation: newS, brightness: b, alpha: a)
+//                            }
+//                        }
                         //return self
                     //}
                     let temp = self.coverColor.cgColor.components
@@ -286,23 +281,28 @@ class SearchTableViewCell: UITableViewCell {
             //print("Doing some calcs")
             
         //}
-        image?.getColors { colors in
-            
-            self.coverColor = colors.background
-            
-            
-            let temp = self.coverColor.cgColor.components
-            //print(self.titleLabel.text! + ": " + String(describing: temp))
-            
-            if(temp![0] > 0.99 && temp![1] > 0.99 && temp![2] > 0.99)
-            {
-                self.coverColor = colors.detail
-            }
-            
-           self.colorFound = false
-            self.printColor = true
-            
-        }
+        
+        let dias = ColorsFromImage(image: image!, withFlatScheme: true)
+        self.coverColor = dias[0]
+//        self.coverColor = UIColor.darkGray
+        
+//        image?.getColors { colors in
+//
+//            self.coverColor = colors.background
+//
+//
+//            let temp = self.coverColor.cgColor.components
+//            //print(self.titleLabel.text! + ": " + String(describing: temp))
+//
+//            if(temp![0] > 0.99 && temp![1] > 0.99 && temp![2] > 0.99)
+//            {
+//                self.coverColor = colors.detail
+//            }
+//
+//           self.colorFound = false
+//            self.printColor = true
+//
+//        }
     }
     
     func areaAverage() /*-> UIColor*/ {

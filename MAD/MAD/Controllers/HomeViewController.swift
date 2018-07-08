@@ -120,7 +120,7 @@ class HomeViewController: UIViewController {
         self.waitForDownload()
     }
     
-    @IBAction func profileButtonClicked()
+    @objc func profileButtonClicked()
     {
         self.performSegue(withIdentifier: "profileSegue", sender: self)
         
@@ -146,7 +146,7 @@ class HomeViewController: UIViewController {
             imageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
             ])
-        imageView.addTarget(self, action: #selector(self.profileButtonClicked), for: .touchUpInside)
+        imageView.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
     }
     
     private func moveAndResizeImage(for height: CGFloat) {
