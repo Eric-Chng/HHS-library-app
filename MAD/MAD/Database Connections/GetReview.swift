@@ -9,7 +9,7 @@ class GetReview: NSObject {
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/review_twoidsearch.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/review_twoidsearch.php"
     
     //Gets a specific review based on the user and book
     func downloadItems(userID: String, isbn:String) {

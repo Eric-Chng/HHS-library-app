@@ -6,7 +6,7 @@ class HoldCreate: NSObject {
     
     weak var delegate: TransactionProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/hold_create.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/hold_create.php"
     
     //Pass in isbn of book and userid to create a hold
     func createhold(isbn: String,user:String) {

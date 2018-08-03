@@ -4,8 +4,15 @@ import UIKit
 
 
 class BookInsert: NSObject {
-    
-    
+    /*
+    ____    _____   ____    ____    _____    ____      _      _____   _____   ____
+    |  _ \  | ____| |  _ \  |  _ \  | ____|  / ___|    / \    |_   _| | ____| |  _ \
+    | | | | |  _|   | |_) | | |_) | |  _|   | |       / _ \     | |   |  _|   | | | |
+    | |_| | | |___  |  __/  |  _ <  | |___  | |___   / ___ \    | |   | |___  | |_| |
+    |____/  |_____| |_|     |_| \_\ |_____|  \____| /_/   \_\   |_|   |_____| |____/
+     CONNECTS TO OLD DATABASE TO MAINTAIN BROKEN FUNCTIONALITY
+    */
+
     
     weak var delegate: TransactionProtocol!
     

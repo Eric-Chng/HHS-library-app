@@ -7,7 +7,7 @@ class HoldSetReady: NSObject {
     
     weak var delegate: TransactionProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/hold_setready.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/hold_setready.php"
     
     //Sets a hold as ready
     func setHoldReady(id:String) {

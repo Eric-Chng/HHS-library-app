@@ -7,7 +7,7 @@ class HoldDelete: NSObject {
     
     weak var delegate: TransactionProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/hold_delete.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/hold_delete.php"
     
     //Deletes a hold
     func deleteHold(id:String) {

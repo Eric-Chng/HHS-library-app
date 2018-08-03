@@ -9,7 +9,7 @@ class HoldbyUserReady: NSObject {
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/hold_userid_ready.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/hold_userid_ready.php"
     
     //Gets all holds for a user that are ready
     func downloadItems(inputID: String) {

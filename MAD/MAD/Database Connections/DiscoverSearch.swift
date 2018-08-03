@@ -7,7 +7,7 @@ class DiscoverSearch: NSObject {
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/discover_booktitlesearch.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/discover_booktitlesearch.php"
     
     //Keyword searches through database
     func downloadItems(textquery: String) {

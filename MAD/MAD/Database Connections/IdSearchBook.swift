@@ -12,7 +12,7 @@ class IdSearchBook: NSObject {
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/isbn_book.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/isbn_book.php"
     //Downloads book matching that isbn
     func downloadItems(inputID: String) {
         

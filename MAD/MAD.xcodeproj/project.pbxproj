@@ -748,7 +748,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -757,7 +757,7 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD2;
+				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MAD/Resources/MAD-Bridging-Header.h";
@@ -775,7 +775,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -784,7 +784,7 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD2;
+				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MAD/Resources/MAD-Bridging-Header.h";

@@ -7,7 +7,7 @@ class UserSetFacebook: NSObject {
     
     weak var delegate: TransactionProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/user_setfacebook.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/user_setfacebook.php"
     
     //Sets the facebookid of a user
     func setFacebookID(id:String, facebookid:String) {

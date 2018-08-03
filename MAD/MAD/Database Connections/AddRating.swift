@@ -9,7 +9,7 @@ class AddReview: NSObject {
     
     weak var delegate: TransactionProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/review_insert.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/review_insert.php"
     
     //Adds a review to the database
     func downloadItems(userID: String, isbn:String, rating: Int, text: String) {

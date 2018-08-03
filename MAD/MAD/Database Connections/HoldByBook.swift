@@ -9,7 +9,7 @@ class HoldbyBook: NSObject {
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/hold_bookisbn.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/hold_bookisbn.php"
     
     //Gets all holds put on a book
     func downloadItems(inputID: String) {

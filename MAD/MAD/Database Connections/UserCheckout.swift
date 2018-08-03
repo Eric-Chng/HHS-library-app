@@ -11,7 +11,7 @@ class UserCheckout: NSObject {
     
     weak var delegate: TransactionProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/user_checkout.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/user_checkout.php"
     
     //Checks out a book for a user
     func checkout(isbn: String,user:String) {

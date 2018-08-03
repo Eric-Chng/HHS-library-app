@@ -7,7 +7,7 @@ class UserReturn: NSObject {
     
     weak var delegate: TransactionProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/user_return.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/user_return.php"
     
     //Pass in isbn of book and the checkout id to return a book
     func downloadItems(isbn: String, transaction_ID:String) {

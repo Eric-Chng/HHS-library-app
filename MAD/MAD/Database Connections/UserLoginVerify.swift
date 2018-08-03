@@ -9,7 +9,7 @@ class UserLoginVerify: NSObject {
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/user_loginverify.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/user_loginverify.php"
     
     //Verifies login information
     func verifyLogin(schoolID: String, password:String) {

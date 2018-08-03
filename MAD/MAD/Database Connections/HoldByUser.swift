@@ -9,7 +9,7 @@ class HoldbyUser: NSObject {
     
     weak var delegate: DownloadProtocol!
     
-    let urlPath = "http://www.the-library-database.com/php_scripts/hold_userid.php"
+    let urlPath = "http://www.the-library-database.com/hhs_php/hold_userid.php"
     
     //Gets all holds owned by a user
     func downloadItems(inputID: CLong) {
