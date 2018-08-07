@@ -65,12 +65,12 @@ class DiscoverSearch: NSObject {
             
             
             //JsonElement values are guaranteed to not be null through optional binding
-            if let name = jsonElement["name"] as! String?,
+            if let name = jsonElement["Title"] as! String?,
                 let isbn = jsonElement["isbn"] as! String?,
-                let authorID = jsonElement["author"] as! String?,
+                let authorID = jsonElement["Author"] as! String?,
                 let desc = jsonElement["description"] as! String?,
                 let bookcount = jsonElement["bookcount"] as! String?,
-                let booktotal = jsonElement["booktotal"] as! String?
+                let booktotal = jsonElement["Total Copies"] as! String?
             {
                 book.name = name
                 book.title = name

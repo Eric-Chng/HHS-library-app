@@ -443,12 +443,12 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 print("search returned book")
                 let intermediatetemp = tempvarforarray as! BookModel
                 //let x = BookModel(ISBN: intermediatetemp.ISBN!)
-                let y = BookModel.init(ISBN: intermediatetemp.ISBN!, name: intermediatetemp.name!, author: intermediatetemp.author!, desc: "")
                 //print(x)
                 //self.currentTitles.append(x.title!)
                 //self.currentTitles.append("test")
                 //self.currentAuthors.append(x.author!)
                 //self.currentISBNs.append(x.ISBN!)
+                let y = BookModel.init(ISBN: intermediatetemp.ISBN!, name: intermediatetemp.name!, author: intermediatetemp.author!, desc: "")
                 
                 self.currentBooks.append(y)
                 self.sendNewRequest = true
