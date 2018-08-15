@@ -14,9 +14,9 @@ import Lottie
 //import ObjectMapper
 
 
-class BookDetailViewController : UIViewController, DownloadProtocol, TransactionProtocol {
+class BookDetailViewController : UIViewController, DownloadProtocol, TransactionProtocol, UIWebViewDelegate{
     
-    
+    var myWebView: UIWebView = UIWebView()
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var authorLabel:UILabel?
     @IBOutlet weak var reviewButton: UIButton!
@@ -233,16 +233,85 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             }
         }
     }
-    
     //Checks the availabilty of a book
     func checkAvailability()
     {
-        let idSearch = IdSearchBook()
-        idSearch.delegate = self
-        if(self.selectedBook?.ISBN != nil)
-        {
-        idSearch.downloadItems(inputID: (self.selectedBook?.ISBN)!)
+//        let myURLString = "http://google.com"
+//        guard let myURL = NSURL(string: myURLString) else {
+//            print("Error: \(myURLString) doesn't seem to be a valid URL")
+//            return
+//        }
+//
+//        do {
+//            let myHTMLString = try String(contentsOf: myURL as URL)
+//            print("HTML : \(String(describing: myHTMLString))")
+//        } catch let error as NSError {
+//            print("Error: \(error)")
+//        }
+        
+//        self.myWebView.delegate = self
+//
+//        let urlString = "YOUR HTTPS URL"
+//        self.myWebView.
+//        self.myWebView.load(NSURLRequest(url: NSURL(string: urlString)! as URL) as URLRequest!)
+        
+//        var tempWebView = UIWebView.init()
+        if let url = URL(string: "http://search.follettsoftware.com/metasearch/ui/27952/search/books?q=sex%20book") {
+            self.myWebView.loadRequest(URLRequest.init(url: url))
+            self.myWebView.delegate = self
         }
+        
+//        if let url = URL(string: "http://search.follettsoftware.com/metasearch/ui/27952/search/books?q=sex%20book") {
+//            do {
+//                let contents = try String(contentsOf: url)
+//                print(contents)
+//            } catch {
+//                // contents could not be loaded
+//            }
+//        } else {
+//            // the URL was bad!
+//        }
+        
+//        let idSearch = IdSearchBook()
+//        idSearch.delegate = self
+//        if(self.selectedBook?.ISBN != nil)
+//        {
+//        idSearch.downloadItems(inputID: (self.selectedBook?.ISBN)!)
+//        }
+    }
+    
+    var new = 0
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        new = new + 1
+
+        if(new > 2)
+        {
+            print("Finished loading")
+//            self.myWebView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
+//                                       completionHandler: { (html: Any?, error: Error?) in
+//                                        print(html)
+//            })
+
+//            self.navigationController?.present(, animated: true, completion: nil)
+            Timer.scheduledTimer(timeInterval: 1, target: self, selector:
+                #selector(self.checkForFlag), userInfo: nil,  repeats: false)
+            
+        }
+    }
+    
+    @objc func checkForFlag()
+    {
+        let html_to_scrape = self.myWebView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
+        if html_to_scrape?.range(of:"flag") != nil {
+            print(html_to_scrape)
+        }
+        else{
+            print("Does not exist")
+            Timer.scheduledTimer(timeInterval: 1, target: self, selector:
+                #selector(self.checkForFlag), userInfo: nil,  repeats: false)
+        }
+//        print(html_to_scrape!)
     }
     
     //Passes the current BookModel to the HoldViewController

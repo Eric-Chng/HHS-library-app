@@ -11,7 +11,9 @@ import UIKit
 //import Alamofire
 //import ObjectMapper
 
-class BookModel: NSObject {
+class BookModel: NSObject, DownloadProtocol {
+    
+    
     
     //properties
     var name: String?
@@ -22,6 +24,7 @@ class BookModel: NSObject {
     var title: String?
     var JSONParsed: Bool = false
     var author: String?
+    var db_id: String?
     var googleImageURL: String?
     var foundGoogleImage: Bool = false;
     var rating: Double = -3.0 //not found if negative
@@ -49,6 +52,17 @@ class BookModel: NSObject {
         {
             return #imageLiteral(resourceName: "loadingImage")
         }
+    }
+    
+//    Only call if db_id has been set
+    func getRating()
+    {
+        let getReview = GetReview.init()
+        getReview.delegate = self
+    }
+    
+    func itemsDownloaded(items: NSArray, from: String) {
+        <#code#>
     }
     
     //constructor
@@ -182,8 +196,8 @@ class BookModel: NSObject {
                 let temp: UIImage? = UIImage(data: data)
                 if(temp != nil && Double((temp?.size.height)!)>20.0)
                 {
-                    
-                    self.BookCoverImage.image = temp
+                    self.BookCoverImage = UIImageView.init(image: temp)
+//                    self.BookCoverImage.image = temp
                     found = true;
                     print("Image downloaded")
                 }
@@ -207,7 +221,9 @@ class BookModel: NSObject {
                         let temp: UIImage? = UIImage(data: data)
                         if(temp != nil && Double((temp?.size.height)!)>20.0)
                         {
-                            self.BookCoverImage.image = temp
+                            self.BookCoverImage = UIImageView.init(image: temp)
+
+//                            self.BookCoverImage.image = temp
                             self.foundGoogleImage = true
                         }
                     }

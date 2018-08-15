@@ -218,8 +218,8 @@ class SearchTableViewCell: UITableViewCell {
                     }
                     //print("Sublayers: " + String(describing: innerView.layer.sublayers!.count))
                     //func adjustBrightness(by percentage: CGFloat = 30.0) -> UIColor {
-                        let percentage = CGFloat(90.0)
-                        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+//                        let percentage = CGFloat(90.0)
+//                        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
 //                        if self.coverColor.getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
 //                            if b < 1.0 {
 //                                let newB: CGFloat = max(min(b + (percentage/100.0)*b, 1.0), 0,0)

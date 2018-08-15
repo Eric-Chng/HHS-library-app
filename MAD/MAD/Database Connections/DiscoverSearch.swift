@@ -70,14 +70,23 @@ class DiscoverSearch: NSObject {
                 let authorID = jsonElement["Author"] as! String?,
                 let desc = jsonElement["description"] as! String?,
                 let bookcount = jsonElement["bookcount"] as! String?,
-                let booktotal = jsonElement["Total Copies"] as! String?
+                let booktotal = jsonElement["Total Copies"] as! String?,
+                let image_url = jsonElement["picture_html"] as! String?,
+                let id = jsonElement["id"] as! String?
             {
+                book.db_id = id
                 book.name = name
                 book.title = name
                 book.ISBN = isbn
                 book.author = authorID
                 book.desc = desc
                 book.bookCount = Int(bookcount)
+                book.googleImageURL = image_url
+                if let url = URL(string: image_url)
+                {
+                    
+                    book.downloadCoverImage(url: url)
+                }
                 book.bookTotal = Int(booktotal)
             }
             

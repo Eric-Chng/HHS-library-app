@@ -46,6 +46,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                     print(self.currentTitles[0])
                     self.currentAuthors.append((book as! BookModel).author!)
                     print("Author found: " + (book as! BookModel).author!)
+                    print("Description found: " + (book as! BookModel).desc)
                 }
                 _ = book as! BookModel
                 self.sendNewRequest = true
@@ -60,12 +61,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         if(counter < 1)
         {
             currentTitles.append("No Results Found")
+            currentCovers = [UIImage()]
             currentAuthors.append("Please try another query")
         }
         let temparray = NSMutableArray()
         var count:Int = 0;
         for itemUse in items {
-            if (count<10) {
+            if (count<20) {
                 temparray.add(itemUse)
             }
             count = count + 1;
@@ -212,7 +214,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         {
             //if(indexPath.section == 1)
             //{
-            if(currentTitles.count > indexPath.row)
+            if(currentBooks.count > indexPath.row)
             {
                 if(self.requestCounter > 0)
                 {
@@ -226,7 +228,11 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 myCell.authorLabel.text = currentAuthors[indexPath.row]
                 if(currentBooks.count > indexPath.row)
                 {
-                    myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image //found nil while unwrapping optional
+                    if(self.currentBooks[indexPath.row].BookCoverImage != nil)
+                    {
+                        myCell.bookCover.image = self.currentBooks[indexPath.row].BookCoverImage.image //found nil while unwrapping optional
+    //                    Renables images in the cells^
+                    }
                 }
             }
             //}
@@ -241,7 +247,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         //print("preparing segue")
         if(segue.identifier == "SearchToBookDetail")
         {
-            
+            print("Pressed: " + String(self.pressedItem))
+            print("Len: " + String(currentBooks.count))
             let bookToPass = currentBooks[self.pressedItem]
             //selectedBooke
             if let destinationViewController = segue.destination as? BookDetailViewController {
@@ -444,12 +451,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                 let intermediatetemp = tempvarforarray as! BookModel
                 //let x = BookModel(ISBN: intermediatetemp.ISBN!)
                 //print(x)
+//                intermediatetemp.url
                 //self.currentTitles.append(x.title!)
                 //self.currentTitles.append("test")
                 //self.currentAuthors.append(x.author!)
                 //self.currentISBNs.append(x.ISBN!)
-                let y = BookModel.init(ISBN: intermediatetemp.ISBN!, name: intermediatetemp.name!, author: intermediatetemp.author!, desc: "")
-                
+//                let y = BookModel.init(ISBN: intermediatetemp.ISBN!, name: intermediatetemp.name!, author: intermediatetemp.author!, desc: "")
+                let y = intermediatetemp
                 self.currentBooks.append(y)
                 self.sendNewRequest = true
                 if(y.googleImageURL != nil)
