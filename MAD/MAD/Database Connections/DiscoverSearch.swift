@@ -82,6 +82,7 @@ class DiscoverSearch: NSObject {
                 book.desc = desc
                 book.bookCount = Int(bookcount)
                 book.googleImageURL = image_url
+                book.getRating()
                 if let url = URL(string: image_url)
                 {
                     

@@ -14,7 +14,7 @@ class ReviewModel: NSObject {
     var ID: String?
     var userID: String?
     var ISBN: String?
-    var rating: Int?
+    var rating: Double?
     var text: String?
     
     
@@ -27,7 +27,7 @@ class ReviewModel: NSObject {
     
     //construct
     
-    init(ID: String, userID: String, ISBN: String, rating: Int, text:String) {
+    init(ID: String, userID: String, ISBN: String, rating: Double, text:String) {
         self.ID = ID
         self.userID = userID
         self.ISBN = ISBN

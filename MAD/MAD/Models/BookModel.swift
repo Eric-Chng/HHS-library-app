@@ -59,10 +59,18 @@ class BookModel: NSObject, DownloadProtocol {
     {
         let getReview = GetReview.init()
         getReview.delegate = self
+        getReview.downloadItems(isbn: self.ISBN!)
     }
     
-    func itemsDownloaded(items: NSArray, from: String) {
-        <#code#>
+    func itemsDownloaded(items: NSArray, from: String)
+    {
+        for item in items
+        {
+            let review = item as! ReviewModel
+            let rating_value = review.rating
+            self.rating = rating_value!
+            print(rating_value)
+        }
     }
     
     //constructor

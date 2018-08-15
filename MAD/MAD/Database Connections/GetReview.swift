@@ -39,7 +39,7 @@ class GetReview: NSObject {
         task.resume()
         
     }
-    func downloadItems(isbn:CLong) {
+    func downloadItems(isbn: String) {
         
         
  
@@ -98,7 +98,7 @@ class GetReview: NSObject {
             if let id = jsonElement["id"] as! String?,
                 let isbn = jsonElement["isbn"] as! String?,
                 let userid = jsonElement["user_id"] as! String?,
-                let start = jsonElement["rating"] as! Int?,
+                let start = (jsonElement["rating"] as! NSString?)?.doubleValue,
                 let due = jsonElement["text"] as! String?
             {
                 rating.ID = id
@@ -113,8 +113,10 @@ class GetReview: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            
-            self.delegate.itemsDownloaded(items: ratings, from: "GetReview")
+            if(self.delegate != nil)
+            {
+                self.delegate.itemsDownloaded(items: ratings, from: "GetReview")
+            }
             
         })
     }

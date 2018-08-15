@@ -67,9 +67,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         let temparray = NSMutableArray()
         var count:Int = 0;
         for itemUse in items {
-            if (count<20) {
-                temparray.add(itemUse)
-            }
+
+            temparray.add(itemUse)
             count = count + 1;
         }
         //Searches with library Database

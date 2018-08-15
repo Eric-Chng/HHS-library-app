@@ -256,7 +256,22 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
 //        self.myWebView.load(NSURLRequest(url: NSURL(string: urlString)! as URL) as URLRequest!)
         
 //        var tempWebView = UIWebView.init()
-        if let url = URL(string: "http://search.follettsoftware.com/metasearch/ui/27952/search/books?q=sex%20book") {
+        let words = self.selectedBook?.title?.components(separatedBy: " ")
+        var argument = ""
+        var wordCounter = 0
+        for word in words!
+        {
+            wordCounter = wordCounter + 1
+            if(wordCounter > 1)
+            {
+                argument = argument + "+"
+            }
+            let trimmedWord = word.trimmingCharacters(in: .punctuationCharacters)
+            argument = argument + trimmedWord
+            
+        }
+        print(argument)
+        if let url = URL(string: "http://search.follettsoftware.com/metasearch/ui/27952/search/books?q="+argument) {
             self.myWebView.loadRequest(URLRequest.init(url: url))
             self.myWebView.delegate = self
         }
@@ -302,9 +317,47 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
     
     @objc func checkForFlag()
     {
-        let html_to_scrape = self.myWebView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
+        var html_to_scrape = self.myWebView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
         if html_to_scrape?.range(of:"flag") != nil {
-            print(html_to_scrape)
+//            print(html_to_scrape!)
+            
+            
+//            Make ISBN nicer format
+            var trimmedISBN = (self.selectedBook?.ISBN!)!.replacingOccurrences(of: "-", with: "")
+            let ISBNindex = trimmedISBN.index(before: trimmedISBN.endIndex)
+            let tempSubString = trimmedISBN.prefix(upTo: ISBNindex)
+            trimmedISBN = String(tempSubString)
+            print(trimmedISBN)
+            
+//            Generate 800 character chunk to analyze
+            let range = html_to_scrape?.range(of: trimmedISBN)
+            let count = range?.upperBound
+            let index = html_to_scrape?.index(count!, offsetBy: -800)
+            let mySubstring = html_to_scrape?.suffix(from: index!)
+            html_to_scrape = String(mySubstring!)
+            
+            let indexTwo = html_to_scrape?.index(html_to_scrape!.startIndex, offsetBy: 800)
+            let datSubstring = html_to_scrape?.prefix(upTo: indexTwo!)
+            html_to_scrape = String(datSubstring!)
+            print(html_to_scrape!)
+            
+//            Changes label on button
+            if html_to_scrape?.range(of:"flag in") != nil
+            {
+                self.checkoutButton.setTitle("Hold", for: UIControlState.normal)
+            }
+            else if html_to_scrape?.range(of:"flag out") != nil
+            {
+                self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
+                UIView.animate(withDuration: 1.0) {
+                    self.checkoutButton.alpha = 0.8
+                    self.checkoutButton.backgroundColor = UIColor.lightGray
+                }
+            }
+            
+            
+            
+            
         }
         else{
             print("Does not exist")
