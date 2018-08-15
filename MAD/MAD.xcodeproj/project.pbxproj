@@ -17,6 +17,7 @@
 		449941151FA8155300272446 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941141FA8155300272446 /* BookDetailViewController.swift */; };
 		44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */; };
 		44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8426A20303F7E00697F4B /* HoldDelete.swift */; };
+		44CB8B5521240E3400B495CC /* GetDefaultRecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB8B5421240E3400B495CC /* GetDefaultRecs.swift */; };
 		44D2164F203E38B8008F9BC4 /* BookInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2164E203E38B8008F9BC4 /* BookInsert.swift */; };
 		44D527C8202D66D9000A34DD /* GetReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C7202D66D9000A34DD /* GetReview.swift */; };
 		44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D527C9202D68E0000A34DD /* ReviewModel.swift */; };
@@ -93,6 +94,7 @@
 		449941141FA8155300272446 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
 		44B8426A20303F7E00697F4B /* HoldDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldDelete.swift; sourceTree = "<group>"; };
+		44CB8B5421240E3400B495CC /* GetDefaultRecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultRecs.swift; sourceTree = "<group>"; };
 		44D2164E203E38B8008F9BC4 /* BookInsert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInsert.swift; sourceTree = "<group>"; };
 		44D527C7202D66D9000A34DD /* GetReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReview.swift; sourceTree = "<group>"; };
 		44D527C9202D68E0000A34DD /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */,
 				44E5115720298CDC00A721B3 /* UserGetBooks.swift */,
+				44CB8B5421240E3400B495CC /* GetDefaultRecs.swift */,
 				4461DDE1202F738E006D6838 /* DiscoverSearch.swift */,
 				44D527CD202D6BCC000A34DD /* UserSetFacebook.swift */,
 				44D527CF202D6C65000A34DD /* UserLoginVerify.swift */,
@@ -565,6 +568,7 @@
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
 				44D527CE202D6BCC000A34DD /* UserSetFacebook.swift in Sources */,
 				44F5AC882030B6F500C644CF /* HoldCreate.swift in Sources */,
+				44CB8B5521240E3400B495CC /* GetDefaultRecs.swift in Sources */,
 				828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */,
 				44D527D0202D6C65000A34DD /* UserLoginVerify.swift in Sources */,
 				44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */,
@@ -748,7 +752,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -775,7 +779,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
