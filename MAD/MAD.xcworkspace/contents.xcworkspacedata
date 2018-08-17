@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MAD.xcodeproj">
+      location = "group:/Users/davidm/MAD-2018/MAD/FUHSD Libraries.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

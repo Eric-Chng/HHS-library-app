@@ -719,6 +719,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.myWebView.stopLoading()
         UIView.animate(withDuration: 0.8, animations: {self.navigationController?.navigationBar.backgroundColor = self.navBarBackgroundColor
             self.navigationController?.navigationBar.barTintColor = self.navBarTintColor
 

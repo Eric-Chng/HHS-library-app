@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '14ADE4809FD04B9112B37855D9BC3953'
-               BlueprintName = 'ScalingCarousel'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ScalingCarousel.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "968D0B43377B43E76433DF7B88E53497"
+               BlueprintName = "ScalingCarousel"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "ScalingCarousel.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

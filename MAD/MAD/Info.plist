@@ -22,7 +22,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.fuhsdlibraries.iosapp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -37,6 +37,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb401355603638075</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1051800648798-o09pbv3jl8p3fep2fbf8er837ifqim9e</string>
 			</array>
 		</dict>
 	</array>

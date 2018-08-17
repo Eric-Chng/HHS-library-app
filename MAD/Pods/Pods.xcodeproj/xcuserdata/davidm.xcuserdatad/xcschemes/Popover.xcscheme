@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '24A4912ADED2AC024A657B05FD963A72'
-               BlueprintName = 'Popover'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Popover.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3EDA3111E79A9D02D34B64E87A66BC4D"
+               BlueprintName = "Popover"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "Popover.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

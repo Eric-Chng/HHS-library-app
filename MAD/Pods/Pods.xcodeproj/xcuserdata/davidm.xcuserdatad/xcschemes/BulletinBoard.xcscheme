@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '27A96C322C22E4011A3A9A58D7EDBCC0'
-               BlueprintName = 'BulletinBoard'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'BulletinBoard.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9759A6BFEC63D1C5BEFF632FCBB8F335"
+               BlueprintName = "BulletinBoard"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "BulletinBoard.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

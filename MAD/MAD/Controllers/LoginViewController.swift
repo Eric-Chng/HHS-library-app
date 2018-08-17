@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import GoogleSignIn
+import Lottie
 
-class LoginViewController: UIViewController, DownloadProtocol {
+class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelegate {
     
     @IBOutlet weak var incorrectCredentialsLabel: UILabel!
+    let animationView: LOTAnimationView = LOTAnimationView(name: "loginBook")
+    @IBOutlet weak var loginTitleLabel: UILabel!
+    @IBOutlet weak var lottieViewHolder: UIView!
     
     func itemsDownloaded(items: NSArray, from: String) {
         self.loginButton.setTitle("Login", for: UIControlState.normal)
@@ -24,8 +29,8 @@ class LoginViewController: UIViewController, DownloadProtocol {
             switch user {
             case is UserModel:
                 //let userCasted = user as! UserModel
-                UserDefaults.standard.set(self.userNameField.text,forKey: "id")
-                UserDefaults.standard.set(self.passwordField.text,forKey: "credential")
+//                UserDefaults.standard.set(self.userNameField.text,forKey: "id")
+//                UserDefaults.standard.set(self.passwordField.text,forKey: "credential")
                 UserDefaults.standard.set((user as! UserModel).name, forKey: "userName")
 
                 if UserDefaults.standard.object(forKey: "FirstLogin") == nil
@@ -60,6 +65,44 @@ class LoginViewController: UIViewController, DownloadProtocol {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var backBlurView: UIVisualEffectView!
+    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var googleButtonFrame: UIView!
+    var animationCounter = 0
+    
+    @objc func checkForGoogleSignIn()
+    {
+        animationCounter = animationCounter + 1
+        if(animationCounter%8 == 0)
+        {
+            animationView.play()
+        }
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            print("Login validated")
+            let user = GIDSignIn.sharedInstance().currentUser
+            let profile = user?.profile
+            let firstName = profile?.givenName
+            self.userNameField.text = firstName
+            let email = profile?.email
+            if email?.range(of:"fuhsd.org") != nil
+            {
+                let login = UserLoginVerify()
+                login.delegate = self
+                login.verifyLogin(schoolID: "1234567", password: "test")
+                timer.invalidate()
+            }
+            else if email != nil
+            {
+                self.incorrectCredentialsLabel.alpha = 1.0
+                GIDSignIn.sharedInstance().signOut()
+
+            }
+            
+
+        } else {
+            print("Not logged in")
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +115,18 @@ class LoginViewController: UIViewController, DownloadProtocol {
         self.iconImage.layer.masksToBounds = true
         loginButton.layer.cornerRadius = 12
         loginButton.layer.masksToBounds = true
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signInSilently()
+        
+        let signInButton = GIDSignInButton(frame: CGRect(x: view.center.x - 99, y: googleButtonFrame.frame.minY, width: 156, height: 48))
+        view.addSubview(signInButton)
+        signInButton.style = .wide
+
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:
+            #selector(self.checkForGoogleSignIn), userInfo: nil,  repeats: true)
+        
+        
         
         if let userID = UserDefaults.standard.object(forKey: "id")
         {
@@ -102,8 +157,9 @@ class LoginViewController: UIViewController, DownloadProtocol {
         backBlurView.alpha = 0.4
         let blurEffect = UIBlurEffect(style: .light)
         let effectView = UIVisualEffectView(effect: blurEffect)
-        effectView.frame = self.backgroundImage.frame
+        effectView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height+130)
         backgroundImage.addSubview(effectView)
+        signInButton.alpha = 0.0
         effectView.alpha = 0
         self.iconImage.alpha = 0
         self.userNameField.alpha = 0.0
@@ -113,14 +169,28 @@ class LoginViewController: UIViewController, DownloadProtocol {
             effectView.alpha = 1.0
         }
         
-        UIView.animate(withDuration: 1.4) {
-            self.backgroundImage.alpha = 0.2
-            self.fadeOutView.alpha = 0.8
-            self.iconImage.alpha = 1.0
-            self.userNameField.alpha = 1.0
-            self.passwordField.alpha = 1.0
-            self.loginButton.alpha = 1.0
-        }
+        UIView.animate(withDuration: 0.5, delay:3.0, options: [], animations:{
+            signInButton.alpha = 1.0
+
+        }, completion: nil)
+        
+        let width = view.frame.height*81/160
+//        let viewFrame = view.frame
+        print("description")
+        print(lottieViewHolder.widthAnchor.description)
+        
+        
+//        UIView.animate(withDuration: 2.4) {
+//            signInButton.alpha = 1.0
+//        }
+//        UIView.animate(withDuration: 1.4) {
+//            self.backgroundImage.alpha = 0.2
+//            self.fadeOutView.alpha = 0.8
+//            self.iconImage.alpha = 1.0
+//            self.userNameField.alpha = 1.0
+//            self.passwordField.alpha = 1.0
+//            self.loginButton.alpha = 1.0
+//        }
         
         
     }
@@ -136,8 +206,34 @@ class LoginViewController: UIViewController, DownloadProtocol {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        animationView.frame = CGRect(x: 0, y: 0, width: lottieViewHolder.frame.height, height: lottieViewHolder.frame.width)
+        lottieViewHolder.addSubview(animationView)
+//        animationView.center = lottieViewHolder.center
+        //        animationView.center = lottieViewHolder.center
+        
+        //        animationView.frame = CGRect(x: viewFrame.midX - width/2, y: loginTitleLabel.frame.maxY - width + 88, width: width, height: width)
+        //        animationView.bottomAnchor.constraint(equalTo: loginTitleLabel.topAnchor, constant: 10).isActive = true
+        //        animationView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        //        animationView.heightAnchor.constraint(equalToConstant: width).isActive = true
+        //        animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        
+//        animationView.loopAnimation = true
+        print("width")
+        print(animationView.frame.width)
+        print("height")
+        print(animationView.frame.height)
+        
+        
+        //        animationView.center = view.center
+        animationView.play()
+    }
+    
     @IBAction func Submit(_ sender: Any)
     {
+        GIDSignIn.sharedInstance().signOut()
+        
         self.loginButton.setTitle("Logging in...", for: UIControlState.normal)
         self.loginButton.titleLabel?.text = "Logging in..."
         let login = UserLoginVerify()

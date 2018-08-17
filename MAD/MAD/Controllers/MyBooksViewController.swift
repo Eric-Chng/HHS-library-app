@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleSignIn
 
 class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DownloadProtocol, FBSDKLoginButtonDelegate{
     
@@ -110,8 +111,8 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nameLabe.text = UserDefaults.standard.object(forKey: "userName") as? String
-        self.idLabel.text = "ID: " + (UserDefaults.standard.object(forKey: "id") as! String)
+//        self.nameLabe.text = UserDefaults.standard.object(forKey: "userName") as? String
+//        self.idLabel.text = "ID: " + (UserDefaults.standard.object(forKey: "id") as! String)
         delinquencyView.layer.cornerRadius = 6
         delinquencyView.layer.masksToBounds = true
         //let UserSearch = UserGetBooks()
@@ -131,10 +132,11 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         
         loginButtonView.addSubview(loginButton)
         loginButton.delegate = self
-        if (FBSDKAccessToken.current()) != nil
-        {
-            self.fetchProfile()
-        }
+//        if (FBSDKAccessToken.current()) != nil
+//        {
+//            self.fetchProfile()
+//        }
+        self.getGoogleProfile()
         self.profilePictureView.layer.cornerRadius = profilePictureView.layer.frame.width/2
         self.profilePictureView.layer.masksToBounds = true
         reportBugButton.layer.cornerRadius = 4
@@ -174,7 +176,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         self.checkOutTableView.reloadData()
     }
     @IBAction func logoutPressed(_ sender: Any) {
-        
+        GIDSignIn.sharedInstance().signOut()
         UserDefaults.standard.set("",forKey: "id")
         UserDefaults.standard.set("",forKey: "credential")
         self.performSegue(withIdentifier: "logoutSegue", sender: self)
@@ -184,6 +186,20 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func helpPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "helpSegue", sender: self)
         
+    }
+    
+    func getGoogleProfile()
+    {
+        let user = GIDSignIn.sharedInstance().currentUser
+        let profile = user?.profile
+        let firstName = profile?.givenName
+        let email = profile?.email
+        self.nameLabe.text = profile?.name
+        self.idLabel.text = email!
+        let imageURL = profile?.imageURL(withDimension: 300)
+        print("Image URL")
+        print(imageURL)
+        self.downloadImage(url: imageURL!)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
