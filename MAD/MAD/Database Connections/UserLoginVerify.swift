@@ -12,14 +12,14 @@ class UserLoginVerify: NSObject {
     let urlPath = "http://www.the-library-database.com/hhs_php/user_loginverify.php"
     
     //Verifies login information
-    func verifyLogin(schoolID: String, password:String) {
+    func verifyLogin(email:String) {
    
         
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let postString = "password=secureAf&schoolid=\(schoolID)&userpassword=\(password)"
+        let postString = "password=secureAf&email=\(email)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
