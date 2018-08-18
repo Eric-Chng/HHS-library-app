@@ -9,7 +9,7 @@ class UserCreate: NSObject {
     let urlPath = "http://www.the-library-database.com/hhs_php/account_create.php"
     
     //Pass in isbn of book and userid to create a hold
-    func createhold(email: String,name:String) {
+    func createUser(email: String,name:String) {
         
         
         let url = URL(string: urlPath)!

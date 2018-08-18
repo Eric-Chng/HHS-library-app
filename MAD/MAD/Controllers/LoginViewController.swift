@@ -174,7 +174,6 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
 
         }, completion: nil)
         
-        let width = view.frame.height*81/160
 //        let viewFrame = view.frame
         print("description")
         print(lottieViewHolder.widthAnchor.description)

@@ -1,12 +1,7 @@
 import Foundation
 import UIKit
 
-//Protocol that allows for asynchronous code, allowing other code to function even if network issues causes delays in the information download
-protocol UserCheck: class {
-    func itemsDownloaded(items: NSArray, from: String)
-}
-
-class IdSearchBook: NSObject {
+class UserCheck: NSObject {
     
     
     
