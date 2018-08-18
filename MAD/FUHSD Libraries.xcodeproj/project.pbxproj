@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442103552127D51C008385CF /* UserCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442103542127D51C008385CF /* UserCheck.swift */; };
+		442103572127D94D008385CF /* UserCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442103562127D94D008385CF /* UserCreate.swift */; };
 		4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426E3E61F9B0A9F007CD8E7 /* AppDelegate.swift */; };
 		4426E3EE1F9B0A9F007CD8E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EC1F9B0A9F007CD8E7 /* Main.storyboard */; };
 		4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4426E3EF1F9B0A9F007CD8E7 /* Assets.xcassets */; };
@@ -85,6 +87,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		442103542127D51C008385CF /* UserCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheck.swift; sourceTree = "<group>"; };
+		442103562127D94D008385CF /* UserCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreate.swift; sourceTree = "<group>"; };
 		4426E3E31F9B0A9F007CD8E7 /* FUHSD Libraries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FUHSD Libraries.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4426E3E61F9B0A9F007CD8E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4426E3ED1F9B0A9F007CD8E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -244,7 +248,9 @@
 				443C20EF200AA2FC00AACC25 /* IdSearchBook.swift */,
 				44E5115720298CDC00A721B3 /* UserGetBooks.swift */,
 				44CB8B5421240E3400B495CC /* GetDefaultRecs.swift */,
+				442103542127D51C008385CF /* UserCheck.swift */,
 				4461DDE1202F738E006D6838 /* DiscoverSearch.swift */,
+				442103562127D94D008385CF /* UserCreate.swift */,
 				44D527CD202D6BCC000A34DD /* UserSetFacebook.swift */,
 				44D527CF202D6C65000A34DD /* UserLoginVerify.swift */,
 				44E511692029AB7200A721B3 /* HoldSetReady.swift */,
@@ -625,6 +631,7 @@
 				44E511682029AB2B00A721B3 /* HoldByUserReady.swift in Sources */,
 				7B9E22C72037FC24009A2B9D /* ReviewViewController.swift in Sources */,
 				443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */,
+				442103572127D94D008385CF /* UserCreate.swift in Sources */,
 				44E511642029A96C00A721B3 /* HoldByBook.swift in Sources */,
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,
 				4461DDE2202F738E006D6838 /* DiscoverSearch.swift in Sources */,
@@ -633,6 +640,7 @@
 				7BE9AAF32026E2E400697FD1 /* LoginViewController.swift in Sources */,
 				44E511622029A86C00A721B3 /* HoldModel.swift in Sources */,
 				449941131FA810E600272446 /* BookModel.swift in Sources */,
+				442103552127D51C008385CF /* UserCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,7 +781,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -800,7 +808,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
