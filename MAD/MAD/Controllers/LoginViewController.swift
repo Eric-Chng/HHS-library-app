@@ -10,12 +10,38 @@ import UIKit
 import GoogleSignIn
 import Lottie
 
-class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelegate, TransactionProtocol {
+    
+    
+    
+    func transactionProcessed(success: Bool)
+    {
+        if(success)
+        {
+           print("Account creation success")
+            firstLogin = true
+            let login = UserLoginVerify()
+            login.delegate = self
+            let user = GIDSignIn.sharedInstance().currentUser
+            let profile = user?.profile
+            let firstName = profile?.givenName
+            self.userNameField.text = firstName
+            let email = profile?.email!
+            login.verifyLogin(email: email!)
+        }
+        else
+        {
+            print("Account creation failed")
+            
+        }
+    }
+    
     
     @IBOutlet weak var incorrectCredentialsLabel: UILabel!
     let animationView: LOTAnimationView = LOTAnimationView(name: "loginBook")
     @IBOutlet weak var loginTitleLabel: UILabel!
     @IBOutlet weak var lottieViewHolder: UIView!
+    var firstLogin = false
     
     func itemsDownloaded(items: NSArray, from: String) {
         self.loginButton.setTitle("Login", for: UIControlState.normal)
@@ -23,17 +49,26 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
             userNameField.text = ""
             passwordField.text = ""
             self.incorrectCredentialsLabel.alpha = 1.0
+            self.incorrectCredentialsLabel.text = "Creating a new account..."
+            let userCreate = UserCreate.init()
+            let user = GIDSignIn.sharedInstance().currentUser
+            let profile = user?.profile
+            let firstName = profile?.givenName
+            self.userNameField.text = firstName
+            let email = profile?.email!
+            userCreate.createUser(email: email!, name: (profile?.name)!)
+            userCreate.delegate = self
             
         } else {
             let user = items.firstObject
             switch user {
             case is UserModel:
                 //let userCasted = user as! UserModel
-//                UserDefaults.standard.set(self.userNameField.text,forKey: "id")
+                UserDefaults.standard.set((user as! UserModel).ID,forKey: "id")
 //                UserDefaults.standard.set(self.passwordField.text,forKey: "credential")
                 UserDefaults.standard.set((user as! UserModel).name, forKey: "userName")
 
-                if UserDefaults.standard.object(forKey: "FirstLogin") == nil
+                if(firstLogin)
                 {
                     UserDefaults.standard.set("false", forKey: "FirstLogin")
                     self.performSegue(withIdentifier: "LoginToIntro", sender: self)
@@ -48,6 +83,15 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
                 userNameField.text = ""
                 passwordField.text = ""
                 self.incorrectCredentialsLabel.alpha = 1.0
+                print("Creating new account")
+                let userCreate = UserCreate.init()
+                let user = GIDSignIn.sharedInstance().currentUser
+                let profile = user?.profile
+                let firstName = profile?.givenName
+                self.userNameField.text = firstName
+                let email = profile?.email!
+                userCreate.createUser(email: email!, name: (profile?.name)!)
+                userCreate.delegate = self
 
             }
         }
@@ -87,14 +131,18 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
             {
                 let login = UserLoginVerify()
                 login.delegate = self
-                login.verifyLogin(schoolID: "1234567", password: "test")
+                login.verifyLogin(email: email!)
                 timer.invalidate()
             }
-            else if email != nil
+            else if email != nil && (email?.count)! > 3
             {
                 self.incorrectCredentialsLabel.alpha = 1.0
                 GIDSignIn.sharedInstance().signOut()
 
+            }
+            else
+            {
+                print("No email")
             }
             
 
@@ -145,7 +193,8 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
             login.delegate = self
             self.userNameField.text = idAsString
             self.passwordField.text = String(describing: userCredential!)
-            login.verifyLogin(schoolID: idAsString, password: String(describing: userCredential!))
+//            login.verifyLogin(email: <#T##String#>)
+//            login.verifyLogin(schoolID: idAsString)
             
             }
         else{
@@ -237,7 +286,7 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
         self.loginButton.titleLabel?.text = "Logging in..."
         let login = UserLoginVerify()
         login.delegate = self
-        login.verifyLogin(schoolID: userNameField.text!, password: passwordField.text!)
+//        login.verifyLogin(schoolID: userNameField.text!, password: passwordField.text!)
         
         
     }

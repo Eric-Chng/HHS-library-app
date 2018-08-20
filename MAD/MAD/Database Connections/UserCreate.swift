@@ -11,7 +11,7 @@ class UserCreate: NSObject {
     //Pass in isbn of book and userid to create a hold
     func createUser(email: String,name:String) {
         
-        
+        print("Creating user")
         let url = URL(string: urlPath)!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")

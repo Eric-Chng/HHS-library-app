@@ -83,7 +83,7 @@ class GetReview: NSObject {
         }
         
         //NSArrays initialized
-        var jsonElement = NSDictionary()
+        var jsonElement: NSDictionary = NSDictionary()
         let ratings = NSMutableArray()
         
         for i in 0 ..< jsonResult.count
