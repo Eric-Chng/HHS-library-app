@@ -112,7 +112,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             
             output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             
-            output.metadataObjectTypes = [AVMetadataObject.ObjectType.ean13]
+            output.metadataObjectTypes = [AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code39Mod43, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.dataMatrix, AVMetadataObject.ObjectType.ean8]
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             
@@ -211,7 +211,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     }
                     
                     
-                    //alert.addAction(UIAlertAction(title: "Checkout", style: .default, handler: nil))
+//                    alert.addAction(UIAlertAction(title: "Checkout", style: .default, handler: nil))
                     
                     
 
@@ -222,6 +222,15 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     //present(alert, animated: true, completion: nil)
  
  
+                }
+                else
+                {
+                    print("Barcode type")
+                    print(object.type)
+                    let alert = UIAlertController(title: "Unkown barcode type", message: "Barcode type found: " + String(describing: object.type), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+//                    alert.addAction(UIAlertAction(title: String(describing: object.type!), style: .default, handler: nil))
                 }
             }
         }
