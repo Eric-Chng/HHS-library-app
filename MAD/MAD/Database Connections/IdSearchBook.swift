@@ -14,14 +14,14 @@ class IdSearchBook: NSObject {
     
     let urlPath = "http://www.the-library-database.com/hhs_php/isbn_book.php"
     //Downloads book matching that isbn
-    func downloadItems(inputID: String) {
+    func downloadItems(isbn: String) {
         
         
          let url = URL(string: urlPath)!
          var request = URLRequest(url: url)
          request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
          request.httpMethod = "POST"
-         let postString = "password=secureAf&isbn=\(inputID)"
+         let postString = "password=secureAf&isbn=\(isbn)"
          request.httpBody = postString.data(using: .utf8)
          let task = URLSession.shared.dataTask(with: request) { data, response, error in
          guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -72,7 +72,7 @@ class IdSearchBook: NSObject {
                 let authorID = jsonElement["Author"] as! String?,
                 let desc = jsonElement["description"] as! String?,
                 let bookcount = jsonElement["bookcount"] as! String?,
-                let booktotal = jsonElement["booktotal"] as! String?
+                let booktotal = jsonElement["Total Copies"] as! String?
             {
                 book.name = name
                 book.title = name
