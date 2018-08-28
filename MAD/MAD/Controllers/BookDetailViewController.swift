@@ -321,32 +321,52 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         if html_to_scrape?.range(of:"flag") != nil {
 //            print(html_to_scrape!)
             
-            
-//            Make ISBN nicer format
-            var trimmedISBN = (self.selectedBook?.ISBN!)!.replacingOccurrences(of: "-", with: "")
-            let ISBNindex = trimmedISBN.index(before: trimmedISBN.endIndex)
-            let tempSubString = trimmedISBN.prefix(upTo: ISBNindex)
-            trimmedISBN = String(tempSubString)
-            print(trimmedISBN)
-            
-//            Generate 800 character chunk to analyze
-            let range = html_to_scrape?.range(of: trimmedISBN)
-            let count = range?.upperBound
-            let index = html_to_scrape?.index(count!, offsetBy: -800)
-            let mySubstring = html_to_scrape?.suffix(from: index!)
-            html_to_scrape = String(mySubstring!)
-            
-            let indexTwo = html_to_scrape?.index(html_to_scrape!.startIndex, offsetBy: 800)
-            let datSubstring = html_to_scrape?.prefix(upTo: indexTwo!)
-            html_to_scrape = String(datSubstring!)
-            print(html_to_scrape!)
-            
-//            Changes label on button
-            if html_to_scrape?.range(of:"flag in") != nil
+            do
             {
-                self.checkoutButton.setTitle("Hold", for: UIControlState.normal)
+    //            Make ISBN nicer format
+                var trimmedISBN = (self.selectedBook?.ISBN!)!.replacingOccurrences(of: "-", with: "")
+                let ISBNindex = trimmedISBN.index(before: trimmedISBN.endIndex)
+                let tempSubString = trimmedISBN.prefix(upTo: ISBNindex)
+                trimmedISBN = String(tempSubString)
+                print(trimmedISBN)
+            
+    //            Generate 800 character chunk to analyze
+                let range = html_to_scrape?.range(of: trimmedISBN)
+                if let count = range?.upperBound
+                {
+                    let index = html_to_scrape?.index(count, offsetBy: -800)
+                    let mySubstring = html_to_scrape?.suffix(from: index!)
+                    html_to_scrape = String(mySubstring!)
+                
+                    let indexTwo = html_to_scrape?.index(html_to_scrape!.startIndex, offsetBy: 800)
+                    let datSubstring = html_to_scrape?.prefix(upTo: indexTwo!)
+                    html_to_scrape = String(datSubstring!)
+                    print(html_to_scrape!)
+                
+        //            Changes label on button
+                    if html_to_scrape?.range(of:"flag in") != nil
+                    {
+                        self.checkoutButton.setTitle("Hold", for: UIControlState.normal)
+                    }
+                    else if html_to_scrape?.range(of:"flag out") != nil
+                    {
+                        self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
+                        UIView.animate(withDuration: 1.0) {
+                            self.checkoutButton.alpha = 0.8
+                            self.checkoutButton.backgroundColor = UIColor.lightGray
+                        }
+                    }
+                }
+                else
+                {
+                    self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
+                    UIView.animate(withDuration: 1.0) {
+                        self.checkoutButton.alpha = 0.8
+                        self.checkoutButton.backgroundColor = UIColor.lightGray
+                    }
+                }
             }
-            else if html_to_scrape?.range(of:"flag out") != nil
+            catch
             {
                 self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
                 UIView.animate(withDuration: 1.0) {
@@ -360,12 +380,26 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             
         }
         else{
-            print("Does not exist")
-            Timer.scheduledTimer(timeInterval: 1, target: self, selector:
-                #selector(self.checkForFlag), userInfo: nil,  repeats: false)
+            doesNotExistCounter = doesNotExistCounter + 1
+            if doesNotExistCounter < 16
+            {
+                print("Does not exist")
+                Timer.scheduledTimer(timeInterval: 1, target: self, selector:
+                    #selector(self.checkForFlag), userInfo: nil,  repeats: false)
+            }
+            else
+            {
+                self.checkoutButton.setTitle("Not Found", for: UIControlState.normal)
+                UIView.animate(withDuration: 1.0) {
+                    self.checkoutButton.alpha = 0.8
+                    self.checkoutButton.backgroundColor = UIColor.lightGray
+                }
+            }
         }
 //        print(html_to_scrape!)
     }
+    
+    var doesNotExistCounter = 0
     
     //Passes the current BookModel to the HoldViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -532,6 +566,12 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         //checkoutButton.layer.cornerRadius=15
         checkoutButton.layer.masksToBounds=true
         
+        if self.selectedBook!.fromGoogle
+        {
+            let alert = UIAlertController(title: "Book Not Found in Our Database", message: "Here's some information from Google Books. We'll check again and let you hold if it's available.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
         let fantasyAnnotationCords = CLLocationCoordinate2DMake(37.3372,  -122.04904)
         let fantasyAnnotation = MKPointAnnotation.init()

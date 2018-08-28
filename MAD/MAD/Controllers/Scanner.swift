@@ -13,11 +13,37 @@ protocol MyProtocol {
     func sendScannedValue(valueSent: String)
 }
 
-class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate, DownloadProtocol {
+    
+    
+    func itemsDownloaded(items: NSArray, from: String) {
+        print("Items downloaded called")
+        
+        for item in items
+        {
+            if let book = item as? BookModel
+            {
+                self.currentBook = book
+                self.performSegue(withIdentifier: "scannerPushToDetail", sender: self)
+
+                print(book.title!)
+            }
+        }
+        if items.count < 1
+        {
+            self.currentBook = BookModel.init(ISBN: self.currentISBN)
+            self.performSegue(withIdentifier: "scannerPushToDetail", sender: self)
+
+        }
+        scannerStopped = false
+    }
+    
     var lastScan = Int(ProcessInfo.processInfo.systemUptime)
     var videoPreviewLayer:AVCaptureVideoPreviewLayer!
     var captureSession:AVCaptureSession!
     var currentBook: BookModel?
+    var currentISBN: String = ""
+    var scannerStopped = false
     //var qrCodeFrameView:UIView?
     
     public var delegate:MyProtocol?
@@ -26,9 +52,15 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         blueView = UIView()
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
+//        let screenSize = UIScreen.main.bounds
+//        let screenWidth = screenSize.width
+//        let screenHeight = screenSize.height
+        
+//        let isbnBook = IdSearchBook.init()
+//        isbnBook.delegate = self
+//        isbnBook.downloadItems(isbn: "978-0-374-53451-6")
+        
+        
         blueView.frame = view.layer.bounds
         blueView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -64,7 +96,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         //print()
         //creating session
         blueView = UIView()
-        let screenSize = UIScreen.main.bounds
+//        let screenSize = UIScreen.main.bounds
         //let screenWidth = screenSize.width
         //let screenHeight = screenSize.height
         blueView.frame = view.layer.bounds
@@ -193,19 +225,22 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             self.lastScan = Int(ProcessInfo.processInfo.systemUptime)
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject
             {
-                if object.type == AVMetadataObject.ObjectType.ean13
+                if object.type == AVMetadataObject.ObjectType.ean13 && scannerStopped == false
                 {
                     if self.viewIfLoaded?.window != nil {
                     //delegate?.sendScannedValue(valueSent: object.stringValue!)
                         //BookDetailViewController.updateISBN(newISBN: object.stringValue!)
-                        self.currentBook = BookModel.init(ISBN: object.stringValue!)
                         //captureSession.stopRunning()
                         //let scanners = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
                         
                         //self.navigationController?.push
                         //self.navigationController?.pushViewController(scanners, animated: true)
                         //print("test point")
-                        self.performSegue(withIdentifier: "scannerPushToDetail", sender: self)
+                        scannerStopped = true
+                        self.currentISBN = object.stringValue!
+                        let isbnBook = IdSearchBook.init()
+                        isbnBook.delegate = self
+                        isbnBook.downloadItems(isbn: object.stringValue!)
 
                     //_ = navigationController?.popViewController(animated: true)
                     }
@@ -223,13 +258,19 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
  
  
                 }
+                else if object.type == AVMetadataObject.ObjectType.code39 && scannerStopped == false
+                {
+                    let alert = UIAlertController(title: "ID Card Scanned", message: "Barcode found: " + object.stringValue!, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 else
                 {
                     print("Barcode type")
                     print(object.type)
                     let alert = UIAlertController(title: "Unkown barcode type", message: "Barcode type found: " + String(describing: object.type), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+//                    self.present(alert, animated: true, completion: nil)
 //                    alert.addAction(UIAlertAction(title: String(describing: object.type!), style: .default, handler: nil))
                 }
             }

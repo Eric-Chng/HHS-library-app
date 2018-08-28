@@ -31,6 +31,7 @@ class BookModel: NSObject, DownloadProtocol {
     var bookCount: Int? //COPIES OF BOOK AVAILABLE. WE SHOULD INITIALIZE WHEN USING IT
     var bookTotal: Int?
     var setTitle: Bool = true
+    var fromGoogle = false
     
     //var timer: Timer = Timer()
     
@@ -66,11 +67,42 @@ class BookModel: NSObject, DownloadProtocol {
     {
         for item in items
         {
-            let review = item as! ReviewModel
-            let rating_value = review.rating
-            self.rating = rating_value!
-            print(rating_value)
+            print("Item received")
+            if let review = item as? ReviewModel
+            {
+                let rating_value = review.rating
+                self.rating = rating_value!
+                print(rating_value)
+            }
+            else if let book = item as? BookModel
+            {
+                print("Book found")
+                self.ISBN = book.ISBN
+                self.title = book.title
+                print(book.title)
+                self.author = book.author
+                self.authorID = book.authorID
+                self.desc = book.desc
+                self.googleImageURL = book.googleImageURL
+//                self.downloadCoverImage(url: self.googleImageURL)
+                if let url = URL(string: self.googleImageURL!)
+                {
+                    
+                    self.downloadCoverImage(url: url)
+                }
+            }
         }
+    }
+    
+    @available(iOS, deprecated: 9.0)
+    init(databaseISBN: String)
+    {
+        super.init()
+        print("Initializing")
+        print(databaseISBN)
+        let isbnBook = IdSearchBook.init()
+        isbnBook.delegate = self
+        isbnBook.downloadItems(isbn: "978-0-374-53451-6")
     }
     
     //constructor
@@ -106,6 +138,7 @@ class BookModel: NSObject, DownloadProtocol {
     @available(iOS, deprecated: 9.0)
     func downloadData(ISBN: String)
     {
+        self.fromGoogle = true
         DispatchQueue.main.async {
             self.BookCoverImage = UIImageView.init(image: #imageLiteral(resourceName: "loadingImage"))
         }
