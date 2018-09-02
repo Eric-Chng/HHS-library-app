@@ -1,6 +1,0 @@
-framework module Pods_FUHSD_Libraries {
-  umbrella header "Pods-FUHSD Libraries-umbrella.h"
-
-  export *
-  module * { export * }
-}
