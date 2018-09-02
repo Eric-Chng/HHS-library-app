@@ -150,24 +150,15 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var reportBugButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
-    
-    
-    
     @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
         if(from.elementsEqual("UserGetBooks")){
         for i in items
         {
-            if let book = i as? CheckoutModel
-            {
-                checkouts.adding(book);
-                let model = BookModel(ISBN: book.ISBN!)
-                checkoutBooks.append(model)
-            }
-            else if let book = i as? BookModel
-            {
-                
-            }
+            let book = i as! CheckoutModel
+            checkouts.adding(book);
+            let model = BookModel(ISBN: book.ISBN!)
+            checkoutBooks.append(model)
 
         }
           self.checkedTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.checkedOutAction), userInfo: nil,  repeats: true)
@@ -175,39 +166,12 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         else if(from == "HoldByUser"){
 
             for i in items{
-                if let book = i as? HoldModel
-                {
-                    print("Hold found")
-                    print(book.ISBN!)
-                    onholds.adding(book)
-                    let isbnBook = IdSearchBook.init()
-                    isbnBook.delegate = self
-                    let trimmedISBN = book.ISBN!.replacingOccurrences(of: "-", with: "")
-                    isbnBook.downloadItems(isbn: trimmedISBN)
-                }
-                else if let book = i as? BookModel
-                {
-                    print("Book received")
-                    print(book.title!)
-                    onholdBooks.append(book)
-                    self.onHoldTableView.reloadData()
-
-                }
+                let book = i as! HoldModel
+                onholds.adding(book)
+                let model = BookModel(ISBN: book.ISBN!)
+                onholdBooks.append(model)
             }
             self.heldTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.heldAction), userInfo: nil,  repeats: true)
-        }
-        else
-        {
-            for i in items{
-                if let book = i as? BookModel
-                {
-                    print("Book received")
-                    print(book.title!)
-                    onholdBooks.append(book)
-                    self.onHoldTableView.reloadData()
-                    
-                }
-            }
         }
         self.checkOutTableView.reloadData()
     }
@@ -222,15 +186,6 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func helpPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "helpSegue", sender: self)
         
-    }
-    
-    func fromString(string : String) -> UIImage? {
-        
-        let data = string.data(using: .ascii)
-        let filter = CIFilter(name: "CICode128BarcodeGenerator")
-        filter?.setValue(data, forKey: "inputMessage")
-        
-        return UIImage(ciImage: (filter?.outputImage)!)
     }
     
     func getGoogleProfile()
