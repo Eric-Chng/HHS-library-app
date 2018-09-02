@@ -13,7 +13,7 @@
         <!--Discover-->
         <scene sceneID="KD8-JT-T7L">
             <objects>
-                <viewController id="HRS-tc-BrZ" customClass="DiscoverViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HRS-tc-BrZ" customClass="DiscoverViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zfG-tm-emI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,10 +39,10 @@
                                 <rect key="frame" x="0.0" y="160" width="375" height="947"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfC-1c-0Kx">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="924"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="620"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77t-ca-dxP">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends' Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8p1-rs-L4G">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="50"/>
@@ -54,11 +54,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="hTg-m8-rYG"/>
+                                                    <constraint firstAttribute="height" id="hTg-m8-rYG"/>
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="popularTitles" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8I6-2r-4gk">
-                                                <rect key="frame" x="0.0" y="652" width="375" height="260"/>
+                                                <rect key="frame" x="0.0" y="348" width="375" height="260"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="260" id="vU9-6W-ekU"/>
@@ -70,7 +70,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookThumbNailCell" id="IEk-So-YfG" customClass="BookCoverCollectionViewCell" customModule="MAD" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookThumbNailCell" id="IEk-So-YfG" customClass="BookCoverCollectionViewCell" customModule="FUHSD_Libraries" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="185" height="260"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -140,10 +140,10 @@
                                                 </connections>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="facebookFeed" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3bC-JJ-nKE">
-                                                <rect key="frame" x="0.0" y="44" width="375" height="260"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="260" id="fkZ-AB-jp1"/>
+                                                    <constraint firstAttribute="height" id="fkZ-AB-jp1"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="taY-L3-0Xa">
                                                     <size key="itemSize" width="185" height="260"/>
@@ -152,29 +152,27 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FacebookReviewsCollectionViewCell" id="lHy-ZD-pdV" customClass="FacebookReviewsCollectionViewCell" customModule="MAD" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="260"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FacebookReviewsCollectionViewCell" id="lHy-ZD-pdV" customClass="FacebookReviewsCollectionViewCell" customModule="FUHSD_Libraries" customModuleProvider="target">
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="185" height="260"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVH-zc-mLw">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="185" height="260"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                                                     <subviews>
                                                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVp-5n-c44">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="185" height="260"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rDV-Ue-cfC">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="185" height="260"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             </view>
                                                                             <blurEffect style="extraLight"/>
                                                                         </visualEffectView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-ud-a4j">
-                                                                            <rect key="frame" x="25" y="10" width="135" height="190"/>
+                                                                            <rect key="frame" x="25" y="10" width="950" height="930"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naT-pg-Fd6">
-                                                                            <rect key="frame" x="20" y="208" width="145" height="21"/>
+                                                                            <rect key="frame" x="20" y="948" width="960" height="21"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="21" id="QGZ-ME-37w"/>
                                                                             </constraints>
@@ -232,7 +230,7 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KV-5g-FNY">
-                                                <rect key="frame" x="166" y="451.5" width="42" height="21"/>
+                                                <rect key="frame" x="166" y="299.5" width="42" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="jE3-Pw-Hoi"/>
                                                 </constraints>
@@ -241,7 +239,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRT-XT-vOq">
-                                                <rect key="frame" x="0.0" y="304" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Librarian Recommended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dK-dx-rJS">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="50"/>
@@ -265,7 +263,7 @@
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="librarianRecommended" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8aG-i4-Ui3">
-                                                <rect key="frame" x="0.0" y="348" width="375" height="260"/>
+                                                <rect key="frame" x="0.0" y="44" width="375" height="260"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="260" id="5cP-H5-w6U"/>
@@ -277,7 +275,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookThumbNailCell" id="vPc-1E-Ipt" customClass="BookCoverCollectionViewCell" customModule="MAD" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookThumbNailCell" id="vPc-1E-Ipt" customClass="BookCoverCollectionViewCell" customModule="FUHSD_Libraries" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="185" height="260"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -347,7 +345,7 @@
                                                 </connections>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbI-0Z-Obj">
-                                                <rect key="frame" x="0.0" y="608" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="304" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Popular Titles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac1-Rc-624">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="50"/>
@@ -388,7 +386,7 @@
                                             <constraint firstItem="77t-ca-dxP" firstAttribute="leading" secondItem="qfC-1c-0Kx" secondAttribute="leading" id="RL9-k0-f8v"/>
                                             <constraint firstAttribute="trailing" secondItem="fRT-XT-vOq" secondAttribute="trailing" id="SKh-s5-VGd"/>
                                             <constraint firstItem="8aG-i4-Ui3" firstAttribute="leading" secondItem="qfC-1c-0Kx" secondAttribute="leading" id="VuW-iz-6Sb"/>
-                                            <constraint firstAttribute="height" constant="924" id="Xaa-QA-9Z0"/>
+                                            <constraint firstAttribute="height" constant="620" id="Xaa-QA-9Z0"/>
                                             <constraint firstAttribute="trailing" secondItem="77t-ca-dxP" secondAttribute="trailing" id="XlA-ua-ASv"/>
                                             <constraint firstAttribute="trailing" secondItem="3bC-JJ-nKE" secondAttribute="trailing" id="am5-LR-9rB"/>
                                             <constraint firstItem="8I6-2r-4gk" firstAttribute="top" secondItem="pbI-0Z-Obj" secondAttribute="bottom" id="bNi-Iu-heN"/>
@@ -451,7 +449,7 @@
         <!--Discover-->
         <scene sceneID="W26-JO-99Y">
             <objects>
-                <tableViewController storyboardIdentifier="searchController" extendedLayoutIncludesOpaqueBars="YES" id="yPg-wr-hh7" customClass="SearchTableViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="searchController" extendedLayoutIncludesOpaqueBars="YES" id="yPg-wr-hh7" customClass="SearchTableViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xUX-Ye-SIU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -465,7 +463,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="214" id="Y6Y-il-awi" customClass="SearchTableViewCell" customModule="MAD" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="214" id="Y6Y-il-awi" customClass="SearchTableViewCell" customModule="FUHSD_Libraries" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="214"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y6Y-il-awi" id="gTU-P8-KIo">
@@ -652,7 +650,7 @@
         <image name="search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uF4-ZG-LlG"/>
+        <segue reference="488-Hg-Ztb"/>
         <segue reference="gU5-QN-JXa"/>
         <segue reference="KmM-qF-xxo"/>
     </inferredMetricsTieBreakers>

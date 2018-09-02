@@ -310,7 +310,7 @@ class HomeViewController: UIViewController {
     var coverTimer: Timer = Timer()
     let images = [#imageLiteral(resourceName: "sampleCover2"), #imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2")]
     
-    var recommendationBookArr = [BookModel(ISBN: "9781786072108"), BookModel(ISBN: "9781101981085"), BookModel(ISBN: "9780993790904"), BookModel(ISBN: "9780141182773"), BookModel(ISBN: "9780810891951"), BookModel(ISBN:"9781594480003"), BookModel(ISBN:"9781555975098"), BookModel(ISBN: "9780804139021"), BookModel(ISBN: "9781848664173"), BookModel(ISBN: "9781451673265")]
+    var recommendationBookArr = [BookModel(databaseISBN:"978-0-393-08905-9"), BookModel(databaseISBN:"978-0-06-247250-2"), BookModel(databaseISBN:"978-1-61695-847-3"), BookModel(databaseISBN:"0-345-38421-0"), BookModel(databaseISBN:"978-0-7636-7382-6"), BookModel(databaseISBN:"978-0-545-20889-5"), BookModel(databaseISBN:"0-15-602732-1")]
     var cardsToCheck: [Int] = [0, 1, 2, 3, 4, 5, 6]
     var numCards: Int = 0
     var counter: Int = 0

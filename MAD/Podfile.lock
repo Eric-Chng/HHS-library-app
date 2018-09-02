@@ -47,6 +47,10 @@ DEPENDENCIES:
   - Koloda (~> 4.3.1)
   - lottie-ios
   - Popover
+<<<<<<< HEAD:MAD/Podfile.lock
+=======
+  - RSBarcodes_Swift
+>>>>>>> parent of c19c144... Revert:MAD/Podfile.lock
   - ScalingCarousel
   - SnapKit (~> 4.0.0)
   - ViewAnimator
@@ -86,6 +90,7 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   ViewAnimator: d7b18e0be98e05807f61ad886a36363727209377
 
+<<<<<<< HEAD:MAD/Podfile.lock
 <<<<<<< HEAD:FUHSD Libraries/Podfile.lock
 <<<<<<< HEAD:FUHSD Libraries/Podfile.lock
 <<<<<<< HEAD:MAD/Podfile.lock
@@ -99,5 +104,8 @@ PODFILE CHECKSUM: f563ae216223d66312de00223dbae48ae5ee9df7
 =======
 PODFILE CHECKSUM: eed38de1e40dafbe7c7081fa64eee468dba4a492
 >>>>>>> parent of 1f9ac70... Barcode generator added:MAD/Podfile.lock
+=======
+PODFILE CHECKSUM: ef4c347aed4ab37f3560b320811c3c494d2031c2
+>>>>>>> parent of c19c144... Revert:MAD/Podfile.lock
 
 COCOAPODS: 1.5.3

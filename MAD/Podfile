@@ -7,6 +7,10 @@ target 'MAD' do
 
   # Pods for MAD
 pod ‘lottie-ios’
+<<<<<<< HEAD:MAD/Podfile
+=======
+pod 'RSBarcodes_Swift'
+>>>>>>> parent of c19c144... Revert:MAD/Podfile
 pod 'SnapKit', '~> 4.0.0'
 pod ‘ViewAnimator’
 pod 'BulletinBoard'

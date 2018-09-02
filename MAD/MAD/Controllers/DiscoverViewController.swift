@@ -212,9 +212,9 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     @available(iOS, deprecated: 9.0)
     func setArrays()
     {
-        popularBookArr = [BookModel(ISBN: "9780141182773"), BookModel(ISBN:"9783608938180"), BookModel(ISBN: "9780810891951"), BookModel(ISBN:"9781594480003"), BookModel(ISBN:"9781555975098"), BookModel(ISBN:"9780199738410")]
-        librarianBookArr = [BookModel(ISBN: "9781845114657"), BookModel(ISBN: "9780545402163"), BookModel(ISBN:"9781883831073"), BookModel(ISBN:"9780812504675"), BookModel(ISBN:"9780553151671"), BookModel(ISBN:"9780553588255")]
-        reviewBookArr = [BookModel(ISBN:"9780439358071"), BookModel(ISBN:"9780590353427"), BookModel(ISBN: "9781594634239"), BookModel(ISBN: "9781594489785"), BookModel(ISBN:"9781101971062"), BookModel(ISBN:"9780439358071"), BookModel(ISBN:"9781439181713")]
+        librarianBookArr = [BookModel(databaseISBN:"978-0-374-53451-6"), BookModel(databaseISBN:"0-15-602732-1"), BookModel(databaseISBN:"978-0-544-57097-9"), BookModel(databaseISBN:"0-316-52613-4"), BookModel(databaseISBN:"978-1-55652-976-4"), BookModel(databaseISBN:"978-0-06-247250-2"), BookModel(databaseISBN:"1-59448-329-9")]
+        popularBookArr = [BookModel(databaseISBN:"978-0-06-233175-5"), BookModel(databaseISBN:"978-0-7636-5866-3"), BookModel(databaseISBN:"1-56689-011-X"), BookModel(databaseISBN:"978-1-42310334-9"), BookModel(databaseISBN:"0-525-94527-X"), BookModel(databaseISBN:"978-1-25001019-3"), BookModel(databaseISBN:"978-0-7636-7382-6")]
+//        reviewBookArr = [BookModel(ISBN:"9780439358071"), BookModel(ISBN:"9780590353427"), BookModel(ISBN: "9781594634239"), BookModel(ISBN: "9781594489785"), BookModel(ISBN:"9781101971062"), BookModel(ISBN:"9780439358071"), BookModel(ISBN:"9781439181713")]
 
     }
     

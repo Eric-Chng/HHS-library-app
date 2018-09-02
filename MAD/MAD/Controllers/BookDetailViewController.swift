@@ -609,6 +609,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         if(self.selectedBook != nil)
         {
+            print("ISBN: " + (self.selectedBook?.ISBN)!)
             if(fromScanner == false)
             {
             self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])

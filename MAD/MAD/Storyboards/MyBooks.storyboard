@@ -23,7 +23,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="980"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rle-cH-BC0">
+<<<<<<< HEAD:MAD/MAD/Storyboards/MyBooks.storyboard
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="855"/>
+=======
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
+>>>>>>> parent of c19c144... Revert:MAD/MAD/Storyboards/MyBooks.storyboard
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62N-Kd-Wab">
                                                 <rect key="frame" x="20" y="55" width="335" height="140"/>
@@ -148,7 +152,11 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60t-L6-7u9">
+<<<<<<< HEAD:MAD/MAD/Storyboards/MyBooks.storyboard
                                                 <rect key="frame" x="20" y="510" width="335" height="225"/>
+=======
+                                                <rect key="frame" x="20" y="315" width="335" height="225"/>
+>>>>>>> parent of c19c144... Revert:MAD/MAD/Storyboards/MyBooks.storyboard
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Holds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCb-e3-JZ3">
                                                         <rect key="frame" x="3" y="3" width="329" height="30"/>
@@ -237,7 +245,11 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5s-iI-JSA">
+<<<<<<< HEAD:MAD/MAD/Storyboards/MyBooks.storyboard
                                                 <rect key="frame" x="20" y="805" width="335" height="30"/>
+=======
+                                                <rect key="frame" x="20" y="610" width="335" height="30"/>
+>>>>>>> parent of c19c144... Revert:MAD/MAD/Storyboards/MyBooks.storyboard
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="yUC-T2-4ba">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -287,7 +299,11 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwf-qT-3UC" userLabel="FacebookLoginView">
+<<<<<<< HEAD:MAD/MAD/Storyboards/MyBooks.storyboard
                                                 <rect key="frame" x="20" y="740" width="335" height="50"/>
+=======
+                                                <rect key="frame" x="20" y="546" width="335" height="50"/>
+>>>>>>> parent of c19c144... Revert:MAD/MAD/Storyboards/MyBooks.storyboard
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mku-oj-nfO"/>
@@ -305,21 +321,36 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuT-fs-j8f">
-                                                <rect key="frame" x="20" y="197" width="335" height="51.5"/>
+                                                <rect key="frame" x="20" y="189" width="335" height="120"/>
                                                 <subviews>
+<<<<<<< HEAD:MAD/MAD/Storyboards/MyBooks.storyboard
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Delinquencies At This Time!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrv-KE-Aeb">
                                                         <rect key="frame" x="0.0" y="16" width="335" height="20.5"/>
+=======
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digital Student ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrv-KE-Aeb">
+                                                        <rect key="frame" x="91" y="84" width="154" height="28"/>
+                                                        <color key="backgroundColor" red="0.1333333333" green="0.74901960779999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="154" id="aVm-NP-VI7"/>
+                                                        </constraints>
+>>>>>>> parent of c19c144... Revert:MAD/MAD/Storyboards/MyBooks.storyboard
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yq5-6C-ABz">
+                                                        <rect key="frame" x="4" y="4" width="327" height="76"/>
+                                                    </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.0" green="0.72835339364104446" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="wrv-KE-Aeb" secondAttribute="trailing" id="6fh-1W-cRq"/>
-                                                    <constraint firstItem="wrv-KE-Aeb" firstAttribute="leading" secondItem="TuT-fs-j8f" secondAttribute="leading" id="HWa-Mn-i4v"/>
-                                                    <constraint firstAttribute="bottom" secondItem="wrv-KE-Aeb" secondAttribute="bottom" constant="15" id="Y9J-Zf-OqY"/>
-                                                    <constraint firstItem="wrv-KE-Aeb" firstAttribute="top" secondItem="TuT-fs-j8f" secondAttribute="top" constant="16" id="b69-ZM-hvv"/>
+                                                    <constraint firstItem="wrv-KE-Aeb" firstAttribute="centerX" secondItem="TuT-fs-j8f" secondAttribute="centerX" id="4sK-5B-0XI"/>
+                                                    <constraint firstItem="Yq5-6C-ABz" firstAttribute="top" secondItem="TuT-fs-j8f" secondAttribute="top" constant="4" id="6m4-es-HCo"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Yq5-6C-ABz" secondAttribute="bottom" constant="40" id="ASu-He-jAa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Yq5-6C-ABz" secondAttribute="trailing" constant="4" id="Cuo-YK-uxH"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wrv-KE-Aeb" secondAttribute="bottom" constant="8" id="Y9J-Zf-OqY"/>
+                                                    <constraint firstItem="wrv-KE-Aeb" firstAttribute="top" secondItem="TuT-fs-j8f" secondAttribute="top" constant="84" id="b69-ZM-hvv"/>
+                                                    <constraint firstItem="Yq5-6C-ABz" firstAttribute="leading" secondItem="TuT-fs-j8f" secondAttribute="leading" constant="4" id="dmO-CL-YwS"/>
+                                                    <constraint firstAttribute="height" constant="120" id="zI0-J5-j6y"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -339,7 +370,12 @@
                                             <constraint firstItem="nw7-VN-rG4" firstAttribute="top" secondItem="62N-Kd-Wab" secondAttribute="bottom" constant="70" id="c3I-Ys-j1I"/>
                                             <constraint firstItem="62N-Kd-Wab" firstAttribute="leading" secondItem="Rle-cH-BC0" secondAttribute="leading" constant="20" id="fXx-JZ-eVN"/>
                                             <constraint firstItem="62N-Kd-Wab" firstAttribute="top" secondItem="Rle-cH-BC0" secondAttribute="top" constant="55" id="gET-2K-0x4"/>
+<<<<<<< HEAD:MAD/MAD/Storyboards/MyBooks.storyboard
                                             <constraint firstItem="TuT-fs-j8f" firstAttribute="top" secondItem="62N-Kd-Wab" secondAttribute="bottom" constant="2" id="iSz-1c-0Cr"/>
+=======
+                                            <constraint firstItem="60t-L6-7u9" firstAttribute="top" secondItem="62N-Kd-Wab" secondAttribute="bottom" constant="120" id="gNv-Ka-U8q"/>
+                                            <constraint firstItem="TuT-fs-j8f" firstAttribute="top" secondItem="62N-Kd-Wab" secondAttribute="bottom" constant="-6" id="iSz-1c-0Cr"/>
+>>>>>>> parent of c19c144... Revert:MAD/MAD/Storyboards/MyBooks.storyboard
                                             <constraint firstAttribute="trailing" secondItem="nw7-VN-rG4" secondAttribute="trailing" constant="20" id="olp-gn-K2T"/>
                                             <constraint firstAttribute="trailing" secondItem="n5s-iI-JSA" secondAttribute="trailing" constant="20" id="pI9-5a-y7i"/>
                                             <constraint firstItem="60t-L6-7u9" firstAttribute="top" secondItem="nw7-VN-rG4" secondAttribute="bottom" constant="20" id="sem-hh-Q43"/>
@@ -372,8 +408,10 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="barcodeImageView" destination="Yq5-6C-ABz" id="Z64-S8-m5i"/>
                         <outlet property="checkOutTableView" destination="nzb-pm-Emr" id="HOE-mi-ihp"/>
                         <outlet property="delinquencyView" destination="TuT-fs-j8f" id="RQW-y7-w0l"/>
+                        <outlet property="digitalStudentIdLabel" destination="wrv-KE-Aeb" id="6UL-gq-zCW"/>
                         <outlet property="helpButton" destination="qGy-Dp-agn" id="bVp-dF-fC0"/>
                         <outlet property="idLabel" destination="z0M-Bl-ar3" id="ymo-2T-FLQ"/>
                         <outlet property="loginButtonView" destination="Zwf-qT-3UC" id="SPf-Io-Axy"/>

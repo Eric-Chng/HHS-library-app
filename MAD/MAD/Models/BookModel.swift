@@ -83,6 +83,8 @@ class BookModel: NSObject, DownloadProtocol {
                 self.author = book.author
                 self.authorID = book.authorID
                 self.desc = book.desc
+                self.db_id = book.db_id
+                self.getRating()
                 self.googleImageURL = book.googleImageURL
 //                self.downloadCoverImage(url: self.googleImageURL)
                 if let url = URL(string: self.googleImageURL!)
@@ -90,6 +92,7 @@ class BookModel: NSObject, DownloadProtocol {
                     
                     self.downloadCoverImage(url: url)
                 }
+                
             }
         }
     }
@@ -102,7 +105,8 @@ class BookModel: NSObject, DownloadProtocol {
         print(databaseISBN)
         let isbnBook = IdSearchBook.init()
         isbnBook.delegate = self
-        isbnBook.downloadItems(isbn: "978-0-374-53451-6")
+        let trimmedISBN = databaseISBN.replacingOccurrences(of: "-", with: "")
+        isbnBook.downloadItems(isbn: trimmedISBN)
     }
     
     //constructor

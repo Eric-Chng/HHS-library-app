@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import GoogleSignIn
+import RSBarcodes_Swift
+import AVFoundation
 
 class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DownloadProtocol, FBSDKLoginButtonDelegate{
     
@@ -19,8 +21,10 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     var onholdBooks: [BookModel] = []
     var checkedTimer: Timer = Timer()
     var heldTimer: Timer = Timer()
+    @IBOutlet weak var digitalStudentIdLabel: UILabel!
     
     @IBOutlet weak var nameLabe: UILabel!
+    @IBOutlet weak var barcodeImageView: UIImageView!
     @IBOutlet weak var idLabel: UILabel!
     
     
@@ -145,6 +149,15 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         logoutButton.layer.masksToBounds = true
         helpButton.layer.cornerRadius = 4
         helpButton.layer.masksToBounds = true
+        
+        let idBarcodeImage = RSUnifiedCodeGenerator.shared.generateCode("5151452", machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39.rawValue)
+        self.barcodeImageView.image = idBarcodeImage
+        barcodeImageView.layer.cornerRadius = 4
+        barcodeImageView.layer.masksToBounds = true
+        
+        digitalStudentIdLabel.layer.cornerRadius = 6
+        digitalStudentIdLabel.layer.masksToBounds = true
+        
     }
     
     @IBOutlet weak var reportBugButton: UIButton!
@@ -331,6 +344,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
                 {
                     
                     self.profilePictureView.image = temp
+                    
                     //found = true;
                 }
                 else
