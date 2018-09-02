@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E995CE4B0202F57B826E83351AC09EC"
-               BlueprintName = "Pods-FUHSD Libraries"
+               BlueprintIdentifier = "B258466A03FD71ADF9591739440972B8"
+               BlueprintName = "CDCodabarView"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pods-FUHSD Libraries.framework">
+               BuildableName = "CDCodabarView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
