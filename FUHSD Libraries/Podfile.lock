@@ -1,6 +1,5 @@
 PODS:
   - BulletinBoard (1.3.0)
-  - CDCodabarView (1.0.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -42,7 +41,6 @@ PODS:
 
 DEPENDENCIES:
   - BulletinBoard
-  - CDCodabarView
   - ChameleonFramework/Swift
   - CollectionKit
   - GoogleSignIn
@@ -58,7 +56,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BulletinBoard
-    - CDCodabarView
     - ChameleonFramework
     - CollectionKit
     - GoogleSignIn
@@ -77,7 +74,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   BulletinBoard: 23c9d98cac654fd484d76f2a0655669974e9bd9c
-  CDCodabarView: da050dc506dd1cc55b1d6d33c5104f6de050461d
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CollectionKit: 529f21630888b51dfad3e1aa7a2d08e8c28099cb
   GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
@@ -94,10 +90,14 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   ViewAnimator: d7b18e0be98e05807f61ad886a36363727209377
 
+<<<<<<< HEAD:FUHSD Libraries/Podfile.lock
 <<<<<<< HEAD:MAD/Podfile.lock
 PODFILE CHECKSUM: ef4c347aed4ab37f3560b320811c3c494d2031c2
 =======
 PODFILE CHECKSUM: 9d200873bd959e2e20723f4bf31779fd90740504
 >>>>>>> parent of 933ab00... Files moved around:FUHSD Libraries/Podfile.lock
+=======
+PODFILE CHECKSUM: f563ae216223d66312de00223dbae48ae5ee9df7
+>>>>>>> parent of c56f9d6... CDCodabarView Installed:MAD/Podfile.lock
 
 COCOAPODS: 1.5.3
