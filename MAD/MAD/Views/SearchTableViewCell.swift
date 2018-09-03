@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ChameleonFramework
+//import ChameleonFramework
 
 class SearchTableViewCell: UITableViewCell {
 
@@ -282,8 +282,8 @@ class SearchTableViewCell: UITableViewCell {
             
         //}
         
-        let dias = ColorsFromImage(image: image!, withFlatScheme: true)
-        self.coverColor = dias[0]
+//        let dias = ColorsFromImage(image: image!, withFlatScheme: true)
+//        self.coverColor = dias[0]
 //        self.coverColor = UIColor.darkGray
         
 //        image?.getColors { colors in

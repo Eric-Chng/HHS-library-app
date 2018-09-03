@@ -129,6 +129,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
     {
         if(selectedBook!.title != "")
         {
+            print("Book Model Loaded")
         self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
             var heightConstant = CGFloat(160)
             if(self.descBox.contentSize.height<160)
@@ -142,10 +143,10 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             {
                 heightConstant = 160
             }
-            let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant)
+            let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant).isActive = true
             if(self.descBox.contentSize.height != 36)
             {
-            self.descBox.addConstraints([heightConstraint])
+//            self.descBox.addConstraints([heightConstraint])
             }
         self.titleLabel?.text = selectedBook!.title
         self.authorLabel?.text = selectedBook!.author
@@ -350,7 +351,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
                     }
                     else if html_to_scrape?.range(of:"flag out") != nil
                     {
-                        self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
+                        self.checkoutButton.setTitle("Checked Out", for: UIControlState.normal)
                         UIView.animate(withDuration: 1.0) {
                             self.checkoutButton.alpha = 0.8
                             self.checkoutButton.backgroundColor = UIColor.lightGray
@@ -615,16 +616,35 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             self.descBox!.attributedText = NSAttributedString(string: selectedBook!.desc!,  attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16) ])
                 //self.descBox!.sizeToFit()
                 var heightConstant = CGFloat(160)
+                print("Height")
+                print(self.descBox.contentSize.height)
                 if(self.descBox.contentSize.height<160)
                 {
                     heightConstant = self.descBox.contentSize.height
+                    
                 }
                 else
                 {
                     heightConstant = 160
                 }
-                let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant)
-                self.descBox.addConstraints([heightConstraint])
+                let constraintRect = CGSize(width: self.view.frame.width - 36, height: .greatestFiniteMagnitude)
+                let boundingBox = descBox.attributedText.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+                heightConstant =  boundingBox.height
+                print("Height2")
+                print(heightConstant)
+//                let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 160)
+//                heightConstraint.isActive = true
+////                self.descBox.layoutIfNeeded()
+//                heightConstraint.isActive = false
+                NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant + 18).isActive = true
+//                UIView.animate
+//                UIView.animate(withDuration: 0, delay: 0, animations:
+//                    {
+//                        self.descBox.layoutIfNeeded()
+//                }
+//                )
+                
+//                self.descBox.addConstraints([heightConstraint])
             
                 self.checkAvailability()
                 

@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 import GoogleSignIn
-import RSBarcodes_Swift
+//import RSUnifiedCodeGenerator
+//import RSBarcodes
 import AVFoundation
 
 class MyBooksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DownloadProtocol, FBSDKLoginButtonDelegate{
@@ -150,10 +151,10 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         helpButton.layer.cornerRadius = 4
         helpButton.layer.masksToBounds = true
         
-        let idBarcodeImage = RSUnifiedCodeGenerator.shared.generateCode("5151452", machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39.rawValue)
+        let idBarcodeImage = RSUnifiedCodeGenerator.shared.generateCode("5151452", machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39/*Mod43*/.rawValue)
         self.barcodeImageView.image = idBarcodeImage
-        barcodeImageView.layer.cornerRadius = 4
-        barcodeImageView.layer.masksToBounds = true
+//        barcodeImageView.layer.cornerRadius = 4
+//        barcodeImageView.layer.masksToBounds = true
         
         digitalStudentIdLabel.layer.cornerRadius = 6
         digitalStudentIdLabel.layer.masksToBounds = true

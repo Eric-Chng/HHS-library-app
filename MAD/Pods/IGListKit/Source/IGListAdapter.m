@@ -98,15 +98,7 @@
         _collectionView.dataSource = self;
 
         if ([_collectionView respondsToSelector:@selector(setPrefetchingEnabled:)]) {
-            if (@available(iOS 10.0, *)) {
-                if (@available(iOS 10.0, *)) {
-                    
-                } else {
-                    // Fallback on earlier versions
-                }       _collectionView.prefetchingEnabled = NO;
-            } else {
-                // Fallback on earlier versions
-            }
+            _collectionView.prefetchingEnabled = NO;
         }
 
         [_collectionView.collectionViewLayout invalidateLayout];
@@ -1012,7 +1004,7 @@
     UICollectionViewLayoutInvalidationContext *context = [[[layout.class invalidationContextClass] alloc] init];
     [context invalidateItemsAtIndexPaths:indexPaths];
     
-    void (^block)(void) = ^{
+    void (^block)() = ^{
         [layout invalidateLayoutWithContext:context];
     };
     

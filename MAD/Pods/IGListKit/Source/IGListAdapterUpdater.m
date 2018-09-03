@@ -53,7 +53,7 @@
     }
 
     id<IGListAdapterUpdaterDelegate> delegate = self.delegate;
-    void (^reloadUpdates)(void) = self.reloadUpdates;
+    void (^reloadUpdates)() = self.reloadUpdates;
     IGListBatchUpdates *batchUpdates = self.batchUpdates;
     NSMutableArray *completionBlocks = [self.completionBlocks mutableCopy];
     
@@ -135,7 +135,7 @@ static NSArray *objectsWithDuplicateIdentifiersRemoved(NSArray<id<IGListDiffable
     // clean up all state so that new updates can be coalesced while the current update is in flight
     [self cleanStateBeforeUpdates];
 
-    void (^executeUpdateBlocks)(void) = ^{
+    void (^executeUpdateBlocks)() = ^{
         self.state = IGListBatchUpdateStateExecutingBatchUpdateBlock;
 
         // run the update block so that the adapter can set its items. this makes sure that just before the update is
@@ -460,7 +460,7 @@ static NSUInteger IGListIdentifierHash(const void *item, NSUInteger (*size)(cons
 
 - (void)performUpdateWithCollectionView:(UICollectionView *)collectionView
                                animated:(BOOL)animated
-                            itemUpdates:(void (^)(void))itemUpdates
+                            itemUpdates:(void (^)())itemUpdates
                              completion:(void (^)(BOOL))completion {
     IGAssertMainThread();
     IGParameterAssert(collectionView != nil);

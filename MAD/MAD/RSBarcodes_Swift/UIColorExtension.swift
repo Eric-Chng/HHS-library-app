@@ -90,9 +90,9 @@ extension UIColor {
         let hexString: String = rgba.substring(from: rgba.characters.index(rgba.startIndex, offsetBy: 1))
         var hexValue:  UInt32 = 0
         
-        guard Scanner(string: hexString).scanHexInt32(&hexValue) else {
-            throw UIColorInputError.unableToScanHexValue
-        }
+//        guard Scanner(coder: hexString).scanHexInt32(&hexValue) else {
+//            throw UIColorInputError.unableToScanHexValue
+//        }
         
         switch (hexString.characters.count) {
         case 3:

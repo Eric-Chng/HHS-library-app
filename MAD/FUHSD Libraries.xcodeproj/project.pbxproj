@@ -64,6 +64,30 @@
 		7B725E121F9B21DC00FE56A1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B725E111F9B21DC00FE56A1 /* HomeViewController.swift */; };
 		7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72B8601F9B0DB5002E9668 /* MapKit.framework */; };
 		7B78DBCC2009EA5A00592F09 /* bookUpdated.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B78DBCB2009EA5A00592F09 /* bookUpdated.json */; };
+		7B79671A213C8BE3002FABAC /* MyBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B796719213C8BE3002FABAC /* MyBooks.storyboard */; };
+		7B79671D213C8CA5002FABAC /* CDCodabarEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79671B213C8CA5002FABAC /* CDCodabarEncoder.swift */; };
+		7B79671E213C8CA5002FABAC /* CDCodabarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79671C213C8CA5002FABAC /* CDCodabarView.swift */; };
+		7B79674E213C91E6002FABAC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B796738213C91E6002FABAC /* README.md */; };
+		7B796765213C9394002FABAC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79674F213C938C002FABAC /* StringExtension.swift */; };
+		7B796766213C9394002FABAC /* RSExtendedCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796750213C938C002FABAC /* RSExtendedCode39Generator.swift */; };
+		7B796767213C9394002FABAC /* RSFocusMarkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796751213C938C002FABAC /* RSFocusMarkLayer.swift */; };
+		7B796768213C9394002FABAC /* ContextMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B796752213C938D002FABAC /* ContextMaker.m */; };
+		7B796769213C9394002FABAC /* RSCodeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796753213C938D002FABAC /* RSCodeLayer.swift */; };
+		7B79676A213C9394002FABAC /* RSEANGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796754213C938D002FABAC /* RSEANGenerator.swift */; };
+		7B79676B213C9394002FABAC /* RSITF14Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796756213C938E002FABAC /* RSITF14Generator.swift */; };
+		7B79676C213C9394002FABAC /* RSITFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796757213C938E002FABAC /* RSITFGenerator.swift */; };
+		7B79676D213C9394002FABAC /* RSCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796758213C938F002FABAC /* RSCode39Generator.swift */; };
+		7B79676F213C9394002FABAC /* RSCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79675A213C9390002FABAC /* RSCodeGenerator.swift */; };
+		7B796770213C9394002FABAC /* RSUPCEGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79675B213C9390002FABAC /* RSUPCEGenerator.swift */; };
+		7B796771213C9394002FABAC /* RSCodeDataMatrixGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79675C213C9390002FABAC /* RSCodeDataMatrixGenerator.swift */; };
+		7B796772213C9394002FABAC /* RSUnifiedCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79675D213C9391002FABAC /* RSUnifiedCodeGenerator.swift */; };
+		7B796773213C9394002FABAC /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79675E213C9391002FABAC /* UIColorExtension.swift */; };
+		7B796774213C9394002FABAC /* RSCode128Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79675F213C9392002FABAC /* RSCode128Generator.swift */; };
+		7B796775213C9394002FABAC /* RSCode93Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796761213C9392002FABAC /* RSCode93Generator.swift */; };
+		7B796776213C9394002FABAC /* RSCornersLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796762213C9392002FABAC /* RSCornersLayer.swift */; };
+		7B796777213C9394002FABAC /* RSCode39Mod43Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796763213C9393002FABAC /* RSCode39Mod43Generator.swift */; };
+		7B796778213C9394002FABAC /* RSUnifiedCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B796764213C9393002FABAC /* RSUnifiedCodeValidator.swift */; };
+		7B79677C213CA1F3002FABAC /* IDScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B79677B213CA1F3002FABAC /* IDScannerViewController.swift */; };
 		7B8755A221273BF000D62396 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B8755A121273BEF00D62396 /* credentials.plist */; };
 		7B8755A421274CE400D62396 /* ripple_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B8755A321274CE300D62396 /* ripple_loading.json */; };
 		7B8755A621274EA700D62396 /* loginBook.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B8755A521274EA600D62396 /* loginBook.json */; };
@@ -78,15 +102,16 @@
 		82562A3D202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */; };
 		828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F582A201D35CD00E36EAE /* BugReportViewController.swift */; };
 		829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */; };
-		82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */; };
 		82AE230C1FF36C130014C7CF /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230B1FF36C130014C7CF /* Checkout.storyboard */; };
 		82AE230E1FF36C210014C7CF /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230D1FF36C210014C7CF /* Discover.storyboard */; };
 		82AE23101FF36C2E0014C7CF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230F1FF36C2E0014C7CF /* Home.storyboard */; };
 		82AE23121FF36EE70014C7CF /* BookDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE23111FF36EE70014C7CF /* BookDetails.storyboard */; };
 		AD05EF0427F0C28DF992BEFA /* Pods_MAD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */; };
+		F56177EEDE252D42113A5034 /* Pods_FUHSD_Libraries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B18E5DC4299EF9552E43C6 /* Pods_FUHSD_Libraries.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		326520DF6A9CD0E7FE27B048 /* Pods-FUHSD Libraries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUHSD Libraries.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUHSD Libraries/Pods-FUHSD Libraries.debug.xcconfig"; sourceTree = "<group>"; };
 		442103542127D51C008385CF /* UserCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheck.swift; sourceTree = "<group>"; };
 		442103562127D94D008385CF /* UserCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreate.swift; sourceTree = "<group>"; };
 		4426E3E31F9B0A9F007CD8E7 /* FUHSD Libraries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FUHSD Libraries.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +175,32 @@
 		7B72B85E1F9B0DAE002E9668 /* MAD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MAD.entitlements; sourceTree = "<group>"; };
 		7B72B8601F9B0DB5002E9668 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7B78DBCB2009EA5A00592F09 /* bookUpdated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookUpdated.json; sourceTree = "<group>"; };
+		7B796719213C8BE3002FABAC /* MyBooks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyBooks.storyboard; path = "../../../../Downloads/MAD-2018-c56f9d6af03cf9b9b826ac8147e4d8649dae70ec/MAD/MAD/Storyboards/MyBooks.storyboard"; sourceTree = "<group>"; };
+		7B79671B213C8CA5002FABAC /* CDCodabarEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDCodabarEncoder.swift; sourceTree = "<group>"; };
+		7B79671C213C8CA5002FABAC /* CDCodabarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDCodabarView.swift; sourceTree = "<group>"; };
+		7B796738213C91E6002FABAC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7B79674F213C938C002FABAC /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		7B796750213C938C002FABAC /* RSExtendedCode39Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSExtendedCode39Generator.swift; sourceTree = "<group>"; };
+		7B796751213C938C002FABAC /* RSFocusMarkLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSFocusMarkLayer.swift; sourceTree = "<group>"; };
+		7B796752213C938D002FABAC /* ContextMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMaker.m; sourceTree = "<group>"; };
+		7B796753213C938D002FABAC /* RSCodeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCodeLayer.swift; sourceTree = "<group>"; };
+		7B796754213C938D002FABAC /* RSEANGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSEANGenerator.swift; sourceTree = "<group>"; };
+		7B796755213C938E002FABAC /* RSBarcodes-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSBarcodes-Bridging-Header.h"; sourceTree = "<group>"; };
+		7B796756213C938E002FABAC /* RSITF14Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSITF14Generator.swift; sourceTree = "<group>"; };
+		7B796757213C938E002FABAC /* RSITFGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSITFGenerator.swift; sourceTree = "<group>"; };
+		7B796758213C938F002FABAC /* RSCode39Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Generator.swift; sourceTree = "<group>"; };
+		7B79675A213C9390002FABAC /* RSCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCodeGenerator.swift; sourceTree = "<group>"; };
+		7B79675B213C9390002FABAC /* RSUPCEGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSUPCEGenerator.swift; sourceTree = "<group>"; };
+		7B79675C213C9390002FABAC /* RSCodeDataMatrixGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCodeDataMatrixGenerator.swift; sourceTree = "<group>"; };
+		7B79675D213C9391002FABAC /* RSUnifiedCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSUnifiedCodeGenerator.swift; sourceTree = "<group>"; };
+		7B79675E213C9391002FABAC /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		7B79675F213C9392002FABAC /* RSCode128Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode128Generator.swift; sourceTree = "<group>"; };
+		7B796760213C9392002FABAC /* ContextMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMaker.h; sourceTree = "<group>"; };
+		7B796761213C9392002FABAC /* RSCode93Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode93Generator.swift; sourceTree = "<group>"; };
+		7B796762213C9392002FABAC /* RSCornersLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCornersLayer.swift; sourceTree = "<group>"; };
+		7B796763213C9393002FABAC /* RSCode39Mod43Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Mod43Generator.swift; sourceTree = "<group>"; };
+		7B796764213C9393002FABAC /* RSUnifiedCodeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSUnifiedCodeValidator.swift; sourceTree = "<group>"; };
+		7B79677B213CA1F3002FABAC /* IDScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDScannerViewController.swift; sourceTree = "<group>"; };
 		7B8755A121273BEF00D62396 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		7B8755A321274CE300D62396 /* ripple_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ripple_loading.json; sourceTree = "<group>"; };
 		7B8755A521274EA600D62396 /* loginBook.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginBook.json; sourceTree = "<group>"; };
@@ -164,12 +215,13 @@
 		82562A3C202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksOnHoldTableViewCell.swift; sourceTree = "<group>"; };
 		828F582A201D35CD00E36EAE /* BugReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugReportViewController.swift; sourceTree = "<group>"; };
 		829AE5071FF341B10003BAAF /* BookCoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverCollectionViewCell.swift; sourceTree = "<group>"; };
-		82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBooks.storyboard; sourceTree = "<group>"; };
 		82AE230B1FF36C130014C7CF /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		82AE230D1FF36C210014C7CF /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		82AE230F1FF36C2E0014C7CF /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		82AE23111FF36EE70014C7CF /* BookDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetails.storyboard; sourceTree = "<group>"; };
 		833D660AA346C1F2E1ACB912 /* Pods-MAD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAD.release.xcconfig"; path = "Pods/Target Support Files/Pods-MAD/Pods-MAD.release.xcconfig"; sourceTree = "<group>"; };
+		90B18E5DC4299EF9552E43C6 /* Pods_FUHSD_Libraries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FUHSD_Libraries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93D510DA38922B0A1F209523 /* Pods-FUHSD Libraries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUHSD Libraries.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUHSD Libraries/Pods-FUHSD Libraries.release.xcconfig"; sourceTree = "<group>"; };
 		CFA75217B7A3DD63D8417F6C /* Pods-MAD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MAD/Pods-MAD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +235,7 @@
 				7B395E3A201C2D5D00DF3299 /* FBSDKCoreKit.framework in Frameworks */,
 				7B395E3B201C2D5D00DF3299 /* FBSDKLoginKit.framework in Frameworks */,
 				AD05EF0427F0C28DF992BEFA /* Pods_MAD.framework in Frameworks */,
+				F56177EEDE252D42113A5034 /* Pods_FUHSD_Libraries.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +247,8 @@
 			children = (
 				CFA75217B7A3DD63D8417F6C /* Pods-MAD.debug.xcconfig */,
 				833D660AA346C1F2E1ACB912 /* Pods-MAD.release.xcconfig */,
+				326520DF6A9CD0E7FE27B048 /* Pods-FUHSD Libraries.debug.xcconfig */,
+				93D510DA38922B0A1F209523 /* Pods-FUHSD Libraries.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -235,6 +290,7 @@
 				7B4246FD1FFA384000CC2EB5 /* LibraryOverlay.swift */,
 				7B4246FF1FFA398100CC2EB5 /* LibraryOverlayView.swift */,
 				82AE22FB1FF36A850014C7CF /* Models */,
+				7B79671F213C91E6002FABAC /* RSBarcodes_Swift */,
 				82AE22FA1FF36A7D0014C7CF /* Helpers */,
 				82AE22F91FF36A750014C7CF /* Extensions */,
 				82AE22F81FF36A690014C7CF /* Controllers */,
@@ -273,8 +329,46 @@
 			children = (
 				7B72B8601F9B0DB5002E9668 /* MapKit.framework */,
 				76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */,
+				90B18E5DC4299EF9552E43C6 /* Pods_FUHSD_Libraries.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B79671F213C91E6002FABAC /* RSBarcodes_Swift */ = {
+			isa = PBXGroup;
+			children = (
+				7B796760213C9392002FABAC /* ContextMaker.h */,
+				7B796752213C938D002FABAC /* ContextMaker.m */,
+				7B796755213C938E002FABAC /* RSBarcodes-Bridging-Header.h */,
+				7B796758213C938F002FABAC /* RSCode39Generator.swift */,
+				7B796763213C9393002FABAC /* RSCode39Mod43Generator.swift */,
+				7B796761213C9392002FABAC /* RSCode93Generator.swift */,
+				7B79675F213C9392002FABAC /* RSCode128Generator.swift */,
+				7B79675C213C9390002FABAC /* RSCodeDataMatrixGenerator.swift */,
+				7B79675A213C9390002FABAC /* RSCodeGenerator.swift */,
+				7B796753213C938D002FABAC /* RSCodeLayer.swift */,
+				7B796762213C9392002FABAC /* RSCornersLayer.swift */,
+				7B796754213C938D002FABAC /* RSEANGenerator.swift */,
+				7B796750213C938C002FABAC /* RSExtendedCode39Generator.swift */,
+				7B796751213C938C002FABAC /* RSFocusMarkLayer.swift */,
+				7B796756213C938E002FABAC /* RSITF14Generator.swift */,
+				7B796757213C938E002FABAC /* RSITFGenerator.swift */,
+				7B79675D213C9391002FABAC /* RSUnifiedCodeGenerator.swift */,
+				7B796764213C9393002FABAC /* RSUnifiedCodeValidator.swift */,
+				7B79675B213C9390002FABAC /* RSUPCEGenerator.swift */,
+				7B79674F213C938C002FABAC /* StringExtension.swift */,
+				7B79675E213C9391002FABAC /* UIColorExtension.swift */,
+				7B796721213C91E6002FABAC /* Source */,
+				7B796738213C91E6002FABAC /* README.md */,
+			);
+			path = RSBarcodes_Swift;
+			sourceTree = "<group>";
+		};
+		7B796721213C91E6002FABAC /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		7BF586371FF839D00047611E /* Animations */ = {
@@ -297,6 +391,7 @@
 				828F582A201D35CD00E36EAE /* BugReportViewController.swift */,
 				449941141FA8155300272446 /* BookDetailViewController.swift */,
 				7B3F33851F9DBCA200EE3671 /* Scanner.swift */,
+				7B79677B213CA1F3002FABAC /* IDScannerViewController.swift */,
 				44FE61781FA7053300A9399E /* MyBooksViewController.swift */,
 				44FE61741FA7037600A9399E /* DiscoverViewController.swift */,
 				7B5BDDF41FEF1A460089BC00 /* SearchTableViewController.swift */,
@@ -324,6 +419,8 @@
 		82AE22FA1FF36A7D0014C7CF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7B79671B213C8CA5002FABAC /* CDCodabarEncoder.swift */,
+				7B79671C213C8CA5002FABAC /* CDCodabarView.swift */,
 				7BF93C0C2033FC05006A98F4 /* UIImageColors.swift */,
 			);
 			path = Helpers;
@@ -360,7 +457,7 @@
 				7B6EE70220268833003A8908 /* IntroductionPages.storyboard */,
 				82AE230F1FF36C2E0014C7CF /* Home.storyboard */,
 				4426E3F11F9B0A9F007CD8E7 /* LaunchScreen.storyboard */,
-				82AE23091FF36BFF0014C7CF /* MyBooks.storyboard */,
+				7B796719213C8BE3002FABAC /* MyBooks.storyboard */,
 				82AE23111FF36EE70014C7CF /* BookDetails.storyboard */,
 				7B9E22C42037F424009A2B9D /* Review.storyboard */,
 			);
@@ -477,6 +574,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B8755A621274EA700D62396 /* loginBook.json in Resources */,
+				7B79671A213C8BE3002FABAC /* MyBooks.storyboard in Resources */,
+				7B79674E213C91E6002FABAC /* README.md in Resources */,
 				82AE23101FF36C2E0014C7CF /* Home.storyboard in Resources */,
 				82AE230C1FF36C130014C7CF /* Checkout.storyboard in Resources */,
 				7BDEE2EE2026E78C004F3E4D /* Tabs.storyboard in Resources */,
@@ -487,7 +586,6 @@
 				7B9E22C52037F424009A2B9D /* Review.storyboard in Resources */,
 				7B9E22C92037FD19009A2B9D /* done.json in Resources */,
 				7B0EB1442012C98D00A4E9A8 /* loader.json in Resources */,
-				82AE230A1FF36BFF0014C7CF /* MyBooks.storyboard in Resources */,
 				7B8755A221273BF000D62396 /* credentials.plist in Resources */,
 				4426E3F01F9B0A9F007CD8E7 /* Assets.xcassets in Resources */,
 				7B35588820194BE2003DE9E2 /* starPop.json in Resources */,
@@ -507,7 +605,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MAD/Pods-MAD-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-FUHSD Libraries/Pods-FUHSD Libraries-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -516,7 +614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MAD/Pods-MAD-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUHSD Libraries/Pods-FUHSD Libraries-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		671D50CB17F7A3F14FCF6658 /* [CP] Check Pods Manifest.lock */ = {
@@ -530,7 +628,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MAD-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FUHSD Libraries-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -543,9 +641,8 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MAD/Pods-MAD-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-FUHSD Libraries/Pods-FUHSD Libraries-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BulletinBoard.framework",
-				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CollectionKit/CollectionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -562,7 +659,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BulletinBoard.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollectionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -578,7 +674,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MAD/Pods-MAD-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUHSD Libraries/Pods-FUHSD Libraries-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -588,52 +684,73 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B796766213C9394002FABAC /* RSExtendedCode39Generator.swift in Sources */,
 				7B725E121F9B21DC00FE56A1 /* HomeViewController.swift in Sources */,
+				7B79676A213C9394002FABAC /* RSEANGenerator.swift in Sources */,
 				829AE5081FF341B10003BAAF /* BookCoverCollectionViewCell.swift in Sources */,
 				44D527CC202D69B9000A34DD /* AddRating.swift in Sources */,
+				7B796767213C9394002FABAC /* RSFocusMarkLayer.swift in Sources */,
 				44E5115C2029980300A721B3 /* UserReturn.swift in Sources */,
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
+				7B79671E213C8CA5002FABAC /* CDCodabarView.swift in Sources */,
 				44D527CE202D6BCC000A34DD /* UserSetFacebook.swift in Sources */,
+				7B796769213C9394002FABAC /* RSCodeLayer.swift in Sources */,
 				44F5AC882030B6F500C644CF /* HoldCreate.swift in Sources */,
 				44CB8B5521240E3400B495CC /* GetDefaultRecs.swift in Sources */,
 				828F582B201D35CE00E36EAE /* BugReportViewController.swift in Sources */,
+				7B79677C213CA1F3002FABAC /* IDScannerViewController.swift in Sources */,
 				44D527D0202D6C65000A34DD /* UserLoginVerify.swift in Sources */,
 				44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */,
 				44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */,
+				7B796772213C9394002FABAC /* RSUnifiedCodeGenerator.swift in Sources */,
 				7B4E3ECA201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift in Sources */,
+				7B79676C213C9394002FABAC /* RSITFGenerator.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* CheckoutViewController.swift in Sources */,
 				44E511662029AAC900A721B3 /* HoldByUser.swift in Sources */,
 				7B395E3F201C2ECB00DF3299 /* NSObject+facebookObjectiveCLink.m in Sources */,
+				7B796768213C9394002FABAC /* ContextMaker.m in Sources */,
 				7B17B93B2030A2B90005D34B /* HoldViewController.swift in Sources */,
+				7B796771213C9394002FABAC /* RSCodeDataMatrixGenerator.swift in Sources */,
 				44D527C8202D66D9000A34DD /* GetReview.swift in Sources */,
 				44D2164F203E38B8008F9BC4 /* BookInsert.swift in Sources */,
 				44FE61791FA7053300A9399E /* MyBooksViewController.swift in Sources */,
 				7BF93C0D2033FC06006A98F4 /* UIImageColors.swift in Sources */,
+				7B79676B213C9394002FABAC /* RSITF14Generator.swift in Sources */,
+				7B796776213C9394002FABAC /* RSCornersLayer.swift in Sources */,
 				7B6EE70A2026CEFE003A8908 /* ThirdPageViewController.swift in Sources */,
 				44E5115A2029959500A721B3 /* UserCheckout.swift in Sources */,
 				44E5115E202998AC00A721B3 /* CheckoutModel.swift in Sources */,
 				7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */,
 				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
+				7B796775213C9394002FABAC /* RSCode93Generator.swift in Sources */,
 				44D527D2202D6D75000A34DD /* UserModel.swift in Sources */,
 				7B6EE7072026AEAC003A8908 /* FirstPageViewController.swift in Sources */,
+				7B79676D213C9394002FABAC /* RSCode39Generator.swift in Sources */,
 				7B2D675C208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift in Sources */,
 				7BFF53A5202BC3F6007A1C8B /* FinalPageViewController.swift in Sources */,
 				7B5BDDF71FEF1E810089BC00 /* ResultsViewController.swift in Sources */,
+				7B796770213C9394002FABAC /* RSUPCEGenerator.swift in Sources */,
 				7B6EE70520268A84003A8908 /* IntroductionPageViewController.swift in Sources */,
 				44E5116A2029AB7200A721B3 /* HoldSetReady.swift in Sources */,
 				82562A3D202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift in Sources */,
+				7B796765213C9394002FABAC /* StringExtension.swift in Sources */,
 				7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */,
 				44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */,
+				7B79676F213C9394002FABAC /* RSCodeGenerator.swift in Sources */,
 				82562A3B202EC0D500C16D5F /* MyBooksCheckOutTableViewCell.swift in Sources */,
 				44E5115820298CDC00A721B3 /* UserGetBooks.swift in Sources */,
 				7B5BDDF91FEF5FA90089BC00 /* SearchTableViewCell.swift in Sources */,
 				44E511682029AB2B00A721B3 /* HoldByUserReady.swift in Sources */,
 				7B9E22C72037FC24009A2B9D /* ReviewViewController.swift in Sources */,
 				443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */,
+				7B796773213C9394002FABAC /* UIColorExtension.swift in Sources */,
 				442103572127D94D008385CF /* UserCreate.swift in Sources */,
+				7B796778213C9394002FABAC /* RSUnifiedCodeValidator.swift in Sources */,
 				44E511642029A96C00A721B3 /* HoldByBook.swift in Sources */,
+				7B796774213C9394002FABAC /* RSCode128Generator.swift in Sources */,
 				449941151FA8155300272446 /* BookDetailViewController.swift in Sources */,
+				7B79671D213C8CA5002FABAC /* CDCodabarEncoder.swift in Sources */,
 				4461DDE2202F738E006D6838 /* DiscoverSearch.swift in Sources */,
 				7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */,
 				7B5BDDF51FEF1A460089BC00 /* SearchTableViewController.swift in Sources */,
@@ -641,6 +758,7 @@
 				44E511622029A86C00A721B3 /* HoldModel.swift in Sources */,
 				449941131FA810E600272446 /* BookModel.swift in Sources */,
 				442103552127D51C008385CF /* UserCheck.swift in Sources */,
+				7B796777213C9394002FABAC /* RSCode39Mod43Generator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,7 +893,7 @@
 		};
 		4426E3F81F9B0A9F007CD8E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFA75217B7A3DD63D8417F6C /* Pods-MAD.debug.xcconfig */;
+			baseConfigurationReference = 326520DF6A9CD0E7FE27B048 /* Pods-FUHSD Libraries.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -802,7 +920,7 @@
 		};
 		4426E3F91F9B0A9F007CD8E7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 833D660AA346C1F2E1ACB912 /* Pods-MAD.release.xcconfig */;
+			baseConfigurationReference = 93D510DA38922B0A1F209523 /* Pods-FUHSD Libraries.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
