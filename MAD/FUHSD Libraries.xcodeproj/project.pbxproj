@@ -17,6 +17,7 @@
 		4461DDE2202F738E006D6838 /* DiscoverSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461DDE1202F738E006D6838 /* DiscoverSearch.swift */; };
 		449941131FA810E600272446 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941121FA810E600272446 /* BookModel.swift */; };
 		449941151FA8155300272446 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449941141FA8155300272446 /* BookDetailViewController.swift */; };
+		449E5800213CB277001194F1 /* UserSetSchoolID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E57FF213CB277001194F1 /* UserSetSchoolID.swift */; };
 		44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */; };
 		44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8426A20303F7E00697F4B /* HoldDelete.swift */; };
 		44CB8B5521240E3400B495CC /* GetDefaultRecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB8B5421240E3400B495CC /* GetDefaultRecs.swift */; };
@@ -124,6 +125,7 @@
 		4461DDE1202F738E006D6838 /* DiscoverSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSearch.swift; sourceTree = "<group>"; };
 		449941121FA810E600272446 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		449941141FA8155300272446 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		449E57FF213CB277001194F1 /* UserSetSchoolID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetSchoolID.swift; sourceTree = "<group>"; };
 		44B5814D1FB42F7E00B1C59C /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
 		44B8426A20303F7E00697F4B /* HoldDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldDelete.swift; sourceTree = "<group>"; };
 		44CB8B5421240E3400B495CC /* GetDefaultRecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultRecs.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				4461DDE1202F738E006D6838 /* DiscoverSearch.swift */,
 				442103562127D94D008385CF /* UserCreate.swift */,
 				44D527CD202D6BCC000A34DD /* UserSetFacebook.swift */,
+				449E57FF213CB277001194F1 /* UserSetSchoolID.swift */,
 				44D527CF202D6C65000A34DD /* UserLoginVerify.swift */,
 				44E511692029AB7200A721B3 /* HoldSetReady.swift */,
 				44B8426A20303F7E00697F4B /* HoldDelete.swift */,
@@ -692,6 +695,7 @@
 				7B796767213C9394002FABAC /* RSFocusMarkLayer.swift in Sources */,
 				44E5115C2029980300A721B3 /* UserReturn.swift in Sources */,
 				44B5814E1FB42F7E00B1C59C /* AuthorModel.swift in Sources */,
+				449E5800213CB277001194F1 /* UserSetSchoolID.swift in Sources */,
 				7B79671E213C8CA5002FABAC /* CDCodabarView.swift in Sources */,
 				44D527CE202D6BCC000A34DD /* UserSetFacebook.swift in Sources */,
 				7B796769213C9394002FABAC /* RSCodeLayer.swift in Sources */,
@@ -899,7 +903,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -926,7 +930,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = A362T88BAE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

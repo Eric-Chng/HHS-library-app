@@ -8,7 +8,7 @@ class UserCheck: NSObject {
     weak var delegate: DownloadProtocol!
     
     let urlPath = "http://www.the-library-database.com/hhs_php/account_check.php"
-    //Downloads book matching that isbn
+    //check user
     func downloadItems(email: String) {
         
         
