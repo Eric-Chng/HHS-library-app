@@ -32,6 +32,7 @@ class BookModel: NSObject, DownloadProtocol {
     var bookTotal: Int?
     var setTitle: Bool = true
     var fromGoogle = false
+    var ratingCount = 0.0
     
     //var timer: Timer = Timer()
     
@@ -71,8 +72,12 @@ class BookModel: NSObject, DownloadProtocol {
             if let review = item as? ReviewModel
             {
                 let rating_value = review.rating
-                self.rating = rating_value!
-                print(rating_value)
+                if rating_value! > 0.2
+                {
+                    self.rating = (self.rating*self.ratingCount + rating_value!)/(self.ratingCount + 1)
+                    self.ratingCount = self.ratingCount + 1.0
+                }
+                print(rating_value!)
             }
             else if let book = item as? BookModel
             {
@@ -389,7 +394,14 @@ class BookModel: NSObject, DownloadProtocol {
                         if let ratingAsDouble = Double(temper)
                         {
                             //print("As double: " + String(describing: ratingAsDouble))
-                            rating = ratingAsDouble
+                            if ratingCount > 0
+                            {
+                                rating = (rating + ratingAsDouble)/2
+                            }
+                            else if ratingAsDouble > 1.0
+                            {
+                                rating = ratingAsDouble
+                            }
                             }
                             
                             

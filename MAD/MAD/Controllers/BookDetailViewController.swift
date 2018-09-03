@@ -143,7 +143,16 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             {
                 heightConstant = 160
             }
-            let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant).isActive = true
+            let constraintRect = CGSize(width: self.view.frame.width - 36, height: .greatestFiniteMagnitude)
+            let boundingBox = descBox.attributedText.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+            heightConstant =  boundingBox.height
+            print("Height2")
+            print(heightConstant)
+            //                let heightConstraint = NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 160)
+            //                heightConstraint.isActive = true
+            ////                self.descBox.layoutIfNeeded()
+            //                heightConstraint.isActive = false
+            NSLayoutConstraint(item: self.descBox, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: heightConstant + 18).isActive = true
             if(self.descBox.contentSize.height != 36)
             {
 //            self.descBox.addConstraints([heightConstraint])
@@ -664,24 +673,6 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
                 for view in self.ratingView.subviews {
                     view.removeFromSuperview()
                 }
-                
-                while(counter<ratingAsInt)
-                {
-                    loadedRating = true
-                    
-                    counter = counter + 1;
-                    let frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
-                    let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
-                    animationView.contentMode = .scaleToFill
-                    animationView.frame = frame
-                    //animationView.backgroundColor = UIColor.white
-                    
-                    ratingView.addSubview(animationView)
-                    //animationView.loopAnimation = true
-                    //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
-                    animationView.play()
-                }
-                
                 counter = 0
                 
                 while(counter<5)
@@ -695,15 +686,125 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
                     let emptyStarView = UIImageView(image: #imageLiteral(resourceName: "emptyStar"))
                     emptyStarView.contentMode = .scaleToFill
                     emptyStarView.frame = frame
+                    emptyStarView.contentMode = .scaleAspectFill
+
+//                    emptyStarView.layer.frame = CGRect(x: emptyStarView.layer.frame.minX-20, y: emptyStarView.layer.frame.minY, width: emptyStarView.layer.frame.width/4, height: emptyStarView.layer.frame.height)
+//                    emptyStarView.layer.masksToBounds = true
                     //animationView.frame = frame
-                    if(counter>ratingAsInt)
-                    {
-                        ratingView.addSubview(emptyStarView)
-                    }
+                    //                    if(counter>ratingAsInt)
+                    //                    {
+                    emptyStarView.alpha = 0.0
+                    UIView.animate(withDuration: 0.8, delay: 1.2, animations: {
+                        emptyStarView.alpha = 1.0
+                    }, completion: nil)
+                    ratingView.addSubview(emptyStarView)
+                    //                    }
                     //animationView.loopAnimation = true
                     //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
                     //animationView.play()
                 }
+                counter = 0
+                while(counter<ratingAsInt)
+                {
+                    loadedRating = true
+                    
+                    counter = counter + 1;
+                    var frame: CGRect
+                    
+                    let animationView: LOTAnimationView = LOTAnimationView(name: "starPop");
+                    if counter == ratingAsInt
+                    {
+                        frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+                        animationView.contentMode = .scaleToFill
+                        animationView.bounds = CGRect(x: 0, y: 0, width: frame.width/2, height: x.height*1.4)
+//                        animationView.backgroundColor = .red
+//                        animationView.clipsToBounds = true
+                        
+                        animationView.layer.bounds = CGRect(x: 0, y: 0, width: frame.width/2, height: x.height*1.4)
+                        animationView.layer.masksToBounds = true
+//                        animationView.mask
+
+                    }
+                    else
+                    {
+                        frame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(counter), y: 0, width: x.width/2, height: x.height*1.4)
+                        animationView.contentMode = .scaleToFill
+
+                    }
+                    animationView.frame = frame
+                    //animationView.backgroundColor = UIColor.white
+                    
+                    if CGFloat(self.selectedBook!.rating)-CGFloat(ratingAsInt)+CGFloat(1) > 0.3 || counter != ratingAsInt
+                    {
+                        ratingView.addSubview(animationView)
+                    }
+                    
+//                    let coverFrame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(ratingAsInt) + (CGFloat(self.selectedBook!.rating)-CGFloat(ratingAsInt)+CGFloat(1))*(x.width/2), y: 0, width: x.width, height: x.height*1.4)
+                    let coverFrame = CGRect(x: -x.width/2.7+(x.width/4)*CGFloat(self.selectedBook!.rating)+(x.width*3/8), y: 0, width: (x.width/4)*(CGFloat(self.selectedBook!.rating)-CGFloat(ratingAsInt))*CGFloat(-1), height: x.height*1.4)
+//                    let coverFrame = CGRect(x: frame.minX+frame.width/2, y: frame.minY+frame.height/4, width: frame.width/2, height: frame.height)
+//                    let coverFrame = animationView.frame
+//                    let coverFrame = CGRect(x: 0, y: 0, width: 100, height: 50)
+                    let coverUpView = UIView.init(frame: coverFrame)
+                    coverUpView.backgroundColor = .white
+                    print("Big")
+                    print(frame.minX)
+                    
+                    print(CGFloat(self.selectedBook!.rating)-CGFloat(ratingAsInt)+CGFloat(1))
+                    if counter == ratingAsInt
+                    {
+                        let mutablePath = CGMutablePath()
+                        mutablePath.addRect(CGRect(x: frame.minX+frame.width/2, y: frame.minY+frame.height/4, width: frame.width/4, height: frame.height/2))
+                        mutablePath.addRect(animationView.frame)
+                        
+                        // Create a shape layer and cut out the intersection
+                        let mask = CAShapeLayer()
+                        mask.path = mutablePath
+                        mask.fillRule = kCAFillRuleEvenOdd
+//                        animationView.addSubview(coverUpView)
+                        // Add the mask to the view
+//                        animationView.layer.mask = mask
+                        if CGFloat(self.selectedBook!.rating)-CGFloat(ratingAsInt)+CGFloat(1) > 0.3 || CGFloat(self.selectedBook!.rating)-CGFloat(ratingAsInt)+CGFloat(1) < 0.75
+                        {
+                            ratingView.addSubview(coverUpView)
+                        }
+//                        animationView.alpha = 0.9
+                        
+                        let frame = CGRect(x: x.width/4*CGFloat(counter)-x.width/5+5, y: x.height/2.3+5, width: x.width/6-10, height: x.height/2-10)
+                        
+                        //animationView.contentMode = .scaleToFill
+                        let emptyStarView = UIImageView(image: #imageLiteral(resourceName: "emptyStar"))
+                        emptyStarView.contentMode = .scaleToFill
+                        emptyStarView.frame = frame
+//                        emptyStarView.contentMode = .scaleAspectFill
+                        
+                        //                    emptyStarView.layer.frame = CGRect(x: emptyStarView.layer.frame.minX-20, y: emptyStarView.layer.frame.minY, width: emptyStarView.layer.frame.width/4, height: emptyStarView.layer.frame.height)
+                        //                    emptyStarView.layer.masksToBounds = true
+                        //animationView.frame = frame
+                        //                    if(counter>ratingAsInt)
+                        //                    {
+                        emptyStarView.alpha = 0.0
+                        UIView.animate(withDuration: 0.8, delay: 1.2, animations: {
+                            emptyStarView.alpha = 1.0
+                        }, completion: nil)
+//                        ratingView.addSubview(emptyStarView)
+//                        animationView.mask = coverUpView
+//                        emptyStarView.mask = coverUpView
+//                        ratingView.addSubview(emptyStarView)
+
+                        
+                        
+                    coverUpView.alpha = 0.0
+                    }
+                    
+                    //animationView.loopAnimation = true
+                    //animationView.play(fromProgress: 0, toProgress: 5.0, withCompletion: nil)
+                    
+                    UIView.animate(withDuration: 0.8, delay: 5, animations: {
+                        animationView.play()
+                    }, completion: nil)
+                }
+                
+                
             }
             else
             {
@@ -761,9 +862,9 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
                 self.navigationItem.titleView?.layer.masksToBounds = true
                 if(fromScanner)
                 {
-                loadTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
-                    #selector(SearchTableViewController.load), userInfo: nil,  repeats: true)
-                    RunLoop.main.add(loadTimer!, forMode: RunLoopMode.commonModes)
+//                loadTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
+//                    #selector(SearchTableViewController.load), userInfo: nil,  repeats: true)
+//                    RunLoop.main.add(loadTimer!, forMode: RunLoopMode.commonModes)
                 
                 }
                 
@@ -802,7 +903,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         
         if(self.fromScanner == true)
         {
-            loadTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector:
+            loadTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector:
                 #selector(SearchTableViewController.load), userInfo: nil,  repeats: true)
             RunLoop.main.add(loadTimer!, forMode: RunLoopMode.commonModes)
         }

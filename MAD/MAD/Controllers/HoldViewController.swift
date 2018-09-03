@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEntryKit
 
 class HoldViewController: UIViewController, TransactionProtocol {
     
@@ -17,7 +18,25 @@ class HoldViewController: UIViewController, TransactionProtocol {
         {
             self.holdButton.setTitle("Success", for: UIControlState.normal)
             let alert = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
-            self.present(alert, animated: true, completion: nil)
+//            self.present(alert, animated: true, completion: nil)
+            
+            var attributes = EKAttributes.topFloat
+            attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+            attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+            attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+            attributes.statusBar = .dark
+            attributes.displayDuration = 5
+            attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+            attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
+            
+            let title = EKProperty.LabelContent(text: "Hold Set", style: .init(font: MainFont.bold.with(size: 22), color: UIColor.white))
+            let description = EKProperty.LabelContent(text: "We'll have it waiting for you!", style: .init(font: MainFont.light.with(size: 14), color: UIColor.white))
+            let image = EKProperty.ImageContent(image: self.bookImageView.image!, size: CGSize(width: 35, height: 56))
+            let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+            let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+            
+            let contentView = EKNotificationMessageView(with: notificationMessage)
+            SwiftEntryKit.display(entry: contentView, using: attributes)
             
             self.performSegue(withIdentifier: "holdUnwind", sender: self)
         }
@@ -43,8 +62,8 @@ class HoldViewController: UIViewController, TransactionProtocol {
         self.authorLabel.text = author
         self.bookImageView.image = bookImage
         self.isbnLabel.text = ("ISBN: " + self.isbn)
-        self.bookImageView.layer.cornerRadius = 10
-        self.bookImageView.layer.masksToBounds = true
+//        self.bookImageView.layer.cornerRadius = 10
+//        self.bookImageView.layer.masksToBounds = true
         self.holdButton.layer.cornerRadius = 10
         self.holdButton.layer.masksToBounds = true
         

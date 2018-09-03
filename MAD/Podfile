@@ -16,4 +16,5 @@ pod 'IGListKit', '~> 3.0'
 pod ‘Koloda’, ‘~> 4.3.1’
 pod ‘Popover’
 pod 'GoogleSignIn'
+pod 'SwiftEntryKit', '~> 0.6.0'
 end

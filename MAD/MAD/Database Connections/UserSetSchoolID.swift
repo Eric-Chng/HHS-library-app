@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 
-class UserSetFacebook: NSObject {
+class UserSetSchoolID: NSObject {
     
     
     weak var delegate: TransactionProtocol!
@@ -10,7 +10,7 @@ class UserSetFacebook: NSObject {
     let urlPath = "http://www.the-library-database.com/hhs_php/set_id.php"
     
     //Sets the schoolid of a user
-    func setFacebookID(id:String, schoolid:String) {
+    func setSchoolID(id:String, schoolid:String) {
         
         
         let url = URL(string: urlPath)!

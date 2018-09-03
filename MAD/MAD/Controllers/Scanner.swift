@@ -8,12 +8,38 @@
 
 import UIKit
 import AVFoundation
+import SwiftEntryKit
 
 protocol MyProtocol {
     func sendScannedValue(valueSent: String)
 }
 
-class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate, DownloadProtocol {
+class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate, DownloadProtocol, TransactionProtocol {
+    
+    
+    func transactionProcessed(success: Bool) {
+        if(success)
+        {
+            var attributes = EKAttributes.topFloat
+            attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+            attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+            attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+            attributes.statusBar = .dark
+            attributes.displayDuration = 3
+            attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+            attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
+            
+            let title = EKProperty.LabelContent(text: "Student ID Added", style: .init(font: MainFont.bold.with(size: 18), color: UIColor.white))
+            let description = EKProperty.LabelContent(text: "Check it out on your profile page", style: .init(font: MainFont.light.with(size: 12), color: UIColor.white))
+            let image = EKProperty.ImageContent(image: #imageLiteral(resourceName: "success"), size: CGSize(width: 45, height: 45))
+            let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+            let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+            
+            let contentView = EKNotificationMessageView(with: notificationMessage)
+            SwiftEntryKit.display(entry: contentView, using: attributes)
+        }
+    }
+    
     
     
     func itemsDownloaded(items: NSArray, from: String) {
@@ -153,6 +179,23 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate, Downloa
             //view.sendSubview(toBack: videoPreviewLayer)
             captureSession.startRunning()
             print("Video feed started")
+            var attributes = EKAttributes.topFloat
+            attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+            attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+            attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+            attributes.statusBar = .dark
+            attributes.displayDuration = 3
+            attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+            attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
+            
+            let title = EKProperty.LabelContent(text: "Scanning", style: .init(font: MainFont.bold.with(size: 18), color: UIColor.white))
+            let description = EKProperty.LabelContent(text: "Point the camera at an ID card or book barcode", style: .init(font: MainFont.light.with(size: 12), color: UIColor.white))
+            let image = EKProperty.ImageContent(image: #imageLiteral(resourceName: "phone"), size: CGSize(width: 45, height: 45))
+            let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+            let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+            
+            let contentView = EKNotificationMessageView(with: notificationMessage)
+            SwiftEntryKit.display(entry: contentView, using: attributes)
             for x in blueView.constraints
             {
                 //print(x)
@@ -237,6 +280,23 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate, Downloa
                         //self.navigationController?.pushViewController(scanners, animated: true)
                         //print("test point")
                         scannerStopped = true
+                        var attributes = EKAttributes.centerFloat
+                        attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+                        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+                        attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+                        attributes.statusBar = .light
+                        attributes.displayDuration = 1
+                        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+                        attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
+                        
+                        let title = EKProperty.LabelContent(text: "Book Scanned", style: .init(font: MainFont.bold.with(size:22), color: UIColor.white))
+                        let description = EKProperty.LabelContent(text: "Searching the web now...", style: .init(font: MainFont.light.with(size: 14), color: UIColor.white))
+                        let image = EKProperty.ImageContent(image: #imageLiteral(resourceName: "phone"), size: CGSize(width: 45, height: 56))
+                        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+                        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+                        
+                        let contentView = EKNotificationMessageView(with: notificationMessage)
+                        SwiftEntryKit.display(entry: contentView, using: attributes)
                         self.currentISBN = object.stringValue!
                         let isbnBook = IdSearchBook.init()
                         isbnBook.delegate = self
@@ -260,8 +320,14 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate, Downloa
                 }
                 else if object.type == AVMetadataObject.ObjectType.code39 && scannerStopped == false
                 {
-                    let alert = UIAlertController(title: "ID Card Scanned", message: "Barcode found: " + object.stringValue!, preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: "ID Card Scanned", message: "Would you like to add the Student ID " + object.stringValue! + " to your account?", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) {
+                        UIAlertAction in
+                        let setSchoolID = UserSetSchoolID()
+                        setSchoolID.delegate = self
+                        setSchoolID.setSchoolID(id: UserDefaults.standard.object(forKey: "userId") as! String, schoolid: object.stringValue!)
+                    })
                     self.present(alert, animated: true, completion: nil)
                 }
                 else

@@ -52,6 +52,7 @@ class UserCheck: NSObject {
         //NSArrays initialized
         var jsonElement = NSDictionary()
         let books = NSMutableArray()
+        let users = NSMutableArray()
         
         for i in 0 ..< jsonResult.count
         {
@@ -60,7 +61,8 @@ class UserCheck: NSObject {
             
             var book = ""
             
-            
+            var user = UserModel()
+
             //JsonElement values are guaranteed to not be null through optional binding
             if let id = jsonElement["user_id"] as! String?,
                 let pass = jsonElement["password"] as! String?,
@@ -70,15 +72,23 @@ class UserCheck: NSObject {
                 let fbid = jsonElement["facebookid"] as! String?
             {
                 book = "user_id:" + id + "|password:" + pass + "|name:" + name + "|email:" + email + "|school_id:" + scid + "|facebook_id:" + fbid
+                user.password = pass
+                user.name = name
+                user.email = email
+                user.schoolid = scid
+                user.facebookid = fbid
+                user.ID = id
             }
             
+            
             books.add(book)
+            users.add(user)
             
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
             
-            self.delegate.itemsDownloaded(items: books, from: "UserCheck")
+            self.delegate.itemsDownloaded(items: users, from: "UserCheck")
             
         })
     }

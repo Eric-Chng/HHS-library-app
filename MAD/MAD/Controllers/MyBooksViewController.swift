@@ -125,7 +125,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         //UserSearch.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)
         onHoldTableView.delegate = self
         onHoldTableView.dataSource = self
-        
+        self.barcodeImageView.isHidden = true
         checkOutTableView.delegate = self
         checkOutTableView.dataSource = self
         //let onHoldUserSearch = HoldbyUser()
@@ -151,8 +151,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         helpButton.layer.cornerRadius = 4
         helpButton.layer.masksToBounds = true
         
-        let idBarcodeImage = RSUnifiedCodeGenerator.shared.generateCode("5151452", machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39/*Mod43*/.rawValue)
-        self.barcodeImageView.image = idBarcodeImage
+        
 //        barcodeImageView.layer.cornerRadius = 4
 //        barcodeImageView.layer.masksToBounds = true
         
@@ -167,14 +166,15 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
         if(from.elementsEqual("UserGetBooks")){
-        for i in items
-        {
-            let book = i as! CheckoutModel
-            checkouts.adding(book);
-            let model = BookModel(ISBN: book.ISBN!)
-            checkoutBooks.append(model)
+            for i in items
+            {
+                let book = i as! CheckoutModel
+                checkouts.adding(book);
+//                let model = BookModel(ISBN: book.ISBN!)
+                let model = BookModel(databaseISBN: book.ISBN!)
+                checkoutBooks.append(model)
 
-        }
+            }
           self.checkedTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.checkedOutAction), userInfo: nil,  repeats: true)
         }
         else if(from == "HoldByUser"){
@@ -182,10 +182,28 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             for i in items{
                 let book = i as! HoldModel
                 onholds.adding(book)
-                let model = BookModel(ISBN: book.ISBN!)
+                let model = BookModel(databaseISBN: book.ISBN!)
                 onholdBooks.append(model)
             }
             self.heldTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(MyBooksViewController.heldAction), userInfo: nil,  repeats: true)
+        }
+        else if(from == "UserCheck")
+        {
+            for i in items
+            {
+                let dias = i as! UserModel
+                print(dias.schoolid)
+                if dias.schoolid! != "1234567"
+                {
+                    let idBarcodeImage = RSUnifiedCodeGenerator.shared.generateCode(dias.schoolid!, machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39/*Mod43*/.rawValue)
+                    self.barcodeImageView.image = idBarcodeImage
+                    self.barcodeImageView.isHidden = false
+                }
+                else
+                {
+                    self.loadingBarcodeLabel.text = "Scan your Student ID Card to add it here"
+                }
+            }
         }
         self.checkOutTableView.reloadData()
     }
@@ -196,6 +214,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         self.performSegue(withIdentifier: "logoutSegue", sender: self)
         
     }
+    @IBOutlet weak var loadingBarcodeLabel: UILabel!
     
     @IBAction func helpPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "helpSegue", sender: self)
@@ -208,6 +227,9 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         let profile = user?.profile
         let firstName = profile?.givenName
         let email = profile?.email
+        let userCheck = UserCheck.init()
+        userCheck.delegate = self
+        userCheck.downloadItems(email: email!)
         self.nameLabe.text = profile?.name
         self.idLabel.text = email!
         let imageURL = profile?.imageURL(withDimension: 300)

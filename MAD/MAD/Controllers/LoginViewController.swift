@@ -9,6 +9,7 @@
 import UIKit
 import GoogleSignIn
 import Lottie
+import SwiftEntryKit
 
 class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelegate, TransactionProtocol {
     
@@ -18,25 +19,95 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
     {
         if(success)
         {
-           print("Account creation success")
-            firstLogin = true
-            let login = UserLoginVerify()
-            login.delegate = self
-            let user = GIDSignIn.sharedInstance().currentUser
-            let profile = user?.profile
-            let firstName = profile?.givenName
-            self.userNameField.text = firstName
-            let email = profile?.email!
-            login.verifyLogin(email: email!)
+            if self.accountCreated == false
+            {
+                print("Account creation success")
+                self.accountCreated = true
+                firstLogin = true
+                print("Success")
+                let login = UserLoginVerify()
+                login.delegate = self
+                let user = GIDSignIn.sharedInstance().currentUser
+                let profile = user?.profile
+                let firstName = profile?.givenName
+                self.userNameField.text = firstName
+                let email = profile?.email!
+                login.verifyLogin(email: email!)
+            }
+            else
+            {
+                formView.removeFromSuperview()
+                UserDefaults.standard.set("false", forKey: "FirstLogin")
+                self.performSegue(withIdentifier: "LoginToIntro", sender: self)
+            }
         }
         else
         {
-            print("Account creation failed")
-            
+            print("Something went wrong")
+            let alert = UIAlertController(title: "Something Went Wrong! 😳", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Got It", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
+    lazy var formView: EKFormMessageView = {
+        let formDescription = EKProperty.LabelContent(text: "Confirm Your Student ID", style: .init(font: MainFont.bold.with(size: 22), color: UIColor.white))
+        let placeholder = EKProperty.LabelContent(text: "Student ID", style: .init(font: MainFont.light.with(size: 20), color: UIColor.white))
+        var buttonDescription = EKProperty.LabelContent(text: "Confirm", style: .init(font: MainFont.light.with(size: 18), color: .gray))
+        let textFieldContent = EKProperty.TextFieldContent(keyboardType: UIKeyboardType.numberPad, placeholder: placeholder, textStyle: EKProperty.LabelStyle(font: MainFont.light.with(size: 20), color: .white), isSecure: false, leadingImage: #imageLiteral(resourceName: "id-card"), bottomBorderColor: .white)
+        let buttonContent = EKProperty.ButtonContent(label: buttonDescription, backgroundColor: .white, highlightedBackgroundColor: .white, action: {
+            print("Button pressed")
+            let id = textFieldContent.textContent
+            if id.count == 7
+            {
+                let setSchoolID = UserSetSchoolID()
+                setSchoolID.delegate = self
+                setSchoolID.setSchoolID(id: UserDefaults.standard.object(forKey: "userId") as! String, schoolid: id)
+            }
+            else if id.count > 0
+            {
+                buttonDescription.text = "Incorrect Length"
+                self.invalidInput()
+            }
+            print(textFieldContent.textContent)
+            
+        })
+        
+        let temp = EKFormMessageView(with: formDescription, textFieldsContent: [textFieldContent], buttonContent: buttonContent)
+        return temp
+    }()
     
+    func invalidInput()
+    {
+        var attributes = EKAttributes.centerFloat
+        attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.popBehavior = .animated(animation: .init(scale: .init(from: 1, to: 0, duration: 1)))
+        attributes.shadow = .active(with: .init(color: .white, opacity: 0.5, radius: 10, offset: .zero))
+        attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .jolt)
+        //        attributes.
+        attributes.statusBar = .light
+        attributes.displayDuration = 9999999999
+        //        attributes.
+        //        SwiftEntryKit.display(entry: formView, using: attributes)
+        formView.removeFromSuperview()
+        let alert = UIAlertController(title: "Incorrect ID Length", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            SwiftEntryKit.display(entry: self.formView, using: attributes)
+            
+        })
+        alert.addAction(UIAlertAction(title: "Skip", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            print("Skipped")
+            let setSchoolID = UserSetSchoolID()
+            setSchoolID.delegate = self
+            setSchoolID.setSchoolID(id: UserDefaults.standard.object(forKey: "userId") as! String, schoolid: "1234567")
+        })
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    var accountCreated = false
     @IBOutlet weak var incorrectCredentialsLabel: UILabel!
     let animationView: LOTAnimationView = LOTAnimationView(name: "loginBook")
     @IBOutlet weak var loginTitleLabel: UILabel!
@@ -70,8 +141,18 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
 
                 if(firstLogin)
                 {
-                    UserDefaults.standard.set("false", forKey: "FirstLogin")
-                    self.performSegue(withIdentifier: "LoginToIntro", sender: self)
+                    var attributes = EKAttributes.centerFloat
+                    attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+                    attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+                    attributes.shadow = .active(with: .init(color: .white, opacity: 0.5, radius: 10, offset: .zero))
+                    attributes.statusBar = .dark
+                    attributes.displayDuration = 9999999999
+                    attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .jolt)
+                    
+                    SwiftEntryKit.display(entry: formView, using: attributes)
+                    
+                    //add it here
+                    
                     
                 }
                 else

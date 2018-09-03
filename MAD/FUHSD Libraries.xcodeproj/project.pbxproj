@@ -44,6 +44,12 @@
 		7B0EB1462012C9B800A4E9A8 /* scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B0EB1452012C9B800A4E9A8 /* scan.json */; };
 		7B17B93B2030A2B90005D34B /* HoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17B93A2030A2B90005D34B /* HoldViewController.swift */; };
 		7B23271B201DB3ED00B126CD /* FacebookRatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */; };
+		7B2CE3AA213CBACF006C9251 /* Object+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CE3A4213CBACD006C9251 /* Object+ClassName.swift */; };
+		7B2CE3AB213CBACF006C9251 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CE3A5213CBACE006C9251 /* Font.swift */; };
+		7B2CE3AC213CBACF006C9251 /* CGRect+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CE3A6213CBACE006C9251 /* CGRect+Utils.swift */; };
+		7B2CE3AD213CBACF006C9251 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CE3A7213CBACF006C9251 /* UIColor+Utils.swift */; };
+		7B2CE3AE213CBACF006C9251 /* UIScreen+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CE3A8213CBACF006C9251 /* UIScreen+Utils.swift */; };
+		7B2CE3AF213CBACF006C9251 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CE3A9213CBACF006C9251 /* UIView+Nib.swift */; };
 		7B2D675C208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D675B208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift */; };
 		7B35588820194BE2003DE9E2 /* starPop.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B35588720194BE2003DE9E2 /* starPop.json */; };
 		7B395E3A201C2D5D00DF3299 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */; };
@@ -153,6 +159,12 @@
 		7B0EB1452012C9B800A4E9A8 /* scan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scan.json; sourceTree = "<group>"; };
 		7B17B93A2030A2B90005D34B /* HoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldViewController.swift; sourceTree = "<group>"; };
 		7B23271A201DB3ED00B126CD /* FacebookRatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookRatingModel.swift; sourceTree = "<group>"; };
+		7B2CE3A4213CBACD006C9251 /* Object+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Object+ClassName.swift"; sourceTree = "<group>"; };
+		7B2CE3A5213CBACE006C9251 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		7B2CE3A6213CBACE006C9251 /* CGRect+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Utils.swift"; sourceTree = "<group>"; };
+		7B2CE3A7213CBACF006C9251 /* UIColor+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
+		7B2CE3A8213CBACF006C9251 /* UIScreen+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Utils.swift"; sourceTree = "<group>"; };
+		7B2CE3A9213CBACF006C9251 /* UIView+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		7B2D675B208842E1001D4520 /* HomeRecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B35588720194BE2003DE9E2 /* starPop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starPop.json; sourceTree = "<group>"; };
 		7B395E38201C2D5C00DF3299 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -422,6 +434,12 @@
 		82AE22FA1FF36A7D0014C7CF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7B2CE3A6213CBACE006C9251 /* CGRect+Utils.swift */,
+				7B2CE3A5213CBACE006C9251 /* Font.swift */,
+				7B2CE3A4213CBACD006C9251 /* Object+ClassName.swift */,
+				7B2CE3A7213CBACF006C9251 /* UIColor+Utils.swift */,
+				7B2CE3A8213CBACF006C9251 /* UIScreen+Utils.swift */,
+				7B2CE3A9213CBACF006C9251 /* UIView+Nib.swift */,
 				7B79671B213C8CA5002FABAC /* CDCodabarEncoder.swift */,
 				7B79671C213C8CA5002FABAC /* CDCodabarView.swift */,
 				7BF93C0C2033FC05006A98F4 /* UIImageColors.swift */,
@@ -653,8 +671,10 @@
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
+				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/ScalingCarousel/ScalingCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
@@ -669,8 +689,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScalingCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEntryKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
@@ -707,6 +729,7 @@
 				44D527CA202D68E0000A34DD /* ReviewModel.swift in Sources */,
 				44B8426B20303F7E00697F4B /* HoldDelete.swift in Sources */,
 				7B796772213C9394002FABAC /* RSUnifiedCodeGenerator.swift in Sources */,
+				7B2CE3AB213CBACF006C9251 /* Font.swift in Sources */,
 				7B4E3ECA201C67C900259CBB /* FacebookReviewsCollectionViewCell.swift in Sources */,
 				7B79676C213C9394002FABAC /* RSITFGenerator.swift in Sources */,
 				7B725E0F1F9B1C2D00FE56A1 /* CheckoutViewController.swift in Sources */,
@@ -726,8 +749,10 @@
 				44E5115E202998AC00A721B3 /* CheckoutModel.swift in Sources */,
 				7B4247001FFA398100CC2EB5 /* LibraryOverlayView.swift in Sources */,
 				7B3F33861F9DBCA200EE3671 /* Scanner.swift in Sources */,
+				7B2CE3AE213CBACF006C9251 /* UIScreen+Utils.swift in Sources */,
 				4426E3E71F9B0A9F007CD8E7 /* AppDelegate.swift in Sources */,
 				7B796775213C9394002FABAC /* RSCode93Generator.swift in Sources */,
+				7B2CE3AA213CBACF006C9251 /* Object+ClassName.swift in Sources */,
 				44D527D2202D6D75000A34DD /* UserModel.swift in Sources */,
 				7B6EE7072026AEAC003A8908 /* FirstPageViewController.swift in Sources */,
 				7B79676D213C9394002FABAC /* RSCode39Generator.swift in Sources */,
@@ -738,8 +763,10 @@
 				7B6EE70520268A84003A8908 /* IntroductionPageViewController.swift in Sources */,
 				44E5116A2029AB7200A721B3 /* HoldSetReady.swift in Sources */,
 				82562A3D202ED3CC00C16D5F /* MyBooksOnHoldTableViewCell.swift in Sources */,
+				7B2CE3AF213CBACF006C9251 /* UIView+Nib.swift in Sources */,
 				7B796765213C9394002FABAC /* StringExtension.swift in Sources */,
 				7B4246FE1FFA384000CC2EB5 /* LibraryOverlay.swift in Sources */,
+				7B2CE3AD213CBACF006C9251 /* UIColor+Utils.swift in Sources */,
 				44FE61751FA7037600A9399E /* DiscoverViewController.swift in Sources */,
 				7B79676F213C9394002FABAC /* RSCodeGenerator.swift in Sources */,
 				82562A3B202EC0D500C16D5F /* MyBooksCheckOutTableViewCell.swift in Sources */,
@@ -748,6 +775,7 @@
 				44E511682029AB2B00A721B3 /* HoldByUserReady.swift in Sources */,
 				7B9E22C72037FC24009A2B9D /* ReviewViewController.swift in Sources */,
 				443C20F0200AA2FC00AACC25 /* IdSearchBook.swift in Sources */,
+				7B2CE3AC213CBACF006C9251 /* CGRect+Utils.swift in Sources */,
 				7B796773213C9394002FABAC /* UIColorExtension.swift in Sources */,
 				442103572127D94D008385CF /* UserCreate.swift in Sources */,
 				7B796778213C9394002FABAC /* RSUnifiedCodeValidator.swift in Sources */,
@@ -903,7 +931,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A362T88BAE;
+				DEVELOPMENT_TEAM = 249TUVEQGV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -930,7 +958,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A362T88BAE;
+				DEVELOPMENT_TEAM = 249TUVEQGV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

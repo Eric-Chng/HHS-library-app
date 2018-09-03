@@ -12,6 +12,7 @@ import ScalingCarousel
 import Koloda
 import MapKit
 import Popover
+import SwiftEntryKit
 
 class CodeCell: ScalingCarouselCell {
     
@@ -27,7 +28,9 @@ class CodeCell: ScalingCarouselCell {
     }
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, TransactionProtocol {
+    
+    
     
     var kolodaView: KolodaView!
     fileprivate var scalingCarousel: ScalingCarouselView!
@@ -44,6 +47,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var hoursButton: UILabel!
     
     // MARK: - Lifecycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setUpProfileButton()
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,12 +80,86 @@ class HomeViewController: UIViewController {
         
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04898), MKCoordinateSpanMake(0.01, 0.01)), animated: true)
-        setUpProfileButton()
         
         imageView.setImage(#imageLiteral(resourceName: "user"), for: UIControlState.selected)
         imageView.setImage(#imageLiteral(resourceName: "user"), for: UIControlState.normal)
 
         
+        
+        
+//        attributes = EKAttributes.centerFloat
+//        attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+//        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+//        attributes.shadow = .active(with: .init(color: .white, opacity: 0.5, radius: 10, offset: .zero))
+//        attributes.statusBar = .dark
+//        attributes.displayDuration = 9999999999
+//        attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .jolt)
+        
+//        formView = EKFormMessageView(with: formDescription, textFieldsContent: [textFieldContent], buttonContent: buttonContent)
+//        SwiftEntryKit.display(entry: formView, using: attributes)
+
+    }
+    
+    lazy var formView: EKFormMessageView = {
+        let formDescription = EKProperty.LabelContent(text: "Confirm Your Student ID", style: .init(font: MainFont.bold.with(size: 22), color: UIColor.white))
+        let placeholder = EKProperty.LabelContent(text: "Student ID", style: .init(font: MainFont.light.with(size: 20), color: UIColor.white))
+        var buttonDescription = EKProperty.LabelContent(text: "Confirm", style: .init(font: MainFont.light.with(size: 18), color: .gray))
+        let textFieldContent = EKProperty.TextFieldContent(keyboardType: UIKeyboardType.numberPad, placeholder: placeholder, textStyle: EKProperty.LabelStyle(font: MainFont.light.with(size: 20), color: .white), isSecure: false, leadingImage: #imageLiteral(resourceName: "id-card"), bottomBorderColor: .white)
+        let buttonContent = EKProperty.ButtonContent(label: buttonDescription, backgroundColor: .white, highlightedBackgroundColor: .white, action: {
+            print("Button pressed")
+            let id = textFieldContent.textContent
+            if id.count == 7
+            {
+                let setSchoolID = UserSetSchoolID()
+                setSchoolID.delegate = self
+                setSchoolID.setSchoolID(id: UserDefaults.standard.object(forKey: "userId") as! String, schoolid: id)
+            }
+            else if id.count > 0
+            {
+                buttonDescription.text = "Incorrect Length"
+                self.invalidInput()
+            }
+            print(textFieldContent.textContent)
+            
+        })
+        
+        let temp = EKFormMessageView(with: formDescription, textFieldsContent: [textFieldContent], buttonContent: buttonContent)
+        return temp
+    }()
+    
+    func invalidInput()
+    {
+        var attributes = EKAttributes.centerFloat
+        attributes.entryBackground = .gradient(gradient: .init(colors: [.cyan, .purple], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.popBehavior = .animated(animation: .init(scale: .init(from: 1, to: 0, duration: 1)))
+        attributes.shadow = .active(with: .init(color: .white, opacity: 0.5, radius: 10, offset: .zero))
+        attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .jolt)
+//        attributes.
+        attributes.statusBar = .light
+        attributes.displayDuration = 9999999999
+//        attributes.
+//        SwiftEntryKit.display(entry: formView, using: attributes)
+        formView.removeFromSuperview()
+        let alert = UIAlertController(title: "Incorrect ID Length", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            SwiftEntryKit.display(entry: self.formView, using: attributes)
+            
+        })
+        alert.addAction(UIAlertAction(title: "Skip", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            print("Skipped")
+            let setSchoolID = UserSetSchoolID()
+            setSchoolID.delegate = self
+            setSchoolID.setSchoolID(id: UserDefaults.standard.object(forKey: "userId") as! String, schoolid: "1234567")
+        })
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func transactionProcessed(success: Bool) {
+        print("Transaction processed")
+        print("Result: " + String(describing: success))
     }
     
     
@@ -135,8 +218,8 @@ class HomeViewController: UIViewController {
     {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.addSubview(imageView)
-        navigationBar.alpha = 0.5
-        navigationBar.isTranslucent = true
+//        navigationBar.alpha = 0.5
+//        navigationBar.isTranslucent = true
         imageView.layer.cornerRadius = Const.ImageSizeForLargeState / 2
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false

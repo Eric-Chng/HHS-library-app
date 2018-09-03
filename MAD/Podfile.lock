@@ -31,8 +31,11 @@ PODS:
   - lottie-ios (2.1.5)
   - pop (1.0.10)
   - Popover (1.2.0)
+  - QuickLayout (2.0.2)
   - ScalingCarousel (2.0.3)
   - SnapKit (4.0.0)
+  - SwiftEntryKit (0.6.0):
+    - QuickLayout (= 2.0.2)
   - ViewAnimator (1.0.2)
 
 DEPENDENCIES:
@@ -45,6 +48,7 @@ DEPENDENCIES:
   - Popover
   - ScalingCarousel
   - SnapKit (~> 4.0.0)
+  - SwiftEntryKit (~> 0.6.0)
   - ViewAnimator
 
 SPEC REPOS:
@@ -60,8 +64,10 @@ SPEC REPOS:
     - lottie-ios
     - pop
     - Popover
+    - QuickLayout
     - ScalingCarousel
     - SnapKit
+    - SwiftEntryKit
     - ViewAnimator
 
 SPEC CHECKSUMS:
@@ -76,10 +82,12 @@ SPEC CHECKSUMS:
   lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
+  QuickLayout: a730730b646b231fd4ef7cffaeb1e81fe0e1ca92
   ScalingCarousel: 023450cd1a8f1bd7d13a8edbddc956ded8ed1891
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftEntryKit: ba070426598304c5773d84b54ed8b0763b5f2060
   ViewAnimator: d7b18e0be98e05807f61ad886a36363727209377
 
-PODFILE CHECKSUM: dcf8b048b202d1b8bea3be9c3d5be341718d15c0
+PODFILE CHECKSUM: c5bb5f6545a655cfaf7fda090e255bb0907e3b55
 
 COCOAPODS: 1.5.3

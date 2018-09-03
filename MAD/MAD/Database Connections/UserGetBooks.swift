@@ -83,9 +83,10 @@ class UserGetBooks: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            
-            self.delegate.itemsDownloaded(items: checkouts, from: "UserGetBooks")
-            
+            if(self.delegate != nil)
+            {
+                self.delegate.itemsDownloaded(items: checkouts, from: "UserGetBooks")
+            }
         })
     }
     

@@ -81,6 +81,7 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     
     @available(iOS, deprecated: 9.0)
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.reloadLabel.alpha = 0
         if(self.reviewArr.count < 1)
         {
