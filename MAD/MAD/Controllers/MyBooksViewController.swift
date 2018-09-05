@@ -165,6 +165,8 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var reportBugButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    
+    
     @available(iOS, deprecated: 9.0)
     func itemsDownloaded(items: NSArray, from: String) {
         if(from.elementsEqual("UserGetBooks")){

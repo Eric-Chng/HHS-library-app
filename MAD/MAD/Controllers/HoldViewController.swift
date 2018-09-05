@@ -30,7 +30,7 @@ class HoldViewController: UIViewController, TransactionProtocol {
             attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
             
             let title = EKProperty.LabelContent(text: "Hold Set", style: .init(font: MainFont.bold.with(size: 22), color: UIColor.white))
-            let description = EKProperty.LabelContent(text: "We'll have it waiting for you!", style: .init(font: MainFont.light.with(size: 14), color: UIColor.white))
+            let description = EKProperty.LabelContent(text: "We'll let you know when it's ready!", style: .init(font: MainFont.light.with(size: 14), color: UIColor.white))
             let image = EKProperty.ImageContent(image: self.bookImageView.image!, size: CGSize(width: 35, height: 56))
             let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
             let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)

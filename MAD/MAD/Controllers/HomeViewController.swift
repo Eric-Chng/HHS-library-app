@@ -28,7 +28,9 @@ class CodeCell: ScalingCarouselCell {
     }
 }
 
-class HomeViewController: UIViewController, TransactionProtocol {
+class HomeViewController: UIViewController, TransactionProtocol, DownloadProtocol {
+    
+    
     
     
     
@@ -54,6 +56,104 @@ class HomeViewController: UIViewController, TransactionProtocol {
 
     }
     
+    var items_received = 0
+    var books_received: [BookModel] = []
+    
+    func itemsDownloaded(items: NSArray, from: String) {
+        print(String(describing: items.count) + " items downloaded from " + from)
+        for item in items
+        {
+            if from == "HoldByUserReady"
+            {
+                self.items_received = items.count
+                if let hold = item as? HoldModel
+                {
+                    print(hold.ISBN!)
+                    let bookByISBN = IdSearchBook()
+                    bookByISBN.delegate = self
+                    let trimmedISBN = hold.ISBN!.replacingOccurrences(of: "-", with: "")
+                    bookByISBN.downloadItems(isbn: trimmedISBN)
+                }
+            }
+            else if from == "idSearch"
+            {
+                if let book = item as? BookModel
+                {
+                    print("Book received")
+                    print(self.items_received)
+                    print(self.books_received.count)
+                    self.books_received.append(book)
+                    if self.books_received.count == self.items_received
+                    {
+                        print("All books found")
+                        for i in self.books_received
+                        {
+                            print(i.title!)
+                        }
+                        self.displayReadyHolds()
+                    }
+//                    print(book.title)
+                }
+            }
+        }
+    }
+    
+    func displayReadyHolds()
+    {
+        var attributes = EKAttributes.centerFloat
+        attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+        attributes.statusBar = .light
+        attributes.displayDuration = 16
+        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.minEdge), height: .intrinsic)
+        
+        var titleText = ""
+        if self.books_received.count > 1
+        {
+            titleText = "Your Holds Are Ready!"
+        }
+        else
+        {
+            titleText = "Your Hold Is Ready!"
+        }
+        
+        let title = EKProperty.LabelContent(text: titleText, style: EKProperty.LabelStyle.init(font: MainFont.bold.with(size: 22), color: .white, alignment: NSTextAlignment.center, numberOfLines: 1))
+        var descriptionText = ""
+        for book in self.books_received
+        {
+            let bookTitle = book.title!
+            descriptionText = descriptionText + "- " + bookTitle + "\n"
+        }
+        descriptionText.removeLast(1)
+        let description = EKProperty.LabelContent(text: descriptionText, style: .init(font: MainFont.light.with(size: 19), color: UIColor.white))
+        let image = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: #imageLiteral(resourceName: "book")))
+//        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+//        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+        var buttonDescription = EKProperty.LabelContent(text: "Got It", style: .init(font: MainFont.light.with(size: 18), color: .gray))
+        let buttonContent = EKProperty.ButtonContent(label: buttonDescription, backgroundColor: .white, highlightedBackgroundColor: .white, action: {
+            print("Pop Up Dismissed")
+            SwiftEntryKit.dismiss()
+        })
+//        EKPopUpMessage.EKPopUpMessageAction.
+//        let popUpMessageAction = EKPopUpMessage.EKPopUpMessageAction -> ()
+        let message = EKPopUpMessage(themeImage: image, title: title, description: description, button: buttonContent, action: {
+            print("Pop Up Dismissed")
+            SwiftEntryKit.dismiss()
+        })
+
+        let contentView = EKPopUpMessageView(with: message)
+        
+//        let contentView = EKNotificationMessageView(with: notificationMessage)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
+    
+    func nothing()
+    {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,6 +177,9 @@ class HomeViewController: UIViewController, TransactionProtocol {
         //mapView.setRegion(MKCoordinateRegion(), animated: false)
         timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(HomeViewController.action), userInfo: nil,  repeats: true)
         
+        let getReadyHolds = HoldbyUserReady()
+        getReadyHolds.delegate = self
+        getReadyHolds.downloadItems(inputID: UserDefaults.standard.object(forKey: "userId") as! String)
         
         
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.33712,  -122.04898), MKCoordinateSpanMake(0.01, 0.01)), animated: true)
