@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MAD/Controllers/BookDetailViewController.swift"
-            timestampString = "557658393.893949"
+            timestampString = "557819732.8129539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "checkForFlag()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MAD/Controllers/BookDetailViewController.swift"
-            timestampString = "557658393.894094"
+            timestampString = "557819732.813526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "checkForFlag()"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MAD/Controllers/MyBooksViewController.swift"
-            timestampString = "557658393.89422"
+            timestampString = "557819732.813869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "itemsDownloaded(items:from:)"
             landmarkType = "7">
          </BreakpointContent>

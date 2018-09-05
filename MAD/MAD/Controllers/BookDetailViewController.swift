@@ -225,12 +225,14 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
                 {
                     if(selectedBook!.rating > -0.1)
                     {
-                self.loadTimer?.invalidate()
+                        self.loadTimer?.invalidate()
+                        self.loadTimer = nil
                         self.checkAvailability()
                     }
                     else
                     {
                         self.loadTimer?.invalidate()
+                        self.loadTimer = nil
                         self.checkAvailability()
 
                     }
@@ -414,7 +416,9 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
     //Passes the current BookModel to the HoldViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.loadTimer?.invalidate()
+        self.loadTimer = nil
         self.timer.invalidate()
+//        self.timer = nil
         if segue.destination is HoldViewController {
             (segue.destination as! HoldViewController).setBookModel(model: self.selectedBook!)
         }
@@ -882,6 +886,14 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.myWebView.stopLoading()
+        if self.timer != nil
+        {
+            self.timer.invalidate()
+        }
+        if self.loadTimer != nil
+        {
+            self.loadTimer?.invalidate()
+        }
         UIView.animate(withDuration: 0.8, animations: {self.navigationController?.navigationBar.backgroundColor = self.navBarBackgroundColor
             self.navigationController?.navigationBar.barTintColor = self.navBarTintColor
 
@@ -905,6 +917,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         {
             loadTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector:
                 #selector(SearchTableViewController.load), userInfo: nil,  repeats: true)
+//            loadTimer.
             RunLoop.main.add(loadTimer!, forMode: RunLoopMode.commonModes)
         }
     }

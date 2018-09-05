@@ -101,9 +101,10 @@ class IdSearchBook: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            
+            if self.delegate != nil
+            {
             self.delegate.itemsDownloaded(items: books, from: "idSearch")
-            
+            }
         })
     }
     

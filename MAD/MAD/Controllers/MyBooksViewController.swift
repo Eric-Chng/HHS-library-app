@@ -65,6 +65,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
             //print("All books loaded")
             
             self.checkedTimer.invalidate()
+//            self.checkedTimer = nil
             self.checkOutTableView.reloadData()
         }
     }
@@ -85,6 +86,7 @@ class MyBooksViewController: UIViewController, UITableViewDataSource, UITableVie
         {
             print("All books loaded")
             self.heldTimer.invalidate()
+//            self.heldTimer = nil
             self.onHoldTableView.reloadData()
         }
     }

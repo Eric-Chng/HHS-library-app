@@ -90,6 +90,14 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if self.timer != nil
+        {
+            self.timer.invalidate()
+//            self.timer = nil
+        }
+    }
+    
     @objc func action()
     {
         //print("hi")
