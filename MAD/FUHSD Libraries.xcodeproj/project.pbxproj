@@ -113,7 +113,6 @@
 		82AE230E1FF36C210014C7CF /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230D1FF36C210014C7CF /* Discover.storyboard */; };
 		82AE23101FF36C2E0014C7CF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE230F1FF36C2E0014C7CF /* Home.storyboard */; };
 		82AE23121FF36EE70014C7CF /* BookDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82AE23111FF36EE70014C7CF /* BookDetails.storyboard */; };
-		AD05EF0427F0C28DF992BEFA /* Pods_MAD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B88BC8CCB7CB1CBB908DF5 /* Pods_MAD.framework */; };
 		F56177EEDE252D42113A5034 /* Pods_FUHSD_Libraries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B18E5DC4299EF9552E43C6 /* Pods_FUHSD_Libraries.framework */; };
 /* End PBXBuildFile section */
 
@@ -248,7 +247,6 @@
 				7B72B8611F9B0DB5002E9668 /* MapKit.framework in Frameworks */,
 				7B395E3A201C2D5D00DF3299 /* FBSDKCoreKit.framework in Frameworks */,
 				7B395E3B201C2D5D00DF3299 /* FBSDKLoginKit.framework in Frameworks */,
-				AD05EF0427F0C28DF992BEFA /* Pods_MAD.framework in Frameworks */,
 				F56177EEDE252D42113A5034 /* Pods_FUHSD_Libraries.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +546,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Eric C";
+				ORGANIZATIONNAME = "David McAllister";
 				TargetAttributes = {
 					4426E3E21F9B0A9F007CD8E7 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -940,13 +938,13 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuhsdlibraries.iosapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MAD/Resources/MAD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -967,12 +965,12 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HomesteadFBLA.MAD4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuhsdlibraries.iosapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MAD/Resources/MAD-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
