@@ -8,25 +8,25 @@
 //
 
 import UIKit
-import ScalingCarousel
+//import ScalingCarousel
 import Koloda
 import MapKit
 import Popover
 import SwiftEntryKit
 
-class CodeCell: ScalingCarouselCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        mainView = UIView(frame: contentView.bounds)
-        contentView.addSubview(mainView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+//class CodeCell: ScalingCarouselCell {
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//
+//        mainView = UIView(frame: contentView.bounds)
+//        contentView.addSubview(mainView)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
 
 class HomeViewController: UIViewController, TransactionProtocol, DownloadProtocol {
     
@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     
     
     var kolodaView: KolodaView!
-    fileprivate var scalingCarousel: ScalingCarouselView!
+//    fileprivate var scalingCarousel: ScalingCarouselView!
     @IBOutlet weak var mapView: MKMapView!
     var timer: Timer = Timer()
     var timeCounter: Int = 0
@@ -101,7 +101,7 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     func displayReadyHolds()
     {
         var attributes = EKAttributes.centerFloat
-        attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.entryBackground = .gradient(gradient: .init(colors: [.greenGrass, UIColor.init(red: 0.8, green: 1.0, blue: 0.2, alpha: 1.0)], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
         attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
         attributes.statusBar = .light
@@ -233,7 +233,7 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     func invalidInput()
     {
         var attributes = EKAttributes.centerFloat
-        attributes.entryBackground = .gradient(gradient: .init(colors: [.cyan, .purple], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.entryBackground = .gradient(gradient: .init(colors: [.greenGrass, UIColor.init(red: 0.8, green: 1.0, blue: 0.2, alpha: 1.0)], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
         attributes.popBehavior = .animated(animation: .init(scale: .init(from: 1, to: 0, duration: 1)))
         attributes.shadow = .active(with: .init(color: .white, opacity: 0.5, radius: 10, offset: .zero))
         attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .jolt)
@@ -475,24 +475,24 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     
     var bookSwipedID: Int = 0
     
-    private func addCarousel() {
-        
-        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        scalingCarousel = ScalingCarouselView(withFrame: frame, andInset: 100)
-        scalingCarousel.dataSource = self
-        scalingCarousel.delegate = self
-        scalingCarousel.translatesAutoresizingMaskIntoConstraints = false
-        scalingCarousel.backgroundColor = .white
-        scalingCarousel.register(CodeCell.self, forCellWithReuseIdentifier: "cell")
-        
-        innerScrollView.addSubview(scalingCarousel)
-        
-        // Constraints
-        scalingCarousel.widthAnchor.constraint(equalTo: innerScrollView.widthAnchor, multiplier: 1).isActive = true
-        scalingCarousel.heightAnchor.constraint(equalToConstant: 260).isActive = true
-        scalingCarousel.leadingAnchor.constraint(equalTo: innerScrollView.leadingAnchor).isActive = true
-        scalingCarousel.topAnchor.constraint(equalTo: innerScrollView.topAnchor, constant: 10).isActive = true
-    }
+//    private func addCarousel() {
+//
+//        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//        scalingCarousel = ScalingCarouselView(withFrame: frame, andInset: 100)
+//        scalingCarousel.dataSource = self
+//        scalingCarousel.delegate = self
+//        scalingCarousel.translatesAutoresizingMaskIntoConstraints = false
+//        scalingCarousel.backgroundColor = .white
+//        scalingCarousel.register(CodeCell.self, forCellWithReuseIdentifier: "cell")
+//
+//        innerScrollView.addSubview(scalingCarousel)
+//
+//        // Constraints
+//        scalingCarousel.widthAnchor.constraint(equalTo: innerScrollView.widthAnchor, multiplier: 1).isActive = true
+//        scalingCarousel.heightAnchor.constraint(equalToConstant: 260).isActive = true
+//        scalingCarousel.leadingAnchor.constraint(equalTo: innerScrollView.leadingAnchor).isActive = true
+//        scalingCarousel.topAnchor.constraint(equalTo: innerScrollView.topAnchor, constant: 10).isActive = true
+//    }
     var coverTimer: Timer = Timer()
     let images = [#imageLiteral(resourceName: "sampleCover2"), #imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2")]
     
@@ -669,15 +669,15 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         
-        if let scalingCell = cell as? ScalingCarouselCell {
-            scalingCell.mainView.backgroundColor = .blue
-            let imageView = UIImageView(image: #imageLiteral(resourceName: "sampleCover"))
-            imageView.frame = CGRect(x: 8, y: 0, width: scalingCell.mainView.frame.width-16, height: scalingCell.mainView.frame.height)
-            scalingCell.mainView.backgroundColor = UIColor.clear
-            scalingCell.mainView.addSubview(imageView)
-            imageView.layer.cornerRadius = 4;
-            imageView.layer.masksToBounds = true;
-        }
+//        if let scalingCell = cell as? ScalingCarouselCell {
+//            scalingCell.mainView.backgroundColor = .blue
+//            let imageView = UIImageView(image: #imageLiteral(resourceName: "sampleCover"))
+//            imageView.frame = CGRect(x: 8, y: 0, width: scalingCell.mainView.frame.width-16, height: scalingCell.mainView.frame.height)
+//            scalingCell.mainView.backgroundColor = UIColor.clear
+//            scalingCell.mainView.addSubview(imageView)
+//            imageView.layer.cornerRadius = 4;
+//            imageView.layer.masksToBounds = true;
+//        }
         
         return cell
     }

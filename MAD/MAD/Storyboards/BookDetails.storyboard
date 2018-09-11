@@ -163,7 +163,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StZ-He-2Tp">
                                                 <rect key="frame" x="30" y="715" width="315" height="50"/>
-                                                <color key="backgroundColor" red="0.40510121459999998" green="0.5927768229" blue="0.9971045852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="LjV-ee-Ozb"/>
                                                 </constraints>

@@ -30,7 +30,7 @@
                                                     <constraint firstAttribute="height" constant="176" id="fg0-Fm-V8w"/>
                                                 </constraints>
                                             </imageView>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MCI-yl-h8I">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCI-yl-h8I">
                                                 <rect key="frame" x="8" y="377" width="359" height="320"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="320" id="gg4-wH-RFb"/>
@@ -46,7 +46,7 @@
                                                     <constraint firstAttribute="height" constant="33" id="onY-az-oOc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                                <color key="textColor" red="0.30846178530000001" green="0.81733804939999999" blue="0.9971045852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-ym-3zT">
@@ -74,7 +74,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click for more information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7U-i1-GDR">
                                                         <rect key="frame" x="59" y="121" width="240" height="28"/>
-                                                        <color key="backgroundColor" red="0.078967933010000005" green="0.7527425821" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="240" id="Tks-5E-qRd"/>
                                                             <constraint firstAttribute="height" constant="28" id="aCZ-Ql-8VA"/>
@@ -140,7 +140,7 @@
                                                     <constraint firstAttribute="width" constant="200" id="xs2-td-9SU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                                <color key="textColor" red="0.30846178530000001" green="0.81733804939999999" blue="0.9971045852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Ip-eK4">
@@ -206,7 +206,7 @@
                                                     <constraint firstAttribute="height" constant="26" id="HJE-sH-ZLK"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                <color key="textColor" red="0.0" green="0.72835339359999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll use this to improve recommendations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ie-rS-xMf">
@@ -226,7 +226,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="mZA-vQ-hc8"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.72835339359999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -351,7 +351,7 @@
                     <navigationBar key="navigationBar" alpha="0.59999999999999998" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HDd-tM-2tO">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.078967933014560843" green="0.75274258209924483" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.27381214639710155" green="0.8647940152519894" blue="0.30842144319304626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>

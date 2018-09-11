@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cMb-Ej-cpe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cMb-Ej-cpe">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Checkout-->
         <scene sceneID="V59-wl-vTj">
             <objects>
-                <viewController id="Gov-tV-Puz" customClass="CheckoutViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gov-tV-Puz" customClass="CheckoutViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lV6-K4-rU9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,7 +145,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xL0-a5-Btp">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.078431372549019607" green="0.75294117647058822" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -165,14 +165,14 @@
         <!--Scanner-->
         <scene sceneID="a30-mA-z02">
             <objects>
-                <viewController storyboardIdentifier="Scanner" title="Scanner" id="BXR-eU-mEX" customClass="Scanner" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Scanner" title="Scanner" id="BXR-eU-mEX" customClass="Scanner" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJe-CK-8Lw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSH-wR-jXV">
                                 <rect key="frame" x="0.0" y="140" width="375" height="589"/>
-                                <color key="backgroundColor" red="0.23921568627450981" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.27381214640000001" green="0.8647940153" blue="0.30842144319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJY-0c-yRh">
                                 <rect key="frame" x="0.0" y="729" width="375" height="0.0"/>
@@ -216,7 +216,7 @@
         <!--Book Detail View Controller-->
         <scene sceneID="Oie-K2-0qS">
             <objects>
-                <viewController storyboardIdentifier="BookDetailViewController" id="7pj-MX-fIS" userLabel="Book Detail View Controller" customClass="BookDetailViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookDetailViewController" id="7pj-MX-fIS" userLabel="Book Detail View Controller" customClass="BookDetailViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtL-yk-TY5" customClass="ViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

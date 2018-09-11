@@ -21,7 +21,7 @@ class HoldViewController: UIViewController, TransactionProtocol {
 //            self.present(alert, animated: true, completion: nil)
             
             var attributes = EKAttributes.topFloat
-            attributes.entryBackground = .gradient(gradient: .init(colors: [.purple, .cyan], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+            attributes.entryBackground = .gradient(gradient: .init(colors: [.greenGrass, UIColor.init(red: 0.8, green: 1.0, blue: 0.2, alpha: 1.0)], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
             attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
             attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
             attributes.statusBar = .dark

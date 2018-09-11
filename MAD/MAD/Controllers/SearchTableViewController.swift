@@ -53,6 +53,9 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
             default:
                 print("failed")
                 if (items.count == 1) {
+                    self.currentTitles.append("No results found")
+                    print(self.currentTitles[0])
+                    self.currentAuthors.append("")
                     return;
                     // no books found in database ____________________________
                 }
@@ -190,6 +193,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         //d
         //print("ISBN: " + self.currentISBNs[indexPath.row])
         //BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
+        
         self.pressedItem = indexPath.row
         
         self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
@@ -256,10 +260,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         {
             print("Pressed: " + String(self.pressedItem))
             print("Len: " + String(currentBooks.count))
-            let bookToPass = currentBooks[self.pressedItem]
-            //selectedBooke
-            if let destinationViewController = segue.destination as? BookDetailViewController {
-                destinationViewController.selectedBook = bookToPass
+            if currentBooks.count > self.pressedItem
+            {
+                let bookToPass = currentBooks[self.pressedItem]
+                //selectedBooke
+                if let destinationViewController = segue.destination as? BookDetailViewController {
+                    destinationViewController.selectedBook = bookToPass
+                }
             }
         }
         else if(segue.identifier != "unwindSegueToVC1")

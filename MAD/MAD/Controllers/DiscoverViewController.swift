@@ -69,7 +69,7 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
         self.setArrays()
         
         timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(DiscoverViewController.action), userInfo: nil,  repeats: true)
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action2), userInfo: nil,  repeats: true)
+//        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(DiscoverViewController.action2), userInfo: nil,  repeats: true)
     }
     
     /*
@@ -121,59 +121,61 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
     
     @objc func action2()
     {
-        if (FBSDKAccessToken.current()) != nil
-        {
-        let params = ["fields": "friends"]
-        FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
-            //var ids: [String] = []
-            if let result = result as? [String:Any]
-            {
-                
-                if let dataDict = result["data"] as? NSArray
-                {
-                    
-
-                    var tempCounter: Int = 0
-
-                    for inner in dataDict
-                    {
-                        let insideDataDict = inner as! [String: Any]
-                        
-                        //var insideDataDict2 = ["id": "14", "id": "15"]
-                        if let id = insideDataDict["id"] as? String
-                        {
-                            //@Eric Cheng, make FacebookReviewModels as shown below from userIDs and books\/
-                            
-                            
-                            if(tempCounter<6)
-                            {
-                                
-                            self.reviewArr.append(FacebookReviewModel(bookModel: self.reviewBookArr[tempCounter], userID: id, score: 4.5))
-                            }
-                            tempCounter = tempCounter + 1
-                            //id is friend's id
-                        }
-                    }
-                    
-                    self.facebookReviewsCollectionView.reloadData()
-                    self.timer.invalidate()
-                }
-            
-            }
-            if error != nil
-            {
-                print(error as Any)
-                return
-            }
-            
-            }
-        }
+//        if (FBSDKAccessToken.current()) != nil
+//        {
+//        let params = ["fields": "friends"]
+//        FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result, error) -> Void in
+//            //var ids: [String] = []
+//            if let result = result as? [String:Any]
+//            {
+//
+//                if let dataDict = result["data"] as? NSArray
+//                {
+//
+//
+//                    var tempCounter: Int = 0
+//
+//                    for inner in dataDict
+//                    {
+//                        let insideDataDict = inner as! [String: Any]
+//
+//                        //var insideDataDict2 = ["id": "14", "id": "15"]
+//                        if let id = insideDataDict["id"] as? String
+//                        {
+//                            //@Eric Cheng, make FacebookReviewModels as shown below from userIDs and books\/
+//
+//
+//                            if(tempCounter<6)
+//                            {
+//
+//                            self.reviewArr.append(FacebookReviewModel(bookModel: self.reviewBookArr[tempCounter], userID: id, score: 4.5))
+//                            }
+//                            tempCounter = tempCounter + 1
+//                            //id is friend's id
+//                        }
+//                    }
+//
+//                    self.facebookReviewsCollectionView.reloadData()
+//                    self.timer.invalidate()
+//                }
+//
+//            }
+//            if error != nil
+//            {
+//                print(error as Any)
+//                return
+//            }
+//
+//            }
+//        }
  
         
     }
     
     @objc func action()
     {
+        if allHasLoaded == false
+        {
         var collectionViewLoaded: Bool = true
         for model in self.popularBookArr
         {
@@ -184,20 +186,35 @@ class DiscoverViewController: UIViewController, UINavigationControllerDelegate
         }
         if(collectionViewLoaded)
         {
-            popularTitleCollectionView.reloadData()
-            librarianRecommendedCollectionView.reloadData()
+            print("kachow")
+            
+            var allLoaded = true
             for model in self.popularBookArr
             {
-                if(model.BookCoverImage != nil && model.BookCoverImage != nil)
+                if(model.BookCoverImage == nil || model.BookCoverImage.image == nil)
                 {
-                    timer.invalidate()
+                    allLoaded = false
                 }
             }
+            if allLoaded
+            {
+                print("All has been loaded")
+                popularTitleCollectionView.reloadData()
+                librarianRecommendedCollectionView.reloadData()
+                self.timer.invalidate()
+                self.allHasLoaded = true
+//                self.timer.invalidate()
+//                self.timer.invalidate()
+
+            }
+            
             
         }
         
-        
+        }
     }
+    
+    var allHasLoaded = false
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
