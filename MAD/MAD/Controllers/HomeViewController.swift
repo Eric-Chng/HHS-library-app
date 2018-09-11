@@ -443,7 +443,7 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     }
     @IBAction func hoursInfoButtonPressed(_ sender: Any)
     {
-        if let url = URL(string: "https://www.hhs.fuhsd.org/library") {
+        if let url = URL(string: "https://hhs.fuhsd.org/academics/library") {
             UIApplication.shared.open(url, options: [:])
         }
         

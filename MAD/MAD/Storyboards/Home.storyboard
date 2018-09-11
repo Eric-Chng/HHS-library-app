@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EoL-cc-Gvg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EoL-cc-Gvg">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Home-->
         <scene sceneID="dN3-AE-v7q">
             <objects>
-                <viewController id="zcJ-OU-37K" customClass="HomeViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zcJ-OU-37K" customClass="HomeViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TFP-Zg-yYE" customClass="ViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,17 +52,17 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiN-ym-3zT">
                                                 <rect key="frame" x="8" y="745" width="359" height="160"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGC-cx-gpk">
-                                                        <rect key="frame" x="24" y="10" width="226" height="27"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, Tuesday, Thursday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGC-cx-gpk">
+                                                        <rect key="frame" x="24" y="10" width="250" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="L1A-qH-dDa"/>
-                                                            <constraint firstAttribute="width" constant="226" id="NXs-lT-0HR"/>
+                                                            <constraint firstAttribute="width" constant="250" id="NXs-lT-0HR"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM - 3:50 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ON-F6-TDP">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:30 AM - 4:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ON-F6-TDP">
                                                         <rect key="frame" x="39" y="37" width="213" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="nFe-51-fre"/>
@@ -83,7 +83,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday - Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOm-pf-Hkk">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOm-pf-Hkk">
                                                         <rect key="frame" x="24" y="58" width="226" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="0iw-WK-VSa"/>
@@ -93,7 +93,7 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:30 AM - 3:50 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ux-QP-ebS">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:30 AM - 4:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ux-QP-ebS">
                                                         <rect key="frame" x="39" y="85" width="250" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="RfD-c0-QYK"/>
@@ -390,7 +390,7 @@
         <!--Review View Controller-->
         <scene sceneID="i2N-6A-cfU">
             <objects>
-                <viewController storyboardIdentifier="reviewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CzJ-4s-vuS" customClass="ReviewViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CzJ-4s-vuS" customClass="ReviewViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tnO-CK-2SU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
