@@ -276,14 +276,14 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             wordCounter = wordCounter + 1
             if(wordCounter > 1)
             {
-                argument = argument + "+"
+                argument = argument.lowercased() + "%20"
             }
             let trimmedWord = word.trimmingCharacters(in: .punctuationCharacters)
             argument = argument + trimmedWord
             
         }
         print(argument)
-        if let url = URL(string: "http://search.follettsoftware.com/metasearch/ui/27952/search/books?q="+argument) {
+        if let url = URL(string: "http://search.follettsoftware.com/metasearch/ui/27952/search/all?q="+argument) {
             self.myWebView.loadRequest(URLRequest.init(url: url))
             self.myWebView.delegate = self
         }
@@ -331,7 +331,8 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
     {
         var html_to_scrape = self.myWebView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
         if html_to_scrape?.range(of:"flag") != nil {
-//            print(html_to_scrape!)
+            print("Keyword \"flag\" found")
+            print(html_to_scrape!)
             
             do
             {
@@ -380,6 +381,9 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
             }
             catch
             {
+                print("Keyword \"flag\" not found")
+                print(html_to_scrape!)
+                
                 self.checkoutButton.setTitle("Unavailable", for: UIControlState.normal)
                 UIView.animate(withDuration: 1.0) {
                     self.checkoutButton.alpha = 0.8
@@ -580,7 +584,7 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
         //checkoutButton.layer.cornerRadius=15
         checkoutButton.layer.masksToBounds=true
         
-        if self.selectedBook!.fromGoogle
+        if self.selectedBook != nil && self.selectedBook!.fromGoogle
         {
             let alert = UIAlertController(title: "Book Not Found in Our Database", message: "Here's some information from Google Books. We'll check again and let you hold if it's available.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))

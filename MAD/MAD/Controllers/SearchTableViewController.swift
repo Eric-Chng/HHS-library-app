@@ -37,7 +37,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
             //print(book)
         switch book {
             case is BookModel:
-                print("gotem")
+                print("Books Received")
                 print(book)
                 if((book as! BookModel).title != nil)
                 {
@@ -63,9 +63,14 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         }
         if(counter < 1)
         {
-            currentTitles.append("No Results Found")
-            currentCovers = [UIImage()]
-            currentAuthors.append("Please try another query")
+            print("Nothing returned")
+            currentTitles = ["No Results Found"]
+            currentAuthors = ["Please try another query"]
+            self.tableView.reloadData()
+//            self.reload
+//            currentTitles.append("No Results Found")
+//            currentCovers = [UIImage()]
+//            currentAuthors.append("Please try another query")
         }
         let temparray = NSMutableArray()
         var count:Int = 0;
@@ -134,6 +139,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         self.currentTitles = []
         self.currentAuthors = []
         self.currentISBNs = []
+        self.currentBooks = []
         self.tableView.reloadData()
         let keywords = searchBar.text!;
         searchBar.resignFirstResponder()
@@ -142,6 +148,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         let discoverDatabaseSearch = DiscoverSearch()
         discoverDatabaseSearch.delegate = self
         discoverDatabaseSearch.downloadItems(textquery: keywords)
+        
         
         
         //Searches with google books API
@@ -194,9 +201,12 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         //print("ISBN: " + self.currentISBNs[indexPath.row])
         //BookDetailViewController.updateISBN(newISBN: self.currentISBNs[indexPath.row]);
         
+        if currentBooks.count > indexPath.row
+        {
         self.pressedItem = indexPath.row
         
         self.performSegue(withIdentifier: "SearchToBookDetail", sender: self)
+        }
         
     }
     
@@ -225,7 +235,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
         {
             //if(indexPath.section == 1)
             //{
-            if(currentBooks.count > indexPath.row)
+            if(currentBooks.count > indexPath.row || currentBooks.count == 0)
             {
                 if(self.requestCounter > 0)
                 {
@@ -234,7 +244,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate, Dow
                     sendNewRequest = false;
                     myCell.newRequest();
                 }
-                //print("dogs")
+                print("dogs")
                 myCell.titleLabel.text = currentTitles[indexPath.row];
                 myCell.authorLabel.text = currentAuthors[indexPath.row]
                 if(currentBooks.count > indexPath.row)
