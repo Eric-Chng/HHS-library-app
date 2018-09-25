@@ -920,6 +920,13 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
 //            loadTimer.
             RunLoop.main.add(loadTimer!, forMode: RunLoopMode.commonModes)
         }
+        print("---")
+        print("---")
+        print("---")
+        print(self.selectedBook?.ISBN!)
+        print("---")
+        print("---")
+        print("---")
     }
     
     @IBAction func leaveReviewPressed(_ sender: Any)

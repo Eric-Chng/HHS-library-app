@@ -157,6 +157,16 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var loadFirstBooks = 0
+        while loadFirstBooks < 6
+        {
+        loadFirstBooks = loadFirstBooks + 1
+        self.recommendationBookArr.append(BookModel(databaseISBN: self.recommendedISBNs[0]))
+        self.recommendedISBNs.remove(at: 0)
+        }
+        
+        self.recommendedISBNs.shuffle()
+        self.recommendationBookArr.shuffle()
         //addCarousel()
         addKoloda()
         self.hoursButton.layer.cornerRadius = 4
@@ -308,9 +318,8 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     
     @objc func profileButtonClicked()
     {
+        
         self.performSegue(withIdentifier: "profileSegue", sender: self)
-        
-        
         
     }
     
@@ -332,7 +341,7 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
             imageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
             ])
-        imageView.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
+        imageView.addTarget(self, action: #selector(self.profileButtonClicked), for: .touchUpInside)
     }
     
     private func moveAndResizeImage(for height: CGFloat) {
@@ -496,13 +505,29 @@ class HomeViewController: UIViewController, TransactionProtocol, DownloadProtoco
     var coverTimer: Timer = Timer()
     let images = [#imageLiteral(resourceName: "sampleCover2"), #imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2"),#imageLiteral(resourceName: "sampleCover2")]
     
-    var recommendationBookArr = [BookModel(databaseISBN:"978-0-393-08905-9"), BookModel(databaseISBN:"978-0-06-247250-2"), BookModel(databaseISBN:"978-1-61695-847-3"), BookModel(databaseISBN:"0-345-38421-0"), BookModel(databaseISBN:"978-0-7636-7382-6"), BookModel(databaseISBN:"978-0-545-20889-5"), BookModel(databaseISBN:"0-15-602732-1")]
+    var recommendationBookArr: [BookModel] = []
+    
+    var recommendedISBNs = ["978-0-374-53451-6", "0-15-602732-1", "978-0-544-57097-9", "0-316-52613-4", "978-1-55652-976-4", "978-0-06-247250-2", "1-59448-329-9", "978-0-06-233175-5", "978-0-7636-5866-3", "1-56689-011-X", "978-1-42310334-9", "0-525-94527-X", "978-1-25001019-3", "978-0-393-08905-9", "978-0-06-247250-2", "978-1-61695-847-3", "0-345-38421-0", "978-0-7636-7382-6", "978-0-545-20889-5", "0-15-602732-1", "978-0-545-01022-1", "8-47888445-9", "0-486-41434-5", "978-1-62672-315-3", "978-7-50635153-9", "978-1-41971915-8", "978-1-59102-501-6", "978-0-374-53164-5"]
+    
+    
     var cardsToCheck: [Int] = [0, 1, 2, 3, 4, 5, 6]
     var numCards: Int = 0
     var counter: Int = 0
 
     @IBOutlet weak var tomorrowLabel: UILabel!
     
+}
+
+extension Array
+{
+    /** Randomizes the order of an array's elements. */
+    mutating func shuffle()
+    {
+        for _ in 0..<10
+        {
+            sort { (_,_) in arc4random() < arc4random() }
+        }
+    }
 }
 
 extension HomeViewController: KolodaViewDataSource {
@@ -577,7 +602,7 @@ extension HomeViewController: KolodaViewDataSource {
     @objc func downloadCheck()
     {
         //print("download check")
-        if(counter<6)
+        if(counter<2)
         {
             let image = recommendationBookArr[counter].getImage()
             if(image.isEqual(#imageLiteral(resourceName: "loadingImage")))
@@ -595,7 +620,7 @@ extension HomeViewController: KolodaViewDataSource {
                 numCards = numCards + 1
             }
         }
-        if(counter == 6)
+        if(counter == 2)
         {
             print("All downloaded")
             self.kolodaView.reloadData()
@@ -652,7 +677,20 @@ extension HomeViewController: KolodaViewDelegate {
         {
             self.bookSwipedID = index
             self.performSegue(withIdentifier: "rightSwipeSegue", sender: self)
+            
             //print(self.recommendationBookArr[index].title)
+        }
+//        else if(direction == SwipeResultDirection.left)
+//        {
+//
+//        }
+        self.kolodaView.reloadData()
+        print("Reloading Koloda View")
+        if self.recommendedISBNs.count > 0
+        {
+            self.recommendationBookArr.append(BookModel(databaseISBN: self.recommendedISBNs[0]))
+            
+            self.recommendedISBNs.remove(at: 0)
         }
     }
    
