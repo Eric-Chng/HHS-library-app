@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fQf-iE-rvz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fQf-iE-rvz">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -91,7 +91,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVl-ui-RIE">
-                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="591" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Bwp-7M-eqP"/>
@@ -140,6 +140,7 @@
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="bEO-W6-T7p" secondAttribute="bottom" constant="-40" id="7s7-4H-aNZ"/>
                             <constraint firstItem="egD-Xq-Ai2" firstAttribute="leading" secondItem="8Po-EL-bTC" secondAttribute="leading" id="CrK-Bu-Iv6"/>
                             <constraint firstItem="p5N-mY-gpr" firstAttribute="centerX" secondItem="8Po-EL-bTC" secondAttribute="centerX" id="DFY-lS-hV9"/>
+                            <constraint firstItem="DTT-4z-dBi" firstAttribute="top" secondItem="bVl-ui-RIE" secondAttribute="bottom" id="Emz-Wc-8Gu"/>
                             <constraint firstItem="5mv-zC-0aB" firstAttribute="top" secondItem="8Po-EL-bTC" secondAttribute="top" constant="200" id="EuO-Jm-J6e"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="top" secondItem="egD-Xq-Ai2" secondAttribute="top" constant="40" id="G1U-pk-G7S"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="trailing" secondItem="bVl-ui-RIE" secondAttribute="trailing" id="GvQ-cS-Yea"/>
@@ -165,7 +166,6 @@
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="Fdh-Ao-XLb" secondAttribute="bottom" constant="20" id="lzv-3f-fCk"/>
                             <constraint firstItem="8Po-EL-bTC" firstAttribute="trailing" secondItem="Fdh-Ao-XLb" secondAttribute="trailing" constant="43" id="mWU-uQ-jgT"/>
                             <constraint firstItem="DTT-4z-dBi" firstAttribute="centerX" secondItem="ICa-AX-olF" secondAttribute="centerX" id="mew-Cy-2lS"/>
-                            <constraint firstItem="8Po-EL-bTC" firstAttribute="bottom" secondItem="bVl-ui-RIE" secondAttribute="bottom" constant="175" id="pVW-tb-CmP"/>
                             <constraint firstItem="5mv-zC-0aB" firstAttribute="centerX" secondItem="Tji-AH-asb" secondAttribute="centerX" constant="-6" id="rJA-x5-4CL"/>
                             <constraint firstItem="p5N-mY-gpr" firstAttribute="width" secondItem="Tji-AH-asb" secondAttribute="width" id="s4d-eK-UFQ"/>
                             <constraint firstItem="ICa-AX-olF" firstAttribute="leading" secondItem="8Po-EL-bTC" secondAttribute="leading" id="sHy-be-OCX"/>

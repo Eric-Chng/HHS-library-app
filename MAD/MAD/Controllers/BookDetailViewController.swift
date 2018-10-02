@@ -35,8 +35,8 @@ class BookDetailViewController : UIViewController, DownloadProtocol, Transaction
     @IBOutlet weak var TitleView: UIView!
     @IBOutlet weak var reserveButtonImage: UIImageView!
     @IBOutlet weak var BookCoverImage: UIImageView!
-        @IBOutlet weak var genreImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "drama"))
-    @IBOutlet weak var statusImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "greencheck.png"))
+//    @IBOutlet weak var genreImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "drama"))
+//    @IBOutlet weak var statusImage: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "greencheck.png"))
     @IBOutlet weak var descriptionLabel: UILabel!
     var userInteractionCommitted: Bool = false
     var timer: Timer = Timer.init()

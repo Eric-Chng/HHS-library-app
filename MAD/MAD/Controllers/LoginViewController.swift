@@ -232,6 +232,21 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let signInButton = GIDSignInButton(frame: CGRect(x: view.center.x - 99, y: googleButtonFrame.frame.minY, width: 156, height: 48))
+        view.addSubview(signInButton)
+//        signInButton.backgroundColor = UIColor.blue
+//        signInButton.center = googleButtonFrame.center
+        signInButton.style = .wide
+        signInButton.alpha = 0.0
+
+        UIView.animate(withDuration: 0.5, delay:3.0, options: [], animations:{
+            signInButton.alpha = 1.0
+            
+        }, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -248,9 +263,7 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
         
-        let signInButton = GIDSignInButton(frame: CGRect(x: view.center.x - 99, y: googleButtonFrame.frame.minY, width: 156, height: 48))
-        view.addSubview(signInButton)
-        signInButton.style = .wide
+        
 
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:
             #selector(self.checkForGoogleSignIn), userInfo: nil,  repeats: true)
@@ -289,7 +302,6 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
         let effectView = UIVisualEffectView(effect: blurEffect)
         effectView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height+130)
         backgroundImage.addSubview(effectView)
-        signInButton.alpha = 0.0
         effectView.alpha = 0
         self.iconImage.alpha = 0
         self.userNameField.alpha = 0.0
@@ -299,10 +311,7 @@ class LoginViewController: UIViewController, DownloadProtocol, GIDSignInUIDelega
             effectView.alpha = 1.0
         }
         
-        UIView.animate(withDuration: 0.5, delay:3.0, options: [], animations:{
-            signInButton.alpha = 1.0
-
-        }, completion: nil)
+        
         
 //        let viewFrame = view.frame
         print("description")

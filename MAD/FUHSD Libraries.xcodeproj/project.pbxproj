@@ -929,7 +929,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = CTTY7945V3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -938,7 +938,7 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fuhsdlibraries.iosapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuhsdlibrarieshomesteadversion.iosapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MAD/Resources/MAD-Bridging-Header.h";
@@ -956,7 +956,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 249TUVEQGV;
+				DEVELOPMENT_TEAM = CTTY7945V3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -965,7 +965,7 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = MAD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fuhsdlibraries.iosapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuhsdlibrarieshomesteadversion.iosapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MAD/Resources/MAD-Bridging-Header.h";

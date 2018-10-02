@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Yb-H3-zCO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Yb-H3-zCO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,7 @@
         <!--Introduction Page View Controller-->
         <scene sceneID="0xu-Zq-cPE">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0Yb-H3-zCO" customClass="IntroductionPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0Yb-H3-zCO" customClass="IntroductionPageViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cW8-qb-QAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9" y="137"/>
@@ -20,13 +21,13 @@
         <!--First Page View Controller-->
         <scene sceneID="gzH-xB-zHO">
             <objects>
-                <viewController storyboardIdentifier="page1" id="gq8-Oe-jwu" customClass="FirstPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page1" id="gq8-Oe-jwu" customClass="FirstPageViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XEb-4f-IE3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Library" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V8-l8-6Sg">
-                                <rect key="frame" x="27" y="352" width="320" height="34"/>
+                                <rect key="frame" x="27.5" y="352" width="320" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="siD-wa-Fvh"/>
                                     <constraint firstAttribute="width" constant="320" id="wOq-2J-gfJ"/>
@@ -51,10 +52,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKd-mR-JYz">
-                                <rect key="frame" x="107" y="180" width="160" height="160"/>
+                                <rect key="frame" x="107.5" y="180" width="160" height="160"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="singleBook" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-Re-nlE">
-                                        <rect key="frame" x="41" y="29" width="79" height="103"/>
+                                        <rect key="frame" x="40.5" y="28.5" width="79" height="103"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="103" id="c4j-eg-oeg"/>
                                             <constraint firstAttribute="width" constant="79" id="w1H-g2-znx"/>
@@ -111,7 +112,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just a Snap Away" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StA-hE-9mu">
-                                <rect key="frame" x="28" y="346" width="320" height="41"/>
+                                <rect key="frame" x="27.5" y="346" width="320" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Io9-dJ-boW"/>
                                     <constraint firstAttribute="height" constant="41" id="Rfh-eS-EZ9"/>
@@ -167,20 +168,20 @@
         <!--Third Page View Controller-->
         <scene sceneID="jKl-Df-wDA">
             <objects>
-                <viewController storyboardIdentifier="page3" id="NhH-O6-OJq" customClass="ThirdPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page3" id="NhH-O6-OJq" customClass="ThirdPageViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lhW-sb-WcV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connectivityBubble" translatesAutoresizingMaskIntoConstraints="NO" id="D5B-6S-w5z">
-                                <rect key="frame" x="107" y="180" width="160" height="160"/>
+                                <rect key="frame" x="107.5" y="180" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="Mse-KT-PDC"/>
                                     <constraint firstAttribute="height" constant="160" id="PAW-wB-H2J"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security and Connectivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4D-ue-LuL">
-                                <rect key="frame" x="18" y="344" width="340" height="41"/>
+                                <rect key="frame" x="17.5" y="344" width="340" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="340" id="QbM-2q-di1"/>
                                     <constraint firstAttribute="height" constant="41" id="eIb-7Z-6iv"/>
@@ -190,7 +191,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Facebook and Google Book integration. Login to see what your friends recommend. Backed by industry-standard security" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRT-xR-fge">
-                                <rect key="frame" x="23" y="387" width="330" height="60"/>
+                                <rect key="frame" x="22.5" y="387" width="330" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="gbb-BE-zrO"/>
                                     <constraint firstAttribute="width" constant="330" id="oZP-cO-b2d"/>
@@ -200,15 +201,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFx-Lp-2DD">
-                                <rect key="frame" x="36" y="511" width="302" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="36.5" y="511" width="302" height="56"/>
+                                <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="302" id="HIC-Et-Mcc"/>
                                     <constraint firstAttribute="height" constant="56" id="ovf-3V-52p"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We never see or store your credentials" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvN-Ex-OJ2">
-                                <rect key="frame" x="55" y="567" width="264" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook Integration Coming Soon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvN-Ex-OJ2">
+                                <rect key="frame" x="55.5" y="567" width="264" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="TEF-Dd-PEf"/>
                                     <constraint firstAttribute="width" constant="264" id="Z42-6y-HkX"/>
@@ -244,7 +245,7 @@
         <!--Final Page View Controller-->
         <scene sceneID="6vl-A2-kWK">
             <objects>
-                <viewController storyboardIdentifier="page4" id="C58-Jy-iDL" customClass="FinalPageViewController" customModule="MAD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page4" id="C58-Jy-iDL" customClass="FinalPageViewController" customModule="FUHSD_Libraries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nu7-Cc-9Ud">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,7 +254,7 @@
                                 <rect key="frame" x="0.0" y="-40" width="375" height="747"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready When You Are" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyy-ys-zsx">
-                                        <rect key="frame" x="17" y="344" width="340" height="41"/>
+                                        <rect key="frame" x="17.5" y="344" width="340" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="7BF-4T-jVc"/>
                                             <constraint firstAttribute="width" constant="340" id="RzI-cM-bCZ"/>
@@ -263,7 +264,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="presentBubble" translatesAutoresizingMaskIntoConstraints="NO" id="v8d-5J-Ppd">
-                                        <rect key="frame" x="107" y="180" width="160" height="160"/>
+                                        <rect key="frame" x="107.5" y="180" width="160" height="160"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="0oz-Gz-C3S"/>
                                             <constraint firstAttribute="width" constant="160" id="2YU-yX-6zO"/>
@@ -280,7 +281,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJp-78-zPG">
-                                        <rect key="frame" x="107" y="581" width="160" height="46"/>
+                                        <rect key="frame" x="107.5" y="581" width="160" height="46"/>
                                         <color key="backgroundColor" red="0.99826866390000002" green="0.95583301779999996" blue="0.26428699490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="pVD-OJ-10N"/>
@@ -320,7 +321,7 @@
                     </view>
                     <connections>
                         <outlet property="goButton" destination="IJp-78-zPG" id="4vZ-bg-V7R"/>
-                        <segue destination="SBO-pq-LXx" kind="showDetail" identifier="IntroToHome" action="showViewController:sender:" id="wWy-Ge-79G"/>
+                        <segue destination="SBO-pq-LXx" kind="showDetail" identifier="IntroToHome" id="wWy-Ge-79G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-Q6-66S" userLabel="First Responder" sceneMemberID="firstResponder"/>
