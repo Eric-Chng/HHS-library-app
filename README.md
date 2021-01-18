@@ -1,13 +1,15 @@
-# MAD-2018
+# HHS Library App - 2018
 HHS Mobile App Development
 
 *By Eric Cheng and David McAllister*
 
-View the most recent ReadMe with image-filled installation instructions: https://github.com/Eric-Cf/MAD-2018
+View the most recent ReadMe with image-filled installation instructions: https://github.com/Eric-Cf/HHS-Library-App-2018
 
 The Homestead High School Library App is designed to provide a mobile interface that works alongside a stable backend database structure to provide users with information about available books, their holds, and their checkouts. Additionally, it implements a scanner that connects to web APIs in order to allow users to discover and hold books with their phone cameras. The app was developed in conjunction with Homestead High School's library to ensure our app would be useful in a real world situation.
 
 This application was programmed entirely in Apple's Swift language. The backend was coded with a mix of MySQL and PHP.
+
+Note: Installation instructions may no longer work due to expiry of Apple developer account.
 
 ## Key Features
 
