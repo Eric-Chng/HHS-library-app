@@ -1,4 +1,4 @@
-# HHS Library App - 2018
+# HHS Library App 
 HHS Mobile App Development
 
 *By Eric Cheng and David McAllister*
